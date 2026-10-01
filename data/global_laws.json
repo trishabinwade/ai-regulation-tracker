@@ -1,1 +1,85 @@
-{"_note":"Hand-curated list of notable enacted AI laws. Verified via web research on 2026-09-30. Not exhaustive — update by hand when new laws pass. Brazil's PL 2338/2023 is deliberately EXCLUDED: it passed the Senate in Dec 2024 but is still pending in the Chamber of Deputies, not law.","laws":[{"country":"European Union","enacted":"June 13, 2024 (adopted)","in_force":"August 1, 2024","link":"https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng","name":"Artificial Intelligence Act — Regulation (EU) 2024/1689","summary":"The world's first comprehensive AI law: risk-tiered rules (prohibited / high-risk / transparency duties), conformity assessments for high-risk systems, and obligations for general-purpose AI models. Phased application through 2027–2028."},{"country":"China","enacted":"July 13, 2023 (issued)","in_force":"August 15, 2023","link":"https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm","name":"Interim Measures for the Management of Generative AI Services","summary":"Requires generative AI services offered to the Chinese public to align with socialist values, complete security assessments and algorithm filings before launch, and respect IP and personal-information protections. Issued jointly by the CAC and six other regulators."},{"country":"South Korea","enacted":"December 26, 2024 (passed); promulgated January 21, 2025","in_force":"January 22, 2026","link":"https://www.msit.go.kr/eng/bbs/view.do?sCode=eng&mId=4&mPid=2&pageIndex=&bbsSeqNo=42&nttSeqNo=1071","name":"AI Basic Act (Framework Act on AI Development and Establishment of Trust)","summary":"Consolidated 19 prior bills into Asia's first comprehensive AI framework. Risk-based duties for 'high-impact' AI (impact assessments, human oversight), generative-output labeling, and extraterritorial reach; fines up to KRW 30 million."},{"country":"Japan","enacted":"May 28, 2025 (passed by the Diet)","in_force":"June 4, 2025 (most provisions); September 1, 2025 (fully)","link":"https://www.japaneselawtranslation.go.jp/ja/laws/view/5066/ja","name":"AI Promotion Act (Act No. 53 of 2025)","summary":"Japan's first AI-specific national law. Innovation-first: no fines or penalties — the government may issue guidance, request information, or publicly name non-compliant entities. Established an AI Strategy Headquarters."},{"country":"United States — Texas","enacted":"June 22, 2025 (signed)","in_force":"January 1, 2026","link":"https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB149","name":"Texas Responsible AI Governance Act (TRAIGA), HB 149","summary":"Comprehensive state AI statute: prohibits AI used to manipulate behavior, enable unlawful discrimination, or generate CSAM; bans government social scoring; creates a 36-month regulatory sandbox and AI advisory council. Enforced exclusively by the Texas AG."},{"country":"United States — Connecticut","enacted":"June 2, 2026 (signed)","in_force":"October 1, 2026 (key provisions)","link":"https://www.cga.ct.gov/2026/TOB/S/PDF/2026SB-00005-R00-SB.PDF","name":"Connecticut AI Responsibility and Transparency (CART) Act, SB 5","summary":"Omnibus state AI law: anti-discrimination rules for automated employment decision tools, deployer disclosure duties, AI subscription and chatbot provisions, and whistleblower protections for frontier-AI developers. Notice requirements phase in through 2028."}]}
+{
+ "_note": "Hand-curated list of notable enacted AI laws, all enacted AND in force (verified against official government sources; last expanded 2026-09-30). Not exhaustive — update by hand when new laws pass. Deliberately EXCLUDED: Brazil PL 2338/2023 (passed Senate Dec 2024, still pending in Chamber); Illinois SB 315 / Public Act 104-0538 (signed Jul 6, 2026, but in force Jan 1, 2027 — not yet in force); Colorado SB 26-189 (signed May 14, 2026, in force Jan 1, 2027 — not yet in force); New York RAISE Act (enactment status unverified as of Sep 30, 2026).",
+ "laws": [
+  {
+   "country": "European Union",
+   "enacted": "June 13, 2024 (adopted)",
+   "in_force": "August 1, 2024",
+   "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng",
+   "name": "Artificial Intelligence Act — Regulation (EU) 2024/1689",
+   "summary": "The world's first comprehensive AI law: risk-tiered rules (prohibited / high-risk / transparency duties), conformity assessments for high-risk systems, and obligations for general-purpose AI models. Phased application through 2027–2028."
+  },
+  {
+   "country": "China",
+   "enacted": "July 13, 2023 (issued)",
+   "in_force": "August 15, 2023",
+   "link": "https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm",
+   "name": "Interim Measures for the Management of Generative AI Services",
+   "summary": "Requires generative AI services offered to the Chinese public to align with socialist values, complete security assessments and algorithm filings before launch, and respect IP and personal-information protections. Issued jointly by the CAC and six other regulators."
+  },
+  {
+   "country": "South Korea",
+   "enacted": "December 26, 2024 (passed); promulgated January 21, 2025",
+   "in_force": "January 22, 2026",
+   "link": "https://www.msit.go.kr/eng/bbs/view.do?sCode=eng&mId=4&mPid=2&pageIndex=&bbsSeqNo=42&nttSeqNo=1071",
+   "name": "AI Basic Act (Framework Act on AI Development and Establishment of Trust)",
+   "summary": "Consolidated 19 prior bills into Asia's first comprehensive AI framework. Risk-based duties for 'high-impact' AI (impact assessments, human oversight), generative-output labeling, and extraterritorial reach; fines up to KRW 30 million."
+  },
+  {
+   "country": "Japan",
+   "enacted": "May 28, 2025 (passed by the Diet)",
+   "in_force": "June 4, 2025 (most provisions); September 1, 2025 (fully)",
+   "link": "https://www.japaneselawtranslation.go.jp/ja/laws/view/5066/ja",
+   "name": "AI Promotion Act (Act No. 53 of 2025)",
+   "summary": "Japan's first AI-specific national law. Innovation-first: no fines or penalties — the government may issue guidance, request information, or publicly name non-compliant entities. Established an AI Strategy Headquarters."
+  },
+  {
+   "country": "United States — Texas",
+   "enacted": "June 22, 2025 (signed)",
+   "in_force": "January 1, 2026",
+   "link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB149",
+   "name": "Texas Responsible AI Governance Act (TRAIGA), HB 149",
+   "summary": "Comprehensive state AI statute: prohibits AI used to manipulate behavior, enable unlawful discrimination, or generate CSAM; bans government social scoring; creates a 36-month regulatory sandbox and AI advisory council. Enforced exclusively by the Texas AG."
+  },
+  {
+   "country": "United States — Connecticut",
+   "enacted": "June 2, 2026 (signed)",
+   "in_force": "October 1, 2026 (key provisions)",
+   "link": "https://www.cga.ct.gov/2026/TOB/S/PDF/2026SB-00005-R00-SB.PDF",
+   "name": "Connecticut AI Responsibility and Transparency (CART) Act, SB 5",
+   "summary": "Omnibus state AI law: anti-discrimination rules for automated employment decision tools, deployer disclosure duties, AI subscription and chatbot provisions, and whistleblower protections for frontier-AI developers. Notice requirements phase in through 2028."
+  },
+  {
+   "country": "United States",
+   "name": "TAKE IT DOWN Act (Public Law 119-12)",
+   "enacted": "May 19, 2025 (signed)",
+   "in_force": "May 19, 2025 (criminal provisions); May 19, 2026 (platform notice-and-removal duties)",
+   "link": "https://www.congress.gov/bill/119th-congress/senate-bill/146",
+   "summary": "Federal law criminalizing knowing publication of authentic or AI-generated nonconsensual intimate imagery; requires covered platforms to establish a notice-and-removal process with 48-hour removal on valid request."
+  },
+  {
+   "country": "United States — Utah",
+   "name": "AI Policy Act (SB 149)",
+   "enacted": "March 13, 2024 (signed)",
+   "in_force": "May 1, 2024",
+   "link": "https://le.utah.gov/~2024/bills/sbillenr/SB0149.pdf",
+   "summary": "First U.S. state law specifically regulating generative AI: requires disclosure when consumers interact with AI (on request generally, proactively in regulated occupations), establishes liability for AI-driven consumer-protection violations, and creates an Office of Artificial Intelligence Policy. Amended by SB 226 (effective May 7, 2025)."
+  },
+  {
+   "country": "United States — California",
+   "name": "Transparency in Frontier AI Act (SB 53)",
+   "enacted": "September 29, 2025 (signed)",
+   "in_force": "January 1, 2026",
+   "link": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB53",
+   "summary": "Requires large frontier-AI developers to publish safety and security frameworks, report critical safety incidents to the state, and implement whistleblower protections; the industry-backed successor to the vetoed SB 1047."
+  },
+  {
+   "country": "China",
+   "name": "Provisions on the Administration of Algorithm Recommendation in Internet Information Services",
+   "enacted": "December 31, 2021 (promulgated)",
+   "in_force": "March 1, 2022",
+   "link": "http://www.cac.gov.cn/2022-01/04/c_1642894606364259.htm",
+   "summary": "China's foundational algorithm regulation (joint CAC/MIIT/MPS/SAMR order): requires algorithm filing with the CAC, user disclosure and opt-out of algorithmic recommendations, non-discrimination, and protections for minors, the elderly, and gig workers; covers generation-synthesis (deepfake) algorithms alongside recommenders."
+  }
+ ]
+}
