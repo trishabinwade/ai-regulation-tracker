@@ -52,16 +52,10 @@ body{margin:0;color:var(--ink);font-family:'Spectral',Georgia,'Times New Roman',
   color:#dfe6f0;max-width:62ch;margin:0 auto;line-height:1.65}
 .scrollcue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:2;
   font-family:'Montserrat',sans-serif;font-size:.68rem;letter-spacing:.3em;color:var(--muted);
-  text-transform:uppercase;animation:bob 2.4s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.7}50%{transform:translate(-50%,10px);opacity:1}}
-/* pulsing map dots */
+  text-transform:uppercase;opacity:.75}
 .pdot{position:relative;display:block;border-radius:50%;background:var(--orange);
   box-shadow:0 0 14px 4px rgba(215,75,23,.75)}
-.pdot::after{content:'';position:absolute;inset:-9px;border-radius:50%;
-  border:2px solid rgba(215,75,23,.55);animation:ping 2.4s ease-out infinite}
 .pdot.hollow{background:transparent;box-shadow:none;border:2px dashed rgba(215,75,23,.9)}
-.pdot.hollow::after{border-color:rgba(215,75,23,.35)}
-@keyframes ping{0%{transform:scale(.45);opacity:1}100%{transform:scale(1.35);opacity:0}}
 /* dark basemap: OSM light tiles inverted via CSS (markers live in the overlay pane, unaffected) */
 .leaflet-tile-pane{filter:invert(1) hue-rotate(185deg) grayscale(.18) brightness(.88) contrast(.94)}
 /* ---- stats ---- */
@@ -72,6 +66,7 @@ body{margin:0;color:var(--ink);font-family:'Spectral',Georgia,'Times New Roman',
 .stat .num em{font-style:normal;color:var(--blue)}
 .stat .lbl{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.7rem;
   letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-top:.45rem}
+.stat .vnote{display:block;letter-spacing:.14em;font-size:.62rem;color:var(--blue);margin-top:.3rem}
 /* ---- sections ---- */
 .sec{padding:5.2rem 0 1rem}
 .sec-head{max-width:720px;margin-bottom:2.2rem}
@@ -82,7 +77,7 @@ body{margin:0;color:var(--ink);font-family:'Spectral',Georgia,'Times New Roman',
 /* ---- white index cards (home) ---- */
 .cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.2rem}
 .wcard{background:#fff;color:var(--ctext);border-radius:6px;overflow:hidden;
-  display:flex;flex-direction:column;text-decoration:none;transition:transform .18s,box-shadow .18s}
+  display:flex;flex-direction:column;text-decoration:none;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s cubic-bezier(.22,.61,.36,1)}
 .wcard:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.5)}
 .wcard .banner{padding:.72rem 1.3rem;font-family:'Montserrat',sans-serif;font-weight:700;
   font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:#000}
@@ -140,7 +135,7 @@ body{margin:0;color:var(--ink);font-family:'Spectral',Georgia,'Times New Roman',
   font-family:'Montserrat',sans-serif;font-size:.72rem;color:var(--muted);margin:.3rem 0}
 .sw{width:22px;height:12px;border-radius:2px;background:var(--orange)}
 .panel{position:absolute;top:0;right:0;bottom:0;width:min(430px,94%);background:#fff;
-  color:#111;z-index:600;transform:translateX(106%);transition:transform .35s ease;
+  color:#111;z-index:600;transform:translateX(106%);transition:transform .38s cubic-bezier(.32,.72,0,1);
   overflow-y:auto;padding:1.7rem 1.6rem;box-shadow:-14px 0 44px rgba(0,0,0,.5);
   border-radius:0 8px 8px 0}
 .panel.open{transform:none}
@@ -207,7 +202,7 @@ footer{margin-top:5rem}
 .fbottom{background:#000;padding:1.1rem 0;display:flex;justify-content:space-between;
   align-items:center;gap:1rem;flex-wrap:wrap}
 .fbottom small{font-family:'Montserrat',sans-serif;font-size:.72rem;color:#8b96a8;letter-spacing:.06em}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
 .reveal.in{opacity:1;transform:none}
 </style>
 </head>
@@ -232,23 +227,23 @@ footer{margin-top:5rem}
 </header>
 
 <div class="stats">
-  <div class="stat"><div class="num"><span data-count="16">0</span></div>
+  <div class="stat"><div class="num"><span data-count="17">0</span></div>
     <div class="lbl">Federal bills</div></div>
   <div class="stat"><div class="num"><span data-count="40">0</span></div>
     <div class="lbl">State bills</div></div>
   <div class="stat"><div class="num"><span data-count="20">0</span></div>
     <div class="lbl">Lawsuits</div></div>
   <div class="stat"><div class="num"><span data-count="23">0</span><em>+20</em></div>
-    <div class="lbl">Enacted laws <span style="letter-spacing:.1em">(blue: awaiting verification)</span></div></div>
+    <div class="lbl">Enacted laws<span class="vnote">20 awaiting verification</span></div></div>
 </div>
 
 <section class="sec"><div class="wrap">
   <div class="sec-head reveal"><svg class="glyph" viewBox="0 0 34 20" fill="none" aria-hidden="true">
 <path d="M2 18 A 16 16 0 0 1 32 18" stroke="#34a3d7" stroke-width="2.5"/></svg>
     <div class="eyebrow">The index</div>
-    <h2>Three lenses on AI governance</h2>
-    <p>Legislation still moving, cases testing the boundaries, and the laws already
-    in force — pick a lens.</p>
+    <h2>Three sections, one index</h2>
+    <p>Bills still moving, cases testing the boundaries, laws already
+    in force.</p>
   </div>
   <div class="cards3">
       <a class="wcard reveal" href="us-laws.html">
@@ -316,7 +311,7 @@ footer{margin-top:5rem}
     </div>
   </div></div></div>
   <div class="fbottom"><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;width:100%">
-    <small>AI REGULATION TRACKER · UPDATED September 30, 2026</small>
+    <small>AI REGULATION TRACKER · UPDATED October 1, 2026</small>
     <small>CODE &amp; CURATION NOTES ON <a href="https://github.com/trishabinwade/ai-regulation-tracker" style="color:#fff">GITHUB</a></small>
   </div></div>
 </footer>
