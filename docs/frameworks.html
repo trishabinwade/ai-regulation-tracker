@@ -98,6 +98,15 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .fsearch:focus{outline:none;border-bottom-color:var(--blue)}
 .fcount{margin-left:auto;font-family:'Fraunces',Georgia,serif;font-weight:600;
   font-size:.78rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+/* ---- pager ---- */
+.pager{display:flex;align-items:center;justify-content:center;gap:1rem;margin:2rem 0 0}
+.pager button{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);
+  border-radius:4px;padding:.6rem 1.1rem;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.pager button:hover:not(:disabled){border-color:var(--blue);color:var(--blue)}
+.pager button:disabled{opacity:.3;cursor:default}
+.pager span{font-family:'Fraunces',Georgia,serif;font-size:.75rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -485,7 +494,8 @@ footer{margin-top:5rem}
       if(e.isIntersecting){requestAnimationFrame(step);io2.disconnect();}});});
     io2.observe(el);
   });
-  // generic explorer filter: [data-explorer] wraps cards with data-search/data-badge/data-kind
+  // generic explorer filter + pagination: [data-explorer] wraps cards with data-search/data-badge/data-kind
+  var PAGE_SIZE=12;
   document.querySelectorAll('[data-explorer]').forEach(function(root){
     var q=root.querySelector('[data-f=q]'),
         badge=root.querySelector('[data-f=badge]'),
@@ -493,19 +503,39 @@ footer{margin-top:5rem}
         count=root.querySelector('[data-f=count]'),
         empty=root.querySelector('[data-f=empty]'),
         cards=Array.prototype.slice.call(root.querySelectorAll('[data-card]')),
-        total=cards.length;
+        total=cards.length, page=1, matched=cards.slice();
+    var pager=document.createElement('div'); pager.className='pager';
+    pager.innerHTML='<button type="button" data-pg="prev">&larr; Prev</button>'+
+      '<span data-pg="info"></span>'+
+      '<button type="button" data-pg="next">Next &rarr;</button>';
+    root.appendChild(pager);
+    var prev=pager.querySelector('[data-pg=prev]'),
+        next=pager.querySelector('[data-pg=next]'),
+        info=pager.querySelector('[data-pg=info]');
+    function render(){
+      var n=matched.length, pages=Math.max(1,Math.ceil(n/PAGE_SIZE));
+      if(page>pages)page=pages;
+      cards.forEach(function(c){c.style.display='none';});
+      matched.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE).forEach(function(c){c.style.display='';});
+      if(count)count.textContent='Showing '+n+' of '+total;
+      if(empty)empty.style.display=n===0?'':'none';
+      pager.style.display=n>PAGE_SIZE?'':'none';
+      info.textContent='Page '+page+' of '+pages;
+      prev.disabled=page<=1; next.disabled=page>=pages;
+    }
     function apply(){
       var s=q?q.value.trim().toLowerCase():'', b=badge?badge.value:'',
-          k=kind?kind.value:'', shown=0;
-      cards.forEach(function(c){
-        var ok=(!s||c.getAttribute('data-search').indexOf(s)!==-1)
+          k=kind?kind.value:'';
+      matched=cards.filter(function(c){
+        return (!s||c.getAttribute('data-search').indexOf(s)!==-1)
           &&(!b||c.getAttribute('data-badge')===b)
           &&(!k||c.getAttribute('data-kind')===k);
-        c.style.display=ok?'':'none'; if(ok)shown++;
       });
-      if(count)count.textContent='Showing '+shown+' of '+total;
-      if(empty)empty.style.display=shown===0?'':'none';
+      page=1; render();
     }
+    prev.addEventListener('click',function(){if(page>1){page--;render();root.scrollIntoView();}});
+    next.addEventListener('click',function(){
+      if(page<Math.ceil(matched.length/PAGE_SIZE)){page++;render();root.scrollIntoView();}});
     [q,badge,kind].forEach(function(el){if(el)el.addEventListener('input',apply);if(el)el.addEventListener('change',apply);});
     apply();
   });
