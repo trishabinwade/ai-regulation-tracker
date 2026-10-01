@@ -2,11 +2,21 @@
 
 A tiny Python tool that tracks **real AI legislation and litigation** — US federal
 bills, US state bills, AI-related lawsuits, and enacted AI laws worldwide — and
-builds a one-page digest you can publish free with GitHub Pages.
+builds a four-page dark editorial site (CNAS-interactive style) you can publish
+free with GitHub Pages.
 
-**Why it exists:** I work in compliance and policy, and I wanted a single page that
-keeps me current on AI regulation without doomscrolling five news sites. Built
-with Python's standard library only — no dependencies to install.
+**Why it exists:** I work in compliance and policy, and I wanted a single place
+that keeps me current on AI regulation without doomscrolling five news sites.
+Built with Python's standard library only — no dependencies to install.
+
+## The site
+
+| Page | File | What's on it |
+|---|---|---|
+| Home | `docs/index.html` | Intro, animated hero map, live stat counters, links into the three indexes |
+| US AI Law Tracker | `docs/us-laws.html` | Clickable state tile-grid map, federal bills explorer, state bills explorer |
+| AI Litigation Monitor | `docs/litigation.html` | Case-status bars, filterable docket + opinion explorer |
+| Global AI Regulation Index | `docs/global.html` | Clickable world map (Leaflet, dark tiles), verified laws + unverified watchlist |
 
 ## Run it
 
@@ -14,9 +24,9 @@ with Python's standard library only — no dependencies to install.
 python3 tracker.py
 ```
 
-This pulls the four sources below and writes `docs/index.html`. Re-run any time
-to refresh. It works with no API keys at all — the two keyed sections simply
-show a note explaining how to enable them.
+This pulls the four sources below and writes the four pages into `docs/`.
+Re-run any time to refresh. It works with no API keys at all — the two keyed
+sections simply show a note explaining how to enable them.
 
 ## Data sources
 
@@ -69,9 +79,11 @@ build artifacts.
 - State bills are ranked with enacted and recently-active bills first.
 - One bad source never kills a run — failures are logged and the section shows a
   retry note.
-- The page is a dependency-free dashboard UI: stat cards per section, section tabs,
-  full-text search, a status filter, a live result count, and a dark-mode toggle —
-  all client-side JavaScript, so it runs on GitHub Pages with zero backend.
+- The site is a static multi-page build: shared dark editorial theme (Spectral +
+  Montserrat, CNAS-style), sticky nav, scroll progress bar, count-up stats,
+  scroll-reveal sections, and client-side explorers (search + dropdown filters +
+  live counts) — all dependency-free JavaScript, so it runs on GitHub Pages with
+  zero backend. Maps use Leaflet with CARTO dark tiles via CDN.
 - The lawsuit section is honest about coverage: federal dockets (via RECAP) plus
   published opinions. County and most state trial courts are not in any free
   database.
