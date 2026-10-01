@@ -6,8 +6,8 @@ reviews and approves every entry. These rules decide what goes in.
 ## A law is included only if ALL of these are true
 
 1. **Enacted and in force.** It has completed every required legislative step and
-   is (or will on a known date be) enforceable law. Nothing pending, nothing
-   unenforceable.
+   is enforceable law right now. Nothing pending, nothing unenforceable, and
+   nothing whose in-force date is still in the future.
 2. **Applies to AI.** It may be AI-specific, or a general privacy or technology
    law with provisions that apply to AI systems.
 3. **Any jurisdiction.** Countries, the EU, supranational bodies, US states —
@@ -24,6 +24,7 @@ reviews and approves every entry. These rules decide what goes in.
 
 - Bills, drafts, and proposals — no matter how far along.
 - Laws passed by only one chamber of a bicameral legislature.
+- Laws enacted but not yet in force (in-force date still in the future).
 - Unenforceable instruments: non-binding guidance, voluntary codes, white
   papers, national strategies.
 - Repealed or fully superseded laws (remove or annotate on discovery).
@@ -41,5 +42,11 @@ reviews and approves every entry. These rules decide what goes in.
 
 - Review the list quarterly. Laws get amended, repealed, or newly passed.
 - Keep a written record of deliberate exclusions and the reason, so a future
-  curator doesn't re-add them. Example: Brazil's PL 2338/2023 passed the Senate
-  in Dec 2024 but remains pending in the Chamber of Deputies — not law, not listed.
+  curator doesn't re-add them:
+  - Brazil's PL 2338/2023 — passed the Senate in Dec 2024 but remains pending
+    in the Chamber of Deputies. Not law, not listed.
+  - Illinois SB 315 / Public Act 104-0538 (AI Safety Measures Act) — signed
+    Jul 6, 2026, but in force Jan 1, 2027. Revisit after the in-force date.
+  - Colorado SB 26-189 — signed May 14, 2026, but in force Jan 1, 2027.
+    Revisit after the in-force date.
+  - New York RAISE Act — enactment status unverified as of Sep 30, 2026.
