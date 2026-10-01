@@ -1,280 +1,481 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Regulation Tracker</title>
 <style>
-  body { font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 760px;
-         margin: 0 auto; padding: 2rem 1rem; color: #1a1a1a; background: #fafafa; }
-  header { border-bottom: 2px solid #1a1a1a; margin-bottom: 1.5rem; padding-bottom: 1rem; }
-  h1 { margin: 0 0 .25rem; }
-  .sub { color: #555; margin: 0; }
-  .section-head { font-size: 1.25rem; margin: 2rem 0 .25rem;
-                   padding-top: 1rem; border-top: 1px solid #ddd; }
-  section:first-of-type .section-head { border-top: none; margin-top: 1rem; padding-top: 0; }
-  .blurb { color: #555; font-size: .92rem; margin: 0 0 1rem; }
-  .card { background: #fff; border: 1px solid #e3e3e3; border-radius: 8px;
-           padding: 1rem 1.25rem; margin-bottom: 1rem; }
-  .card h2 { font-size: 1.02rem; margin: 0 0 .3rem; }
-  .card h2 a { color: #1a1a1a; text-decoration: none; }
-  .card h2 a:hover { text-decoration: underline; }
-  .meta { color: #777; font-size: .85rem; margin: 0 0 .5rem; }
-  .extra { font-size: .9rem; margin: .4rem 0 0; color: #333; }
-  .notice { background: #fff8e1; border: 1px solid #e6c200; border-radius: 8px;
-             padding: .75rem 1.1rem; margin-bottom: 1rem; font-size: .9rem; }
-  footer { color: #777; font-size: .85rem; margin-top: 2rem; }
-  code { background: #eee; padding: .1rem .35rem; border-radius: 4px; }
+:root{
+  --bg:#f6f8fa; --card:#ffffff; --text:#1f2328; --muted:#59636e;
+  --border:#d8dee4; --accent:#0969da; --codebg:#eaeef2;
+}
+[data-theme="dark"]{
+  --bg:#0d1117; --card:#161b22; --text:#e6edf3; --muted:#8b949e;
+  --border:#30363d; --accent:#4493f8; --codebg:#21262d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.25rem 3rem}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  padding:2rem 0 .5rem;flex-wrap:wrap}
+h1{margin:0;font-size:1.9rem;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:.35rem 0 0}
+.theme-btn{border:1px solid var(--border);background:var(--card);color:var(--text);
+  border-radius:999px;padding:.5rem .95rem;font-size:.85rem;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:.75rem;margin:1.25rem 0 0}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:.85rem 1.05rem}
+.stat .num{font-size:1.55rem;font-weight:700;letter-spacing:-.02em}
+.stat .lbl{color:var(--muted);font-size:.82rem;margin-top:.15rem}
+.controls{position:sticky;top:0;z-index:10;background:var(--bg);
+  padding:.7rem 0;border-bottom:1px solid var(--border);
+  display:flex;gap:.55rem;flex-wrap:wrap;align-items:center;margin-top:1.25rem}
+.search{flex:1;min-width:180px;padding:.55rem .8rem;border:1px solid var(--border);
+  border-radius:8px;background:var(--card);color:var(--text);font-size:.95rem}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap}
+.tab{border:1px solid var(--border);background:var(--card);color:var(--text);
+  border-radius:999px;padding:.45rem .9rem;font-size:.85rem;cursor:pointer}
+.tab.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+.status-sel{padding:.5rem .6rem;border:1px solid var(--border);border-radius:8px;
+  background:var(--card);color:var(--text);font-size:.88rem}
+.count{color:var(--muted);font-size:.85rem;margin-left:auto}
+.sec{margin-top:2.25rem}
+.sec-head h2{margin:0 0 .15rem;font-size:1.3rem;letter-spacing:-.01em}
+.blurb{color:var(--muted);font-size:.92rem;margin:0 0 1rem;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:.9rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1rem 1.15rem}
+.badge{display:inline-block;color:#fff;font-size:.68rem;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;padding:.22rem .62rem;
+  border-radius:999px;margin-bottom:.55rem}
+.card h2{font-size:1rem;margin:0 0 .35rem;line-height:1.35}
+.card h2 a{color:var(--text);text-decoration:none}
+.card h2 a:hover{color:var(--accent);text-decoration:underline}
+.meta{color:var(--muted);font-size:.82rem;margin:0 0 .35rem;line-height:1.4}
+.extra{font-size:.88rem;margin:.35rem 0 0;line-height:1.5}
+.notice{background:var(--card);border:1px solid var(--border);
+  border-left:4px solid #d4a017;border-radius:8px;
+  padding:.85rem 1.1rem;font-size:.9rem}
+.notice a{color:var(--accent)}
+#empty{display:none;text-align:center;color:var(--muted);padding:3.5rem 1rem}
+#empty h3{color:var(--text)}
+footer{color:var(--muted);font-size:.83rem;margin-top:2.5rem;
+  border-top:1px solid var(--border);padding-top:1.25rem;line-height:1.6}
+footer a{color:var(--accent)}
+code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.85em}
+@media (max-width:640px){ h1{font-size:1.5rem} .count{margin-left:0;width:100%} }
 </style>
 </head>
 <body>
-<header>
-  <h1>AI Regulation Tracker</h1>
-  <p class="sub">US federal &amp; state AI bills &middot; AI lawsuits &middot; enacted AI laws worldwide</p>
-  <p class="sub">Updated September 30, 2026</p>
-</header>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>AI Regulation Tracker</h1>
+      <p class="sub">US federal &amp; state AI bills &middot; AI lawsuits &middot; enacted AI laws worldwide</p>
+      <p class="sub">Updated September 30, 2026</p>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">&#9790; Dark</button>
+  </header>
 
-      <section>
-        <h2 class="section-head">US Federal Bills</h2>
-        <p class="blurb">AI-related bills in the 119th Congress, newest action first.</p>
-        
-        <article class="card">
-          <span style="display:inline-block;background:#57606a;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Introduced</span>
-          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-resolution/918">SRES 918 — A resolution establishing the Select Committee on Artificial Intelligence.</a></h2>
+  <div class="stats"><div class="stat"><div class="num">5</div><div class="lbl">Federal bills</div></div><div class="stat"><div class="num">15</div><div class="lbl">State bills</div></div><div class="stat"><div class="num">10</div><div class="lbl">Lawsuits</div></div><div class="stat"><div class="num">6</div><div class="lbl">Enacted laws</div></div></div>
+
+  <div class="controls">
+    <input class="search" id="search" type="search" placeholder="Search bills, cases, laws&hellip;" aria-label="Search">
+    <div class="tabs" id="tabs"><button class="tab active" data-tab="all">All</button><button class="tab" data-tab="federal">Federal bills</button><button class="tab" data-tab="states">State bills</button><button class="tab" data-tab="lawsuits">Lawsuits</button><button class="tab" data-tab="global">Global laws</button></div>
+    <select class="status-sel" id="statusSel" aria-label="Filter by status">
+      <option value="">All statuses</option>
+      <option value="Active">Active</option><option value="Decided">Decided</option><option value="Enacted">Enacted</option><option value="Filed">Filed</option><option value="Introduced">Introduced</option>
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+
+  
+      <section class="sec" data-section="federal">
+        <div class="sec-head">
+          <h2>US Federal Bills</h2>
+          <p class="blurb">AI-related bills in the 119th Congress, newest action first.</p>
+        </div>
+        <div class="grid">
+        <article class="card" data-section="federal"
+                 data-badge="Introduced"
+                 data-search="sres 918 a resolution establishing the select committee on artificial intelligence.  referred to the committee on rules and administration. (text: cr s5172-5174) ">
+          <span class="badge" style="background:#57606a;">Introduced</span>
+          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-resolution/918" target="_blank" rel="noopener">SRES 918 — A resolution establishing the Select Committee on Artificial Intelligence.</a></h2>
           <p class="meta">Latest action: Referred to the Committee on Rules and Administration. (text: CR S5172-5174) &middot; Sep 29, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-resolution/896">SRES 896 — A resolution expressing the sense of the Senate regarding the importance of religious freedom, authoritative texts, and transparency in artificial intelligence systems.</a></h2>
+        <article class="card" data-section="federal"
+                 data-badge="Active"
+                 data-search="sres 896 a resolution expressing the sense of the senate regarding the importance of religious freedom, authoritative texts, and transparency in artificial intelligence systems.  submitted in the senate, considered, and agreed to without amendment and with a preamble by unanimous consent. (consideration: cr s4958; text: cr s4951) ">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-resolution/896" target="_blank" rel="noopener">SRES 896 — A resolution expressing the sense of the Senate regarding the importance of religious freedom, authoritative texts, and transparency in artificial intelligence systems.</a></h2>
           <p class="meta">Latest action: Submitted in the Senate, considered, and agreed to without amendment and with a preamble by Unanimous Consent. (consideration: CR S4958; text: CR S4951) &middot; Sep 23, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#57606a;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Introduced</span>
-          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5576">S 5576 — A bill to establish the Artificial Intelligence Safety Board, and for other purposes.</a></h2>
+        <article class="card" data-section="federal"
+                 data-badge="Introduced"
+                 data-search="s 5576 a bill to establish the artificial intelligence safety board, and for other purposes.  read twice and referred to the committee on commerce, science, and transportation. ">
+          <span class="badge" style="background:#57606a;">Introduced</span>
+          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5576" target="_blank" rel="noopener">S 5576 — A bill to establish the Artificial Intelligence Safety Board, and for other purposes.</a></h2>
           <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. &middot; Sep 29, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#57606a;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Introduced</span>
-          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5601">S 5601 — A bill to require the Secretary of Defense to establish reporting requirements and voluntary guidance for large artificial intelligence contractors.</a></h2>
+        <article class="card" data-section="federal"
+                 data-badge="Introduced"
+                 data-search="s 5601 a bill to require the secretary of defense to establish reporting requirements and voluntary guidance for large artificial intelligence contractors.  read twice and referred to the committee on armed services. ">
+          <span class="badge" style="background:#57606a;">Introduced</span>
+          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5601" target="_blank" rel="noopener">S 5601 — A bill to require the Secretary of Defense to establish reporting requirements and voluntary guidance for large artificial intelligence contractors.</a></h2>
           <p class="meta">Latest action: Read twice and referred to the Committee on Armed Services. &middot; Sep 29, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://www.congress.gov/bill/119th-congress/house-bill/8893">HR 8893 — Protecting Consumers from Deceptive AI Act</a></h2>
+        <article class="card" data-section="federal"
+                 data-badge="Active"
+                 data-search="hr 8893 protecting consumers from deceptive ai act  ordered to be reported in the nature of a substitute (amended) by the yeas and nays: 35 - 0. ">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://www.congress.gov/bill/119th-congress/house-bill/8893" target="_blank" rel="noopener">HR 8893 — Protecting Consumers from Deceptive AI Act</a></h2>
           <p class="meta">Latest action: Ordered to be Reported in the Nature of a Substitute (Amended) by the Yeas and Nays: 35 - 0. &middot; Jun 25, 2026</p>
           
-        </article>
+        </article></div>
       </section>
-      <section>
-        <h2 class="section-head">US State Bills</h2>
-        <p class="blurb">AI bills across all state legislatures, current sessions. Enacted and recently-active bills first.</p>
-        
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/pa/bills/2025-2026/HR425/">HR 425 — A Resolution urging the United States Congress to suspend any and all efforts to pass Federal legislation that would impose a moratorium on state-level artificial intelligence regulation; recognizing the potential benefits along with the risks of misuse and systemic harm of artificial intelligence; acknowledging the importance of state regulation of such technologies; and reaffirming the Pennsylvania General Assembly&#x27;s sovereign authority to legislate for the protection of Pennsylvanians.</a></h2>
+      <section class="sec" data-section="states">
+        <div class="sec-head">
+          <h2>US State Bills</h2>
+          <p class="blurb">AI bills across all state legislatures, current sessions. Enacted and recently-active bills first.</p>
+        </div>
+        <div class="grid">
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="hr 425 a resolution urging the united states congress to suspend any and all efforts to pass federal legislation that would impose a moratorium on state-level artificial intelligence regulation; recognizing the potential benefits along with the risks of misuse and systemic harm of artificial intelligence; acknowledging the importance of state regulation of such technologies; and reaffirming the pennsylvania general assembly&#x27;s sovereign authority to legislate for the protection of pennsylvanians. pennsylvania 2025-2026 removed from table">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/pa/bills/2025-2026/HR425/" target="_blank" rel="noopener">HR 425 — A Resolution urging the United States Congress to suspend any and all efforts to pass Federal legislation that would impose a moratorium on state-level artificial intelligence regulation; recognizing the potential benefits along with the risks of misuse and systemic harm of artificial intelligence; acknowledging the importance of state regulation of such technologies; and reaffirming the Pennsylvania General Assembly&#x27;s sovereign authority to legislate for the protection of Pennsylvanians.</a></h2>
           <p class="meta">Pennsylvania · 2025-2026 &middot; Sep 29, 2026</p>
           <p class="extra">Latest action: Removed from table</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/pa/bills/2025-2026/HB1925/">HB 1925 — An Act amending Titles 35 (Health and Safety), 40 (Insurance) and 67 (Public Welfare) of the Pennsylvania Consolidated Statutes, providing for artificial intelligence in facilities, for artificial intelligence use by insurers and for artificial intelligence use by MA or CHIP managed care plans; imposing duties on the Department of Health, the Insurance Department and the Department of Human Services; and imposing penalties.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="hb 1925 an act amending titles 35 (health and safety), 40 (insurance) and 67 (public welfare) of the pennsylvania consolidated statutes, providing for artificial intelligence in facilities, for artificial intelligence use by insurers and for artificial intelligence use by ma or chip managed care plans; imposing duties on the department of health, the insurance department and the department of human services; and imposing penalties. pennsylvania 2025-2026 re-committed to appropriations">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/pa/bills/2025-2026/HB1925/" target="_blank" rel="noopener">HB 1925 — An Act amending Titles 35 (Health and Safety), 40 (Insurance) and 67 (Public Welfare) of the Pennsylvania Consolidated Statutes, providing for artificial intelligence in facilities, for artificial intelligence use by insurers and for artificial intelligence use by MA or CHIP managed care plans; imposing duties on the Department of Health, the Insurance Department and the Department of Human Services; and imposing penalties.</a></h2>
           <p class="meta">Pennsylvania · 2025-2026 &middot; Sep 29, 2026</p>
           <p class="extra">Latest action: Re-committed to Appropriations</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/pa/bills/2025-2026/HR637/">HR 637 — A Resolution urging the Congress of the United States to pass Federal legislation that would regulate frontier artificial intelligence models.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="hr 637 a resolution urging the congress of the united states to pass federal legislation that would regulate frontier artificial intelligence models. pennsylvania 2025-2026 referred to communications &amp; technology">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/pa/bills/2025-2026/HR637/" target="_blank" rel="noopener">HR 637 — A Resolution urging the Congress of the United States to pass Federal legislation that would regulate frontier artificial intelligence models.</a></h2>
           <p class="meta">Pennsylvania · 2025-2026 &middot; Sep 28, 2026</p>
           <p class="extra">Latest action: Referred to Communications &amp; Technology</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/pa/bills/2025-2026/HB2806/">HB 2806 — An Act amending the act of December 17, 1968 (P.L.1224, No.387), known as the Unfair Trade Practices and Consumer Protection Law, further providing for definitions.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="hb 2806 an act amending the act of december 17, 1968 (p.l.1224, no.387), known as the unfair trade practices and consumer protection law, further providing for definitions. pennsylvania 2025-2026 referred to consumer protection, technology &amp; utilities">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/pa/bills/2025-2026/HB2806/" target="_blank" rel="noopener">HB 2806 — An Act amending the act of December 17, 1968 (P.L.1224, No.387), known as the Unfair Trade Practices and Consumer Protection Law, further providing for definitions.</a></h2>
           <p class="meta">Pennsylvania · 2025-2026 &middot; Sep 28, 2026</p>
           <p class="extra">Latest action: Referred to Consumer Protection, Technology &amp; Utilities</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/pa/bills/2025-2026/HB2006/">HB 2006 — An Act providing for safety regarding artificial intelligence in companionship applications; and imposing a penalty.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="hb 2006 an act providing for safety regarding artificial intelligence in companionship applications; and imposing a penalty. pennsylvania 2025-2026 third consideration and final passage">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/pa/bills/2025-2026/HB2006/" target="_blank" rel="noopener">HB 2006 — An Act providing for safety regarding artificial intelligence in companionship applications; and imposing a penalty.</a></h2>
           <p class="meta">Pennsylvania · 2025-2026 &middot; Sep 28, 2026</p>
           <p class="extra">Latest action: Third consideration and final passage</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/pa/bills/2025-2026/HB2786/">HB 2786 — An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in student supports, providing for artificial intelligence policy.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="hb 2786 an act amending the act of march 10, 1949 (p.l.30, no.14), known as the public school code of 1949, in student supports, providing for artificial intelligence policy. pennsylvania 2025-2026 referred to education">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/pa/bills/2025-2026/HB2786/" target="_blank" rel="noopener">HB 2786 — An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in student supports, providing for artificial intelligence policy.</a></h2>
           <p class="meta">Pennsylvania · 2025-2026 &middot; Sep 25, 2026</p>
           <p class="extra">Latest action: Referred to Education</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/ca/bills/20252026/SB903/">SB 903 — Mental health professionals: artificial intelligence.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="sb 903 mental health professionals: artificial intelligence. california 20252026 enrolled and presented to the governor at 2 p.m.">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/ca/bills/20252026/SB903/" target="_blank" rel="noopener">SB 903 — Mental health professionals: artificial intelligence.</a></h2>
           <p class="meta">California · 20252026 &middot; Sep 09, 2026</p>
           <p class="extra">Latest action: Enrolled and presented to the Governor at 2 p.m.</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/nh/bills/2026/HB1406/">HB 1406 — relative to health carrier recordkeeping requirements in utilization review, including specifications regarding the use of artificial intelligence.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="hb 1406 relative to health carrier recordkeeping requirements in utilization review, including specifications regarding the use of artificial intelligence. new hampshire 2026 public hearing: 02/17/2026 01:45 pm gp 159">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/nh/bills/2026/HB1406/" target="_blank" rel="noopener">HB 1406 — relative to health carrier recordkeeping requirements in utilization review, including specifications regarding the use of artificial intelligence.</a></h2>
           <p class="meta">New Hampshire · 2026 &middot; Aug 05, 2026</p>
           <p class="extra">Latest action: Public Hearing: 02/17/2026 01:45 pm GP 159</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/ny/bills/2025-2026/A8884/">A 8884 — Relates to the development and use of certain artificial intelligence systems</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="a 8884 relates to the development and use of certain artificial intelligence systems new york 2025-2026 print number 8884a">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/ny/bills/2025-2026/A8884/" target="_blank" rel="noopener">A 8884 — Relates to the development and use of certain artificial intelligence systems</a></h2>
           <p class="meta">New York · 2025-2026 &middot; Jun 01, 2026</p>
           <p class="extra">Latest action: PRINT NUMBER 8884A</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/vt/bills/2025-2026/H816/">H 816 — An act relating to regulating the use of artificial intelligence in the provision of mental health services</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="h 816 an act relating to regulating the use of artificial intelligence in the provision of mental health services vermont 2025-2026 house message: governor approved bill on june 17, 2026">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/vt/bills/2025-2026/H816/" target="_blank" rel="noopener">H 816 — An act relating to regulating the use of artificial intelligence in the provision of mental health services</a></h2>
           <p class="meta">Vermont · 2025-2026 &middot; May 29, 2026</p>
           <p class="extra">Latest action: House message: Governor approved bill on June 17, 2026</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/vt/bills/2025-2026/H814/">H 814 — An act relating to neurological rights and the use of artificial intelligence technology in health and human services</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="h 814 an act relating to neurological rights and the use of artificial intelligence technology in health and human services vermont 2025-2026 house message: governor approved bill on may 18, 2026">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/vt/bills/2025-2026/H814/" target="_blank" rel="noopener">H 814 — An act relating to neurological rights and the use of artificial intelligence technology in health and human services</a></h2>
           <p class="meta">Vermont · 2025-2026 &middot; May 19, 2026</p>
           <p class="extra">Latest action: House message: Governor approved bill on May 18, 2026</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/nj/bills/222/A5088/">A 5088 — &quot;AI Likeness Protection Act&quot;; concerns distributing realistic representation of individual&#x27;s image, likeness, or voice created using generative artificial intelligence.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="a 5088 &quot;ai likeness protection act&quot;; concerns distributing realistic representation of individual&#x27;s image, likeness, or voice created using generative artificial intelligence. new jersey 222 introduced, referred to assembly science, innovation and technology committee">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/nj/bills/222/A5088/" target="_blank" rel="noopener">A 5088 — &quot;AI Likeness Protection Act&quot;; concerns distributing realistic representation of individual&#x27;s image, likeness, or voice created using generative artificial intelligence.</a></h2>
           <p class="meta">New Jersey · 222 &middot; May 14, 2026</p>
           <p class="extra">Latest action: Introduced, Referred to Assembly Science, Innovation and Technology Committee</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/nj/bills/222/A5090/">A 5090 — &quot;GAI Accountability Act;&quot; imposes civil penalties on generative artificial intelligence platforms engaging in harmful activity, including exploitation of children.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="a 5090 &quot;gai accountability act;&quot; imposes civil penalties on generative artificial intelligence platforms engaging in harmful activity, including exploitation of children. new jersey 222 introduced, referred to assembly science, innovation and technology committee">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/nj/bills/222/A5090/" target="_blank" rel="noopener">A 5090 — &quot;GAI Accountability Act;&quot; imposes civil penalties on generative artificial intelligence platforms engaging in harmful activity, including exploitation of children.</a></h2>
           <p class="meta">New Jersey · 222 &middot; May 14, 2026</p>
           <p class="extra">Latest action: Introduced, Referred to Assembly Science, Innovation and Technology Committee</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/vt/bills/2025-2026/H927/">H 927 — An act relating to technical corrections for the 2026 legislative session</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="h 927 an act relating to technical corrections for the 2026 legislative session vermont 2025-2026 house message: governor approved bill on april 30, 2026">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/vt/bills/2025-2026/H927/" target="_blank" rel="noopener">H 927 — An act relating to technical corrections for the 2026 legislative session</a></h2>
           <p class="meta">Vermont · 2025-2026 &middot; May 01, 2026</p>
           <p class="extra">Latest action: House message: Governor approved bill on April 30, 2026</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#0969da;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Active</span>
-          <h2><a href="https://openstates.org/nh/bills/2026/HB1506/">HB 1506 — creating an exception to the restricted uses of artificial intelligence by state agencies.</a></h2>
+        <article class="card" data-section="states"
+                 data-badge="Active"
+                 data-search="hb 1506 creating an exception to the restricted uses of artificial intelligence by state agencies. new hampshire 2026 refer for interim study: ma vv 03/11/2026  hj 7  p. 43">
+          <span class="badge" style="background:#0969da;">Active</span>
+          <h2><a href="https://openstates.org/nh/bills/2026/HB1506/" target="_blank" rel="noopener">HB 1506 — creating an exception to the restricted uses of artificial intelligence by state agencies.</a></h2>
           <p class="meta">New Hampshire · 2026 &middot; Mar 11, 2026</p>
           <p class="extra">Latest action: Refer for Interim Study: MA VV 03/11/2026  HJ 7  P. 43</p>
-        </article>
+        </article></div>
       </section>
-      <section>
-        <h2 class="section-head">US AI Lawsuits</h2>
-        <p class="blurb">Recently filed federal cases and published opinions mentioning artificial intelligence. Coverage is federal dockets (via RECAP) plus published opinions — county and most state trial courts are not in any free database.</p>
-        
-        <article class="card">
-          <span style="display:inline-block;background:#cf5016;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Filed</span>
-          <h2><a href="https://www.courtlistener.com/docket/74863260/bass-v-openai-llc/">Bass v. OpenAI, LLC</a></h2>
+      <section class="sec" data-section="lawsuits">
+        <div class="sec-head">
+          <h2>US AI Lawsuits</h2>
+          <p class="blurb">Recently filed federal cases and published opinions mentioning artificial intelligence. Coverage is federal dockets (via RECAP) plus published opinions — county and most state trial courts are not in any free database.</p>
+        </div>
+        <div class="grid">
+        <article class="card" data-section="lawsuits"
+                 data-badge="Filed"
+                 data-search="bass v. openai, llc district court, n.d. california 3:26-cv-11015">
+          <span class="badge" style="background:#cf5016;">Filed</span>
+          <h2><a href="https://www.courtlistener.com/docket/74863260/bass-v-openai-llc/" target="_blank" rel="noopener">Bass v. OpenAI, LLC</a></h2>
           <p class="meta">District Court, N.D. California · Docket 3:26-cv-11015 &middot; Sep 28, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#cf5016;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Filed</span>
-          <h2><a href="https://www.courtlistener.com/docket/74848374/miller-v-ft-publications-inc/">Miller v. F.T. Publications, Inc.</a></h2>
+        <article class="card" data-section="lawsuits"
+                 data-badge="Filed"
+                 data-search="miller v. f.t. publications, inc. district court, n.d. california 4:26-cv-10898">
+          <span class="badge" style="background:#cf5016;">Filed</span>
+          <h2><a href="https://www.courtlistener.com/docket/74848374/miller-v-ft-publications-inc/" target="_blank" rel="noopener">Miller v. F.T. Publications, Inc.</a></h2>
           <p class="meta">District Court, N.D. California · Docket 4:26-cv-10898 &middot; Sep 24, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#cf5016;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Filed</span>
-          <h2><a href="https://www.courtlistener.com/docket/74841617/in-re-application-of-chau-kwan-fei/">In Re Application of Chau Kwan Fei</a></h2>
+        <article class="card" data-section="lawsuits"
+                 data-badge="Filed"
+                 data-search="in re application of chau kwan fei district court, n.d. california 5:26-mc-80291">
+          <span class="badge" style="background:#cf5016;">Filed</span>
+          <h2><a href="https://www.courtlistener.com/docket/74841617/in-re-application-of-chau-kwan-fei/" target="_blank" rel="noopener">In Re Application of Chau Kwan Fei</a></h2>
           <p class="meta">District Court, N.D. California · Docket 5:26-mc-80291 &middot; Sep 23, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#cf5016;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Filed</span>
-          <h2><a href="https://www.courtlistener.com/docket/74848160/carter-v-feinberg/">CARTER v. FEINBERG</a></h2>
+        <article class="card" data-section="lawsuits"
+                 data-badge="Filed"
+                 data-search="carter v. feinberg district court, district of columbia 1:26-cv-03318">
+          <span class="badge" style="background:#cf5016;">Filed</span>
+          <h2><a href="https://www.courtlistener.com/docket/74848160/carter-v-feinberg/" target="_blank" rel="noopener">CARTER v. FEINBERG</a></h2>
           <p class="meta">District Court, District of Columbia · Docket 1:26-cv-03318 &middot; Sep 22, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#cf5016;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Filed</span>
-          <h2><a href="https://www.courtlistener.com/docket/74825372/his-majesty-the-king-in-right-of-the-province-of-british-columbia-v-altman/">His Majesty the King in Right of the Province of British Columbia v. Altman</a></h2>
+        <article class="card" data-section="lawsuits"
+                 data-badge="Filed"
+                 data-search="his majesty the king in right of the province of british columbia v. altman district court, n.d. california 3:26-cv-10743">
+          <span class="badge" style="background:#cf5016;">Filed</span>
+          <h2><a href="https://www.courtlistener.com/docket/74825372/his-majesty-the-king-in-right-of-the-province-of-british-columbia-v-altman/" target="_blank" rel="noopener">His Majesty the King in Right of the Province of British Columbia v. Altman</a></h2>
           <p class="meta">District Court, N.D. California · Docket 3:26-cv-10743 &middot; Sep 21, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#cf5016;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Filed</span>
-          <h2><a href="https://www.courtlistener.com/docket/74816509/escuela-xotichl-tonatiuh-inc-v-meta-platforms-inc/">Escuela Xotichl Tonatiuh, Inc v. Meta Platforms, Inc.</a></h2>
+        <article class="card" data-section="lawsuits"
+                 data-badge="Filed"
+                 data-search="escuela xotichl tonatiuh, inc v. meta platforms, inc. district court, n.d. california 4:26-cv-10701">
+          <span class="badge" style="background:#cf5016;">Filed</span>
+          <h2><a href="https://www.courtlistener.com/docket/74816509/escuela-xotichl-tonatiuh-inc-v-meta-platforms-inc/" target="_blank" rel="noopener">Escuela Xotichl Tonatiuh, Inc v. Meta Platforms, Inc.</a></h2>
           <p class="meta">District Court, N.D. California · Docket 4:26-cv-10701 &middot; Sep 18, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#8250df;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Decided</span>
-          <h2><a href="https://www.courtlistener.com/opinion/10993432/penske-media-corporation-v-google-llc/">Penske Media Corporation v. Google LLC</a></h2>
+        <article class="card" data-section="lawsuits"
+                 data-badge="Decided"
+                 data-search="penske media corporation v. google llc district court, district of columbia d.d.c.">
+          <span class="badge" style="background:#8250df;">Decided</span>
+          <h2><a href="https://www.courtlistener.com/opinion/10993432/penske-media-corporation-v-google-llc/" target="_blank" rel="noopener">Penske Media Corporation v. Google LLC</a></h2>
           <p class="meta">District Court, District of Columbia · D.D.C. &middot; Sep 30, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#8250df;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Decided</span>
-          <h2><a href="https://www.courtlistener.com/opinion/10988846/americans-for-prosperity-v-meyer/">Americans for Prosperity v. Meyer</a></h2>
+        <article class="card" data-section="lawsuits"
+                 data-badge="Decided"
+                 data-search="americans for prosperity v. meyer court of appeals for the ninth circuit 9th cir.">
+          <span class="badge" style="background:#8250df;">Decided</span>
+          <h2><a href="https://www.courtlistener.com/opinion/10988846/americans-for-prosperity-v-meyer/" target="_blank" rel="noopener">Americans for Prosperity v. Meyer</a></h2>
           <p class="meta">Court of Appeals for the Ninth Circuit · 9th Cir. &middot; Sep 30, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#8250df;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Decided</span>
-          <h2><a href="https://www.courtlistener.com/opinion/10988837/thomson-reuters-enterprise-centre-gmbh-v-ross-intelligence-inc/">Thomson Reuters Enterprise Centre GmbH v. Ross Intelligence Inc</a></h2>
+        <article class="card" data-section="lawsuits"
+                 data-badge="Decided"
+                 data-search="thomson reuters enterprise centre gmbh v. ross intelligence inc court of appeals for the third circuit 3rd cir.">
+          <span class="badge" style="background:#8250df;">Decided</span>
+          <h2><a href="https://www.courtlistener.com/opinion/10988837/thomson-reuters-enterprise-centre-gmbh-v-ross-intelligence-inc/" target="_blank" rel="noopener">Thomson Reuters Enterprise Centre GmbH v. Ross Intelligence Inc</a></h2>
           <p class="meta">Court of Appeals for the Third Circuit · 3rd Cir. &middot; Sep 30, 2026</p>
           
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#8250df;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Decided</span>
-          <h2><a href="https://www.courtlistener.com/opinion/10988169/state-v-horcasitas/">State v. Horcasitas</a></h2>
+        <article class="card" data-section="lawsuits"
+                 data-badge="Decided"
+                 data-search="state v. horcasitas court of appeals of arizona ariz. ct. app.">
+          <span class="badge" style="background:#8250df;">Decided</span>
+          <h2><a href="https://www.courtlistener.com/opinion/10988169/state-v-horcasitas/" target="_blank" rel="noopener">State v. Horcasitas</a></h2>
           <p class="meta">Court of Appeals of Arizona · Ariz. Ct. App. &middot; Sep 30, 2026</p>
           
-        </article>
+        </article></div>
       </section>
-      <section>
-        <h2 class="section-head">Enacted AI Laws Worldwide</h2>
-        <p class="blurb">Hand-curated, verified list of AI laws actually in force. Maintained in <code>data/global_laws.json</code> — edit it directly to add new laws.</p>
-        
-        <article class="card">
-          <span style="display:inline-block;background:#1a7f37;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Enacted</span>
-          <h2><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng">Artificial Intelligence Act — Regulation (EU) 2024/1689</a></h2>
+      <section class="sec" data-section="global">
+        <div class="sec-head">
+          <h2>Enacted AI Laws Worldwide</h2>
+          <p class="blurb">Hand-curated, verified list of AI laws actually in force. Maintained in <code>data/global_laws.json</code> — edit it directly to add new laws.</p>
+        </div>
+        <div class="grid">
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="artificial intelligence act — regulation (eu) 2024/1689 european union the world&#x27;s first comprehensive ai law: risk-tiered rules (prohibited / high-risk / transparency duties), conformity assessments for high-risk systems, and obligations for general-purpose ai models. phased application through 2027–2028.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Artificial Intelligence Act — Regulation (EU) 2024/1689</a></h2>
           <p class="meta">European Union · Enacted: June 13, 2024 (adopted) · In force: August 1, 2024</p>
           <p class="extra">The world&#x27;s first comprehensive AI law: risk-tiered rules (prohibited / high-risk / transparency duties), conformity assessments for high-risk systems, and obligations for general-purpose AI models. Phased application through 2027–2028.</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#1a7f37;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Enacted</span>
-          <h2><a href="https://www.chinalawtranslate.com/en/generative-ai-interim/">Interim Measures for the Management of Generative AI Services</a></h2>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="interim measures for the management of generative ai services china requires generative ai services offered to the chinese public to align with socialist values, complete security assessments and algorithm filings before launch, and respect ip and personal-information protections. issued jointly by the cac and six other regulators.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.chinalawtranslate.com/en/generative-ai-interim/" target="_blank" rel="noopener">Interim Measures for the Management of Generative AI Services</a></h2>
           <p class="meta">China · Enacted: July 13, 2023 (issued) · In force: August 15, 2023</p>
           <p class="extra">Requires generative AI services offered to the Chinese public to align with socialist values, complete security assessments and algorithm filings before launch, and respect IP and personal-information protections. Issued jointly by the CAC and six other regulators.</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#1a7f37;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Enacted</span>
-          <h2><a href="https://keia.org/analysis/why-south-korea-is-giving-51-million-people-unlimited-ai/">AI Basic Act (Framework Act on AI Development and Establishment of Trust)</a></h2>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="ai basic act (framework act on ai development and establishment of trust) south korea consolidated 19 prior bills into asia&#x27;s first comprehensive ai framework. risk-based duties for &#x27;high-impact&#x27; ai (impact assessments, human oversight), generative-output labeling, and extraterritorial reach; fines up to krw 30 million.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://keia.org/analysis/why-south-korea-is-giving-51-million-people-unlimited-ai/" target="_blank" rel="noopener">AI Basic Act (Framework Act on AI Development and Establishment of Trust)</a></h2>
           <p class="meta">South Korea · Enacted: December 26, 2024 (passed); promulgated January 21, 2025 · In force: January 22, 2026</p>
           <p class="extra">Consolidated 19 prior bills into Asia&#x27;s first comprehensive AI framework. Risk-based duties for &#x27;high-impact&#x27; AI (impact assessments, human oversight), generative-output labeling, and extraterritorial reach; fines up to KRW 30 million.</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#1a7f37;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Enacted</span>
-          <h2><a href="https://fpf.org/blog/understanding-japans-ai-promotion-act-an-innovation-first-blueprint-for-ai-regulation/">AI Promotion Act (Act No. 53 of 2025)</a></h2>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="ai promotion act (act no. 53 of 2025) japan japan&#x27;s first ai-specific national law. innovation-first: no fines or penalties — the government may issue guidance, request information, or publicly name non-compliant entities. established an ai strategy headquarters.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://fpf.org/blog/understanding-japans-ai-promotion-act-an-innovation-first-blueprint-for-ai-regulation/" target="_blank" rel="noopener">AI Promotion Act (Act No. 53 of 2025)</a></h2>
           <p class="meta">Japan · Enacted: May 28, 2025 (passed by the Diet) · In force: June 4, 2025 (most provisions); September 1, 2025 (fully)</p>
           <p class="extra">Japan&#x27;s first AI-specific national law. Innovation-first: no fines or penalties — the government may issue guidance, request information, or publicly name non-compliant entities. Established an AI Strategy Headquarters.</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#1a7f37;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Enacted</span>
-          <h2><a href="https://en.wikipedia.org/wiki/TRAIGA">Texas Responsible AI Governance Act (TRAIGA), HB 149</a></h2>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="texas responsible ai governance act (traiga), hb 149 united states — texas comprehensive state ai statute: prohibits ai used to manipulate behavior, enable unlawful discrimination, or generate csam; bans government social scoring; creates a 36-month regulatory sandbox and ai advisory council. enforced exclusively by the texas ag.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://en.wikipedia.org/wiki/TRAIGA" target="_blank" rel="noopener">Texas Responsible AI Governance Act (TRAIGA), HB 149</a></h2>
           <p class="meta">United States — Texas · Enacted: June 22, 2025 (signed) · In force: January 1, 2026</p>
           <p class="extra">Comprehensive state AI statute: prohibits AI used to manipulate behavior, enable unlawful discrimination, or generate CSAM; bans government social scoring; creates a 36-month regulatory sandbox and AI advisory council. Enforced exclusively by the Texas AG.</p>
         </article>
-        <article class="card">
-          <span style="display:inline-block;background:#1a7f37;color:#fff;font-size:.72rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;margin-bottom:.4rem;">Enacted</span>
-          <h2><a href="https://dailycampus.com/2026/09/30/new-ai-regulation-law-goes-into-effect-oct-1/">Connecticut AI Responsibility and Transparency (CART) Act, SB 5</a></h2>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="connecticut ai responsibility and transparency (cart) act, sb 5 united states — connecticut omnibus state ai law: anti-discrimination rules for automated employment decision tools, deployer disclosure duties, ai subscription and chatbot provisions, and whistleblower protections for frontier-ai developers. notice requirements phase in through 2028.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://dailycampus.com/2026/09/30/new-ai-regulation-law-goes-into-effect-oct-1/" target="_blank" rel="noopener">Connecticut AI Responsibility and Transparency (CART) Act, SB 5</a></h2>
           <p class="meta">United States — Connecticut · Enacted: June 2, 2026 (signed) · In force: October 1, 2026 (key provisions)</p>
           <p class="extra">Omnibus state AI law: anti-discrimination rules for automated employment decision tools, deployer disclosure duties, AI subscription and chatbot provisions, and whistleblower protections for frontier-AI developers. Notice requirements phase in through 2028.</p>
-        </article>
+        </article></div>
       </section>
-<footer>
-  <p>Sources: Congress.gov API (federal bills) · OpenStates API v3 (state bills) ·
-     CourtListener (lawsuits) · hand-curated list (enacted laws).
-     API keys are read from environment variables at build time and are never committed.
-     Re-run <code>tracker.py</code> to refresh.</p>
-</footer>
+
+  <div id="empty">
+    <h3>No matches</h3>
+    <p>Try a different search term or clear the filters.</p>
+  </div>
+
+  <footer>
+    <p>Sources: Congress.gov API (federal bills) &middot; OpenStates API v3 (state bills) &middot;
+       CourtListener (lawsuits) &middot; hand-curated list (enacted laws).
+       API keys are read from environment variables or local caches at build time and are never committed.
+       Re-run <code>tracker.py</code> to refresh.</p>
+  </footer>
+</div>
+<script>
+(function(){
+  var themeBtn = document.getElementById('themeBtn');
+  function setTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    try{ localStorage.setItem('ai-tracker-theme', t); }catch(e){}
+    themeBtn.innerHTML = t === 'dark' ? '&#9788; Light' : '&#9790; Dark';
+  }
+  var saved = null;
+  try{ saved = localStorage.getItem('ai-tracker-theme'); }catch(e){}
+  setTheme(saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  themeBtn.addEventListener('click', function(){
+    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  var state = { tab:'all', q:'', status:'' };
+  var searchEl = document.getElementById('search');
+  var statusEl = document.getElementById('statusSel');
+  var countEl = document.getElementById('count');
+  var emptyEl = document.getElementById('empty');
+  var totalCards = document.querySelectorAll('.card').length;
+
+  document.getElementById('tabs').addEventListener('click', function(e){
+    var b = e.target.closest('.tab');
+    if(!b) return;
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    b.classList.add('active');
+    state.tab = b.getAttribute('data-tab');
+    apply();
+  });
+  searchEl.addEventListener('input', function(){ state.q = searchEl.value.trim().toLowerCase(); apply(); });
+  statusEl.addEventListener('change', function(){ state.status = statusEl.value; apply(); });
+
+  function apply(){
+    var shown = 0;
+    document.querySelectorAll('.sec').forEach(function(sec){
+      var key = sec.getAttribute('data-section');
+      var secMatch = state.tab === 'all' || state.tab === key;
+      var vis = 0;
+      sec.querySelectorAll('.card').forEach(function(card){
+        var ok = (state.tab === 'all' || card.getAttribute('data-section') === state.tab)
+          && (!state.q || card.getAttribute('data-search').indexOf(state.q) !== -1)
+          && (!state.status || card.getAttribute('data-badge') === state.status);
+        card.style.display = ok ? '' : 'none';
+        if(ok){ vis++; shown++; }
+      });
+      var notice = sec.querySelector('.notice');
+      var showSec = secMatch && (vis > 0 || (notice && !state.q && !state.status));
+      sec.style.display = showSec ? '' : 'none';
+    });
+    emptyEl.style.display = shown === 0 ? '' : 'none';
+    countEl.textContent = 'Showing ' + shown + ' of ' + totalCards;
+  }
+  apply();
+})();
+</script>
 </body>
 </html>
