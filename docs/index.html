@@ -79,14 +79,14 @@ code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.
     <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">&#9790; Dark</button>
   </header>
 
-  <div class="stats"><div class="stat"><div class="num">15</div><div class="lbl">Federal bills</div></div><div class="stat"><div class="num">40</div><div class="lbl">State bills</div></div><div class="stat"><div class="num">20</div><div class="lbl">Lawsuits</div></div><div class="stat"><div class="num">10</div><div class="lbl">Enacted laws</div></div></div>
+  <div class="stats"><div class="stat"><div class="num">15</div><div class="lbl">Federal bills</div></div><div class="stat"><div class="num">40</div><div class="lbl">State bills</div></div><div class="stat"><div class="num">20</div><div class="lbl">Lawsuits</div></div><div class="stat"><div class="num">23</div><div class="lbl">Enacted laws</div></div></div>
 
   <div class="controls">
     <input class="search" id="search" type="search" placeholder="Search bills, cases, laws&hellip;" aria-label="Search">
     <div class="tabs" id="tabs"><button class="tab active" data-tab="all">All</button><button class="tab" data-tab="federal">Federal bills</button><button class="tab" data-tab="states">State bills</button><button class="tab" data-tab="lawsuits">Lawsuits</button><button class="tab" data-tab="global">Global laws</button></div>
     <select class="status-sel" id="statusSel" aria-label="Filter by status">
       <option value="">All statuses</option>
-      <option value="Active">Active</option><option value="Decided">Decided</option><option value="Enacted">Enacted</option><option value="Filed">Filed</option><option value="Introduced">Introduced</option><option value="Passed chamber">Passed chamber</option>
+      <option value="Active">Active</option><option value="Decided">Decided</option><option value="Enacted">Enacted</option><option value="Filed">Filed</option><option value="Introduced">Introduced</option><option value="Passed chamber">Passed chamber</option><option value="Unverified">Unverified</option>
     </select>
     <span class="count" id="count"></span>
   </div>
@@ -716,7 +716,7 @@ code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.
       <section class="sec" data-section="global">
         <div class="sec-head">
           <h2>Enacted AI Laws Worldwide</h2>
-          <p class="blurb">Hand-curated, verified list of AI laws actually in force. Maintained in <code>data/global_laws.json</code> — edit it directly to add new laws.</p>
+          <p class="blurb">Hand-curated list of AI laws actually in force — 23 verified against official government sources, 20 reported but awaiting verification. Maintained in <code>data/global_laws.json</code> — edit it directly to add new laws.</p>
         </div>
         <div class="grid">
         <article class="card" data-section="global"
@@ -739,7 +739,7 @@ code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.
                  data-badge="Enacted"
                  data-search="ai basic act (framework act on ai development and establishment of trust) south korea consolidated 19 prior bills into asia&#x27;s first comprehensive ai framework. risk-based duties for &#x27;high-impact&#x27; ai (impact assessments, human oversight), generative-output labeling, and extraterritorial reach; fines up to krw 30 million.">
           <span class="badge" style="background:#1a7f37;">Enacted</span>
-          <h2><a href="https://www.msit.go.kr/eng/bbs/view.do?sCode=eng&amp;mId=4&amp;mPid=2&amp;pageIndex=&amp;bbsSeqNo=42&amp;nttSeqNo=1071" target="_blank" rel="noopener">AI Basic Act (Framework Act on AI Development and Establishment of Trust)</a></h2>
+          <h2><a href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener">AI Basic Act (Framework Act on AI Development and Establishment of Trust)</a></h2>
           <p class="meta">South Korea · Enacted: December 26, 2024 (passed); promulgated January 21, 2025 · In force: January 22, 2026</p>
           <p class="extra">Consolidated 19 prior bills into Asia&#x27;s first comprehensive AI framework. Risk-based duties for &#x27;high-impact&#x27; AI (impact assessments, human oversight), generative-output labeling, and extraterritorial reach; fines up to KRW 30 million.</p>
         </article>
@@ -747,7 +747,7 @@ code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.
                  data-badge="Enacted"
                  data-search="ai promotion act (act no. 53 of 2025) japan japan&#x27;s first ai-specific national law. innovation-first: no fines or penalties — the government may issue guidance, request information, or publicly name non-compliant entities. established an ai strategy headquarters.">
           <span class="badge" style="background:#1a7f37;">Enacted</span>
-          <h2><a href="https://www.japaneselawtranslation.go.jp/ja/laws/view/5066/ja" target="_blank" rel="noopener">AI Promotion Act (Act No. 53 of 2025)</a></h2>
+          <h2><a href="https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf" target="_blank" rel="noopener">AI Promotion Act (Act No. 53 of 2025)</a></h2>
           <p class="meta">Japan · Enacted: May 28, 2025 (passed by the Diet) · In force: June 4, 2025 (most provisions); September 1, 2025 (fully)</p>
           <p class="extra">Japan&#x27;s first AI-specific national law. Innovation-first: no fines or penalties — the government may issue guidance, request information, or publicly name non-compliant entities. Established an AI Strategy Headquarters.</p>
         </article>
@@ -755,7 +755,7 @@ code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.
                  data-badge="Enacted"
                  data-search="texas responsible ai governance act (traiga), hb 149 united states — texas comprehensive state ai statute: prohibits ai used to manipulate behavior, enable unlawful discrimination, or generate csam; bans government social scoring; creates a 36-month regulatory sandbox and ai advisory council. enforced exclusively by the texas ag.">
           <span class="badge" style="background:#1a7f37;">Enacted</span>
-          <h2><a href="https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&amp;Bill=HB149" target="_blank" rel="noopener">Texas Responsible AI Governance Act (TRAIGA), HB 149</a></h2>
+          <h2><a href="https://capitol.texas.gov/tlodocs/89R/billtext/pdf/HB00149F.pdf" target="_blank" rel="noopener">Texas Responsible AI Governance Act (TRAIGA), HB 149</a></h2>
           <p class="meta">United States — Texas · Enacted: June 22, 2025 (signed) · In force: January 1, 2026</p>
           <p class="extra">Comprehensive state AI statute: prohibits AI used to manipulate behavior, enable unlawful discrimination, or generate CSAM; bans government social scoring; creates a 36-month regulatory sandbox and AI advisory council. Enforced exclusively by the Texas AG.</p>
         </article>
@@ -763,7 +763,7 @@ code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.
                  data-badge="Enacted"
                  data-search="connecticut ai responsibility and transparency (cart) act, sb 5 united states — connecticut omnibus state ai law: anti-discrimination rules for automated employment decision tools, deployer disclosure duties, ai subscription and chatbot provisions, and whistleblower protections for frontier-ai developers. notice requirements phase in through 2028.">
           <span class="badge" style="background:#1a7f37;">Enacted</span>
-          <h2><a href="https://www.cga.ct.gov/2026/TOB/S/PDF/2026SB-00005-R00-SB.PDF" target="_blank" rel="noopener">Connecticut AI Responsibility and Transparency (CART) Act, SB 5</a></h2>
+          <h2><a href="https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf" target="_blank" rel="noopener">Connecticut AI Responsibility and Transparency (CART) Act, SB 5</a></h2>
           <p class="meta">United States — Connecticut · Enacted: June 2, 2026 (signed) · In force: October 1, 2026 (key provisions)</p>
           <p class="extra">Omnibus state AI law: anti-discrimination rules for automated employment decision tools, deployer disclosure duties, AI subscription and chatbot provisions, and whistleblower protections for frontier-AI developers. Notice requirements phase in through 2028.</p>
         </article>
@@ -771,7 +771,7 @@ code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.
                  data-badge="Enacted"
                  data-search="take it down act (public law 119-12) united states federal law criminalizing knowing publication of authentic or ai-generated nonconsensual intimate imagery; requires covered platforms to establish a notice-and-removal process with 48-hour removal on valid request.">
           <span class="badge" style="background:#1a7f37;">Enacted</span>
-          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-bill/146" target="_blank" rel="noopener">TAKE IT DOWN Act (Public Law 119-12)</a></h2>
+          <h2><a href="https://www.congress.gov/bill/119th-congress/senate-bill/146/all-info" target="_blank" rel="noopener">TAKE IT DOWN Act (Public Law 119-12)</a></h2>
           <p class="meta">United States · Enacted: May 19, 2025 (signed) · In force: May 19, 2025 (criminal provisions); May 19, 2026 (platform notice-and-removal duties)</p>
           <p class="extra">Federal law criminalizing knowing publication of authentic or AI-generated nonconsensual intimate imagery; requires covered platforms to establish a notice-and-removal process with 48-hour removal on valid request.</p>
         </article>
@@ -787,7 +787,7 @@ code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.
                  data-badge="Enacted"
                  data-search="transparency in frontier ai act (sb 53) united states — california requires large frontier-ai developers to publish safety and security frameworks, report critical safety incidents to the state, and implement whistleblower protections; the industry-backed successor to the vetoed sb 1047.">
           <span class="badge" style="background:#1a7f37;">Enacted</span>
-          <h2><a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB53" target="_blank" rel="noopener">Transparency in Frontier AI Act (SB 53)</a></h2>
+          <h2><a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53" target="_blank" rel="noopener">Transparency in Frontier AI Act (SB 53)</a></h2>
           <p class="meta">United States — California · Enacted: September 29, 2025 (signed) · In force: January 1, 2026</p>
           <p class="extra">Requires large frontier-AI developers to publish safety and security frameworks, report critical safety incidents to the state, and implement whistleblower protections; the industry-backed successor to the vetoed SB 1047.</p>
         </article>
@@ -798,6 +798,270 @@ code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.
           <h2><a href="http://www.cac.gov.cn/2022-01/04/c_1642894606364259.htm" target="_blank" rel="noopener">Provisions on the Administration of Algorithm Recommendation in Internet Information Services</a></h2>
           <p class="meta">China · Enacted: December 31, 2021 (promulgated) · In force: March 1, 2022</p>
           <p class="extra">China&#x27;s foundational algorithm regulation (joint CAC/MIIT/MPS/SAMR order): requires algorithm filing with the CAC, user disclosure and opt-out of algorithmic recommendations, non-discrimination, and protections for minors, the elderly, and gig workers; covers generation-synthesis (deepfake) algorithms alongside recommenders.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="general data protection regulation (regulation (eu) 2016/679), article 22 european union article 22 gives individuals the right not to be subject to decisions based solely on automated processing, including profiling, that produce legal or similarly significant effects, with exceptions and safeguards such as human intervention.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener">General Data Protection Regulation (Regulation (EU) 2016/679), Article 22</a></h2>
+          <p class="meta">European Union · Enacted: April 27, 2016 · In force: May 25, 2018</p>
+          <p class="extra">Article 22 gives individuals the right not to be subject to decisions based solely on automated processing, including profiling, that produce legal or similarly significant effects, with exceptions and safeguards such as human intervention.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="product liability directive (directive (eu) 2024/2853) european union modernizes eu no-fault product liability and expressly treats software, including ai systems, as &#x27;products,&#x27; naming ai system providers as manufacturers; member-state transposition due by december 2026.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://eur-lex.europa.eu/eli/dir/2024/2853/oj" target="_blank" rel="noopener">Product Liability Directive (Directive (EU) 2024/2853)</a></h2>
+          <p class="meta">European Union · Enacted: October 23, 2024 · In force: December 2024</p>
+          <p class="extra">Modernizes EU no-fault product liability and expressly treats software, including AI systems, as &#x27;products,&#x27; naming AI system providers as manufacturers; member-state transposition due by December 2026.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="artificial intelligence in government act of 2020 (p.l. 116-260) united states created the gsa ai center of excellence and directed omb guidance on federal agencies&#x27; acquisition and use of ai.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener">Artificial Intelligence in Government Act of 2020 (P.L. 116-260)</a></h2>
+          <p class="meta">United States · Enacted: December 27, 2020 · In force: December 27, 2020</p>
+          <p class="extra">Created the GSA AI Center of Excellence and directed OMB guidance on federal agencies&#x27; acquisition and use of AI.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="national artificial intelligence initiative act of 2020 (p.l. 116-283) united states established the national ai initiative and its coordination office to accelerate and coordinate federal ai research and development.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener">National Artificial Intelligence Initiative Act of 2020 (P.L. 116-283)</a></h2>
+          <p class="meta">United States · Enacted: January 1, 2021 · In force: January 1, 2021</p>
+          <p class="extra">Established the National AI Initiative and its coordination office to accelerate and coordinate federal AI research and development.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="advancing american ai act (p.l. 117-263) united states requires omb guidance on agency ai use, ai safeguards in federal contracts, and public inventories of agency ai use cases.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener">Advancing American AI Act (P.L. 117-263)</a></h2>
+          <p class="meta">United States · Enacted: December 23, 2022 · In force: December 23, 2022</p>
+          <p class="extra">Requires OMB guidance on agency AI use, AI safeguards in federal contracts, and public inventories of agency AI use cases.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="executive order 14179 — removing barriers to american leadership in artificial intelligence united states revoked eo 14110 and directed development of an ai action plan plus revised omb guidance on federal ai governance.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/" target="_blank" rel="noopener">Executive Order 14179 — Removing Barriers to American Leadership in Artificial Intelligence</a></h2>
+          <p class="meta">United States · Enacted: January 23, 2025 · In force: January 23, 2025</p>
+          <p class="extra">Revoked EO 14110 and directed development of an AI Action Plan plus revised OMB guidance on federal AI governance.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="executive order 14365 — ensuring a national policy framework for artificial intelligence united states directs the attorney general to create an ai litigation task force to challenge state ai laws and moves toward a national ai policy framework.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/" target="_blank" rel="noopener">Executive Order 14365 — Ensuring a National Policy Framework for Artificial Intelligence</a></h2>
+          <p class="meta">United States · Enacted: December 11, 2025 · In force: December 11, 2025</p>
+          <p class="extra">Directs the Attorney General to create an AI Litigation Task Force to challenge state AI laws and moves toward a national AI policy framework.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="illinois hb 3773 / public act 103-0804 united states — illinois makes it a civil rights violation for employers to use ai with a discriminatory effect in employment decisions or to use zip codes as a proxy for protected classes; requires notice to employees of ai use.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.ilga.gov/documents/legislation/publicacts/103/103-0804.htm" target="_blank" rel="noopener">Illinois HB 3773 / Public Act 103-0804</a></h2>
+          <p class="meta">United States — Illinois · Enacted: 2024 · In force: January 1, 2026</p>
+          <p class="extra">Makes it a civil rights violation for employers to use AI with a discriminatory effect in employment decisions or to use zip codes as a proxy for protected classes; requires notice to employees of AI use.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="new york city local law 144 of 2021 (automated employment decision tools) united states — new york city requires independent bias audits and public summaries, plus advance notice to candidates and employees, when automated employment decision tools are used in hiring.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.dfs.ny.gov/system/files/documents/2022/04/NYC_Council_Automated_Employment_Decision_Tools.pdf" target="_blank" rel="noopener">New York City Local Law 144 of 2021 (Automated Employment Decision Tools)</a></h2>
+          <p class="meta">United States — New York City · Enacted: December 11, 2021 · In force: January 1, 2023</p>
+          <p class="extra">Requires independent bias audits and public summaries, plus advance notice to candidates and employees, when automated employment decision tools are used in hiring.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="directive on automated decision-making (treasury board of canada secretariat) canada requires federal institutions to complete algorithmic impact assessments, give notice and explanations, test and monitor automated systems, and provide human intervention and recourse; compliance required by april 1, 2020.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://publications.gc.ca/collections/collection_2021/sct-tbs/BT48-31-2021-eng.pdf" target="_blank" rel="noopener">Directive on Automated Decision-Making (Treasury Board of Canada Secretariat)</a></h2>
+          <p class="meta">Canada · Enacted: 2019 · In force: April 1, 2019</p>
+          <p class="extra">Requires federal institutions to complete algorithmic impact assessments, give notice and explanations, test and monitor automated systems, and provide human intervention and recourse; compliance required by April 1, 2020.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="provisions on the administration of deep synthesis of internet information services (order no. 12) china requires real-identity verification, labeling of deep-synthesis (deepfake) content, algorithm filing, and security assessments for deep synthesis service providers.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="http://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm" target="_blank" rel="noopener">Provisions on the Administration of Deep Synthesis of Internet Information Services (Order No. 12)</a></h2>
+          <p class="meta">China · Enacted: November 25, 2022 · In force: January 10, 2023</p>
+          <p class="extra">Requires real-identity verification, labeling of deep-synthesis (deepfake) content, algorithm filing, and security assessments for deep synthesis service providers.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="measures for the labeling of ai-generated synthetic content china requires explicit (visible) and implicit (metadata) labeling of ai-generated synthetic content and bans malicious removal or falsification of labels.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm" target="_blank" rel="noopener">Measures for the Labeling of AI-Generated Synthetic Content</a></h2>
+          <p class="meta">China · Enacted: March 7, 2025 · In force: September 1, 2025</p>
+          <p class="extra">Requires explicit (visible) and implicit (metadata) labeling of AI-generated synthetic content and bans malicious removal or falsification of labels.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Enacted"
+                 data-search="data (use and access) act 2025, section 80 united kingdom replaces uk gdpr article 22 with articles 22a–22d: solely automated &#x27;significant decisions&#x27; require safeguards including information, the right to make representations, human intervention, and the right to contest.">
+          <span class="badge" style="background:#1a7f37;">Enacted</span>
+          <h2><a href="https://www.legislation.gov.uk/ukpga/2025/18/section/80" target="_blank" rel="noopener">Data (Use and Access) Act 2025, section 80</a></h2>
+          <p class="meta">United Kingdom · Enacted: June 19, 2025 · In force: February 5, 2026</p>
+          <p class="extra">Replaces UK GDPR Article 22 with Articles 22A–22D: solely automated &#x27;significant decisions&#x27; require safeguards including information, the right to make representations, human intervention, and the right to contest.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="ai basic act taiwan reportedly passed dec 23, 2025 and in force jan 14, 2026: a 20-article principle-based framework with the nstc as competent authority and high-risk labeling duties.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2><a href="https://www.loc.gov/item/global-legal-monitor/2026-05-07/taiwan-new-law-establishes-basic-framework-on-artificial-intelligence/" target="_blank" rel="noopener">AI Basic Act</a></h2>
+          <p class="meta">Taiwan · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reportedly passed Dec 23, 2025 and in force Jan 14, 2026: a 20-article principle-based framework with the NSTC as competent authority and high-risk labeling duties. Best lead so far: U.S. Library of Congress, Global Legal Monitor. Still needed: Enacted text on an official ROC government site (law.moj.gov.tw or the Executive Yuan Gazette).</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="elvis act (hb 2091, public chapter 588) united states — tennessee reportedly signed mar 21, 2024, effective jul 1, 2024; protects against unauthorized ai-generated voice likenesses.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>ELVIS Act (HB 2091, Public Chapter 588)</h2>
+          <p class="meta">United States — Tennessee · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reportedly signed Mar 21, 2024, effective Jul 1, 2024; protects against unauthorized AI-generated voice likenesses. Best lead so far: Digital Policy Alert; Lexology; Music Ally; trackbill/legiscan. Still needed: Official capitol.tn.gov bill-status page or Public Chapter 588 text.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="omb memoranda m-25-21 and m-25-22 united states reported april 2025 federal ai governance and procurement memos issued under eo 14179&#x27;s directive; the whitehouse.gov pdf urls returned 404 as of oct 1, 2026.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>OMB Memoranda M-25-21 and M-25-22</h2>
+          <p class="meta">United States · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported April 2025 federal AI governance and procurement memos issued under EO 14179&#x27;s directive; the whitehouse.gov PDF URLs returned 404 as of Oct 1, 2026. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Current official status — whether rescinded, superseded, or relocated.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="california 2024 ai package (ab 2013, ab 2355, ab 2602, ab 1836, sb 926, sb 981, sb 942, ab 621, ab 1008) and 2026 signings (sb 813, ab 1405) united states — california package of ai bills (training-data transparency, election deepfakes, digital likenesses, nonconsensual deepfake images, ai transparency act) reported signed in 2024/2026; sb 942&#x27;s operative date was reportedly delayed to aug 2, 2026.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>California 2024 AI package (AB 2013, AB 2355, AB 2602, AB 1836, SB 926, SB 981, SB 942, AB 621, AB 1008) and 2026 signings (SB 813, AB 1405)</h2>
+          <p class="meta">United States — California · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Package of AI bills (training-data transparency, election deepfakes, digital likenesses, nonconsensual deepfake images, AI Transparency Act) reported signed in 2024/2026; SB 942&#x27;s operative date was reportedly delayed to Aug 2, 2026. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Chapter/statute status and effective dates on leginfo.legislature.ca.gov.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="ai video interview act (820 ilcs 42/) united states — illinois reportedly in force jan 1, 2020; employer notice and consent duties for ai-analyzed video interviews.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>AI Video Interview Act (820 ILCS 42/)</h2>
+          <p class="meta">United States — Illinois · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reportedly in force Jan 1, 2020; employer notice and consent duties for AI-analyzed video interviews. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Verification on ilga.gov.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="biometric information privacy act (740 ilcs 14/) united states — illinois in force 2008; governs biometric identifiers and is frequently applied to facial-recognition ai.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>Biometric Information Privacy Act (740 ILCS 14/)</h2>
+          <p class="meta">United States — Illinois · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">In force 2008; governs biometric identifiers and is frequently applied to facial-recognition AI. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Verification on ilga.gov.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="hb 4623 (digital replicas) united states — illinois reported illinois ai/digital-replica legislation.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>HB 4623 (digital replicas)</h2>
+          <p class="meta">United States — Illinois · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported Illinois AI/digital-replica legislation. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Verification on ilga.gov.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="sb 21-169 (insurance) united states — colorado reportedly prohibits unfair discrimination via external consumer data and information sources, including ai models, in insurance.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>SB 21-169 (insurance)</h2>
+          <p class="meta">United States — Colorado · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reportedly prohibits unfair discrimination via external consumer data and information sources, including AI models, in insurance. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Verification on leg.colorado.gov.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="2025 amendments to the ai policy act (sb 226, sb 332, hb 452, sb 271) united states — utah reportedly took effect may 7, 2025; amend the ai policy act.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>2025 amendments to the AI Policy Act (SB 226, SB 332, HB 452, SB 271)</h2>
+          <p class="meta">United States — Utah · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reportedly took effect May 7, 2025; amend the AI Policy Act. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Verification on le.utah.gov.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="law 25 (lq 2021, c. 25) canada — quebec assented sept 22, 2021; reportedly phased into force sept 2022/2023/2024; modernizes privacy law with duties relevant to automated identification and profiling.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2><a href="https://vortexdev.vortexdev.com/client_resources/site_cpaquebec/PDF/juin2022/Loi64-TexteAdopte.pdf" target="_blank" rel="noopener">Law 25 (LQ 2021, c. 25)</a></h2>
+          <p class="meta">Canada — Quebec · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Assented Sept 22, 2021; reportedly phased into force Sept 2022/2023/2024; modernizes privacy law with duties relevant to automated identification and profiling. Best lead so far: Text copy (Projet de loi no 64, 2021 chapitre 25). Still needed: Confirmation on legisquebec.gouv.qc.ca.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="lgpd article 20 (automated decisions) brazil reported right to review automated decisions under brazil&#x27;s data-protection law.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>LGPD Article 20 (automated decisions)</h2>
+          <p class="meta">Brazil · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported right to review automated decisions under Brazil&#x27;s data-protection law. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Confirmation on planalto.gov.br.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="federal law 258-fz (2020) russia reportedly enables ai regulatory sandboxes (experimental legal regimes).">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>Federal Law 258-FZ (2020)</h2>
+          <p class="meta">Russia · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reportedly enables AI regulatory sandboxes (experimental legal regimes). Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Official confirmation.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="law on digital technology industry (2025) / draft ai law vietnam reported 2025 digital-technology law and draft ai law.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>Law on Digital Technology Industry (2025) / draft AI law</h2>
+          <p class="meta">Vietnam · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported 2025 digital-technology law and draft AI law. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Official gazette confirmation.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="law 31814 (2023, ai promotion) peru reported 2023 ai promotion law.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>Law 31814 (2023, AI promotion)</h2>
+          <p class="meta">Peru · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported 2023 AI promotion law. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Official confirmation.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="~30 us state deepfake / election-ai laws united states (various states) around 30 state laws on deepfakes and ai in elections identified via trackers (al, az, ar, co hb 1147, de, fl, id, in, ky, md, mi, mn, ms, mt, nj, nm, or, pa act 35 (2025), sd, ut sb 131, wa sb 5152, wi, and others).">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>~30 US state deepfake / election-AI laws</h2>
+          <p class="meta">United States (various states) · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Around 30 state laws on deepfakes and AI in elections identified via trackers (AL, AZ, AR, CO HB 1147, DE, FL, ID, IN, KY, MD, MI, MN, MS, MT, NJ, NM, OR, PA Act 35 (2025), SD, UT SB 131, WA SB 5152, WI, and others). Best lead so far: stackcyber.com; programs.com trackers. Still needed: Spot verification on each state&#x27;s official legislature site.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="executive order 14319 (&#x27;preventing woke ai&#x27;) united states reported july 23, 2025 executive order on ai.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>Executive Order 14319 (&#x27;Preventing Woke AI&#x27;)</h2>
+          <p class="meta">United States · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported July 23, 2025 executive order on AI. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Official whitehouse.gov verification.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="june 2026 executive order (&#x27;promoting advanced ai innovation and security&#x27;) united states reported june 2026 executive order on ai.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>June 2026 executive order (&#x27;Promoting Advanced AI Innovation and Security&#x27;)</h2>
+          <p class="meta">United States · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported June 2026 executive order on AI. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Official whitehouse.gov verification.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="pipa article 37-2 (right to refuse automated decisions) south korea reported right to refuse automated decisions under the personal information protection act.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>PIPA Article 37-2 (right to refuse automated decisions)</h2>
+          <p class="meta">South Korea · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported right to refuse automated decisions under the Personal Information Protection Act. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Official confirmation.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="difc regulation on autonomous systems united arab emirates — dubai (difc) reported difc regulation on autonomous systems.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>DIFC regulation on autonomous systems</h2>
+          <p class="meta">United Arab Emirates — Dubai (DIFC) · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported DIFC regulation on autonomous systems. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Official confirmation.</p>
+        </article>
+        <article class="card" data-section="global"
+                 data-badge="Unverified"
+                 data-search="saudi pdpl ai-relevant provisions saudi arabia reported ai-relevant provisions in the personal data protection law.">
+          <span class="badge" style="background:#b45309;">Unverified</span>
+          <h2>Saudi PDPL AI-relevant provisions</h2>
+          <p class="meta">Saudi Arabia · Reported — NOT yet confirmed against an official source</p>
+          <p class="extra">Reported AI-relevant provisions in the Personal Data Protection Law. Best lead so far: Secondary reporting (audit, Oct 2026). Still needed: Official confirmation.</p>
         </article></div>
       </section>
 
