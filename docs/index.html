@@ -41,7 +41,17 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;
   justify-content:center;text-align:center;overflow:hidden}
 .hero.short{min-height:52vh}
-.hero-img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover}
+.hero-img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;
+  animation:heroDrift 46s ease-in-out infinite alternate}
+@keyframes heroDrift{from{transform:scale(1) translate(0,0)}
+  to{transform:scale(1.1) translate(-1.5%,1%)}}
+/* ---- floating orbs ---- */
+.orb{position:absolute;z-index:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(140,190,255,.5) 0%,rgba(90,150,255,.16) 45%,transparent 70%);
+  filter:blur(3px);animation:orbFloat 16s ease-in-out infinite}
+@keyframes orbFloat{0%,100%{transform:translate(0,0);opacity:.75}
+  50%{transform:translate(46px,-38px);opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero-img,.orb{animation:none}}
 .hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,.88) 96%)}
 .hero-inner{position:relative;z-index:2;max-width:920px;padding:6rem 1.5rem}
@@ -232,6 +242,12 @@ footer{margin-top:5rem}
 
 <header class="hero">
   <img class="hero-img" src="hero.jpg?v=2" alt="">
+  <span class="orb" style="width:150px;height:150px;left:8%;top:22%;animation-duration:17s"></span>
+  <span class="orb" style="width:90px;height:90px;left:72%;top:16%;animation-duration:13s;animation-delay:-4s;animation-direction:reverse"></span>
+  <span class="orb" style="width:200px;height:200px;left:55%;top:55%;animation-duration:21s;animation-delay:-9s"></span>
+  <span class="orb" style="width:70px;height:70px;left:30%;top:68%;animation-duration:12s;animation-delay:-6s;animation-direction:reverse"></span>
+  <span class="orb" style="width:120px;height:120px;left:85%;top:60%;animation-duration:19s;animation-delay:-2s"></span>
+  <span class="orb" style="width:60px;height:60px;left:45%;top:12%;animation-duration:15s;animation-delay:-11s"></span>
   <div class="hero-inner">
     <div class="eyebrow reveal">Tracking AI law &amp; policy</div>
     <h1 class="reveal">AI Regulation Tracker</h1>
