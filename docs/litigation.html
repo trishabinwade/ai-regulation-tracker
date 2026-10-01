@@ -3,13 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Regulation Tracker</title>
+<title>AI Litigation Monitor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root{
   --blue:#34a3d7; --magenta:#c71585; --orange:#d74b17;
@@ -213,73 +211,212 @@ footer{margin-top:5rem}
 <div id="progress"></div>
 <nav class="nav" id="nav">
   <a class="brand" href="index.html">AI<b>·</b>REGULATION<b>·</b>TRACKER</a>
-  <div class="navlinks"><a href="index.html" class="active">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="">Litigation</a><a href="global.html" class="">Global Index</a></div>
+  <div class="navlinks"><a href="index.html" class="">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="active">Litigation</a><a href="global.html" class="">Global Index</a></div>
 </nav>
 
-<header class="hero">
-  <div id="heroMap"></div>
+<header class="hero short">
   <div class="hero-inner">
-    <div class="eyebrow reveal">Tracking AI law &amp; policy</div>
-    <h1 class="reveal">AI Regulation Tracker</h1>
-    <p class="sub reveal">US federal and state AI bills &middot; AI lawsuits in federal
-    court &middot; enacted AI laws worldwide — each one verified against an official
-    government source.</p>
+    <div class="eyebrow reveal">Courts</div>
+    <h1 class="reveal">AI Litigation Monitor</h1>
+    <p class="sub reveal">Federal cases where artificial intelligence is at issue —
+    copyright, deepfakes, chatbots. Dockets filed since April 2025 plus the newest
+    published opinions.</p>
   </div>
-  <div class="scrollcue">Scroll</div>
 </header>
 
-<div class="stats">
-  <div class="stat"><div class="num"><span data-count="14">0</span></div>
-    <div class="lbl">Federal bills</div></div>
-  <div class="stat"><div class="num"><span data-count="40">0</span></div>
-    <div class="lbl">State bills</div></div>
-  <div class="stat"><div class="num"><span data-count="20">0</span></div>
-    <div class="lbl">Lawsuits</div></div>
-  <div class="stat"><div class="num"><span data-count="23">0</span><em>+20</em></div>
-    <div class="lbl">Enacted laws <span style="letter-spacing:.1em">(blue: awaiting verification)</span></div></div>
-</div>
-
-<section class="sec"><div class="wrap">
+<section class="sec" style="padding-top:2.5rem"><div class="wrap">
   <div class="sec-head reveal"><svg class="glyph" viewBox="0 0 34 20" fill="none" aria-hidden="true">
 <path d="M2 18 A 16 16 0 0 1 32 18" stroke="#34a3d7" stroke-width="2.5"/></svg>
-    <div class="eyebrow">The index</div>
-    <h2>Three lenses on AI governance</h2>
-    <p>Legislation still moving, cases testing the boundaries, and the laws already
-    in force — pick a lens.</p>
+    <div class="eyebrow">This build</div>
+    <h2>Cases by status</h2>
   </div>
-  <div class="cards3">
-      <a class="wcard reveal" href="us-laws.html">
-        <div class="banner" style="background:#98d2ea">US AI Law Tracker</div>
-        <div class="body"><h3>US AI Law Tracker</h3><p>Every AI bill moving through Congress and the state legislatures — searchable, filterable, and mapped state by state.</p>
-        <span class="go">Explore US laws &#8594;</span></div>
-      </a>
-      <a class="wcard reveal" href="litigation.html">
-        <div class="banner" style="background:#d2a3ce">AI Litigation Monitor</div>
-        <div class="body"><h3>AI Litigation Monitor</h3><p>Federal dockets and published opinions where artificial intelligence is at issue — copyright, deepfakes, chatbots and beyond.</p>
-        <span class="go">Follow the cases &#8594;</span></div>
-      </a>
-      <a class="wcard reveal" href="global.html">
-        <div class="banner" style="background:#bacbd3">Global AI Regulation Index</div>
-        <div class="body"><h3>Global AI Regulation Index</h3><p>The world&#x27;s enacted AI laws, each verified against an official government source — on a clickable world map.</p>
-        <span class="go">See the world &#8594;</span></div>
-      </a></div>
-</div></section>
-
-<section class="sec"><div class="wrap">
+  <div class="bars">
+          <div class="barrow"><div class="t"><span>Filed</span><b>12</b></div>
+          <div class="track"><div class="fill" style="width:60.0%"></div></div></div>
+          <div class="barrow"><div class="t"><span>Terminated</span><b>0</b></div>
+          <div class="track"><div class="fill" style="width:0.0%"></div></div></div>
+          <div class="barrow"><div class="t"><span>Decided</span><b>8</b></div>
+          <div class="track"><div class="fill" style="width:40.0%"></div></div></div></div>
   <div class="sec-head reveal"><svg class="glyph" viewBox="0 0 34 20" fill="none" aria-hidden="true">
 <path d="M2 18 A 16 16 0 0 1 32 18" stroke="#c71585" stroke-width="2.5"/></svg>
-    <div class="eyebrow">Method</div>
-    <h2>How the tracker works</h2>
+    <div class="eyebrow">The docket</div>
+    <h2>Browse the cases</h2>
+    <p>Coverage is federal dockets via RECAP plus published opinions — county and
+    most state trial courts are not in any free database.</p>
   </div>
-  <div class="kv">
-    <div class="k reveal"><h4>Live legislation</h4><p>Federal bills via the Congress.gov
-    API; state bills via OpenStates — refreshed every build, newest action first.</p></div>
-    <div class="k reveal"><h4>Real litigation</h4><p>Federal dockets and published
-    opinions from CourtListener's free database. No headlines, no punditry.</p></div>
-    <div class="k reveal"><h4>Verified enactments</h4><p>A law is listed as enacted only
-    when confirmed against an official government source. Convincing but unconfirmed
-    candidates are flagged <b>Unverified</b> and excluded from the count.</p></div>
-  </div>
+  
+        <div data-explorer>
+          
+    <div class="fbar">
+      <input class="fsearch" data-f="q" type="search" placeholder="Search cases…" aria-label="Search">
+      <select data-f="kind" aria-label="Filter by type"><option value="">All types</option><option value="Docket">Docket</option><option value="Opinion">Opinion</option></select>
+      <select data-f="badge" aria-label="Filter by status"><option value="">All statuses</option><option value="Decided">Decided</option><option value="Filed">Filed</option></select>
+      <span class="fcount" data-f="count"></span>
+    </div>
+          <div class="grid">
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="x. corp v. immortal snail, llc district court, n.d. texas 4:26-cv-01254">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74864557/x-corp-v-immortal-snail-llc/" target="_blank" rel="noopener">X. Corp v. Immortal Snail, LLC</a></h3>
+      <p class="meta">District Court, N.D. Texas · Docket 4:26-cv-01254 · Sep 28, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74864557/x-corp-v-immortal-snail-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="bass v. openai, llc district court, n.d. california 3:26-cv-11015">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74863260/bass-v-openai-llc/" target="_blank" rel="noopener">Bass v. OpenAI, LLC</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 3:26-cv-11015 · Sep 28, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74863260/bass-v-openai-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="miller v. f.t. publications, inc. district court, n.d. california 4:26-cv-10898">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74848374/miller-v-ft-publications-inc/" target="_blank" rel="noopener">Miller v. F.T. Publications, Inc.</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 4:26-cv-10898 · Sep 24, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74848374/miller-v-ft-publications-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="in re application of chau kwan fei district court, n.d. california 5:26-mc-80291">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74841617/in-re-application-of-chau-kwan-fei/" target="_blank" rel="noopener">In Re Application of Chau Kwan Fei</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 5:26-mc-80291 · Sep 23, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74841617/in-re-application-of-chau-kwan-fei/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="carter v. feinberg district court, district of columbia 1:26-cv-03318">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74848160/carter-v-feinberg/" target="_blank" rel="noopener">CARTER v. FEINBERG</a></h3>
+      <p class="meta">District Court, District of Columbia · Docket 1:26-cv-03318 · Sep 22, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74848160/carter-v-feinberg/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="his majesty the king in right of the province of british columbia v. altman district court, n.d. california 3:26-cv-10743">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74825372/his-majesty-the-king-in-right-of-the-province-of-british-columbia-v-altman/" target="_blank" rel="noopener">His Majesty the King in Right of the Province of British Columbia v. Altman</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 3:26-cv-10743 · Sep 21, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74825372/his-majesty-the-king-in-right-of-the-province-of-british-columbia-v-altman/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="escuela xotichl tonatiuh, inc v. meta platforms, inc. district court, n.d. california 4:26-cv-10701">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74816509/escuela-xotichl-tonatiuh-inc-v-meta-platforms-inc/" target="_blank" rel="noopener">Escuela Xotichl Tonatiuh, Inc v. Meta Platforms, Inc.</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 4:26-cv-10701 · Sep 18, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74816509/escuela-xotichl-tonatiuh-inc-v-meta-platforms-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="umg recordings, inc. v. suno, inc. district court, d. massachusetts 1:26-cv-14275">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74812464/umg-recordings-inc-v-suno-inc/" target="_blank" rel="noopener">UMG Recordings, Inc. v. Suno, Inc.</a></h3>
+      <p class="meta">District Court, D. Massachusetts · Docket 1:26-cv-14275 · Sep 18, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74812464/umg-recordings-inc-v-suno-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="brivas ii llc v. match group inc district court, n.d. texas 3:26-cv-03154">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74809565/brivas-ii-llc-v-match-group-inc/" target="_blank" rel="noopener">Brivas II LLC v. Match Group Inc</a></h3>
+      <p class="meta">District Court, N.D. Texas · Docket 3:26-cv-03154 · Sep 17, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74809565/brivas-ii-llc-v-match-group-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="brass jar, inc. v. amazon.com, inc. et, al. district court, s.d. florida 1:26-cv-26432">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74806504/brass-jar-inc-v-amazoncom-inc-et-al/" target="_blank" rel="noopener">Brass Jar, Inc. v. Amazon.com, Inc. et, al.</a></h3>
+      <p class="meta">District Court, S.D. Florida · Docket 1:26-cv-26432 · Sep 17, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74806504/brass-jar-inc-v-amazoncom-inc-et-al/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="in re subpoena to lightspeed venture partners district court, n.d. california 3:26-mc-80289">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74804492/in-re-subpoena-to-lightspeed-venture-partners/" target="_blank" rel="noopener">In re Subpoena to Lightspeed Venture Partners</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 3:26-mc-80289 · Sep 16, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74804492/in-re-subpoena-to-lightspeed-venture-partners/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="eightpoint interactive, inc. v. blazerbrowser.com, llc district court, m.d. florida 2:26-cv-02553">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74804360/eightpoint-interactive-inc-v-blazerbrowsercom-llc/" target="_blank" rel="noopener">Eightpoint Interactive, Inc. v. BlazerBrowser.com, LLC</a></h3>
+      <p class="meta">District Court, M.D. Florida · Docket 2:26-cv-02553 · Sep 16, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74804360/eightpoint-interactive-inc-v-blazerbrowsercom-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="penske media corporation v. google llc district court, district of columbia d.d.c.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/10993432/penske-media-corporation-v-google-llc/" target="_blank" rel="noopener">Penske Media Corporation v. Google LLC</a></h3>
+      <p class="meta">District Court, District of Columbia · D.D.C. · Sep 30, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10993432/penske-media-corporation-v-google-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="americans for prosperity v. meyer court of appeals for the ninth circuit 9th cir.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/10988846/americans-for-prosperity-v-meyer/" target="_blank" rel="noopener">Americans for Prosperity v. Meyer</a></h3>
+      <p class="meta">Court of Appeals for the Ninth Circuit · 9th Cir. · Sep 30, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10988846/americans-for-prosperity-v-meyer/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="thomson reuters enterprise centre gmbh v. ross intelligence inc court of appeals for the third circuit 3rd cir.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/10988837/thomson-reuters-enterprise-centre-gmbh-v-ross-intelligence-inc/" target="_blank" rel="noopener">Thomson Reuters Enterprise Centre GmbH v. Ross Intelligence Inc</a></h3>
+      <p class="meta">Court of Appeals for the Third Circuit · 3rd Cir. · Sep 30, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10988837/thomson-reuters-enterprise-centre-gmbh-v-ross-intelligence-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="state v. horcasitas court of appeals of arizona ariz. ct. app.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/10988169/state-v-horcasitas/" target="_blank" rel="noopener">State v. Horcasitas</a></h3>
+      <p class="meta">Court of Appeals of Arizona · Ariz. Ct. App. · Sep 30, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10988169/state-v-horcasitas/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="rhyu v. frost appellate court of illinois ill. app. ct.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/10986482/rhyu-v-frost/" target="_blank" rel="noopener">Rhyu v. Frost</a></h3>
+      <p class="meta">Appellate Court of Illinois · Ill. App. Ct. · Sep 29, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10986482/rhyu-v-frost/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="state v. davis ohio court of appeals ohio ct. app.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/10986224/state-v-davis/" target="_blank" rel="noopener">State v. Davis</a></h3>
+      <p class="meta">Ohio Court of Appeals · Ohio Ct. App. · Sep 29, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10986224/state-v-davis/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="in re saama technologies litigation court of chancery of delaware del. ch.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/10985573/in-re-saama-technologies-litigation/" target="_blank" rel="noopener">In Re Saama Technologies Litigation</a></h3>
+      <p class="meta">Court of Chancery of Delaware · Del. Ch. · Sep 28, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10985573/in-re-saama-technologies-litigation/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="anthropic pbc v. united states department of war court of appeals for the d.c. circuit d.c. cir.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/10983481/anthropic-pbc-v-united-states-department-of-war/" target="_blank" rel="noopener">Anthropic PBC v. United States Department of War</a></h3>
+      <p class="meta">Court of Appeals for the D.C. Circuit · D.C. Cir. · Sep 25, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10983481/anthropic-pbc-v-united-states-department-of-war/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article></div>
+          <div class="empty" data-f="empty"><h3>No matches</h3>
+            <p>Try a different search term or clear the filters.</p></div>
+        </div>
 </div></section>
 
 
@@ -367,23 +504,5 @@ footer{margin-top:5rem}
 </script>
 
 
-<script>
-(function(){
-  try{
-    var map=L.map('heroMap',{zoomControl:false,attributionControl:false,
-      dragging:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,
-      keyboard:false,tap:false}).setView([28,8],2);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-      {maxZoom:4}).addTo(map);
-    var pts=[{"lat": 38.9, "lng": -77.0, "n": 12, "hollow": false}, {"lat": 39.9, "lng": 116.4, "n": 4, "hollow": false}, {"lat": 50.85, "lng": 4.35, "n": 3, "hollow": false}, {"lat": 37.57, "lng": 126.98, "n": 1, "hollow": false}, {"lat": 35.68, "lng": 139.69, "n": 1, "hollow": false}, {"lat": 45.42, "lng": -75.7, "n": 1, "hollow": false}, {"lat": 51.5, "lng": -0.12, "n": 1, "hollow": false}, {"lat": 25.03, "lng": 121.57, "n": 0, "hollow": true}, {"lat": -15.79, "lng": -47.88, "n": 0, "hollow": true}, {"lat": 55.76, "lng": 37.62, "n": 0, "hollow": true}, {"lat": 21.03, "lng": 105.85, "n": 0, "hollow": true}, {"lat": -12.05, "lng": -77.04, "n": 0, "hollow": true}, {"lat": 24.63, "lng": 46.68, "n": 0, "hollow": true}, {"lat": 25.2, "lng": 55.27, "n": 0, "hollow": true}];
-    pts.forEach(function(p){
-      var s=p.hollow?10:10+Math.min(p.n,12)*1.6;
-      L.marker([p.lat,p.lng],{interactive:false,keyboard:false},
-        {icon:L.divIcon({className:'',html:'<span class="pdot'+(p.hollow?' hollow':'')+'" style="width:'+s+'px;height:'+s+'px"></span>',iconSize:[s,s],iconAnchor:[s/2,s/2]})}).addTo(map);
-    });
-  }catch(e){document.getElementById('heroMap').style.background=
-    'radial-gradient(ellipse at 30% 20%,#1b2b4a 0%,#000 60%)';}
-})();
-</script>
 </body>
 </html>
