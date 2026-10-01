@@ -17,22 +17,22 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
-  background:#000 linear-gradient(180deg,#000 0%,#000 18%,#222844 90%) fixed;}
+  background:#000 linear-gradient(180deg,#000 0%,#000 18%,#222844 90%) fixed;line-height:1.6}
 .sans{font-family:'Fraunces',Georgia,serif}
 .wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
 .eyebrow{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.78rem;
-  letter-spacing:.28em;text-transform:uppercase;color:var(--blue)}
+  letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
 /* ---- nav ---- */
 #progress{position:fixed;top:0;left:0;height:3px;background:var(--blue);width:0;z-index:99}
 .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;
   justify-content:space-between;padding:1.05rem 1.6rem;transition:background .25s,box-shadow .25s}
 .nav.scrolled{background:#000;box-shadow:0 2px 18px rgba(0,0,0,.55)}
 .brand{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.92rem;
-  letter-spacing:.2em;color:#fff;text-decoration:none}
+  letter-spacing:.1em;color:#fff;text-decoration:none}
 .brand b{color:var(--blue);font-weight:700}
 .navlinks{display:flex;gap:1.5rem;align-items:center}
 .navlinks a{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.76rem;
-  letter-spacing:.16em;color:#fff;text-decoration:none;opacity:.72;text-transform:uppercase}
+  letter-spacing:.12em;color:#fff;text-decoration:none;opacity:.72;text-transform:uppercase}
 .navlinks a:hover{opacity:1}
 .navlinks a.active{opacity:1;color:var(--blue)}
 @media(max-width:720px){.navlinks{gap:.9rem}.navlinks a{font-size:.66rem;letter-spacing:.1em}}
@@ -43,13 +43,13 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 #heroMap{position:absolute;inset:0;z-index:0;background:#020608}
 .hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,.88) 96%)}
-.hero-inner{position:relative;z-index:2;max-width:920px;padding:7rem 1.5rem 4rem}
-.hero h1{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(2.9rem,7.5vw,5.9rem);line-height:1.04;
+.hero-inner{position:relative;z-index:2;max-width:920px;padding:6rem 1.5rem}
+.hero h1{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(2.9rem,7.5vw,5.9rem);line-height:1.08;
   margin:1.1rem 0;letter-spacing:-.01em}
-.hero .sub{font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:1.08rem;
+.hero .sub{font-family:'Inter',-apple-system,'Segoe UI',sans-serif;font-weight:400;font-size:1.08rem;
   color:#dfe6f0;max-width:62ch;margin:0 auto;line-height:1.65}
 .scrollcue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:2;
-  font-family:'Fraunces',Georgia,serif;font-size:.68rem;letter-spacing:.3em;color:var(--muted);
+  font-family:'Fraunces',Georgia,serif;font-size:.68rem;letter-spacing:.1em;color:var(--muted);
   text-transform:uppercase;opacity:.75}
 .pdot{position:relative;display:block;border-radius:50%;background:var(--orange);
   box-shadow:0 0 14px 4px rgba(215,75,23,.75)}
@@ -59,34 +59,34 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 /* ---- stats ---- */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;
   background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat{background:rgba(0,0,0,.42);padding:1.7rem 1.2rem;text-align:center}
+.stat{background:rgba(0,0,0,.42);padding:2rem 1.5rem;text-align:center}
 .stat .num{font-size:2.7rem;font-weight:400;color:#fff}
 .stat .num em{font-style:normal;color:var(--blue)}
 .stat .lbl{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.7rem;
-  letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-top:.45rem}
-.stat .vnote{display:block;letter-spacing:.14em;font-size:.62rem;color:var(--blue);margin-top:.3rem}
+  letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-top:.45rem}
+.stat .vnote{display:block;letter-spacing:.1em;font-size:.62rem;color:var(--blue);margin-top:.3rem}
 /* ---- sections ---- */
-.sec{padding:5.2rem 0 1rem}
-.sec-head{max-width:720px;margin-bottom:2.2rem}
-.sec-head h2{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(1.9rem,3.6vw,2.7rem);margin:.7rem 0 .8rem}
+.sec{padding:5.5rem 0}
+.sec-head{max-width:720px;margin-bottom:2.5rem}
+.sec-head h2{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(1.9rem,3.6vw,2.7rem);margin:.75rem 0 1rem}
 .sec-head p{color:var(--muted);font-size:1.06rem;line-height:1.65;margin:0}
 .sec-head p a{color:var(--blue)}
 /* ---- white index cards (home) ---- */
-.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.2rem}
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
 .wcard{background:#fff;color:var(--ctext);border-radius:6px;overflow:hidden;
   display:flex;flex-direction:column;text-decoration:none;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s cubic-bezier(.22,.61,.36,1)}
 .wcard:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.5)}
 .wcard .banner{padding:.72rem 1.3rem;font-family:'Fraunces',Georgia,serif;font-weight:700;
-  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:#000}
-.wcard .body{padding:1.5rem 1.4rem 1.3rem;flex:1}
+  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#000}
+.wcard .body{padding:1.5rem;flex:1}
 .wcard h3{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.32rem;
   margin:0 0 .55rem;color:#000}
 .wcard .body p{font-size:1rem;color:#33373d;line-height:1.6;margin:0 0 1.1rem}
 .wcard .go{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.76rem;
-  letter-spacing:.18em;color:var(--blue);text-transform:uppercase}
+  letter-spacing:.1em;color:var(--blue);text-transform:uppercase}
 .wcard .go:hover{text-decoration:underline}
 /* ---- filter bar (CNAS explorer style) ---- */
-.fbar{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin:1.6rem 0 1.8rem}
+.fbar{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;margin:2rem 0}
 .fbar select{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);
   border-radius:4px;padding:.62rem .8rem;font-family:'Fraunces',Georgia,serif;
   font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
@@ -97,13 +97,13 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .fsearch::placeholder{color:#8b96a8}
 .fsearch:focus{outline:none;border-bottom-color:var(--blue)}
 .fcount{margin-left:auto;font-family:'Fraunces',Georgia,serif;font-weight:600;
-  font-size:.78rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  font-size:.78rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
 /* ---- white data cards ---- */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1rem}
-.bcard{background:#fff;color:#111;border-radius:6px;padding:1.35rem 1.4rem;
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
+.bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
   display:flex;flex-direction:column}
 .badge{align-self:flex-start;font-family:'Fraunces',Georgia,serif;font-weight:700;
-  font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;
   border-radius:999px;padding:.3rem .72rem;margin-bottom:.75rem}
 .b-green{background:#1a7f37}.b-amber{background:#b45309}.b-blue{background:#0969da}
 .b-gray{background:#57606a}.b-gold{background:#9a6700}.b-orange{background:#cf5016}
@@ -117,11 +117,11 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .bcard .txt{font-size:.94rem;color:#2a3138;line-height:1.58;margin:0}
 .bcard .foot{margin-top:auto;padding-top:1rem}
 .offlink{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.72rem;
-  letter-spacing:.16em;color:var(--blue);text-decoration:none;text-transform:uppercase}
+  letter-spacing:.12em;color:var(--blue);text-decoration:none;text-transform:uppercase}
 .offlink:hover{text-decoration:underline}
 .xwalk{margin-top:1rem;padding-top:.9rem;border-top:1px solid #e8edf3}
 .xwalk .xlbl{display:block;font-family:'Fraunces',Georgia,serif;font-weight:700;
-  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#8a94a6;
+  font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8a94a6;
   margin-bottom:.5rem}
 .xchip{display:inline-block;margin:0 .35rem .35rem 0;padding:.32rem .7rem;
   border:1px solid #d9e2ec;border-radius:999px;font-size:.76rem;font-weight:600;
@@ -136,7 +136,7 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .maplegend{position:absolute;left:14px;bottom:14px;z-index:500;background:rgba(0,0,0,.82);
   border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem;color:#fff}
 .maplegend h4{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.68rem;
-  letter-spacing:.18em;text-transform:uppercase;margin:0 0 .55rem;color:#fff}
+  letter-spacing:.1em;text-transform:uppercase;margin:0 0 .55rem;color:#fff}
 .maplegend .row{display:flex;align-items:center;gap:.55rem;
   font-family:'Fraunces',Georgia,serif;font-size:.72rem;color:var(--muted);margin:.3rem 0}
 .sw{width:22px;height:12px;border-radius:2px;background:var(--orange)}
@@ -147,13 +147,13 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .panel.open{transform:none}
 .panel .xrow{display:flex;justify-content:space-between;align-items:center}
 .panel .reset{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.7rem;
-  letter-spacing:.16em;color:#2c5d75;text-decoration:none;text-transform:uppercase;cursor:pointer}
+  letter-spacing:.12em;color:#2c5d75;text-decoration:none;text-transform:uppercase;cursor:pointer}
 .panel .reset:hover{text-decoration:underline}
 .panel h3{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.45rem;
   margin:.5rem 0 .2rem;color:#000}
 .panel .rule{height:3px;background:#000;width:66px;margin:.65rem 0 1rem}
 .pill{display:inline-block;border:1px solid #000;border-radius:999px;padding:.28rem .75rem;
-  font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.66rem;letter-spacing:.16em;
+  font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.66rem;letter-spacing:.12em;
   text-transform:uppercase;color:#000;margin:0 .4rem .6rem 0}
 .plaw{border-top:1px solid #e3e6ea;padding:.95rem 0}
 .plaw h4{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.98rem;
@@ -177,7 +177,7 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .bars{max-width:760px;margin:1.6rem 0 2.4rem}
 .barrow{margin:.65rem 0}
 .barrow .t{display:flex;justify-content:space-between;font-family:'Fraunces',Georgia,serif;
-  font-weight:600;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;
   color:var(--muted);margin-bottom:.35rem}
 .barrow .t b{color:#fff}
 .barrow .track{height:14px;background:rgba(255,255,255,.1);border-radius:7px;overflow:hidden}
@@ -188,18 +188,18 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .notice{background:rgba(255,255,255,.06);border:1px solid var(--line);
   border-left:4px solid #d4a017;border-radius:8px;padding:.9rem 1.1rem;font-size:.95rem;color:#dfe6f0}
 .notice a{color:var(--blue)}
-.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:2rem 0}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin:2rem 0}
 .kv .k{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:8px;
   padding:1.2rem 1.3rem}
 .kv .k h4{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.74rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin:0 0 .5rem}
+  letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin:0 0 .5rem}
 .kv .k p{margin:0;color:#c9d2e0;font-size:.96rem;line-height:1.6}
 footer{margin-top:5rem}
 .fband{background:#222844;border-top:1px solid #fff;padding:3rem 0 2.2rem}
 .fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
 @media(max-width:760px){.fcols{grid-template-columns:1fr}}
 .fcols h5{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.72rem;
-  letter-spacing:.22em;text-transform:uppercase;color:#fff;margin:0 0 .9rem}
+  letter-spacing:.12em;text-transform:uppercase;color:#fff;margin:0 0 .9rem}
 .fcols p,.fcols li{font-size:.95rem;color:#c9d2e0;line-height:1.65}
 .fcols ul{list-style:none;margin:0;padding:0}
 .fcols li{margin:.4rem 0}
@@ -234,191 +234,13 @@ footer{margin-top:5rem}
     <div class="eyebrow">This build</div>
     <h2>Cases by status</h2>
   </div>
-  <div class="bars">
-          <div class="barrow"><div class="t"><span>Filed</span><b>12</b></div>
-          <div class="track"><div class="fill" style="width:60.0%"></div></div></div>
-          <div class="barrow"><div class="t"><span>Terminated</span><b>0</b></div>
-          <div class="track"><div class="fill" style="width:0.0%"></div></div></div>
-          <div class="barrow"><div class="t"><span>Decided</span><b>8</b></div>
-          <div class="track"><div class="fill" style="width:40.0%"></div></div></div></div>
+  
     <div class="eyebrow">The docket</div>
     <h2>Browse the cases</h2>
     <p>Coverage is federal dockets via RECAP plus published opinions — county and
     most state trial courts are not in any free database.</p>
   </div>
-  
-        <div data-explorer>
-          
-    <div class="fbar">
-      <input class="fsearch" data-f="q" type="search" placeholder="Search cases…" aria-label="Search">
-      <select data-f="kind" aria-label="Filter by type"><option value="">All types</option><option value="Docket">Docket</option><option value="Opinion">Opinion</option></select>
-      <select data-f="badge" aria-label="Filter by status"><option value="">All statuses</option><option value="Decided">Decided</option><option value="Filed">Filed</option></select>
-      <span class="fcount" data-f="count"></span>
-    </div>
-          <div class="grid">
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="state of new york v. epa court of appeals for the d.c. circuit 26-1259">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74902809/state-of-new-york-v-epa/" target="_blank" rel="noopener">State of New York v. EPA</a></h3>
-      <p class="meta">Court of Appeals for the D.C. Circuit · Docket 26-1259 · Oct 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74902809/state-of-new-york-v-epa/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="x. corp v. immortal snail, llc district court, n.d. texas 4:26-cv-01254">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74864557/x-corp-v-immortal-snail-llc/" target="_blank" rel="noopener">X. Corp v. Immortal Snail, LLC</a></h3>
-      <p class="meta">District Court, N.D. Texas · Docket 4:26-cv-01254 · Sep 28, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74864557/x-corp-v-immortal-snail-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="bass v. openai, llc district court, n.d. california 3:26-cv-11015">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74863260/bass-v-openai-llc/" target="_blank" rel="noopener">Bass v. OpenAI, LLC</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 3:26-cv-11015 · Sep 28, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74863260/bass-v-openai-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="miller v. f.t. publications, inc. district court, n.d. california 4:26-cv-10898">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74848374/miller-v-ft-publications-inc/" target="_blank" rel="noopener">Miller v. F.T. Publications, Inc.</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 4:26-cv-10898 · Sep 24, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74848374/miller-v-ft-publications-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="in re application of chau kwan fei district court, n.d. california 5:26-mc-80291">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74841617/in-re-application-of-chau-kwan-fei/" target="_blank" rel="noopener">In Re Application of Chau Kwan Fei</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 5:26-mc-80291 · Sep 23, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74841617/in-re-application-of-chau-kwan-fei/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="carter v. feinberg district court, district of columbia 1:26-cv-03318">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74848160/carter-v-feinberg/" target="_blank" rel="noopener">CARTER v. FEINBERG</a></h3>
-      <p class="meta">District Court, District of Columbia · Docket 1:26-cv-03318 · Sep 22, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74848160/carter-v-feinberg/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="his majesty the king in right of the province of british columbia v. altman district court, n.d. california 3:26-cv-10743">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74825372/his-majesty-the-king-in-right-of-the-province-of-british-columbia-v-altman/" target="_blank" rel="noopener">His Majesty the King in Right of the Province of British Columbia v. Altman</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 3:26-cv-10743 · Sep 21, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74825372/his-majesty-the-king-in-right-of-the-province-of-british-columbia-v-altman/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="escuela xotichl tonatiuh, inc v. meta platforms, inc. district court, n.d. california 4:26-cv-10701">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74816509/escuela-xotichl-tonatiuh-inc-v-meta-platforms-inc/" target="_blank" rel="noopener">Escuela Xotichl Tonatiuh, Inc v. Meta Platforms, Inc.</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 4:26-cv-10701 · Sep 18, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74816509/escuela-xotichl-tonatiuh-inc-v-meta-platforms-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="umg recordings, inc. v. suno, inc. district court, d. massachusetts 1:26-cv-14275">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74812464/umg-recordings-inc-v-suno-inc/" target="_blank" rel="noopener">UMG Recordings, Inc. v. Suno, Inc.</a></h3>
-      <p class="meta">District Court, D. Massachusetts · Docket 1:26-cv-14275 · Sep 18, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74812464/umg-recordings-inc-v-suno-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="brivas ii llc v. match group inc district court, n.d. texas 3:26-cv-03154">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74809565/brivas-ii-llc-v-match-group-inc/" target="_blank" rel="noopener">Brivas II LLC v. Match Group Inc</a></h3>
-      <p class="meta">District Court, N.D. Texas · Docket 3:26-cv-03154 · Sep 17, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74809565/brivas-ii-llc-v-match-group-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="brass jar, inc. v. amazon.com, inc. et, al. district court, s.d. florida 1:26-cv-26432">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74806504/brass-jar-inc-v-amazoncom-inc-et-al/" target="_blank" rel="noopener">Brass Jar, Inc. v. Amazon.com, Inc. et, al.</a></h3>
-      <p class="meta">District Court, S.D. Florida · Docket 1:26-cv-26432 · Sep 17, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74806504/brass-jar-inc-v-amazoncom-inc-et-al/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="in re subpoena to lightspeed venture partners district court, n.d. california 3:26-mc-80289">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74804492/in-re-subpoena-to-lightspeed-venture-partners/" target="_blank" rel="noopener">In re Subpoena to Lightspeed Venture Partners</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 3:26-mc-80289 · Sep 16, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74804492/in-re-subpoena-to-lightspeed-venture-partners/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="american catalog mailers association v. director, division of taxation new jersey tax court n.j. tax ct.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11008272/american-catalog-mailers-association-v-director-division-of-taxation/" target="_blank" rel="noopener">American Catalog Mailers Association v. Director, Division of Taxation</a></h3>
-      <p class="meta">New Jersey Tax Court · N.J. Tax Ct. · Oct 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11008272/american-catalog-mailers-association-v-director-division-of-taxation/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="sethi board of immigration appeals bia">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11008237/sethi/" target="_blank" rel="noopener">Sethi</a></h3>
-      <p class="meta">Board of Immigration Appeals · BIA · Oct 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11008237/sethi/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="state v. tolbert ohio court of appeals ohio ct. app.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11007732/state-v-tolbert/" target="_blank" rel="noopener">State v. Tolbert</a></h3>
-      <p class="meta">Ohio Court of Appeals · Ohio Ct. App. · Oct 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11007732/state-v-tolbert/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="in the matter of the estate of david simpson, andrew simpson v. larry porter supreme court of arkansas ark.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11007622/in-the-matter-of-the-estate-of-david-simpson-andrew-simpson-v-larry/" target="_blank" rel="noopener">In the Matter of the Estate of David Simpson, Andrew Simpson v. Larry Porter</a></h3>
-      <p class="meta">Supreme Court of Arkansas · Ark. · Oct 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11007622/in-the-matter-of-the-estate-of-david-simpson-andrew-simpson-v-larry/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="penske media corporation v. google llc district court, district of columbia d.d.c.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/10993432/penske-media-corporation-v-google-llc/" target="_blank" rel="noopener">Penske Media Corporation v. Google LLC</a></h3>
-      <p class="meta">District Court, District of Columbia · D.D.C. · Sep 30, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10993432/penske-media-corporation-v-google-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="americans for prosperity v. meyer court of appeals for the ninth circuit 9th cir.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/10988846/americans-for-prosperity-v-meyer/" target="_blank" rel="noopener">Americans for Prosperity v. Meyer</a></h3>
-      <p class="meta">Court of Appeals for the Ninth Circuit · 9th Cir. · Sep 30, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10988846/americans-for-prosperity-v-meyer/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="thomson reuters enterprise centre gmbh v. ross intelligence inc court of appeals for the third circuit 3rd cir.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/10988837/thomson-reuters-enterprise-centre-gmbh-v-ross-intelligence-inc/" target="_blank" rel="noopener">Thomson Reuters Enterprise Centre GmbH v. Ross Intelligence Inc</a></h3>
-      <p class="meta">Court of Appeals for the Third Circuit · 3rd Cir. · Sep 30, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10988837/thomson-reuters-enterprise-centre-gmbh-v-ross-intelligence-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="state v. horcasitas court of appeals of arizona ariz. ct. app.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/10988169/state-v-horcasitas/" target="_blank" rel="noopener">State v. Horcasitas</a></h3>
-      <p class="meta">Court of Appeals of Arizona · Ariz. Ct. App. · Sep 30, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10988169/state-v-horcasitas/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article></div>
-          <div class="empty" data-f="empty"><h3>No matches</h3>
-            <p>Try a different search term or clear the filters.</p></div>
-        </div>
+  <div class="notice"><p>Could not load lawsuits this run — the source may be down or rate-limited. Re-run later.</p></div>
 </div></section>
 
 
