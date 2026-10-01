@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Governance Frameworks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blue:#34a3d7; --magenta:#c71585; --orange:#d74b17;
+  --ink:#ffffff; --muted:#a9b6c7; --line:rgba(255,255,255,.14);
+  --card:#ffffff; --ctext:#101418;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:'Spectral',Georgia,'Times New Roman',serif;
+  background:#000 linear-gradient(180deg,#000 0%,#000 18%,#222844 90%) fixed;}
+.sans{font-family:'Montserrat',-apple-system,'Segoe UI',sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+.eyebrow{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.78rem;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--blue)}
+/* ---- nav ---- */
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--blue);width:0;z-index:99}
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;
+  justify-content:space-between;padding:1.05rem 1.6rem;transition:background .25s,box-shadow .25s}
+.nav.scrolled{background:#000;box-shadow:0 2px 18px rgba(0,0,0,.55)}
+.brand{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.92rem;
+  letter-spacing:.2em;color:#fff;text-decoration:none}
+.brand b{color:var(--blue);font-weight:800}
+.navlinks{display:flex;gap:1.5rem;align-items:center}
+.navlinks a{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.76rem;
+  letter-spacing:.16em;color:#fff;text-decoration:none;opacity:.72;text-transform:uppercase}
+.navlinks a:hover{opacity:1}
+.navlinks a.active{opacity:1;color:var(--blue)}
+@media(max-width:720px){.navlinks{gap:.9rem}.navlinks a{font-size:.66rem;letter-spacing:.1em}}
+/* ---- hero ---- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;
+  justify-content:center;text-align:center;overflow:hidden}
+.hero.short{min-height:52vh}
+#heroMap{position:absolute;inset:0;z-index:0;background:#020608}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,.88) 96%)}
+.hero-inner{position:relative;z-index:2;max-width:920px;padding:7rem 1.5rem 4rem}
+.hero h1{font-weight:400;font-size:clamp(2.9rem,7.5vw,5.9rem);line-height:1.04;
+  margin:1.1rem 0;letter-spacing:-.01em}
+.hero .sub{font-family:'Montserrat',sans-serif;font-weight:300;font-size:1.08rem;
+  color:#dfe6f0;max-width:62ch;margin:0 auto;line-height:1.65}
+.scrollcue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:2;
+  font-family:'Montserrat',sans-serif;font-size:.68rem;letter-spacing:.3em;color:var(--muted);
+  text-transform:uppercase;opacity:.75}
+.pdot{position:relative;display:block;border-radius:50%;background:var(--orange);
+  box-shadow:0 0 14px 4px rgba(215,75,23,.75)}
+.pdot.hollow{background:transparent;box-shadow:none;border:2px dashed rgba(215,75,23,.9)}
+/* dark basemap: OSM light tiles inverted via CSS (markers live in the overlay pane, unaffected) */
+.leaflet-tile-pane{filter:invert(1) hue-rotate(185deg) grayscale(.18) brightness(.88) contrast(.94)}
+/* ---- stats ---- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;
+  background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{background:rgba(0,0,0,.42);padding:1.7rem 1.2rem;text-align:center}
+.stat .num{font-size:2.7rem;font-weight:400;color:#fff}
+.stat .num em{font-style:normal;color:var(--blue)}
+.stat .lbl{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.7rem;
+  letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-top:.45rem}
+.stat .vnote{display:block;letter-spacing:.14em;font-size:.62rem;color:var(--blue);margin-top:.3rem}
+/* ---- sections ---- */
+.sec{padding:5.2rem 0 1rem}
+.sec-head{max-width:720px;margin-bottom:2.2rem}
+.sec-head h2{font-weight:400;font-size:clamp(1.9rem,3.6vw,2.7rem);margin:.7rem 0 .8rem}
+.sec-head p{color:var(--muted);font-size:1.06rem;line-height:1.65;margin:0}
+.sec-head p a{color:var(--blue)}
+.glyph{width:34px;height:20px;margin-bottom:.4rem}
+/* ---- white index cards (home) ---- */
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.2rem}
+.wcard{background:#fff;color:var(--ctext);border-radius:6px;overflow:hidden;
+  display:flex;flex-direction:column;text-decoration:none;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s cubic-bezier(.22,.61,.36,1)}
+.wcard:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.wcard .banner{padding:.72rem 1.3rem;font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:#000}
+.wcard .body{padding:1.5rem 1.4rem 1.3rem;flex:1}
+.wcard h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.32rem;
+  margin:0 0 .55rem;color:#000}
+.wcard .body p{font-size:1rem;color:#33373d;line-height:1.6;margin:0 0 1.1rem}
+.wcard .go{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.76rem;
+  letter-spacing:.18em;color:var(--blue);text-transform:uppercase}
+.wcard .go:hover{text-decoration:underline}
+/* ---- filter bar (CNAS explorer style) ---- */
+.fbar{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin:1.6rem 0 1.8rem}
+.fbar select{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);
+  border-radius:4px;padding:.62rem .8rem;font-family:'Montserrat',sans-serif;
+  font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.fbar select:hover{border-color:var(--blue)}
+.fbar select option{color:#000;text-transform:none;letter-spacing:0}
+.fsearch{flex:1;min-width:200px;background:transparent;border:none;
+  border-bottom:1px solid rgba(255,255,255,.55);color:#fff;padding:.62rem .2rem;font-size:1.02rem}
+.fsearch::placeholder{color:#8b96a8}
+.fsearch:focus{outline:none;border-bottom-color:var(--blue)}
+.fcount{margin-left:auto;font-family:'Montserrat',sans-serif;font-weight:600;
+  font-size:.78rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+/* ---- white data cards ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1rem}
+.bcard{background:#fff;color:#111;border-radius:6px;padding:1.35rem 1.4rem;
+  display:flex;flex-direction:column}
+.badge{align-self:flex-start;font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  border-radius:999px;padding:.3rem .72rem;margin-bottom:.75rem}
+.b-green{background:#1a7f37}.b-amber{background:#b45309}.b-blue{background:#0969da}
+.b-gray{background:#57606a}.b-gold{background:#9a6700}.b-orange{background:#cf5016}
+.b-purple{background:#8250df}
+.bcard h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1rem;
+  line-height:1.42;margin:0 0 .45rem;color:#000}
+.bcard h3 a{color:#000;text-decoration:none}
+.bcard h3 a:hover{color:var(--blue);text-decoration:underline}
+.bcard .meta{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.76rem;
+  color:#5b6572;margin:0 0 .5rem;line-height:1.5}
+.bcard .txt{font-size:.94rem;color:#2a3138;line-height:1.58;margin:0}
+.bcard .foot{margin-top:auto;padding-top:1rem}
+.offlink{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;
+  letter-spacing:.16em;color:var(--blue);text-decoration:none;text-transform:uppercase}
+.offlink:hover{text-decoration:underline}
+/* ---- map + side panel ---- */
+.mapsec{position:relative;margin:1rem 0 3rem;overflow-x:clip}
+#map{height:600px;background:#07141d;border:1px solid var(--line);border-radius:8px;z-index:1}
+.leaflet-container{font-family:'Montserrat',sans-serif}
+.leaflet-tile-pane{filter:invert(90%) hue-rotate(180deg) brightness(.88) contrast(.95)}
+.maplegend{position:absolute;left:14px;bottom:14px;z-index:500;background:rgba(0,0,0,.82);
+  border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem;color:#fff}
+.maplegend h4{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.68rem;
+  letter-spacing:.18em;text-transform:uppercase;margin:0 0 .55rem;color:#fff}
+.maplegend .row{display:flex;align-items:center;gap:.55rem;
+  font-family:'Montserrat',sans-serif;font-size:.72rem;color:var(--muted);margin:.3rem 0}
+.sw{width:22px;height:12px;border-radius:2px;background:var(--orange)}
+.panel{position:absolute;top:0;right:0;bottom:0;width:min(430px,94%);background:#fff;
+  color:#111;z-index:600;transform:translateX(106%);transition:transform .38s cubic-bezier(.32,.72,0,1);
+  overflow-y:auto;padding:1.7rem 1.6rem;box-shadow:-14px 0 44px rgba(0,0,0,.5);
+  border-radius:0 8px 8px 0}
+.panel.open{transform:none}
+.panel .xrow{display:flex;justify-content:space-between;align-items:center}
+.panel .reset{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.7rem;
+  letter-spacing:.16em;color:#2c5d75;text-decoration:none;text-transform:uppercase;cursor:pointer}
+.panel .reset:hover{text-decoration:underline}
+.panel h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.45rem;
+  margin:.5rem 0 .2rem;color:#000}
+.panel .rule{height:3px;background:#000;width:66px;margin:.65rem 0 1rem}
+.pill{display:inline-block;border:1px solid #000;border-radius:999px;padding:.28rem .75rem;
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;color:#000;margin:0 .4rem .6rem 0}
+.plaw{border-top:1px solid #e3e6ea;padding:.95rem 0}
+.plaw h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.98rem;
+  margin:0 0 .3rem;color:#000;line-height:1.4}
+.plaw h4 a{color:#000;text-decoration:none}
+.plaw h4 a:hover{color:var(--blue);text-decoration:underline}
+.plaw .sub2{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;
+  color:#5b6572;margin:0 0 .35rem}
+.plaw p{font-size:.9rem;color:#33373d;margin:0;line-height:1.55}
+/* ---- tile grid US map ---- */
+.tilegrid{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;max-width:780px;margin:0 auto}
+.tile{aspect-ratio:1/.92;border-radius:6px;border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.045);color:#fff;font-family:'Montserrat',sans-serif;
+  font-weight:700;font-size:.72rem;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;cursor:default;line-height:1.25}
+.tile .n{font-size:.62rem;font-weight:600;color:#cdd6e2}
+.tile.has{cursor:pointer;border-color:var(--blue)}
+.tile.has:hover{transform:scale(1.1);z-index:2}
+@media(max-width:640px){.tile{font-size:.58rem}.tile .n{display:none}}
+/* ---- status bars ---- */
+.bars{max-width:760px;margin:1.6rem 0 2.4rem}
+.barrow{margin:.65rem 0}
+.barrow .t{display:flex;justify-content:space-between;font-family:'Montserrat',sans-serif;
+  font-weight:600;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.35rem}
+.barrow .t b{color:#fff}
+.barrow .track{height:14px;background:rgba(255,255,255,.1);border-radius:7px;overflow:hidden}
+.barrow .fill{height:100%;border-radius:7px;background:#5d8aa0;transition:width 1s ease}
+/* ---- misc ---- */
+.empty{display:none;text-align:center;color:var(--muted);padding:3.5rem 1rem}
+.empty h3{color:#fff;font-weight:400;font-size:1.6rem}
+.notice{background:rgba(255,255,255,.06);border:1px solid var(--line);
+  border-left:4px solid #d4a017;border-radius:8px;padding:.9rem 1.1rem;font-size:.95rem;color:#dfe6f0}
+.notice a{color:var(--blue)}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:2rem 0}
+.kv .k{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:8px;
+  padding:1.2rem 1.3rem}
+.kv .k h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.74rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin:0 0 .5rem}
+.kv .k p{margin:0;color:#c9d2e0;font-size:.96rem;line-height:1.6}
+footer{margin-top:5rem}
+.fband{background:#222844;border-top:1px solid #fff;padding:3rem 0 2.2rem}
+.fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+@media(max-width:760px){.fcols{grid-template-columns:1fr}}
+.fcols h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;
+  letter-spacing:.22em;text-transform:uppercase;color:#fff;margin:0 0 .9rem}
+.fcols p,.fcols li{font-size:.95rem;color:#c9d2e0;line-height:1.65}
+.fcols ul{list-style:none;margin:0;padding:0}
+.fcols li{margin:.4rem 0}
+.fcols a{color:#fff;text-decoration:none;border-bottom:1px solid var(--blue)}
+.fcols a:hover{color:var(--blue)}
+.fbottom{background:#000;padding:1.1rem 0;display:flex;justify-content:space-between;
+  align-items:center;gap:1rem;flex-wrap:wrap}
+.fbottom small{font-family:'Montserrat',sans-serif;font-size:.72rem;color:#8b96a8;letter-spacing:.06em}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html">AI<b>·</b>REGULATION<b>·</b>TRACKER</a>
+  <div class="navlinks"><a href="index.html" class="">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="">Litigation</a><a href="global.html" class="">Global Index</a><a href="frameworks.html" class="active">Frameworks</a></div>
+</nav>
+
+<header class="hero short">
+  <div class="hero-inner">
+    <div class="eyebrow reveal">Voluntary compliance</div>
+    <h1 class="reveal">AI Governance Frameworks</h1>
+    <p class="sub reveal">The soft-law layer: voluntary frameworks, codes, and
+    principles that companies use to demonstrate responsible AI &mdash; and to get
+    ahead of binding law.</p>
+  </div>
+</header>
+
+<section class="sec" style="padding-top:2.5rem"><div class="wrap">
+  <div class="sec-head reveal"><svg class="glyph" viewBox="0 0 34 20" fill="none" aria-hidden="true">
+<path d="M2 18 A 16 16 0 0 1 32 18" stroke="#34a3d7" stroke-width="2.5"/></svg>
+    <div class="eyebrow">The index &middot; 14</div>
+    <h2>Frameworks worth knowing</h2>
+    <p>None of these are binding law on their own &mdash; that is the point.
+    They are the instruments companies voluntarily adopt to manage AI risk,
+    and several create a presumption of compliance with binding regimes.</p>
+  </div>
+  <div class="notice reveal" style="margin-bottom:1.6rem"><p>Coming next: cross-walks
+  mapping each framework to the binding laws it helps satisfy.</p></div>
+  <div data-explorer>
+    
+    <div class="fbar">
+      <input class="fsearch" data-f="q" type="search" placeholder="Search frameworks…" aria-label="Search">
+      <select data-f="kind" aria-label="Filter by type"><option value="">All types</option><option value="Code of conduct">Code of conduct</option><option value="Code of practice">Code of practice</option><option value="Declaration">Declaration</option><option value="Governance framework">Governance framework</option><option value="Guidelines">Guidelines</option><option value="Industry commitments">Industry commitments</option><option value="Management system standard">Management system standard</option><option value="Principles">Principles</option><option value="Risk management framework">Risk management framework</option><option value="Safety commitments">Safety commitments</option><option value="Treaty">Treaty</option></select>
+      <select data-f="badge" aria-label="Filter by status"><option value="">All statuses</option></select>
+      <span class="fcount" data-f="count"></span>
+    </div>
+    <div class="grid">
+        <article class="bcard" data-card data-badge="Risk management framework" data-kind="Risk management framework"
+                 data-search="nist ai risk management framework (ai rmf 1.0) us national institute of standards and technology united states voluntary framework for managing ai risks across the system lifecycle, organized around four functions: govern, map, measure, manage. the most widely referenced starting point for corporate ai governance programs.">
+          <span class="badge b-blue">Risk management framework</span>
+          <h3><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework (AI RMF 1.0)</a></h3>
+          <p class="meta">US National Institute of Standards and Technology &middot; United States &middot; 2023</p>
+          <p class="txt">Voluntary framework for managing AI risks across the system lifecycle, organized around four functions: Govern, Map, Measure, Manage. The most widely referenced starting point for corporate AI governance programs.</p>
+          <div class="foot"><a class="offlink" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Risk management framework" data-kind="Risk management framework"
+                 data-search="nist ai rmf generative ai profile (nist ai 600-1) us national institute of standards and technology united states companion profile applying the ai rmf to generative ai: catalogs gen-ai-specific risks (confabulation, dangerous content, ip, environmental) and maps suggested mitigations to the core framework functions.">
+          <span class="badge b-blue">Risk management framework</span>
+          <h3><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF Generative AI Profile (NIST AI 600-1)</a></h3>
+          <p class="meta">US National Institute of Standards and Technology &middot; United States &middot; 2024</p>
+          <p class="txt">Companion profile applying the AI RMF to generative AI: catalogs gen-AI-specific risks (confabulation, dangerous content, IP, environmental) and maps suggested mitigations to the core framework functions.</p>
+          <div class="foot"><a class="offlink" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Management system standard" data-kind="Management system standard"
+                 data-search="iso/iec 42001:2023 — ai management systems iso / iec international certifiable management-system standard for ai: requires policies, risk assessment, and lifecycle controls for developing or using ai. the standard companies get independently audited against.">
+          <span class="badge b-blue">Management system standard</span>
+          <h3><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 — AI Management Systems</a></h3>
+          <p class="meta">ISO / IEC &middot; International &middot; 2023</p>
+          <p class="txt">Certifiable management-system standard for AI: requires policies, risk assessment, and lifecycle controls for developing or using AI. The standard companies get independently audited against.</p>
+          <div class="foot"><a class="offlink" href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Principles" data-kind="Principles"
+                 data-search="oecd ai principles organisation for economic co-operation and development international the first intergovernmental principles on ai: inclusive growth, human rights, transparency, robustness, and accountability. adopted by oecd members and adherents; revised in 2024.">
+          <span class="badge b-blue">Principles</span>
+          <h3><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">OECD AI Principles</a></h3>
+          <p class="meta">Organisation for Economic Co-operation and Development &middot; International &middot; 2019 (revised 2024)</p>
+          <p class="txt">The first intergovernmental principles on AI: inclusive growth, human rights, transparency, robustness, and accountability. Adopted by OECD members and adherents; revised in 2024.</p>
+          <div class="foot"><a class="offlink" href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Code of conduct" data-kind="Code of conduct"
+                 data-search="g7 hiroshima process — international code of conduct for organizations developing advanced ai systems g7 international voluntary code for developers of advanced ai systems: risk assessment across the lifecycle, incident reporting, transparency, and security practices. the g7&#x27;s soft-law complement to binding regulation.">
+          <span class="badge b-blue">Code of conduct</span>
+          <h3><a href="https://digital-strategy.ec.europa.eu/en/policies/hiroshima-ai-process" target="_blank" rel="noopener">G7 Hiroshima Process — International Code of Conduct for Organizations Developing Advanced AI Systems</a></h3>
+          <p class="meta">G7 &middot; International &middot; 2023</p>
+          <p class="txt">Voluntary code for developers of advanced AI systems: risk assessment across the lifecycle, incident reporting, transparency, and security practices. The G7&#x27;s soft-law complement to binding regulation.</p>
+          <div class="foot"><a class="offlink" href="https://digital-strategy.ec.europa.eu/en/policies/hiroshima-ai-process" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Declaration" data-kind="Declaration"
+                 data-search="bletchley declaration uk ai safety summit united kingdom / international declaration signed by 28 countries at the 2023 uk ai safety summit affirming international cooperation on frontier ai risks. a political commitment, not a binding instrument.">
+          <span class="badge b-blue">Declaration</span>
+          <h3><a href="https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" target="_blank" rel="noopener">Bletchley Declaration</a></h3>
+          <p class="meta">UK AI Safety Summit &middot; United Kingdom / International &middot; 2023</p>
+          <p class="txt">Declaration signed by 28 countries at the 2023 UK AI Safety Summit affirming international cooperation on frontier AI risks. A political commitment, not a binding instrument.</p>
+          <div class="foot"><a class="offlink" href="https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Safety commitments" data-kind="Safety commitments"
+                 data-search="frontier ai safety commitments (ai seoul summit) 16 ai companies via the ai seoul summit international sixteen frontier ai companies committed to publish safety frameworks, assess severe risks, and pause development where mitigations are inadequate. the industry&#x27;s most concrete voluntary safety pledge to date.">
+          <span class="badge b-blue">Safety commitments</span>
+          <h3><a href="https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024" target="_blank" rel="noopener">Frontier AI Safety Commitments (AI Seoul Summit)</a></h3>
+          <p class="meta">16 AI companies via the AI Seoul Summit &middot; International &middot; 2024</p>
+          <p class="txt">Sixteen frontier AI companies committed to publish safety frameworks, assess severe risks, and pause development where mitigations are inadequate. The industry&#x27;s most concrete voluntary safety pledge to date.</p>
+          <div class="foot"><a class="offlink" href="https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Code of practice" data-kind="Code of practice"
+                 data-search="eu general-purpose ai code of practice european commission / eu ai office european union voluntary code helping general-purpose ai model providers demonstrate compliance with the eu ai act&#x27;s duties on transparency, copyright, and systemic-risk evaluation. signing creates a presumption of conformity.">
+          <span class="badge b-blue">Code of practice</span>
+          <h3><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-code-of-practice" target="_blank" rel="noopener">EU General-Purpose AI Code of Practice</a></h3>
+          <p class="meta">European Commission / EU AI Office &middot; European Union &middot; 2025</p>
+          <p class="txt">Voluntary code helping general-purpose AI model providers demonstrate compliance with the EU AI Act&#x27;s duties on transparency, copyright, and systemic-risk evaluation. Signing creates a presumption of conformity.</p>
+          <div class="foot"><a class="offlink" href="https://digital-strategy.ec.europa.eu/en/policies/ai-code-of-practice" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Principles" data-kind="Principles"
+                 data-search="unesco recommendation on the ethics of ai unesco international first global standard-setting instrument on ai ethics, adopted by 193 member states: human rights, fairness, transparency, and accountability as the values ai should serve.">
+          <span class="badge b-blue">Principles</span>
+          <h3><a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" target="_blank" rel="noopener">UNESCO Recommendation on the Ethics of AI</a></h3>
+          <p class="meta">UNESCO &middot; International &middot; 2021</p>
+          <p class="txt">First global standard-setting instrument on AI ethics, adopted by 193 member states: human rights, fairness, transparency, and accountability as the values AI should serve.</p>
+          <div class="foot"><a class="offlink" href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Governance framework" data-kind="Governance framework"
+                 data-search="model ai governance framework for generative ai singapore imda / ai verify foundation singapore practical guidance for deploying generative ai responsibly: incident reporting, pre-deployment testing, and content provenance. pairs with ai verify, singapore&#x27;s open-source model-testing toolkit.">
+          <span class="badge b-blue">Governance framework</span>
+          <h3><a href="https://www.imda.gov.sg/regulations-and-licensing-list/ai-verify" target="_blank" rel="noopener">Model AI Governance Framework for Generative AI</a></h3>
+          <p class="meta">Singapore IMDA / AI Verify Foundation &middot; Singapore &middot; 2024</p>
+          <p class="txt">Practical guidance for deploying generative AI responsibly: incident reporting, pre-deployment testing, and content provenance. Pairs with AI Verify, Singapore&#x27;s open-source model-testing toolkit.</p>
+          <div class="foot"><a class="offlink" href="https://www.imda.gov.sg/regulations-and-licensing-list/ai-verify" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Industry commitments" data-kind="Industry commitments"
+                 data-search="white house voluntary ai commitments the white house united states fifteen leading ai companies committed to pre-release safety testing, information sharing, watermarking ai-generated content, and public reporting of capabilities and limitations. the us flagship voluntary approach of 2023.">
+          <span class="badge b-blue">Industry commitments</span>
+          <h3><a href="https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/07/21/fact-sheet-biden-harris-administration-secures-voluntary-commitments-from-leading-artificial-intelligence-companies/" target="_blank" rel="noopener">White House Voluntary AI Commitments</a></h3>
+          <p class="meta">The White House &middot; United States &middot; 2023</p>
+          <p class="txt">Fifteen leading AI companies committed to pre-release safety testing, information sharing, watermarking AI-generated content, and public reporting of capabilities and limitations. The US flagship voluntary approach of 2023.</p>
+          <div class="foot"><a class="offlink" href="https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/07/21/fact-sheet-biden-harris-administration-secures-voluntary-commitments-from-leading-artificial-intelligence-companies/" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Guidelines" data-kind="Guidelines"
+                 data-search="ai guidelines for business (ver. 1.0) japan meti + ministry of internal affairs and communications japan non-binding guidance for ai developers, providers, and business users: risk-based governance, safety, transparency, and fairness duties. unified three prior guidelines and aligns with the hiroshima process.">
+          <span class="badge b-blue">Guidelines</span>
+          <h3><a href="https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/pdf/20240419_14.pdf" target="_blank" rel="noopener">AI Guidelines for Business (Ver. 1.0)</a></h3>
+          <p class="meta">Japan METI + Ministry of Internal Affairs and Communications &middot; Japan &middot; 2024</p>
+          <p class="txt">Non-binding guidance for AI developers, providers, and business users: risk-based governance, safety, transparency, and fairness duties. Unified three prior guidelines and aligns with the Hiroshima Process.</p>
+          <div class="foot"><a class="offlink" href="https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/pdf/20240419_14.pdf" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Code of conduct" data-kind="Code of conduct"
+                 data-search="voluntary code of conduct on the responsible development and management of advanced generative ai systems innovation, science and economic development canada (ised) canada canadian code for generative ai developers: safety assessment, adversarial testing, and public transparency — a stopgap while binding federal ai legislation remains stalled.">
+          <span class="badge b-blue">Code of conduct</span>
+          <h3><a href="https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-management-advanced-generative-ai-systems" target="_blank" rel="noopener">Voluntary Code of Conduct on the Responsible Development and Management of Advanced Generative AI Systems</a></h3>
+          <p class="meta">Innovation, Science and Economic Development Canada (ISED) &middot; Canada &middot; 2023</p>
+          <p class="txt">Canadian code for generative AI developers: safety assessment, adversarial testing, and public transparency — a stopgap while binding federal AI legislation remains stalled.</p>
+          <div class="foot"><a class="offlink" href="https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-management-advanced-generative-ai-systems" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article>
+        <article class="bcard" data-card data-badge="Treaty" data-kind="Treaty"
+                 data-search="council of europe framework convention on artificial intelligence council of europe international first legally binding international treaty on ai: requires parties to ensure ai systems respect human rights, democracy, and the rule of law. binding on states once ratified; open to non-member states.">
+          <span class="badge b-purple">Treaty</span>
+          <h3><a href="https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence" target="_blank" rel="noopener">Council of Europe Framework Convention on Artificial Intelligence</a></h3>
+          <p class="meta">Council of Europe &middot; International &middot; 2024</p>
+          <p class="txt">First legally binding international treaty on AI: requires parties to ensure AI systems respect human rights, democracy, and the rule of law. Binding on states once ratified; open to non-member states.</p>
+          <div class="foot"><a class="offlink" href="https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
+        </article></div>
+    <div class="empty" data-f="empty"><h3>No matches</h3>
+      <p>Try a different search term or clear the filters.</p></div>
+  </div>
+</div></section>
+
+
+<footer>
+  <div class="fband"><div class="wrap"><div class="fcols">
+    <div>
+      <h5>About this tracker</h5>
+      <p>A public index of artificial-intelligence law and litigation: US federal
+      and state bills, AI lawsuits in federal court, and enacted AI laws worldwide.
+      Every enacted law is verified against an official government source; reported
+      laws that cannot be confirmed are marked <b>Unverified</b> and kept out of the
+      enacted count.</p>
+    </div>
+    <div>
+      <h5>Index</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="us-laws.html">US AI Law Tracker</a></li>
+        <li><a href="litigation.html">AI Litigation Monitor</a></li>
+        <li><a href="global.html">Global AI Regulation Index</a></li>
+        <li><a href="frameworks.html">AI Governance Frameworks</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Sources</h5>
+      <ul>
+        <li><a href="https://www.congress.gov">Congress.gov</a> — federal bills</li>
+        <li><a href="https://openstates.org">OpenStates</a> — state bills</li>
+        <li><a href="https://www.courtlistener.com">CourtListener</a> — lawsuits</li>
+        <li>Official gazettes &amp; agency sites — enacted laws</li>
+      </ul>
+    </div>
+  </div></div></div>
+  <div class="fbottom"><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;width:100%">
+    <small>AI REGULATION TRACKER · UPDATED October 1, 2026</small>
+    <small>CODE &amp; CURATION NOTES ON <a href="https://github.com/trishabinwade/ai-regulation-tracker" style="color:#fff">GITHUB</a></small>
+  </div></div>
+</footer>
+
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('progress');
+  function onScroll(){
+    nav.classList.toggle('scrolled', window.scrollY>40);
+    var h=document.documentElement, p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+    prog.style.width=(p*100)+'%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target=parseInt(el.getAttribute('data-count'),10), t0=null;
+    function step(ts){ if(!t0)t0=ts; var k=Math.min(1,(ts-t0)/1100);
+      el.textContent=Math.round(target*(1-Math.pow(1-k,3))); if(k<1)requestAnimationFrame(step); }
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){requestAnimationFrame(step);io2.disconnect();}});});
+    io2.observe(el);
+  });
+  // generic explorer filter: [data-explorer] wraps cards with data-search/data-badge/data-kind
+  document.querySelectorAll('[data-explorer]').forEach(function(root){
+    var q=root.querySelector('[data-f=q]'),
+        badge=root.querySelector('[data-f=badge]'),
+        kind=root.querySelector('[data-f=kind]'),
+        count=root.querySelector('[data-f=count]'),
+        empty=root.querySelector('[data-f=empty]'),
+        cards=Array.prototype.slice.call(root.querySelectorAll('[data-card]')),
+        total=cards.length;
+    function apply(){
+      var s=q?q.value.trim().toLowerCase():'', b=badge?badge.value:'',
+          k=kind?kind.value:'', shown=0;
+      cards.forEach(function(c){
+        var ok=(!s||c.getAttribute('data-search').indexOf(s)!==-1)
+          &&(!b||c.getAttribute('data-badge')===b)
+          &&(!k||c.getAttribute('data-kind')===k);
+        c.style.display=ok?'':'none'; if(ok)shown++;
+      });
+      if(count)count.textContent='Showing '+shown+' of '+total;
+      if(empty)empty.style.display=shown===0?'':'none';
+    }
+    [q,badge,kind].forEach(function(el){if(el)el.addEventListener('input',apply);if(el)el.addEventListener('change',apply);});
+    apply();
+  });
+})();
+</script>
+
+
+</body>
+</html>
