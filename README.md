@@ -45,12 +45,14 @@ If the Congress.gov key lives in secure storage instead of an env var:
 
 ```bash
 ~/workspace/skills/congress-gov/bin/congress_bills.py 119 > data/.congress_cache.json
+~/workspace/skills/openstates/bin/openstates_bills.py '"artificial intelligence"' > data/.openstates_cache.json
 python3 tracker.py
 ```
 
-The CLI fetches through the stored credential and writes a local cache;
-`tracker.py` uses the cache when `CONGRESS_API_KEY` is unset. Never commit
-`data/.congress_cache.json` — it is a local build artifact.
+The CLIs fetch through the stored credentials and write local caches;
+`tracker.py` uses the caches when the env vars are unset. Never commit
+`data/.congress_cache.json` or `data/.openstates_cache.json` — they are local
+build artifacts.
 
 ## Publish it (GitHub Pages)
 
@@ -67,6 +69,9 @@ The CLI fetches through the stored credential and writes a local cache;
 - State bills are ranked with enacted and recently-active bills first.
 - One bad source never kills a run — failures are logged and the section shows a
   retry note.
+- The page is a dependency-free dashboard UI: stat cards per section, section tabs,
+  full-text search, a status filter, a live result count, and a dark-mode toggle —
+  all client-side JavaScript, so it runs on GitHub Pages with zero backend.
 - The lawsuit section is honest about coverage: federal dockets (via RECAP) plus
   published opinions. County and most state trial courts are not in any free
   database.
