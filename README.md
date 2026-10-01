@@ -1,12 +1,10 @@
 # AI Regulation Tracker
 
 A tiny Python tool that tracks **real AI legislation and litigation** — US federal
-bills, US state bills, AI-related lawsuits, and enacted AI laws worldwide — and
-builds a four-page dark editorial site (CNAS-interactive style) you can publish
-free with GitHub Pages.
+bills, US state bills, AI-related lawsuits, and enacted AI laws worldwide.
 
-**Why it exists:** I work in compliance and policy, and I wanted a single place
-that keeps me current on AI regulation without doomscrolling five news sites.
+**Why it exists:** I wanted a single place that keeps me current on AI regulation 
+without doomscrolling five news sites.
 Built with Python's standard library only — no dependencies to install.
 
 ## The site
