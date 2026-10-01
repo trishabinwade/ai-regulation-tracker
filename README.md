@@ -22,9 +22,9 @@ show a note explaining how to enable them.
 
 | Section | Source | Key needed? |
 |---|---|---|
-| US Federal Bills | Congress.gov API (`api.congress.gov/v3/bill`) — 250 most recently updated bills of the 119th Congress, filtered client-side for AI relevance (Congress.gov offers no keyword search) | Yes — free at https://api.congress.gov/sign-up |
-| US State Bills | OpenStates API v3 (`v3.openstates.org/bills`) — full-text search across all state legislatures | Yes — free at https://open.pluralpolicy.com/accounts/signup |
-| US AI Lawsuits | CourtListener search API (RECAP dockets + published opinions) | No |
+| US Federal Bills | Congress.gov API (`api.congress.gov/v3/bill`) — 1,000 most recently updated bills of the 119th Congress (4 pages × 250), filtered client-side for AI relevance (Congress.gov offers no keyword search) | Yes — free at https://api.congress.gov/sign-up |
+| US State Bills | OpenStates API v3 (`v3.openstates.org/bills`) — full-text search across all state legislatures; five queries (`"artificial intelligence"`, `deepfake`, `"algorithmic discrimination"`, `"automated decision"`, `"synthetic media"`) merged and deduped | Yes — free at https://open.pluralpolicy.com/accounts/signup |
+| US AI Lawsuits | CourtListener search API (RECAP dockets filed after Apr 2025 + published opinions) | No |
 | Enacted AI Laws Worldwide | Hand-curated `data/global_laws.json` | No — edit the file directly to add laws |
 
 ### Enabling the API keys
