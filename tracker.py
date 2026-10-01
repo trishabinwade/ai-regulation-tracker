@@ -138,6 +138,7 @@ def federal_bills():
             "date": pretty_date(latest.get("actionDate", "")),
             "extra": f"Sponsor: {sponsor}" if sponsor else "",
             "link": link,
+            "search": " ".join([f"{btype} {number}", title, policy, latest.get("text", ""), sponsor]),
         })
         if len(items) >= FEDERAL_CAP:
             break
@@ -155,13 +156,25 @@ def state_badge(action_desc):
 
 
 def state_bills():
-    """Returns (items, error). items is None when no API key is set."""
-    if not OPENSTATES_KEY:
+    """Returns (items, error). items is None when no key AND no cached data.
+
+    Without an API key we fall back to a locally cached response
+    (data/.openstates_cache.json, refreshed by the maintainer; never committed).
+    """
+    data = None
+    if OPENSTATES_KEY:
+        q = urllib.parse.quote('"artificial intelligence"')
+        url = (f"https://v3.openstates.org/bills?q={q}&per_page=20"
+               f"&sort=updated_desc")
+        data = fetch_json(url, headers={"X-API-KEY": OPENSTATES_KEY})
+    else:
+        here = os.path.dirname(os.path.abspath(__file__))
+        cache = os.path.join(here, "data", ".openstates_cache.json")
+        if os.path.exists(cache):
+            with open(cache, encoding="utf-8") as f:
+                data = json.load(f)
+    if data is None:
         return None, "needs-key"
-    q = urllib.parse.quote('"artificial intelligence"')
-    url = (f"https://v3.openstates.org/bills?q={q}&per_page=25"
-           f"&sort=updated_desc&include=actions")
-    data = fetch_json(url, headers={"X-API-KEY": OPENSTATES_KEY})
     scored = []
     for b in data.get("results", []):
         latest_desc = b.get("latest_action_description", "")
@@ -176,6 +189,7 @@ def state_bills():
             "date": pretty_date(b.get("latest_action_date", "")),
             "extra": f"Latest action: {latest_desc}" if latest_desc else "",
             "link": b.get("openstates_url", "") or "",
+            "search": " ".join([b.get("identifier", ""), b.get("title", ""), juris, b.get("session", ""), latest_desc]),
         }))
     scored.sort(key=lambda s: (s[0], s[1]), reverse=True)
     return [s[2] for s in scored[:STATE_CAP]], None
@@ -207,6 +221,7 @@ def lawsuits():
             "date": pretty_date(d.get("dateFiled", "")),
             "extra": "",
             "link": "https://www.courtlistener.com" + (d.get("docket_absolute_url") or ""),
+            "search": " ".join([d.get("caseName", ""), d.get("court", ""), d.get("docketNumber", "")]),
         })
     # Published opinions mentioning AI.
     opinions = courtlistener_search('"artificial intelligence"', "o")
@@ -218,6 +233,7 @@ def lawsuits():
             "date": pretty_date(o.get("dateFiled", "")),
             "extra": "",
             "link": "https://www.courtlistener.com" + (o.get("absolute_url") or ""),
+            "search": " ".join([o.get("caseName", ""), o.get("court", ""), o.get("court_citation_string", "")]),
         })
     return items, None
 
@@ -237,6 +253,7 @@ def global_laws():
             "date": "",
             "extra": law.get("summary", ""),
             "link": law.get("link", ""),
+            "search": " ".join([law.get("name", ""), law.get("country", ""), law.get("summary", "")]),
         })
     return items, None
 
@@ -249,21 +266,29 @@ BADGE_COLORS = {
     "Decided": "#8250df",
 }
 
+TABS = [
+    ("all", "All"),
+    ("federal", "Federal bills"),
+    ("states", "State bills"),
+    ("lawsuits", "Lawsuits"),
+    ("global", "Global laws"),
+]
+
 
 def badge_html(badge):
     color = BADGE_COLORS.get(badge, "#57606a")
-    return (f'<span style="display:inline-block;background:{color};color:#fff;'
-            f'font-size:.72rem;font-weight:600;padding:.15rem .55rem;'
-            f'border-radius:999px;margin-bottom:.4rem;">{esc(badge)}</span>')
+    return f'<span class="badge" style="background:{color};">{esc(badge)}</span>'
 
 
-def card(item):
+def card(item, section_key):
     date_line = f" &middot; {esc(item['date'])}" if item["date"] else ""
     extra = f'<p class="extra">{esc(item["extra"])}</p>' if item["extra"] else ""
     return f"""
-        <article class="card">
+        <article class="card" data-section="{section_key}"
+                 data-badge="{esc(item['badge'])}"
+                 data-search="{esc(item.get('search', '').lower())}">
           {badge_html(item['badge'])}
-          <h2><a href="{esc(item['link'])}">{esc(item['title'])}</a></h2>
+          <h2><a href="{esc(item['link'])}" target="_blank" rel="noopener">{esc(item['title'])}</a></h2>
           <p class="meta">{item['meta']}{date_line}</p>
           {extra}
         </article>"""
@@ -286,74 +311,219 @@ def error_notice(what):
         </div>"""
 
 
-def section(heading, blurb, body):
+def section_block(key, heading, blurb, body_html):
     return f"""
-      <section>
-        <h2 class="section-head">{esc(heading)}</h2>
-        <p class="blurb">{blurb}</p>
-        {body}
+      <section class="sec" data-section="{key}">
+        <div class="sec-head">
+          <h2>{esc(heading)}</h2>
+          <p class="blurb">{blurb}</p>
+        </div>
+        {body_html}
       </section>"""
 
 
-def render_page(sections_html, generated_at):
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Regulation Tracker</title>
-<style>
-  body {{ font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 760px;
-         margin: 0 auto; padding: 2rem 1rem; color: #1a1a1a; background: #fafafa; }}
-  header {{ border-bottom: 2px solid #1a1a1a; margin-bottom: 1.5rem; padding-bottom: 1rem; }}
-  h1 {{ margin: 0 0 .25rem; }}
-  .sub {{ color: #555; margin: 0; }}
-  .section-head {{ font-size: 1.25rem; margin: 2rem 0 .25rem;
-                   padding-top: 1rem; border-top: 1px solid #ddd; }}
-  section:first-of-type .section-head {{ border-top: none; margin-top: 1rem; padding-top: 0; }}
-  .blurb {{ color: #555; font-size: .92rem; margin: 0 0 1rem; }}
-  .card {{ background: #fff; border: 1px solid #e3e3e3; border-radius: 8px;
-           padding: 1rem 1.25rem; margin-bottom: 1rem; }}
-  .card h2 {{ font-size: 1.02rem; margin: 0 0 .3rem; }}
-  .card h2 a {{ color: #1a1a1a; text-decoration: none; }}
-  .card h2 a:hover {{ text-decoration: underline; }}
-  .meta {{ color: #777; font-size: .85rem; margin: 0 0 .5rem; }}
-  .extra {{ font-size: .9rem; margin: .4rem 0 0; color: #333; }}
-  .notice {{ background: #fff8e1; border: 1px solid #e6c200; border-radius: 8px;
-             padding: .75rem 1.1rem; margin-bottom: 1rem; font-size: .9rem; }}
-  footer {{ color: #777; font-size: .85rem; margin-top: 2rem; }}
-  code {{ background: #eee; padding: .1rem .35rem; border-radius: 4px; }}
-</style>
-</head>
-<body>
-<header>
-  <h1>AI Regulation Tracker</h1>
-  <p class="sub">US federal &amp; state AI bills &middot; AI lawsuits &middot; enacted AI laws worldwide</p>
-  <p class="sub">Updated {generated_at}</p>
-</header>
-{sections_html}
-<footer>
-  <p>Sources: Congress.gov API (federal bills) · OpenStates API v3 (state bills) ·
-     CourtListener (lawsuits) · hand-curated list (enacted laws).
-     API keys are read from environment variables at build time and are never committed.
-     Re-run <code>tracker.py</code> to refresh.</p>
-</footer>
-</body>
-</html>
-"""
-
-
-def build_section(items, error, heading, blurb, key_info=None):
+def build_section(key, heading, blurb, items, error, key_info=None):
     if error == "needs-key":
         name, url, env = key_info
         body = key_notice(name, url, env)
     elif error:
         body = error_notice(heading)
     elif not items:
-        body = "<p>No results this run.</p>"
+        body = '<div class="notice"><p>No results this run.</p></div>'
     else:
-        body = "".join(card(i) for i in items)
-    return section(heading, blurb, body)
+        body = '<div class="grid">' + "".join(card(i, key) for i in items) + "</div>"
+    return section_block(key, heading, blurb, body)
+
+
+PAGE_TEMPLATE = """<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Regulation Tracker</title>
+<style>
+:root{
+  --bg:#f6f8fa; --card:#ffffff; --text:#1f2328; --muted:#59636e;
+  --border:#d8dee4; --accent:#0969da; --codebg:#eaeef2;
+}
+[data-theme="dark"]{
+  --bg:#0d1117; --card:#161b22; --text:#e6edf3; --muted:#8b949e;
+  --border:#30363d; --accent:#4493f8; --codebg:#21262d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.25rem 3rem}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  padding:2rem 0 .5rem;flex-wrap:wrap}
+h1{margin:0;font-size:1.9rem;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:.35rem 0 0}
+.theme-btn{border:1px solid var(--border);background:var(--card);color:var(--text);
+  border-radius:999px;padding:.5rem .95rem;font-size:.85rem;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:.75rem;margin:1.25rem 0 0}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:.85rem 1.05rem}
+.stat .num{font-size:1.55rem;font-weight:700;letter-spacing:-.02em}
+.stat .lbl{color:var(--muted);font-size:.82rem;margin-top:.15rem}
+.controls{position:sticky;top:0;z-index:10;background:var(--bg);
+  padding:.7rem 0;border-bottom:1px solid var(--border);
+  display:flex;gap:.55rem;flex-wrap:wrap;align-items:center;margin-top:1.25rem}
+.search{flex:1;min-width:180px;padding:.55rem .8rem;border:1px solid var(--border);
+  border-radius:8px;background:var(--card);color:var(--text);font-size:.95rem}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap}
+.tab{border:1px solid var(--border);background:var(--card);color:var(--text);
+  border-radius:999px;padding:.45rem .9rem;font-size:.85rem;cursor:pointer}
+.tab.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+.status-sel{padding:.5rem .6rem;border:1px solid var(--border);border-radius:8px;
+  background:var(--card);color:var(--text);font-size:.88rem}
+.count{color:var(--muted);font-size:.85rem;margin-left:auto}
+.sec{margin-top:2.25rem}
+.sec-head h2{margin:0 0 .15rem;font-size:1.3rem;letter-spacing:-.01em}
+.blurb{color:var(--muted);font-size:.92rem;margin:0 0 1rem;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:.9rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1rem 1.15rem}
+.badge{display:inline-block;color:#fff;font-size:.68rem;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;padding:.22rem .62rem;
+  border-radius:999px;margin-bottom:.55rem}
+.card h2{font-size:1rem;margin:0 0 .35rem;line-height:1.35}
+.card h2 a{color:var(--text);text-decoration:none}
+.card h2 a:hover{color:var(--accent);text-decoration:underline}
+.meta{color:var(--muted);font-size:.82rem;margin:0 0 .35rem;line-height:1.4}
+.extra{font-size:.88rem;margin:.35rem 0 0;line-height:1.5}
+.notice{background:var(--card);border:1px solid var(--border);
+  border-left:4px solid #d4a017;border-radius:8px;
+  padding:.85rem 1.1rem;font-size:.9rem}
+.notice a{color:var(--accent)}
+#empty{display:none;text-align:center;color:var(--muted);padding:3.5rem 1rem}
+#empty h3{color:var(--text)}
+footer{color:var(--muted);font-size:.83rem;margin-top:2.5rem;
+  border-top:1px solid var(--border);padding-top:1.25rem;line-height:1.6}
+footer a{color:var(--accent)}
+code{background:var(--codebg);padding:.1rem .35rem;border-radius:4px;font-size:.85em}
+@media (max-width:640px){ h1{font-size:1.5rem} .count{margin-left:0;width:100%} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>AI Regulation Tracker</h1>
+      <p class="sub">US federal &amp; state AI bills &middot; AI lawsuits &middot; enacted AI laws worldwide</p>
+      <p class="sub">Updated %%DATE%%</p>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">&#9790; Dark</button>
+  </header>
+
+  <div class="stats">%%STATS%%</div>
+
+  <div class="controls">
+    <input class="search" id="search" type="search" placeholder="Search bills, cases, laws&hellip;" aria-label="Search">
+    <div class="tabs" id="tabs">%%TABS%%</div>
+    <select class="status-sel" id="statusSel" aria-label="Filter by status">
+      <option value="">All statuses</option>
+      %%OPTS%%
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+
+  %%SECTIONS%%
+
+  <div id="empty">
+    <h3>No matches</h3>
+    <p>Try a different search term or clear the filters.</p>
+  </div>
+
+  <footer>
+    <p>Sources: Congress.gov API (federal bills) &middot; OpenStates API v3 (state bills) &middot;
+       CourtListener (lawsuits) &middot; hand-curated list (enacted laws).
+       API keys are read from environment variables or local caches at build time and are never committed.
+       Re-run <code>tracker.py</code> to refresh.</p>
+  </footer>
+</div>
+<script>
+(function(){
+  var themeBtn = document.getElementById('themeBtn');
+  function setTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    try{ localStorage.setItem('ai-tracker-theme', t); }catch(e){}
+    themeBtn.innerHTML = t === 'dark' ? '&#9788; Light' : '&#9790; Dark';
+  }
+  var saved = null;
+  try{ saved = localStorage.getItem('ai-tracker-theme'); }catch(e){}
+  setTheme(saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  themeBtn.addEventListener('click', function(){
+    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  var state = { tab:'all', q:'', status:'' };
+  var searchEl = document.getElementById('search');
+  var statusEl = document.getElementById('statusSel');
+  var countEl = document.getElementById('count');
+  var emptyEl = document.getElementById('empty');
+  var totalCards = document.querySelectorAll('.card').length;
+
+  document.getElementById('tabs').addEventListener('click', function(e){
+    var b = e.target.closest('.tab');
+    if(!b) return;
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    b.classList.add('active');
+    state.tab = b.getAttribute('data-tab');
+    apply();
+  });
+  searchEl.addEventListener('input', function(){ state.q = searchEl.value.trim().toLowerCase(); apply(); });
+  statusEl.addEventListener('change', function(){ state.status = statusEl.value; apply(); });
+
+  function apply(){
+    var shown = 0;
+    document.querySelectorAll('.sec').forEach(function(sec){
+      var key = sec.getAttribute('data-section');
+      var secMatch = state.tab === 'all' || state.tab === key;
+      var vis = 0;
+      sec.querySelectorAll('.card').forEach(function(card){
+        var ok = (state.tab === 'all' || card.getAttribute('data-section') === state.tab)
+          && (!state.q || card.getAttribute('data-search').indexOf(state.q) !== -1)
+          && (!state.status || card.getAttribute('data-badge') === state.status);
+        card.style.display = ok ? '' : 'none';
+        if(ok){ vis++; shown++; }
+      });
+      var notice = sec.querySelector('.notice');
+      var showSec = secMatch && (vis > 0 || (notice && !state.q && !state.status));
+      sec.style.display = showSec ? '' : 'none';
+    });
+    emptyEl.style.display = shown === 0 ? '' : 'none';
+    countEl.textContent = 'Showing ' + shown + ' of ' + totalCards;
+  }
+  apply();
+})();
+</script>
+</body>
+</html>
+"""
+
+
+def render_page(sections_html, stats, badges, generated_at):
+    stat_html = "".join(
+        f'<div class="stat"><div class="num">{n}</div>'
+        f'<div class="lbl">{esc(label)}</div></div>'
+        for label, n in stats
+    )
+    tabs_html = "".join(
+        f'<button class="tab{" active" if key == "all" else ""}" '
+        f'data-tab="{key}">{esc(label)}</button>'
+        for key, label in TABS
+    )
+    opts_html = "".join(
+        f'<option value="{esc(b)}">{esc(b)}</option>' for b in badges
+    )
+    page = PAGE_TEMPLATE
+    page = page.replace("%%DATE%%", generated_at)
+    page = page.replace("%%STATS%%", stat_html)
+    page = page.replace("%%TABS%%", tabs_html)
+    page = page.replace("%%OPTS%%", opts_html)
+    page = page.replace("%%SECTIONS%%", sections_html)
+    return page
 
 
 def main():
@@ -365,28 +535,41 @@ def main():
     suits, suits_err = safe_run(lawsuits, "lawsuits")
     glob, glob_err = safe_run(global_laws, "global laws")
 
-    print(f"[federal] {len(fed) if fed else 0} bills" + (" (no API key)" if fed_err == "needs-key" else ""))
-    print(f"[states]  {len(st) if st else 0} bills" + (" (no API key)" if st_err == "needs-key" else ""))
+    print(f"[federal] {len(fed) if fed else 0} bills")
+    print(f"[states]  {len(st) if st else 0} bills")
     print(f"[lawsuits] {len(suits) if suits else 0} cases")
     print(f"[global]  {len(glob) if glob else 0} laws")
 
     sections = "".join([
-        build_section(fed, fed_err, "US Federal Bills",
+        build_section("federal", "US Federal Bills",
                       f"AI-related bills in the {CONGRESS}th Congress, newest action first.",
+                      fed, fed_err,
                       ("Congress.gov", "https://api.congress.gov/sign-up", "CONGRESS_API_KEY")),
-        build_section(st, st_err, "US State Bills",
+        build_section("states", "US State Bills",
                       "AI bills across all state legislatures, current sessions. Enacted and recently-active bills first.",
+                      st, st_err,
                       ("OpenStates", "https://open.pluralpolicy.com/accounts/signup", "OPENSTATES_API_KEY")),
-        build_section(suits, suits_err, "US AI Lawsuits",
+        build_section("lawsuits", "US AI Lawsuits",
                       "Recently filed federal cases and published opinions mentioning artificial intelligence. "
                       "Coverage is federal dockets (via RECAP) plus published opinions — "
-                      "county and most state trial courts are not in any free database."),
-        build_section(glob, glob_err, "Enacted AI Laws Worldwide",
+                      "county and most state trial courts are not in any free database.",
+                      suits, suits_err),
+        build_section("global", "Enacted AI Laws Worldwide",
                       "Hand-curated, verified list of AI laws actually in force. Maintained in "
-                      "<code>data/global_laws.json</code> — edit it directly to add new laws."),
+                      "<code>data/global_laws.json</code> — edit it directly to add new laws.",
+                      glob, glob_err),
     ])
 
-    page = render_page(sections, generated_at)
+    all_items = [i for items in (fed, st, suits, glob) if items for i in items]
+    badges = sorted({i["badge"] for i in all_items})
+    stats = [
+        ("Federal bills", len(fed) if fed else 0),
+        ("State bills", len(st) if st else 0),
+        ("Lawsuits", len(suits) if suits else 0),
+        ("Enacted laws", len(glob) if glob else 0),
+    ]
+
+    page = render_page(sections, stats, badges, generated_at)
     os.makedirs("docs", exist_ok=True)
     with open("docs/index.html", "w", encoding="utf-8") as f:
         f.write(page)
