@@ -1,12 +1,12 @@
 # AI Regulation Tracker
 
-A tiny Python tool that watches AI-regulation news — the Colorado AI Act, the EU AI Act,
-US state AI bills, and general AI regulation coverage — and builds a one-page digest you
-can publish free with GitHub Pages.
+A tiny Python tool that tracks **real AI legislation and litigation** — US federal
+bills, US state bills, AI-related lawsuits, and enacted AI laws worldwide — and
+builds a one-page digest you can publish free with GitHub Pages.
 
-**Why it exists:** I work in compliance and policy, and I wanted a single page that keeps
-me current on AI regulation without doomscrolling five news sites. Built with Python's
-standard library only — no dependencies to install.
+**Why it exists:** I work in compliance and policy, and I wanted a single page that
+keeps me current on AI regulation without doomscrolling five news sites. Built
+with Python's standard library only — no dependencies to install.
 
 ## Run it
 
@@ -14,23 +14,65 @@ standard library only — no dependencies to install.
 python3 tracker.py
 ```
 
-This fetches the latest stories from Google News RSS feeds and writes `docs/index.html`.
-Re-run any time to refresh the digest.
+This pulls the four sources below and writes `docs/index.html`. Re-run any time
+to refresh. It works with no API keys at all — the two keyed sections simply
+show a note explaining how to enable them.
+
+## Data sources
+
+| Section | Source | Key needed? |
+|---|---|---|
+| US Federal Bills | Congress.gov API (`api.congress.gov/v3/bill`) — 250 most recently updated bills of the 119th Congress, filtered client-side for AI relevance (Congress.gov offers no keyword search) | Yes — free at https://api.congress.gov/sign-up |
+| US State Bills | OpenStates API v3 (`v3.openstates.org/bills`) — full-text search across all state legislatures | Yes — free at https://open.pluralpolicy.com/accounts/signup |
+| US AI Lawsuits | CourtListener search API (RECAP dockets + published opinions) | No |
+| Enacted AI Laws Worldwide | Hand-curated `data/global_laws.json` | No — edit the file directly to add laws |
+
+### Enabling the API keys
+
+```bash
+export CONGRESS_API_KEY="your-key-here"
+export OPENSTATES_API_KEY="your-key-here"
+python3 tracker.py
+```
+
+Keys are read from environment variables **at build time only** and are never
+written to any file or committed to the repo. The generated `docs/index.html`
+contains no keys.
+
+### Maintainer refresh (key stored in secure vault)
+
+If the Congress.gov key lives in secure storage instead of an env var:
+
+```bash
+~/workspace/skills/congress-gov/bin/congress_bills.py 119 > data/.congress_cache.json
+python3 tracker.py
+```
+
+The CLI fetches through the stored credential and writes a local cache;
+`tracker.py` uses the cache when `CONGRESS_API_KEY` is unset. Never commit
+`data/.congress_cache.json` — it is a local build artifact.
 
 ## Publish it (GitHub Pages)
 
 1. Create a new public repo on GitHub (e.g. `ai-regulation-tracker`) and push these files.
 2. In the repo: **Settings → Pages → Source: Deploy from a branch → Branch: main, folder: `/docs` → Save.**
-3. Your digest goes live at `https://<your-username>.github.io/ai-regulation-tracker/` — put that link on your resume and LinkedIn.
+3. Your tracker goes live at `https://<your-username>.github.io/ai-regulation-tracker/` — put that link on your resume and LinkedIn.
 
 ## How it works
 
-- `tracker.py` pulls four Google News RSS searches (AI regulation, Colorado AI Act, EU AI Act, US state AI bills).
-- It dedupes stories by headline, sorts newest-first, and renders the top 25 into a styled static page.
-- One bad feed never kills a run — failures are logged and skipped.
+- `tracker.py` queries Congress.gov and OpenStates for AI bills, CourtListener for
+  recent AI dockets and opinions, and loads the curated global laws list.
+- Bills are shown with status badges (Enacted / Passed chamber / Introduced /
+  Active); lawsuits with Filed / Terminated / Decided.
+- State bills are ranked with enacted and recently-active bills first.
+- One bad source never kills a run — failures are logged and the section shows a
+  retry note.
+- The lawsuit section is honest about coverage: federal dockets (via RECAP) plus
+  published opinions. County and most state trial courts are not in any free
+  database.
 
 ## Ideas for later
 
-- Add a feed (edit the `FEEDS` list — e.g. `"Texas AI bill"`, `"NIST AI"`).
+- Track a specific bill's status over time (snapshot each run into a history file).
 - Email yourself the digest weekly with a cron job.
-- Track a bill's status over time instead of just headlines.
+- Add EU legislative tracking via EUR-Lex once the global list outgrows hand curation.
