@@ -8,8 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <style>
 :root{
   --blue:#34a3d7; --magenta:#c71585; --orange:#d74b17;
@@ -42,7 +41,7 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;
   justify-content:center;text-align:center;overflow:hidden}
 .hero.short{min-height:52vh}
-#heroMap{position:absolute;inset:0;z-index:0;background:#020608}
+.hero-img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover}
 .hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,.88) 96%)}
 .hero-inner{position:relative;z-index:2;max-width:920px;padding:6rem 1.5rem}
@@ -232,7 +231,7 @@ footer{margin-top:5rem}
 </nav>
 
 <header class="hero">
-  <div id="heroMap"></div>
+  <img class="hero-img" src="hero.jpg" alt="">
   <div class="hero-inner">
     <div class="eyebrow reveal">Tracking AI law &amp; policy</div>
     <h1 class="reveal">AI Regulation Tracker</h1>
@@ -411,27 +410,6 @@ footer{margin-top:5rem}
 </script>
 
 
-<script>
-(function(){
-  try{
-    var map=L.map('heroMap',{zoomControl:false,attributionControl:false,
-      dragging:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,
-      keyboard:false,tap:false});
-    function coverZoom(){var w=document.getElementById('heroMap').clientWidth||window.innerWidth;
-      return Math.max(2,Math.ceil(Math.log2(w/256)));}
-    map.setView([28,8],coverZoom());
-    window.addEventListener('resize',function(){map.setZoom(coverZoom());});
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {maxZoom:4,noWrap:true,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
-    var pts=[{"lat": 38.9, "lng": -77.0, "n": 12, "hollow": false}, {"lat": 39.9, "lng": 116.4, "n": 4, "hollow": false}, {"lat": 50.85, "lng": 4.35, "n": 3, "hollow": false}, {"lat": 37.57, "lng": 126.98, "n": 1, "hollow": false}, {"lat": 35.68, "lng": 139.69, "n": 1, "hollow": false}, {"lat": 45.42, "lng": -75.7, "n": 1, "hollow": false}, {"lat": 51.5, "lng": -0.12, "n": 1, "hollow": false}, {"lat": 25.03, "lng": 121.57, "n": 0, "hollow": true}, {"lat": -15.79, "lng": -47.88, "n": 0, "hollow": true}, {"lat": 55.76, "lng": 37.62, "n": 0, "hollow": true}, {"lat": 21.03, "lng": 105.85, "n": 0, "hollow": true}, {"lat": -12.05, "lng": -77.04, "n": 0, "hollow": true}, {"lat": 24.63, "lng": 46.68, "n": 0, "hollow": true}, {"lat": 25.2, "lng": 55.27, "n": 0, "hollow": true}];
-    pts.forEach(function(p){
-      var s=p.hollow?10:10+Math.min(p.n,12)*1.6;
-      L.marker([p.lat,p.lng],{interactive:false,keyboard:false,
-        icon:L.divIcon({className:'',html:'<span class="pdot'+(p.hollow?' hollow':'')+'" style="width:'+s+'px;height:'+s+'px"></span>',iconSize:[s,s],iconAnchor:[s/2,s/2]})}).addTo(map);
-    });
-  }catch(e){document.getElementById('heroMap').style.background=
-    'radial-gradient(ellipse at 30% 20%,#1b2b4a 0%,#000 60%)';}
-})();
-</script>
+
 </body>
 </html>
