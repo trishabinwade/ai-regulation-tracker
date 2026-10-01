@@ -62,6 +62,8 @@ body{margin:0;color:var(--ink);font-family:'Spectral',Georgia,'Times New Roman',
 .pdot.hollow{background:transparent;box-shadow:none;border:2px dashed rgba(215,75,23,.9)}
 .pdot.hollow::after{border-color:rgba(215,75,23,.35)}
 @keyframes ping{0%{transform:scale(.45);opacity:1}100%{transform:scale(1.35);opacity:0}}
+/* dark basemap: OSM light tiles inverted via CSS (markers live in the overlay pane, unaffected) */
+.leaflet-tile-pane{filter:invert(1) hue-rotate(185deg) grayscale(.18) brightness(.88) contrast(.94)}
 /* ---- stats ---- */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;
   background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -126,9 +128,10 @@ body{margin:0;color:var(--ink);font-family:'Spectral',Georgia,'Times New Roman',
   letter-spacing:.16em;color:var(--blue);text-decoration:none;text-transform:uppercase}
 .offlink:hover{text-decoration:underline}
 /* ---- map + side panel ---- */
-.mapsec{position:relative;margin:1rem 0 3rem}
+.mapsec{position:relative;margin:1rem 0 3rem;overflow-x:clip}
 #map{height:600px;background:#07141d;border:1px solid var(--line);border-radius:8px;z-index:1}
 .leaflet-container{font-family:'Montserrat',sans-serif}
+.leaflet-tile-pane{filter:invert(90%) hue-rotate(180deg) brightness(.88) contrast(.95)}
 .maplegend{position:absolute;left:14px;bottom:14px;z-index:500;background:rgba(0,0,0,.82);
   border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem;color:#fff}
 .maplegend h4{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.68rem;
@@ -229,7 +232,7 @@ footer{margin-top:5rem}
 </header>
 
 <div class="stats">
-  <div class="stat"><div class="num"><span data-count="14">0</span></div>
+  <div class="stat"><div class="num"><span data-count="16">0</span></div>
     <div class="lbl">Federal bills</div></div>
   <div class="stat"><div class="num"><span data-count="40">0</span></div>
     <div class="lbl">State bills</div></div>
@@ -373,13 +376,13 @@ footer{margin-top:5rem}
     var map=L.map('heroMap',{zoomControl:false,attributionControl:false,
       dragging:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,
       keyboard:false,tap:false}).setView([28,8],2);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-      {maxZoom:4}).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {maxZoom:4,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
     var pts=[{"lat": 38.9, "lng": -77.0, "n": 12, "hollow": false}, {"lat": 39.9, "lng": 116.4, "n": 4, "hollow": false}, {"lat": 50.85, "lng": 4.35, "n": 3, "hollow": false}, {"lat": 37.57, "lng": 126.98, "n": 1, "hollow": false}, {"lat": 35.68, "lng": 139.69, "n": 1, "hollow": false}, {"lat": 45.42, "lng": -75.7, "n": 1, "hollow": false}, {"lat": 51.5, "lng": -0.12, "n": 1, "hollow": false}, {"lat": 25.03, "lng": 121.57, "n": 0, "hollow": true}, {"lat": -15.79, "lng": -47.88, "n": 0, "hollow": true}, {"lat": 55.76, "lng": 37.62, "n": 0, "hollow": true}, {"lat": 21.03, "lng": 105.85, "n": 0, "hollow": true}, {"lat": -12.05, "lng": -77.04, "n": 0, "hollow": true}, {"lat": 24.63, "lng": 46.68, "n": 0, "hollow": true}, {"lat": 25.2, "lng": 55.27, "n": 0, "hollow": true}];
     pts.forEach(function(p){
       var s=p.hollow?10:10+Math.min(p.n,12)*1.6;
-      L.marker([p.lat,p.lng],{interactive:false,keyboard:false},
-        {icon:L.divIcon({className:'',html:'<span class="pdot'+(p.hollow?' hollow':'')+'" style="width:'+s+'px;height:'+s+'px"></span>',iconSize:[s,s],iconAnchor:[s/2,s/2]})}).addTo(map);
+      L.marker([p.lat,p.lng],{interactive:false,keyboard:false,
+        icon:L.divIcon({className:'',html:'<span class="pdot'+(p.hollow?' hollow':'')+'" style="width:'+s+'px;height:'+s+'px"></span>',iconSize:[s,s],iconAnchor:[s/2,s/2]})}).addTo(map);
     });
   }catch(e){document.getElementById('heroMap').style.background=
     'radial-gradient(ellipse at 30% 20%,#1b2b4a 0%,#000 60%)';}
