@@ -30,6 +30,16 @@ reviews and approves every entry. These rules decide what goes in.
 - Repealed or fully superseded laws (remove or annotate on discovery).
 - Anything that cannot be verified against an official government source.
 
+## Unverified watchlist
+
+Candidates that look convincing (e.g. reported by reputable outlets) but cannot
+be confirmed against an official government source are NOT listed as laws.
+They go in the separate `unverified` list in `data/global_laws.json` and
+appear on the site with an **Unverified** badge, clearly marked as reported —
+not confirmed. Each unverified entry records the best lead found and exactly
+what is missing for confirmation, so it can be manually checked and either
+promoted to the verified list or dropped.
+
 ## Each entry must have
 
 - Official name + legal citation (e.g. "Regulation (EU) 2024/1689")
@@ -49,4 +59,15 @@ reviews and approves every entry. These rules decide what goes in.
     Jul 6, 2026, but in force Jan 1, 2027. Revisit after the in-force date.
   - Colorado SB 26-189 — signed May 14, 2026, but in force Jan 1, 2027.
     Revisit after the in-force date.
-  - New York RAISE Act — enactment status unverified as of Sep 30, 2026.
+  - New York RAISE Act (S6953-B/A6453-B) — signed Dec 19, 2025, but in
+    force Jan 1, 2027. Revisit after the in-force date.
+  - Colorado SB 24-205 (the original 2024 Colorado AI Act) — never took
+    effect; enforcement was stayed by a federal court and it was repealed and
+    replaced by SB 26-189.
+  - Connecticut SB 2 (2025) — never enacted (died amid veto threat). Only
+    Public Act 26-15 / SB 5 (2026) is law.
+  - Council of Europe Framework Convention on AI (CETS No. 225) — not in
+    force; only one of the five required ratifications as of mid-2026.
+  - Canada AIDA (Bill C-27) — died on prorogation in Jan 2025; never law.
+  - California AB 2839 and AB 2655 (2024 election-deepfake laws) —
+    permanently enjoined by federal courts in Aug 2025; not in force.

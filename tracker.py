@@ -336,12 +336,27 @@ def global_laws():
             "link": law.get("link", ""),
             "search": " ".join([law.get("name", ""), law.get("country", ""), law.get("summary", "")]),
         })
+    for law in data.get("unverified", []):
+        missing = law.get("missing", "")
+        src = law.get("source_name", "")
+        extra = law.get("summary", "")
+        extra += f" Best lead so far: {src}." if src else ""
+        extra += f" Still needed: {missing}" if missing else ""
+        items.append({
+            "title": f"{law.get('name', '')}",
+            "badge": "Unverified",
+            "meta": f"{esc(law.get('country', ''))} · Reported — NOT yet confirmed against an official source",
+            "date": "",
+            "extra": extra,
+            "link": law.get("source_url", ""),
+            "search": " ".join([law.get("name", ""), law.get("country", ""), law.get("summary", "")]),
+        })
     return items, None
 
 
 # ------------------------------------------------------------------- rendering
 BADGE_COLORS = {
-    "Enacted": "#1a7f37", "Passed both chambers": "#1a7f37",
+    "Enacted": "#1a7f37", "Unverified": "#b45309", "Passed both chambers": "#1a7f37",
     "Passed chamber": "#9a6700", "Introduced": "#57606a",
     "Active": "#0969da", "Filed": "#cf5016", "Terminated": "#57606a",
     "Decided": "#8250df",
@@ -364,12 +379,17 @@ def badge_html(badge):
 def card(item, section_key):
     date_line = f" &middot; {esc(item['date'])}" if item["date"] else ""
     extra = f'<p class="extra">{esc(item["extra"])}</p>' if item["extra"] else ""
+    if item.get("link"):
+        title_html = (f'<h2><a href="{esc(item["link"])}" target="_blank" rel="noopener">'
+                      f'{esc(item["title"])}</a></h2>')
+    else:
+        title_html = f'<h2>{esc(item["title"])}</h2>'
     return f"""
         <article class="card" data-section="{section_key}"
                  data-badge="{esc(item['badge'])}"
                  data-search="{esc(item.get('search', '').lower())}">
           {badge_html(item['badge'])}
-          <h2><a href="{esc(item['link'])}" target="_blank" rel="noopener">{esc(item['title'])}</a></h2>
+          {title_html}
           <p class="meta">{item['meta']}{date_line}</p>
           {extra}
         </article>"""
@@ -619,7 +639,9 @@ def main():
     print(f"[federal] {len(fed) if fed else 0} bills")
     print(f"[states]  {len(st) if st else 0} bills")
     print(f"[lawsuits] {len(suits) if suits else 0} cases")
-    print(f"[global]  {len(glob) if glob else 0} laws")
+    glob_verified = [i for i in (glob or []) if i["badge"] == "Enacted"]
+    glob_unver = [i for i in (glob or []) if i["badge"] == "Unverified"]
+    print(f"[global]  {len(glob_verified)} verified laws, {len(glob_unver)} unverified")
 
     sections = "".join([
         build_section("federal", "US Federal Bills",
@@ -636,8 +658,10 @@ def main():
                       "county and most state trial courts are not in any free database.",
                       suits, suits_err),
         build_section("global", "Enacted AI Laws Worldwide",
-                      "Hand-curated, verified list of AI laws actually in force. Maintained in "
-                      "<code>data/global_laws.json</code> — edit it directly to add new laws.",
+                      f"Hand-curated list of AI laws actually in force — {len(glob_verified)} verified "
+                      f"against official government sources, {len(glob_unver)} reported but awaiting "
+                      f"verification. Maintained in <code>data/global_laws.json</code> — edit it directly "
+                      f"to add new laws.",
                       glob, glob_err),
     ])
 
@@ -647,7 +671,7 @@ def main():
         ("Federal bills", len(fed) if fed else 0),
         ("State bills", len(st) if st else 0),
         ("Lawsuits", len(suits) if suits else 0),
-        ("Enacted laws", len(glob) if glob else 0),
+        ("Enacted laws", len(glob_verified)),
     ]
 
     page = render_page(sections, stats, badges, generated_at)
