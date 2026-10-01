@@ -25,6 +25,7 @@ import html
 import json
 import os
 import re
+import sys
 import urllib.parse
 import urllib.request
 from datetime import datetime
@@ -36,10 +37,18 @@ LOCAL_TZ = ZoneInfo("America/Los_Angeles")
 CONGRESS_KEY = os.environ.get("CONGRESS_API_KEY", "").strip()
 OPENSTATES_KEY = os.environ.get("OPENSTATES_API_KEY", "").strip()
 CONGRESS = "119"            # current Congress
-FEDERAL_CAP = 10
-STATE_CAP = 15
-DOCKET_CAP = 6              # RECAP dockets
-OPINION_CAP = 4             # published opinions
+FEDERAL_PAGES = 4          # 250 bills/page -> scan the 1000 most recently updated
+FEDERAL_CAP = 25
+STATE_QUERIES = [          # OpenStates full-text searches, merged and deduped
+    '"artificial intelligence"',
+    'deepfake',
+    '"algorithmic discrimination"',
+    '"automated decision"',
+    '"synthetic media"',
+]
+STATE_CAP = 40
+DOCKET_CAP = 12             # RECAP dockets
+OPINION_CAP = 8             # published opinions
 REQUEST_TIMEOUT = 25
 UA = {"User-Agent": "AI-Regulation-Tracker/2.0"}
 
@@ -61,6 +70,50 @@ def fetch_json(url, headers=None):
     req = urllib.request.Request(url, headers={**UA, **(headers or {})})
     with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
         return json.loads(resp.read().decode("utf-8"))
+
+
+def _credential_helpers():
+    """Import the secure-credential helpers. None when unavailable (public use)."""
+    try:
+        sys.path.insert(0, "/opt/hatch/skills/skill-creator/bin")
+        from dynamic_credentials import (  # noqa: E402
+            add_surrogate_to_request, read_json_response,
+            url_with_surrogate_query_param)
+        return add_surrogate_to_request, read_json_response, url_with_surrogate_query_param
+    except ImportError:
+        return None
+
+
+def live_json_congress(url):
+    """Fetch a Congress.gov API URL with the stored credential. None if unavailable."""
+    helpers = _credential_helpers()
+    if helpers is None:
+        return None
+    _, read_json_response, url_with_surrogate_query_param = helpers
+    try:
+        authed = url_with_surrogate_query_param(
+            url, "custom.congress-gov", allowed_hosts=["api.congress.gov"])
+        req = urllib.request.Request(authed, headers=UA)
+        with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+            return read_json_response(resp)
+    except Exception:
+        return None
+
+
+def live_json_openstates(url):
+    """Fetch an OpenStates API URL with the stored credential. None if unavailable."""
+    helpers = _credential_helpers()
+    if helpers is None:
+        return None
+    add_surrogate_to_request, read_json_response, _ = helpers
+    try:
+        req = urllib.request.Request(url, headers=UA)
+        add_surrogate_to_request(
+            req, "custom.openstates", allowed_hosts=["v3.openstates.org"])
+        with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+            return read_json_response(resp)
+    except Exception:
+        return None
 
 
 def pretty_date(iso):
@@ -99,26 +152,36 @@ def federal_bills():
     """Returns (items, error). items is None when no key AND no cached data.
 
     Congress.gov's /v3/bill endpoint has no full-text search -- it only
-    filters by congress and bill type. So we pull the 250 most recently
-    updated bills and match AI keywords client-side. Without an API key we
-    fall back to a locally cached response (data/.congress_cache.json,
-    refreshed by the maintainer; never committed).
+    filters by congress and bill type. So we pull the 1000 most recently
+    updated bills (4 pages x 250) and match AI keywords client-side.
+    Without live credentials we fall back to a locally cached response
+    (data/.congress_cache.json, refreshed by the maintainer; never committed).
     """
-    data = None
+    bills = []
     if CONGRESS_KEY:
-        url = (f"https://api.congress.gov/v3/bill/{CONGRESS}"
-               f"?sort=updateDate+desc&limit=250&api_key={CONGRESS_KEY}")
-        data = fetch_json(url)
+        for offset in range(0, FEDERAL_PAGES * 250, 250):
+            url = (f"https://api.congress.gov/v3/bill/{CONGRESS}"
+                   f"?sort=updateDate+desc&limit=250&offset={offset}"
+                   f"&api_key={CONGRESS_KEY}")
+            bills.extend(fetch_json(url).get("bills", []))
     else:
+        for offset in range(0, FEDERAL_PAGES * 250, 250):
+            url = (f"https://api.congress.gov/v3/bill/{CONGRESS}"
+                   f"?sort=updateDate+desc&limit=250&offset={offset}")
+            data = live_json_congress(url)
+            if data is None:
+                break
+            bills.extend(data.get("bills", []))
+    if not bills:
         here = os.path.dirname(os.path.abspath(__file__))
         cache = os.path.join(here, "data", ".congress_cache.json")
         if os.path.exists(cache):
             with open(cache, encoding="utf-8") as f:
-                data = json.load(f)
-    if data is None:
+                bills = json.load(f).get("bills", [])
+    if not bills:
         return None, "needs-key"
     items = []
-    for b in data.get("bills", []):
+    for b in bills:
         btype = (b.get("type") or "").lower()
         number = b.get("number", "")
         title = b.get("title", "")
@@ -158,25 +221,43 @@ def state_badge(action_desc):
 def state_bills():
     """Returns (items, error). items is None when no key AND no cached data.
 
-    Without an API key we fall back to a locally cached response
+    Multiple full-text searches are merged and deduped by bill id, so
+    deepfake / algorithmic-discrimination bills surface even when they
+    don't use the phrase "artificial intelligence". Without live
+    credentials we fall back to a locally cached response
     (data/.openstates_cache.json, refreshed by the maintainer; never committed).
     """
-    data = None
+    seen = {}
+    live = False
     if OPENSTATES_KEY:
-        q = urllib.parse.quote('"artificial intelligence"')
-        url = (f"https://v3.openstates.org/bills?q={q}&per_page=20"
-               f"&sort=updated_desc")
-        data = fetch_json(url, headers={"X-API-KEY": OPENSTATES_KEY})
+        for q in STATE_QUERIES:
+            url = (f"https://v3.openstates.org/bills"
+                   f"?q={urllib.parse.quote(q)}&per_page=20&sort=updated_desc")
+            data = fetch_json(url, headers={"X-API-KEY": OPENSTATES_KEY})
+            for b in data.get("results", []):
+                seen.setdefault(b.get("id"), b)
+        live = True
     else:
+        for q in STATE_QUERIES:
+            url = (f"https://v3.openstates.org/bills"
+                   f"?q={urllib.parse.quote(q)}&per_page=20&sort=updated_desc")
+            data = live_json_openstates(url)
+            if data is None:
+                break
+            for b in data.get("results", []):
+                seen.setdefault(b.get("id"), b)
+            live = True
+    if not live:
         here = os.path.dirname(os.path.abspath(__file__))
         cache = os.path.join(here, "data", ".openstates_cache.json")
         if os.path.exists(cache):
             with open(cache, encoding="utf-8") as f:
-                data = json.load(f)
-    if data is None:
+                for b in json.load(f).get("results", []):
+                    seen.setdefault(b.get("id"), b)
+    if not seen:
         return None, "needs-key"
     scored = []
-    for b in data.get("results", []):
+    for b in seen.values():
         latest_desc = b.get("latest_action_description", "")
         badge = state_badge(latest_desc)
         juris = (b.get("jurisdiction") or {}).get("name", "")
