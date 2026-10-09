@@ -40,7 +40,17 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;
   justify-content:center;text-align:center;overflow:hidden}
 .hero.short{min-height:52vh}
-#heroMap{position:absolute;inset:0;z-index:0;background:#020608}
+.hero-img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;
+  animation:heroDrift 30s ease-in-out infinite alternate}
+@keyframes heroDrift{from{transform:scale(1) translate(0,0)}
+  to{transform:scale(1.1) translate(-1.5%,1%)}}
+/* ---- floating orbs ---- */
+.orb{position:absolute;z-index:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(140,190,255,.5) 0%,rgba(90,150,255,.16) 45%,transparent 70%);
+  filter:blur(3px);animation:orbFloat 8s ease-in-out infinite}
+@keyframes orbFloat{0%,100%{transform:translate(0,0);opacity:.75}
+  50%{transform:translate(70px,-60px);opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero-img,.orb{animation:none}}
 .hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,.88) 96%)}
 .hero-inner{position:relative;z-index:2;max-width:920px;padding:6rem 1.5rem}
@@ -107,6 +117,51 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .pager button:disabled{opacity:.3;cursor:default}
 .pager span{font-family:'Fraunces',Georgia,serif;font-size:.75rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted)}
+/* ---- updates feed ---- */
+.uchips{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 2.5rem}
+.uchip{background:transparent;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:.55rem 1.1rem;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.uchip:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.uchip.on{color:#000;background:#fff;border-color:#fff}
+.ufeed{max-width:860px}
+.uitem{display:grid;grid-template-columns:86px 1fr;gap:1.5rem;padding:1.8rem 0;
+  border-top:1px solid var(--line)}
+.uitem:last-child{border-bottom:1px solid var(--line)}
+.udate span{display:block;font-family:'Fraunces',Georgia,serif;font-weight:400;
+  font-size:1.35rem;color:#fff;line-height:1.2}
+.udate em{display:block;font-style:normal;font-family:'Fraunces',Georgia,serif;
+  font-size:.72rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-top:.2rem}
+.utag{display:inline-block;font-family:'Fraunces',Georgia,serif;font-weight:600;
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#000;
+  background:var(--blue);border-radius:3px;padding:.28rem .6rem;margin-bottom:.7rem}
+.utag.tag-bill-activity{background:#98d2ea}
+.utag.tag-lawsuit{background:#d77a4b}
+.utag.tag-framework{background:#e8c87e}
+.utag.tag-tracker{background:#8a93a6}
+.ubody h3{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.25rem;
+  line-height:1.35;margin:0 0 .5rem}
+.ubody h3 a{color:#fff;text-decoration:none}
+.ubody h3 a:hover{color:var(--blue)}
+.ubody p{color:var(--muted);font-size:.95rem;line-height:1.6;margin:0}
+.unote{max-width:860px;margin:3rem 0 0;padding:1.5rem;border:1px solid var(--line);
+  border-radius:6px;background:rgba(255,255,255,.02)}
+.unote h4{font-family:'Fraunces',Georgia,serif;font-size:.75rem;letter-spacing:.12em;
+  text-transform:uppercase;color:#fff;margin:0 0 .6rem}
+.unote p{color:var(--muted);font-size:.9rem;line-height:1.65;margin:0}
+/* ---- home latest strip ---- */
+.ustrip{max-width:860px;margin:0 auto}
+.ustrip-item{display:flex;align-items:baseline;gap:1.2rem;padding:1.1rem 0;
+  border-top:1px solid var(--line);text-decoration:none}
+.ustrip-item:last-child{border-bottom:1px solid var(--line)}
+.ustrip-item:hover h4{color:var(--blue)}
+.ustrip-date{flex:0 0 86px;font-family:'Fraunces',Georgia,serif;font-size:.78rem;
+  letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.ustrip-item h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.05rem;
+  color:#fff;margin:0;line-height:1.4}
+.ustrip-more{display:inline-block;margin-top:1.4rem;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue);text-decoration:none}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -226,7 +281,7 @@ footer{margin-top:5rem}
 <div id="progress"></div>
 <nav class="nav" id="nav">
   <a class="brand" href="index.html">AI<b>·</b>REGULATION<b>·</b>TRACKER</a>
-  <div class="navlinks"><a href="index.html" class="">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="active">Litigation</a><a href="global.html" class="">Global Index</a><a href="frameworks.html" class="">Frameworks</a></div>
+  <div class="navlinks"><a href="index.html" class="">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="active">Litigation</a><a href="global.html" class="">Global Index</a><a href="frameworks.html" class="">Frameworks</a><a href="updates.html" class="">Updates</a></div>
 </nav>
 
 <header class="hero short">
@@ -265,6 +320,22 @@ footer{margin-top:5rem}
       <span class="fcount" data-f="count"></span>
     </div>
           <div class="grid">
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="emmerich newspapers, inc. v. microsoft corporation district court, s.d. mississippi 3:26-cv-00791">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74915508/emmerich-newspapers-inc-v-microsoft-corporation/" target="_blank" rel="noopener">Emmerich Newspapers, Inc. v. Microsoft Corporation</a></h3>
+      <p class="meta">District Court, S.D. Mississippi · Docket 3:26-cv-00791 · Oct 02, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74915508/emmerich-newspapers-inc-v-microsoft-corporation/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
+             data-search="stewart v. alphabet inc. district court, n.d. california 3:26-cv-11290">
+      <span class="badge b-orange">Filed</span>
+      <h3><a href="https://www.courtlistener.com/docket/74910343/stewart-v-alphabet-inc/" target="_blank" rel="noopener">Stewart v. Alphabet Inc.</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 3:26-cv-11290 · Oct 02, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74910343/stewart-v-alphabet-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
              data-search="state of new york v. epa court of appeals for the d.c. circuit 26-1259">
       <span class="badge b-orange">Filed</span>
@@ -338,28 +409,68 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74812464/umg-recordings-inc-v-suno-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="brivas ii llc v. match group inc district court, n.d. texas 3:26-cv-03154">
+             data-search="smigelski v. openai opco, llc district court, n.d. california 3:26-cv-10641">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74809565/brivas-ii-llc-v-match-group-inc/" target="_blank" rel="noopener">Brivas II LLC v. Match Group Inc</a></h3>
-      <p class="meta">District Court, N.D. Texas · Docket 3:26-cv-03154 · Sep 17, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74827423/smigelski-v-openai-opco-llc/" target="_blank" rel="noopener">Smigelski v. OpenAI OpCo, LLC</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 3:26-cv-10641 · Sep 17, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74809565/brivas-ii-llc-v-match-group-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74827423/smigelski-v-openai-opco-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="brass jar, inc. v. amazon.com, inc. et, al. district court, s.d. florida 1:26-cv-26432">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74806504/brass-jar-inc-v-amazoncom-inc-et-al/" target="_blank" rel="noopener">Brass Jar, Inc. v. Amazon.com, Inc. et, al.</a></h3>
-      <p class="meta">District Court, S.D. Florida · Docket 1:26-cv-26432 · Sep 17, 2026</p>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="kid international, llc v. city national bank of florida and 2655 sw 25, llc district court of appeal of florida fla. dist. ct. app.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11013650/kid-international-llc-v-city-national-bank-of-florida-and-2655-sw-25-llc/" target="_blank" rel="noopener">Kid International, LLC v. City National Bank of Florida and 2655 SW 25, LLC</a></h3>
+      <p class="meta">District Court of Appeal of Florida · Fla. Dist. Ct. App. · Oct 07, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74806504/brass-jar-inc-v-amazoncom-inc-et-al/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11013650/kid-international-llc-v-city-national-bank-of-florida-and-2655-sw-25-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
-    <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="in re subpoena to lightspeed venture partners district court, n.d. california 3:26-mc-80289">
-      <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74804492/in-re-subpoena-to-lightspeed-venture-partners/" target="_blank" rel="noopener">In re Subpoena to Lightspeed Venture Partners</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 3:26-mc-80289 · Sep 16, 2026</p>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="washington, washington v. justice, crist district court of appeal of florida fla. dist. ct. app.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11013588/washington-washington-v-justice-crist/" target="_blank" rel="noopener">Washington, Washington v. Justice, Crist</a></h3>
+      <p class="meta">District Court of Appeal of Florida · Fla. Dist. Ct. App. · Oct 07, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74804492/in-re-subpoena-to-lightspeed-venture-partners/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11013588/washington-washington-v-justice-crist/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="trax international corporation v. united states united states court of federal claims fed. cl.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11013807/trax-international-corporation-v-united-states/" target="_blank" rel="noopener">Trax International Corporation v. United States</a></h3>
+      <p class="meta">United States Court of Federal Claims · Fed. Cl. · Oct 05, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11013807/trax-international-corporation-v-united-states/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="elliott v. jose ohio court of appeals ohio ct. app.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11011847/elliott-v-jose/" target="_blank" rel="noopener">Elliott v. Jose</a></h3>
+      <p class="meta">Ohio Court of Appeals · Ohio Ct. App. · Oct 05, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11011847/elliott-v-jose/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="22nd century networks, inc. v. united states united states court of federal claims fed. cl.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11012844/22nd-century-networks-inc-v-united-states/" target="_blank" rel="noopener">22nd Century Networks, Inc. v. United States</a></h3>
+      <p class="meta">United States Court of Federal Claims · Fed. Cl. · Oct 03, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11012844/22nd-century-networks-inc-v-united-states/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="frankfort v. metropolis technologies court of appeals for the fifth circuit 5th cir.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11009781/frankfort-v-metropolis-technologies/" target="_blank" rel="noopener">Frankfort v. Metropolis Technologies</a></h3>
+      <p class="meta">Court of Appeals for the Fifth Circuit · 5th Cir. · Oct 02, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11009781/frankfort-v-metropolis-technologies/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="shannon v. shannon nebraska supreme court neb.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11009430/shannon-v-shannon/" target="_blank" rel="noopener">Shannon v. Shannon</a></h3>
+      <p class="meta">Nebraska Supreme Court · Neb. · Oct 02, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11009430/shannon-v-shannon/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
              data-search="american catalog mailers association v. director, division of taxation new jersey tax court n.j. tax ct.">
@@ -368,62 +479,6 @@ footer{margin-top:5rem}
       <p class="meta">New Jersey Tax Court · N.J. Tax Ct. · Oct 01, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11008272/american-catalog-mailers-association-v-director-division-of-taxation/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="sethi board of immigration appeals bia">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11008237/sethi/" target="_blank" rel="noopener">Sethi</a></h3>
-      <p class="meta">Board of Immigration Appeals · BIA · Oct 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11008237/sethi/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="state v. tolbert ohio court of appeals ohio ct. app.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11007732/state-v-tolbert/" target="_blank" rel="noopener">State v. Tolbert</a></h3>
-      <p class="meta">Ohio Court of Appeals · Ohio Ct. App. · Oct 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11007732/state-v-tolbert/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="in the matter of the estate of david simpson, andrew simpson v. larry porter supreme court of arkansas ark.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11007622/in-the-matter-of-the-estate-of-david-simpson-andrew-simpson-v-larry/" target="_blank" rel="noopener">In the Matter of the Estate of David Simpson, Andrew Simpson v. Larry Porter</a></h3>
-      <p class="meta">Supreme Court of Arkansas · Ark. · Oct 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11007622/in-the-matter-of-the-estate-of-david-simpson-andrew-simpson-v-larry/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="penske media corporation v. google llc district court, district of columbia d.d.c.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/10993432/penske-media-corporation-v-google-llc/" target="_blank" rel="noopener">Penske Media Corporation v. Google LLC</a></h3>
-      <p class="meta">District Court, District of Columbia · D.D.C. · Sep 30, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10993432/penske-media-corporation-v-google-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="americans for prosperity v. meyer court of appeals for the ninth circuit 9th cir.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/10988846/americans-for-prosperity-v-meyer/" target="_blank" rel="noopener">Americans for Prosperity v. Meyer</a></h3>
-      <p class="meta">Court of Appeals for the Ninth Circuit · 9th Cir. · Sep 30, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10988846/americans-for-prosperity-v-meyer/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="thomson reuters enterprise centre gmbh v. ross intelligence inc court of appeals for the third circuit 3rd cir.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/10988837/thomson-reuters-enterprise-centre-gmbh-v-ross-intelligence-inc/" target="_blank" rel="noopener">Thomson Reuters Enterprise Centre GmbH v. Ross Intelligence Inc</a></h3>
-      <p class="meta">Court of Appeals for the Third Circuit · 3rd Cir. · Sep 30, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10988837/thomson-reuters-enterprise-centre-gmbh-v-ross-intelligence-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="state v. horcasitas court of appeals of arizona ariz. ct. app.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/10988169/state-v-horcasitas/" target="_blank" rel="noopener">State v. Horcasitas</a></h3>
-      <p class="meta">Court of Appeals of Arizona · Ariz. Ct. App. · Sep 30, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/10988169/state-v-horcasitas/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article></div>
           <div class="empty" data-f="empty"><h3>No matches</h3>
             <p>Try a different search term or clear the filters.</p></div>
@@ -449,6 +504,7 @@ footer{margin-top:5rem}
         <li><a href="litigation.html">AI Litigation Monitor</a></li>
         <li><a href="global.html">Global AI Regulation Index</a></li>
         <li><a href="frameworks.html">AI Governance Frameworks</a></li>
+        <li><a href="updates.html">Recent Updates</a></li>
       </ul>
     </div>
     <div>
@@ -462,7 +518,7 @@ footer{margin-top:5rem}
     </div>
   </div></div></div>
   <div class="fbottom"><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;width:100%">
-    <small>AI REGULATION TRACKER · UPDATED October 1, 2026</small>
+    <small>AI REGULATION TRACKER · UPDATED October 7, 2026</small>
     <small>CODE &amp; CURATION NOTES ON <a href="https://github.com/trishabinwade/ai-regulation-tracker" style="color:#fff">GITHUB</a></small>
   </div></div>
 </footer>

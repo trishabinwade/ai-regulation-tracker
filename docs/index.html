@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-
 <style>
 :root{
   --blue:#34a3d7; --magenta:#c71585; --orange:#d74b17;
@@ -118,6 +117,51 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .pager button:disabled{opacity:.3;cursor:default}
 .pager span{font-family:'Fraunces',Georgia,serif;font-size:.75rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted)}
+/* ---- updates feed ---- */
+.uchips{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 2.5rem}
+.uchip{background:transparent;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:.55rem 1.1rem;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.uchip:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.uchip.on{color:#000;background:#fff;border-color:#fff}
+.ufeed{max-width:860px}
+.uitem{display:grid;grid-template-columns:86px 1fr;gap:1.5rem;padding:1.8rem 0;
+  border-top:1px solid var(--line)}
+.uitem:last-child{border-bottom:1px solid var(--line)}
+.udate span{display:block;font-family:'Fraunces',Georgia,serif;font-weight:400;
+  font-size:1.35rem;color:#fff;line-height:1.2}
+.udate em{display:block;font-style:normal;font-family:'Fraunces',Georgia,serif;
+  font-size:.72rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-top:.2rem}
+.utag{display:inline-block;font-family:'Fraunces',Georgia,serif;font-weight:600;
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#000;
+  background:var(--blue);border-radius:3px;padding:.28rem .6rem;margin-bottom:.7rem}
+.utag.tag-bill-activity{background:#98d2ea}
+.utag.tag-lawsuit{background:#d77a4b}
+.utag.tag-framework{background:#e8c87e}
+.utag.tag-tracker{background:#8a93a6}
+.ubody h3{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.25rem;
+  line-height:1.35;margin:0 0 .5rem}
+.ubody h3 a{color:#fff;text-decoration:none}
+.ubody h3 a:hover{color:var(--blue)}
+.ubody p{color:var(--muted);font-size:.95rem;line-height:1.6;margin:0}
+.unote{max-width:860px;margin:3rem 0 0;padding:1.5rem;border:1px solid var(--line);
+  border-radius:6px;background:rgba(255,255,255,.02)}
+.unote h4{font-family:'Fraunces',Georgia,serif;font-size:.75rem;letter-spacing:.12em;
+  text-transform:uppercase;color:#fff;margin:0 0 .6rem}
+.unote p{color:var(--muted);font-size:.9rem;line-height:1.65;margin:0}
+/* ---- home latest strip ---- */
+.ustrip{max-width:860px;margin:0 auto}
+.ustrip-item{display:flex;align-items:baseline;gap:1.2rem;padding:1.1rem 0;
+  border-top:1px solid var(--line);text-decoration:none}
+.ustrip-item:last-child{border-bottom:1px solid var(--line)}
+.ustrip-item:hover h4{color:var(--blue)}
+.ustrip-date{flex:0 0 86px;font-family:'Fraunces',Georgia,serif;font-size:.78rem;
+  letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.ustrip-item h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.05rem;
+  color:#fff;margin:0;line-height:1.4}
+.ustrip-more{display:inline-block;margin-top:1.4rem;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue);text-decoration:none}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -237,7 +281,7 @@ footer{margin-top:5rem}
 <div id="progress"></div>
 <nav class="nav" id="nav">
   <a class="brand" href="index.html">AI<b>·</b>REGULATION<b>·</b>TRACKER</a>
-  <div class="navlinks"><a href="index.html" class="active">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="">Litigation</a><a href="global.html" class="">Global Index</a><a href="frameworks.html" class="">Frameworks</a></div>
+  <div class="navlinks"><a href="index.html" class="active">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="">Litigation</a><a href="global.html" class="">Global Index</a><a href="frameworks.html" class="">Frameworks</a><a href="updates.html" class="">Updates</a></div>
 </nav>
 
 <header class="hero">
@@ -260,13 +304,13 @@ footer{margin-top:5rem}
 </header>
 
 <div class="stats">
-  <div class="stat"><div class="num"><span data-count="218">0</span></div>
+  <div class="stat"><div class="num"><span data-count="219">0</span></div>
     <div class="lbl">Federal bills</div></div>
-  <div class="stat"><div class="num"><span data-count="20">0</span></div>
+  <div class="stat"><div class="num"><span data-count="40">0</span></div>
     <div class="lbl">State bills</div></div>
   <div class="stat"><div class="num"><span data-count="20">0</span></div>
     <div class="lbl">Lawsuits</div></div>
-  <div class="stat"><div class="num"><span data-count="24">0</span><em>+20</em></div>
+  <div class="stat"><div class="num"><span data-count="26">0</span><em>+20</em></div>
     <div class="lbl">Enacted laws<span class="vnote">20 awaiting verification</span></div></div>
   <div class="stat"><div class="num"><span data-count="19">0</span></div>
     <div class="lbl">Frameworks</div></div>
@@ -299,6 +343,22 @@ footer{margin-top:5rem}
         <div class="body"><h3>AI Governance Frameworks</h3><p>Voluntary frameworks, codes, and principles — NIST, ISO, OECD and more — that companies use to demonstrate responsible AI.</p>
         <span class="go">Browse frameworks &#8594;</span></div>
       </a></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+    <div class="eyebrow reveal">Stay current</div>
+    <h2 class="reveal">Latest updates</h2>
+  </div>
+  <div class="ustrip"><a class="ustrip-item reveal" href="updates.html">
+      <span class="ustrip-date">Oct 09, 2026</span>
+      <h4>Recent Updates page launches</h4></a><a class="ustrip-item reveal" href="litigation.html">
+      <span class="ustrip-date">Oct 09, 2026</span>
+      <h4>State of Iowa v. Max Amyda</h4></a><a class="ustrip-item reveal" href="us-laws.html">
+      <span class="ustrip-date">Oct 08, 2026</span>
+      <h4>PC 1487 — Para crear la “Ley para la Regulación de Medios Sintéticos y Deepfakes de Puerto…</h4></a></div>
+  <div style="text-align:center">
+    <a class="ustrip-more reveal" href="updates.html">View all updates &#8594;</a>
+  </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
@@ -338,6 +398,7 @@ footer{margin-top:5rem}
         <li><a href="litigation.html">AI Litigation Monitor</a></li>
         <li><a href="global.html">Global AI Regulation Index</a></li>
         <li><a href="frameworks.html">AI Governance Frameworks</a></li>
+        <li><a href="updates.html">Recent Updates</a></li>
       </ul>
     </div>
     <div>
@@ -351,7 +412,7 @@ footer{margin-top:5rem}
     </div>
   </div></div></div>
   <div class="fbottom"><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;width:100%">
-    <small>AI REGULATION TRACKER · UPDATED October 1, 2026</small>
+    <small>AI REGULATION TRACKER · UPDATED October 7, 2026</small>
     <small>CODE &amp; CURATION NOTES ON <a href="https://github.com/trishabinwade/ai-regulation-tracker" style="color:#fff">GITHUB</a></small>
   </div></div>
 </footer>
@@ -424,7 +485,6 @@ footer{margin-top:5rem}
   });
 })();
 </script>
-
 
 
 </body>
