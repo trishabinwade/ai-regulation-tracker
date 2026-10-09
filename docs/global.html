@@ -178,14 +178,9 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
   text-transform:uppercase;color:var(--muted);margin-top:.3rem}
 .claw ul{margin:0;padding-left:1.2rem;color:#dfe6f0;font-size:.92rem;line-height:1.65}
 .claw li{margin-bottom:.4rem}
-.claw li::marker,.oblig li::marker{color:var(--blue)}
+.claw li::marker{color:var(--blue)}
 .cdisclaimer{margin-top:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:70ch}
 .cdisclaimer b{color:#fff}
-.oblig{margin-top:1rem;border-top:1px solid var(--line);padding-top:1rem}
-.oblig h5{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.68rem;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:0 0 .6rem}
-.oblig ul{margin:0;padding-left:1.15rem;font-size:.88rem;line-height:1.6;color:#dfe6f0}
-.oblig li{margin-bottom:.35rem}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -305,7 +300,7 @@ footer{margin-top:5rem}
 <div id="progress"></div>
 <nav class="nav" id="nav">
   <a class="brand" href="index.html">AI<b>·</b>REGULATION<b>·</b>TRACKER</a>
-  <div class="navlinks"><a href="index.html" class="">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="">Litigation</a><a href="global.html" class="active">Global Index</a><a href="frameworks.html" class="">Frameworks</a><a href="updates.html" class="">Updates</a></div>
+  <div class="navlinks"><a href="index.html" class="">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="">Litigation</a><a href="global.html" class="active">Global Index</a><a href="frameworks.html" class="">Frameworks</a><a href="updates.html" class="">Updates</a><a href="check.html" class="">Check</a></div>
 </nav>
 
 <header class="hero short">
@@ -315,7 +310,9 @@ footer{margin-top:5rem}
     <p class="sub reveal">The world's enacted AI laws — each one verified against an
     official government source. Select a marker to inspect a jurisdiction. See also
     the <a href="frameworks.html" style="color:#fff">voluntary frameworks</a>
-    cross-walked to these laws.</p>
+    cross-walked to these laws — or run the
+    <a href="check.html" style="color:#fff">Compliance Check</a> to see what
+    applies to you.</p>
   </div>
 </header>
 
@@ -342,23 +339,6 @@ footer{margin-top:5rem}
 </div></section>
 
 <section class="sec"><div class="wrap">
-    <div class="eyebrow reveal">Self-check</div>
-    <h2 class="reveal">What applies to you?</h2>
-    <p class="reveal">Select every jurisdiction where you operate or sell. Your
-    checklist pulls the obligations from each verified law that covers you —
-    one bulleted list per law.</p>
-  </div>
-  <div class="wrap">
-    <div class="jchips reveal"><button class="uchip jchip" data-j="United States (federal)">United States (federal)</button><button class="uchip jchip" data-j="Texas">Texas</button><button class="uchip jchip" data-j="California">California</button><button class="uchip jchip" data-j="Connecticut">Connecticut</button><button class="uchip jchip" data-j="Illinois">Illinois</button><button class="uchip jchip" data-j="Utah">Utah</button><button class="uchip jchip" data-j="New York City">New York City</button><button class="uchip jchip" data-j="European Union">European Union</button><button class="uchip jchip" data-j="Italy">Italy</button><button class="uchip jchip" data-j="United Kingdom">United Kingdom</button><button class="uchip jchip" data-j="Canada">Canada</button><button class="uchip jchip" data-j="China">China</button><button class="uchip jchip" data-j="Japan">Japan</button><button class="uchip jchip" data-j="South Korea">South Korea</button></div>
-    <div id="checklist" class="reveal"></div>
-    <p class="cdisclaimer reveal"><b>Not legal advice.</b> This is a starting-point
-    checklist drawn from the tracker's plain-English summaries. Always verify
-    against the official legal text linked on each law before making compliance
-    decisions.</p>
-  </div>
-</div></section>
-
-<section class="sec"><div class="wrap">
     <div class="eyebrow">Verified · 26</div>
     <h2>Enacted laws</h2>
     <p>Confirmed against official government sources — legal text or authoritative
@@ -375,263 +355,237 @@ footer{margin-top:5rem}
     </div>
     <div class="grid">
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="artificial intelligence act — regulation (eu) 2024/1689 european union the world&#x27;s first comprehensive ai law: risk-tiered rules (prohibited / high-risk / transparency duties), conformity assessments for high-risk systems, and obligations for general-purpose ai models. phased application through 2027–2028. work out which risk tier your ai falls into — most everyday business tools face transparency duties, not bans. high-risk systems (e.g. hiring, lending, education): complete a conformity assessment, keep technical documentation, build in human oversight, and register in the eu database before you deploy. chatbots and ai-generated content: tell users they&#x27;re interacting with ai and label synthetic output. general-purpose model providers: meet transparency and copyright-policy duties; extra evaluation and incident-reporting duties apply above the high-impact compute threshold. track the phase-in — duties apply in stages through 2027–2028.">
+                 data-search="artificial intelligence act — regulation (eu) 2024/1689 european union the world&#x27;s first comprehensive ai law: risk-tiered rules (prohibited / high-risk / transparency duties), conformity assessments for high-risk systems, and obligations for general-purpose ai models. phased application through 2027–2028.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">Artificial Intelligence Act — Regulation (EU) 2024/1689</a></h3>
           <p class="meta">European Union</p>
           <p class="txt">The world&#x27;s first comprehensive AI law: risk-tiered rules (prohibited / high-risk / transparency duties), conformity assessments for high-risk systems, and obligations for general-purpose AI models. Phased application through 2027–2028.</p>
           <p class="meta" style="margin-top:.5rem">Enacted June 13, 2024 (adopted) · In force August 1, 2024</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Work out which risk tier your AI falls into — most everyday business tools face transparency duties, not bans.</li><li>High-risk systems (e.g. hiring, lending, education): complete a conformity assessment, keep technical documentation, build in human oversight, and register in the EU database before you deploy.</li><li>Chatbots and AI-generated content: tell users they&#x27;re interacting with AI and label synthetic output.</li><li>General-purpose model providers: meet transparency and copyright-policy duties; extra evaluation and incident-reporting duties apply above the high-impact compute threshold.</li><li>Track the phase-in — duties apply in stages through 2027–2028.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="interim measures for the management of generative ai services china requires generative ai services offered to the chinese public to align with socialist values, complete security assessments and algorithm filings before launch, and respect ip and personal-information protections. issued jointly by the cac and six other regulators. complete a security assessment and file your algorithms with the cac before serving the chinese public. make sure model outputs meet content requirements and respect ip and personal-information rules. set up user complaint handling and label ai-generated content.">
+                 data-search="interim measures for the management of generative ai services china requires generative ai services offered to the chinese public to align with socialist values, complete security assessments and algorithm filings before launch, and respect ip and personal-information protections. issued jointly by the cac and six other regulators.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">Interim Measures for the Management of Generative AI Services</a></h3>
           <p class="meta">China</p>
           <p class="txt">Requires generative AI services offered to the Chinese public to align with socialist values, complete security assessments and algorithm filings before launch, and respect IP and personal-information protections. Issued jointly by the CAC and six other regulators.</p>
           <p class="meta" style="margin-top:.5rem">Enacted July 13, 2023 (issued) · In force August 15, 2023</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Complete a security assessment and file your algorithms with the CAC before serving the Chinese public.</li><li>Make sure model outputs meet content requirements and respect IP and personal-information rules.</li><li>Set up user complaint handling and label AI-generated content.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="ai basic act (framework act on ai development and establishment of trust) south korea consolidated 19 prior bills into asia&#x27;s first comprehensive ai framework. risk-based duties for &#x27;high-impact&#x27; ai (impact assessments, human oversight), generative-output labeling, and extraterritorial reach; fines up to krw 30 million. if your ai is &#x27;high-impact&#x27; (safety- or rights-affecting): run an impact assessment and keep a human in the loop. label generative ai outputs so users can tell they&#x27;re ai-made. the law reaches foreign companies serving korean users — fines up to krw 30 million.">
+                 data-search="ai basic act (framework act on ai development and establishment of trust) south korea consolidated 19 prior bills into asia&#x27;s first comprehensive ai framework. risk-based duties for &#x27;high-impact&#x27; ai (impact assessments, human oversight), generative-output labeling, and extraterritorial reach; fines up to krw 30 million.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener">AI Basic Act (Framework Act on AI Development and Establishment of Trust)</a></h3>
           <p class="meta">South Korea</p>
           <p class="txt">Consolidated 19 prior bills into Asia&#x27;s first comprehensive AI framework. Risk-based duties for &#x27;high-impact&#x27; AI (impact assessments, human oversight), generative-output labeling, and extraterritorial reach; fines up to KRW 30 million.</p>
           <p class="meta" style="margin-top:.5rem">Enacted December 26, 2024 (passed); promulgated January 21, 2025 · In force January 22, 2026</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>If your AI is &#x27;high-impact&#x27; (safety- or rights-affecting): run an impact assessment and keep a human in the loop.</li><li>Label generative AI outputs so users can tell they&#x27;re AI-made.</li><li>The law reaches foreign companies serving Korean users — fines up to KRW 30 million.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="ai promotion act (act no. 53 of 2025) japan japan&#x27;s first ai-specific national law. innovation-first: no fines or penalties — the government may issue guidance, request information, or publicly name non-compliant entities. established an ai strategy headquarters. no fines — but regulators can issue guidance, demand information, or publicly name your company. cooperate with information requests and follow official guidance; public naming is the real enforcement lever.">
+                 data-search="ai promotion act (act no. 53 of 2025) japan japan&#x27;s first ai-specific national law. innovation-first: no fines or penalties — the government may issue guidance, request information, or publicly name non-compliant entities. established an ai strategy headquarters.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf" target="_blank" rel="noopener">AI Promotion Act (Act No. 53 of 2025)</a></h3>
           <p class="meta">Japan</p>
           <p class="txt">Japan&#x27;s first AI-specific national law. Innovation-first: no fines or penalties — the government may issue guidance, request information, or publicly name non-compliant entities. Established an AI Strategy Headquarters.</p>
           <p class="meta" style="margin-top:.5rem">Enacted May 28, 2025 (passed by the Diet) · In force June 4, 2025 (most provisions); September 1, 2025 (fully)</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>No fines — but regulators can issue guidance, demand information, or publicly name your company.</li><li>Cooperate with information requests and follow official guidance; public naming is the real enforcement lever.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="texas responsible ai governance act (traiga), hb 149 united states — texas comprehensive state ai statute: prohibits ai used to manipulate behavior, enable unlawful discrimination, or generate csam; bans government social scoring; creates a 36-month regulatory sandbox and ai advisory council. enforced exclusively by the texas ag. don&#x27;t use ai to manipulate behavior, enable unlawful discrimination, or generate csam. government deployers: no ai-driven social scoring. testing something novel? the 36-month regulatory sandbox offers supervised room to experiment. enforcement is by the texas ag only.">
+                 data-search="texas responsible ai governance act (traiga), hb 149 united states — texas comprehensive state ai statute: prohibits ai used to manipulate behavior, enable unlawful discrimination, or generate csam; bans government social scoring; creates a 36-month regulatory sandbox and ai advisory council. enforced exclusively by the texas ag.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://capitol.texas.gov/tlodocs/89R/billtext/pdf/HB00149F.pdf" target="_blank" rel="noopener">Texas Responsible AI Governance Act (TRAIGA), HB 149</a></h3>
           <p class="meta">United States — Texas</p>
           <p class="txt">Comprehensive state AI statute: prohibits AI used to manipulate behavior, enable unlawful discrimination, or generate CSAM; bans government social scoring; creates a 36-month regulatory sandbox and AI advisory council. Enforced exclusively by the Texas AG.</p>
           <p class="meta" style="margin-top:.5rem">Enacted June 22, 2025 (signed) · In force January 1, 2026</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Don&#x27;t use AI to manipulate behavior, enable unlawful discrimination, or generate CSAM.</li><li>Government deployers: no AI-driven social scoring.</li><li>Testing something novel? The 36-month regulatory sandbox offers supervised room to experiment. Enforcement is by the Texas AG only.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://capitol.texas.gov/tlodocs/89R/billtext/pdf/HB00149F.pdf" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="connecticut ai responsibility and transparency (cart) act, sb 5 united states — connecticut omnibus state ai law: anti-discrimination rules for automated employment decision tools, deployer disclosure duties, ai subscription and chatbot provisions, and whistleblower protections for frontier-ai developers. notice requirements phase in through 2028. hiring tools: follow the anti-discrimination rules and give candidates the required notices (phasing in through 2028). chatbots and ai subscription services: meet deployer disclosure duties. frontier ai developers: maintain whistleblower protections.">
+                 data-search="connecticut ai responsibility and transparency (cart) act, sb 5 united states — connecticut omnibus state ai law: anti-discrimination rules for automated employment decision tools, deployer disclosure duties, ai subscription and chatbot provisions, and whistleblower protections for frontier-ai developers. notice requirements phase in through 2028.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf" target="_blank" rel="noopener">Connecticut AI Responsibility and Transparency (CART) Act, SB 5</a></h3>
           <p class="meta">United States — Connecticut</p>
           <p class="txt">Omnibus state AI law: anti-discrimination rules for automated employment decision tools, deployer disclosure duties, AI subscription and chatbot provisions, and whistleblower protections for frontier-AI developers. Notice requirements phase in through 2028.</p>
           <p class="meta" style="margin-top:.5rem">Enacted June 2, 2026 (signed) · In force October 1, 2026 (key provisions)</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Hiring tools: follow the anti-discrimination rules and give candidates the required notices (phasing in through 2028).</li><li>Chatbots and AI subscription services: meet deployer disclosure duties.</li><li>Frontier AI developers: maintain whistleblower protections.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="take it down act (public law 119-12) united states federal law criminalizing knowing publication of authentic or ai-generated nonconsensual intimate imagery; requires covered platforms to establish a notice-and-removal process with 48-hour removal on valid request. covered platforms: build a notice-and-removal process and take down reported nonconsensual intimate imagery — including ai-generated — within 48 hours of a valid request. knowingly publishing such imagery is a federal crime.">
+                 data-search="take it down act (public law 119-12) united states federal law criminalizing knowing publication of authentic or ai-generated nonconsensual intimate imagery; requires covered platforms to establish a notice-and-removal process with 48-hour removal on valid request.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/146/all-info" target="_blank" rel="noopener">TAKE IT DOWN Act (Public Law 119-12)</a></h3>
           <p class="meta">United States</p>
           <p class="txt">Federal law criminalizing knowing publication of authentic or AI-generated nonconsensual intimate imagery; requires covered platforms to establish a notice-and-removal process with 48-hour removal on valid request.</p>
           <p class="meta" style="margin-top:.5rem">Enacted May 19, 2025 (signed) · In force May 19, 2025 (criminal provisions); May 19, 2026 (platform notice-and-removal duties)</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Covered platforms: build a notice-and-removal process and take down reported nonconsensual intimate imagery — including AI-generated — within 48 hours of a valid request.</li><li>Knowingly publishing such imagery is a federal crime.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/146/all-info" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="ai policy act (sb 149) united states — utah first u.s. state law specifically regulating generative ai: requires disclosure when consumers interact with ai (on request generally, proactively in regulated occupations), establishes liability for ai-driven consumer-protection violations, and creates an office of artificial intelligence policy. amended by sb 226 (effective may 7, 2025). tell consumers when they&#x27;re interacting with generative ai — on request generally, proactively in regulated occupations. you can be on the hook under consumer-protection law for what your ai tells customers.">
+                 data-search="ai policy act (sb 149) united states — utah first u.s. state law specifically regulating generative ai: requires disclosure when consumers interact with ai (on request generally, proactively in regulated occupations), establishes liability for ai-driven consumer-protection violations, and creates an office of artificial intelligence policy. amended by sb 226 (effective may 7, 2025).">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://le.utah.gov/~2024/bills/sbillenr/SB0149.pdf" target="_blank" rel="noopener">AI Policy Act (SB 149)</a></h3>
           <p class="meta">United States — Utah</p>
           <p class="txt">First U.S. state law specifically regulating generative AI: requires disclosure when consumers interact with AI (on request generally, proactively in regulated occupations), establishes liability for AI-driven consumer-protection violations, and creates an Office of Artificial Intelligence Policy. Amended by SB 226 (effective May 7, 2025).</p>
           <p class="meta" style="margin-top:.5rem">Enacted March 13, 2024 (signed) · In force May 1, 2024</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Tell consumers when they&#x27;re interacting with generative AI — on request generally, proactively in regulated occupations.</li><li>You can be on the hook under consumer-protection law for what your AI tells customers.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://le.utah.gov/~2024/bills/sbillenr/SB0149.pdf" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="transparency in frontier ai act (sb 53) united states — california requires large frontier-ai developers to publish safety and security frameworks, report critical safety incidents to the state, and implement whistleblower protections; the industry-backed successor to the vetoed sb 1047. large frontier-ai developers: publish your safety and security framework, report critical safety incidents to the state, and keep whistleblower protections in place.">
+                 data-search="transparency in frontier ai act (sb 53) united states — california requires large frontier-ai developers to publish safety and security frameworks, report critical safety incidents to the state, and implement whistleblower protections; the industry-backed successor to the vetoed sb 1047.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53" target="_blank" rel="noopener">Transparency in Frontier AI Act (SB 53)</a></h3>
           <p class="meta">United States — California</p>
           <p class="txt">Requires large frontier-AI developers to publish safety and security frameworks, report critical safety incidents to the state, and implement whistleblower protections; the industry-backed successor to the vetoed SB 1047.</p>
           <p class="meta" style="margin-top:.5rem">Enacted September 29, 2025 (signed) · In force January 1, 2026</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Large frontier-AI developers: publish your safety and security framework, report critical safety incidents to the state, and keep whistleblower protections in place.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="provisions on the administration of algorithm recommendation in internet information services china china&#x27;s foundational algorithm regulation (joint cac/miit/mps/samr order): requires algorithm filing with the cac, user disclosure and opt-out of algorithmic recommendations, non-discrimination, and protections for minors, the elderly, and gig workers; covers generation-synthesis (deepfake) algorithms alongside recommenders. file your recommendation algorithms with the cac. disclose algorithmic recommendations to users and give them an opt-out. don&#x27;t let algorithms discriminate; add safeguards for minors, the elderly, and gig workers.">
+                 data-search="provisions on the administration of algorithm recommendation in internet information services china china&#x27;s foundational algorithm regulation (joint cac/miit/mps/samr order): requires algorithm filing with the cac, user disclosure and opt-out of algorithmic recommendations, non-discrimination, and protections for minors, the elderly, and gig workers; covers generation-synthesis (deepfake) algorithms alongside recommenders.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="http://www.cac.gov.cn/2022-01/04/c_1642894606364259.htm" target="_blank" rel="noopener">Provisions on the Administration of Algorithm Recommendation in Internet Information Services</a></h3>
           <p class="meta">China</p>
           <p class="txt">China&#x27;s foundational algorithm regulation (joint CAC/MIIT/MPS/SAMR order): requires algorithm filing with the CAC, user disclosure and opt-out of algorithmic recommendations, non-discrimination, and protections for minors, the elderly, and gig workers; covers generation-synthesis (deepfake) algorithms alongside recommenders.</p>
           <p class="meta" style="margin-top:.5rem">Enacted December 31, 2021 (promulgated) · In force March 1, 2022</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>File your recommendation algorithms with the CAC.</li><li>Disclose algorithmic recommendations to users and give them an opt-out.</li><li>Don&#x27;t let algorithms discriminate; add safeguards for minors, the elderly, and gig workers.</li></ul></div>
           <div class="foot"><a class="offlink" href="http://www.cac.gov.cn/2022-01/04/c_1642894606364259.htm" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="general data protection regulation (regulation (eu) 2016/679), article 22 european union article 22 gives individuals the right not to be subject to decisions based solely on automated processing, including profiling, that produce legal or similarly significant effects, with exceptions and safeguards such as human intervention. don&#x27;t make solely automated decisions (including profiling) with legal or similarly significant effects on people — unless an exception applies and you have safeguards. where permitted: offer human intervention, let people express their view, and give them a way to contest the decision.">
+                 data-search="general data protection regulation (regulation (eu) 2016/679), article 22 european union article 22 gives individuals the right not to be subject to decisions based solely on automated processing, including profiling, that produce legal or similarly significant effects, with exceptions and safeguards such as human intervention.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener">General Data Protection Regulation (Regulation (EU) 2016/679), Article 22</a></h3>
           <p class="meta">European Union</p>
           <p class="txt">Article 22 gives individuals the right not to be subject to decisions based solely on automated processing, including profiling, that produce legal or similarly significant effects, with exceptions and safeguards such as human intervention.</p>
           <p class="meta" style="margin-top:.5rem">Enacted April 27, 2016 · In force May 25, 2018</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Don&#x27;t make solely automated decisions (including profiling) with legal or similarly significant effects on people — unless an exception applies and you have safeguards.</li><li>Where permitted: offer human intervention, let people express their view, and give them a way to contest the decision.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="product liability directive (directive (eu) 2024/2853) european union modernizes eu no-fault product liability and expressly treats software, including ai systems, as &#x27;products,&#x27; naming ai system providers as manufacturers; member-state transposition due by december 2026. ai systems count as &#x27;products&#x27; — as a provider you can be treated as the manufacturer in no-fault liability claims. keep technical documentation showing your system&#x27;s safety; member-state rules land by december 2026.">
+                 data-search="product liability directive (directive (eu) 2024/2853) european union modernizes eu no-fault product liability and expressly treats software, including ai systems, as &#x27;products,&#x27; naming ai system providers as manufacturers; member-state transposition due by december 2026.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://eur-lex.europa.eu/eli/dir/2024/2853/oj" target="_blank" rel="noopener">Product Liability Directive (Directive (EU) 2024/2853)</a></h3>
           <p class="meta">European Union</p>
           <p class="txt">Modernizes EU no-fault product liability and expressly treats software, including AI systems, as &#x27;products,&#x27; naming AI system providers as manufacturers; member-state transposition due by December 2026.</p>
           <p class="meta" style="margin-top:.5rem">Enacted October 23, 2024 · In force December 2024</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>AI systems count as &#x27;products&#x27; — as a provider you can be treated as the manufacturer in no-fault liability claims.</li><li>Keep technical documentation showing your system&#x27;s safety; member-state rules land by December 2026.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://eur-lex.europa.eu/eli/dir/2024/2853/oj" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="artificial intelligence in government act of 2020 (p.l. 116-260) united states created the gsa ai center of excellence and directed omb guidance on federal agencies&#x27; acquisition and use of ai. no direct duties for private business — it governs federal agencies. it matters if you sell to the government: agencies buy ai through the gsa ai center of excellence framework.">
+                 data-search="artificial intelligence in government act of 2020 (p.l. 116-260) united states created the gsa ai center of excellence and directed omb guidance on federal agencies&#x27; acquisition and use of ai.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener">Artificial Intelligence in Government Act of 2020 (P.L. 116-260)</a></h3>
           <p class="meta">United States</p>
           <p class="txt">Created the GSA AI Center of Excellence and directed OMB guidance on federal agencies&#x27; acquisition and use of AI.</p>
           <p class="meta" style="margin-top:.5rem">Enacted December 27, 2020 · In force December 27, 2020</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>No direct duties for private business — it governs federal agencies. It matters if you sell to the government: agencies buy AI through the GSA AI Center of Excellence framework.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="national artificial intelligence initiative act of 2020 (p.l. 116-283) united states established the national ai initiative and its coordination office to accelerate and coordinate federal ai research and development. no direct duties for private companies — it coordinates federal ai research.">
+                 data-search="national artificial intelligence initiative act of 2020 (p.l. 116-283) united states established the national ai initiative and its coordination office to accelerate and coordinate federal ai research and development.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener">National Artificial Intelligence Initiative Act of 2020 (P.L. 116-283)</a></h3>
           <p class="meta">United States</p>
           <p class="txt">Established the National AI Initiative and its coordination office to accelerate and coordinate federal AI research and development.</p>
           <p class="meta" style="margin-top:.5rem">Enacted January 1, 2021 · In force January 1, 2021</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>No direct duties for private companies — it coordinates federal AI research.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="advancing american ai act (p.l. 117-263) united states requires omb guidance on agency ai use, ai safeguards in federal contracts, and public inventories of agency ai use cases. duties fall on federal agencies, not you directly. federal contractors: expect ai safeguards and use-case inventories in your contracts.">
+                 data-search="advancing american ai act (p.l. 117-263) united states requires omb guidance on agency ai use, ai safeguards in federal contracts, and public inventories of agency ai use cases.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener">Advancing American AI Act (P.L. 117-263)</a></h3>
           <p class="meta">United States</p>
           <p class="txt">Requires OMB guidance on agency AI use, AI safeguards in federal contracts, and public inventories of agency AI use cases.</p>
           <p class="meta" style="margin-top:.5rem">Enacted December 23, 2022 · In force December 23, 2022</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Duties fall on federal agencies, not you directly. Federal contractors: expect AI safeguards and use-case inventories in your contracts.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="executive order 14179 — removing barriers to american leadership in artificial intelligence united states revoked eo 14110 and directed development of an ai action plan plus revised omb guidance on federal ai governance. no direct business duties — it revoked the prior ai executive order and set a new federal direction. watch resulting omb guidance if you work with agencies.">
+                 data-search="executive order 14179 — removing barriers to american leadership in artificial intelligence united states revoked eo 14110 and directed development of an ai action plan plus revised omb guidance on federal ai governance.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/" target="_blank" rel="noopener">Executive Order 14179 — Removing Barriers to American Leadership in Artificial Intelligence</a></h3>
           <p class="meta">United States</p>
           <p class="txt">Revoked EO 14110 and directed development of an AI Action Plan plus revised OMB guidance on federal AI governance.</p>
           <p class="meta" style="margin-top:.5rem">Enacted January 23, 2025 · In force January 23, 2025</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>No direct business duties — it revoked the prior AI executive order and set a new federal direction. Watch resulting OMB guidance if you work with agencies.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="executive order 14365 — ensuring a national policy framework for artificial intelligence united states directs the attorney general to create an ai litigation task force to challenge state ai laws and moves toward a national ai policy framework. no direct business duties — it created a task force to challenge state ai laws, so multi-state compliance strategies may shift. watch this space.">
+                 data-search="executive order 14365 — ensuring a national policy framework for artificial intelligence united states directs the attorney general to create an ai litigation task force to challenge state ai laws and moves toward a national ai policy framework.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/" target="_blank" rel="noopener">Executive Order 14365 — Ensuring a National Policy Framework for Artificial Intelligence</a></h3>
           <p class="meta">United States</p>
           <p class="txt">Directs the Attorney General to create an AI Litigation Task Force to challenge state AI laws and moves toward a national AI policy framework.</p>
           <p class="meta" style="margin-top:.5rem">Enacted December 11, 2025 · In force December 11, 2025</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>No direct business duties — it created a task force to challenge state AI laws, so multi-state compliance strategies may shift. Watch this space.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="illinois hb 3773 / public act 103-0804 united states — illinois makes it a civil rights violation for employers to use ai with a discriminatory effect in employment decisions or to use zip codes as a proxy for protected classes; requires notice to employees of ai use. don&#x27;t use ai in employment decisions in ways that discriminate — it&#x27;s a civil rights violation. don&#x27;t use zip codes as a proxy for protected classes. notify employees when ai is used in employment decisions.">
+                 data-search="illinois hb 3773 / public act 103-0804 united states — illinois makes it a civil rights violation for employers to use ai with a discriminatory effect in employment decisions or to use zip codes as a proxy for protected classes; requires notice to employees of ai use.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.ilga.gov/documents/legislation/publicacts/103/103-0804.htm" target="_blank" rel="noopener">Illinois HB 3773 / Public Act 103-0804</a></h3>
           <p class="meta">United States — Illinois</p>
           <p class="txt">Makes it a civil rights violation for employers to use AI with a discriminatory effect in employment decisions or to use zip codes as a proxy for protected classes; requires notice to employees of AI use.</p>
           <p class="meta" style="margin-top:.5rem">Enacted 2024 · In force January 1, 2026</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Don&#x27;t use AI in employment decisions in ways that discriminate — it&#x27;s a civil rights violation.</li><li>Don&#x27;t use zip codes as a proxy for protected classes.</li><li>Notify employees when AI is used in employment decisions.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.ilga.gov/documents/legislation/publicacts/103/103-0804.htm" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="new york city local law 144 of 2021 (automated employment decision tools) united states — new york city requires independent bias audits and public summaries, plus advance notice to candidates and employees, when automated employment decision tools are used in hiring. using automated hiring tools in nyc: get an independent bias audit and publish the summary before use. give candidates and employees advance notice that an automated tool will be used.">
+                 data-search="new york city local law 144 of 2021 (automated employment decision tools) united states — new york city requires independent bias audits and public summaries, plus advance notice to candidates and employees, when automated employment decision tools are used in hiring.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.dfs.ny.gov/system/files/documents/2022/04/NYC_Council_Automated_Employment_Decision_Tools.pdf" target="_blank" rel="noopener">New York City Local Law 144 of 2021 (Automated Employment Decision Tools)</a></h3>
           <p class="meta">United States — New York City</p>
           <p class="txt">Requires independent bias audits and public summaries, plus advance notice to candidates and employees, when automated employment decision tools are used in hiring.</p>
           <p class="meta" style="margin-top:.5rem">Enacted December 11, 2021 · In force January 1, 2023</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Using automated hiring tools in NYC: get an independent bias audit and publish the summary before use.</li><li>Give candidates and employees advance notice that an automated tool will be used.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.dfs.ny.gov/system/files/documents/2022/04/NYC_Council_Automated_Employment_Decision_Tools.pdf" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="directive on automated decision-making (treasury board of canada secretariat) canada requires federal institutions to complete algorithmic impact assessments, give notice and explanations, test and monitor automated systems, and provide human intervention and recourse; compliance required by april 1, 2020. no direct duties for private business — it binds canadian federal institutions. if you sell ai to them, expect to support their impact assessments, testing, and explainability requirements.">
+                 data-search="directive on automated decision-making (treasury board of canada secretariat) canada requires federal institutions to complete algorithmic impact assessments, give notice and explanations, test and monitor automated systems, and provide human intervention and recourse; compliance required by april 1, 2020.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://publications.gc.ca/collections/collection_2021/sct-tbs/BT48-31-2021-eng.pdf" target="_blank" rel="noopener">Directive on Automated Decision-Making (Treasury Board of Canada Secretariat)</a></h3>
           <p class="meta">Canada</p>
           <p class="txt">Requires federal institutions to complete algorithmic impact assessments, give notice and explanations, test and monitor automated systems, and provide human intervention and recourse; compliance required by April 1, 2020.</p>
           <p class="meta" style="margin-top:.5rem">Enacted 2019 · In force April 1, 2019</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>No direct duties for private business — it binds Canadian federal institutions. If you sell AI to them, expect to support their impact assessments, testing, and explainability requirements.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://publications.gc.ca/collections/collection_2021/sct-tbs/BT48-31-2021-eng.pdf" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="provisions on the administration of deep synthesis of internet information services (order no. 12) china requires real-identity verification, labeling of deep-synthesis (deepfake) content, algorithm filing, and security assessments for deep synthesis service providers. verify users&#x27; real identities before offering deep-synthesis services. label deep-synthesis content as ai-generated. file your algorithms and complete required security assessments.">
+                 data-search="provisions on the administration of deep synthesis of internet information services (order no. 12) china requires real-identity verification, labeling of deep-synthesis (deepfake) content, algorithm filing, and security assessments for deep synthesis service providers.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="http://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm" target="_blank" rel="noopener">Provisions on the Administration of Deep Synthesis of Internet Information Services (Order No. 12)</a></h3>
           <p class="meta">China</p>
           <p class="txt">Requires real-identity verification, labeling of deep-synthesis (deepfake) content, algorithm filing, and security assessments for deep synthesis service providers.</p>
           <p class="meta" style="margin-top:.5rem">Enacted November 25, 2022 · In force January 10, 2023</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Verify users&#x27; real identities before offering deep-synthesis services.</li><li>Label deep-synthesis content as AI-generated.</li><li>File your algorithms and complete required security assessments.</li></ul></div>
           <div class="foot"><a class="offlink" href="http://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="measures for the labeling of ai-generated synthetic content china requires explicit (visible) and implicit (metadata) labeling of ai-generated synthetic content and bans malicious removal or falsification of labels. add both visible labels and metadata labels to ai-generated synthetic content. never remove or falsify labels — yours or anyone else&#x27;s.">
+                 data-search="measures for the labeling of ai-generated synthetic content china requires explicit (visible) and implicit (metadata) labeling of ai-generated synthetic content and bans malicious removal or falsification of labels.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm" target="_blank" rel="noopener">Measures for the Labeling of AI-Generated Synthetic Content</a></h3>
           <p class="meta">China</p>
           <p class="txt">Requires explicit (visible) and implicit (metadata) labeling of AI-generated synthetic content and bans malicious removal or falsification of labels.</p>
           <p class="meta" style="margin-top:.5rem">Enacted March 7, 2025 · In force September 1, 2025</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Add both visible labels and metadata labels to AI-generated synthetic content.</li><li>Never remove or falsify labels — yours or anyone else&#x27;s.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="data (use and access) act 2025, section 80 united kingdom replaces uk gdpr article 22 with articles 22a–22d: solely automated &#x27;significant decisions&#x27; require safeguards including information, the right to make representations, human intervention, and the right to contest. for solely automated decisions with significant effects on uk individuals: inform them, let them make representations, provide human intervention, and honor the right to contest.">
+                 data-search="data (use and access) act 2025, section 80 united kingdom replaces uk gdpr article 22 with articles 22a–22d: solely automated &#x27;significant decisions&#x27; require safeguards including information, the right to make representations, human intervention, and the right to contest.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.legislation.gov.uk/ukpga/2025/18/section/80" target="_blank" rel="noopener">Data (Use and Access) Act 2025, section 80</a></h3>
           <p class="meta">United Kingdom</p>
           <p class="txt">Replaces UK GDPR Article 22 with Articles 22A–22D: solely automated &#x27;significant decisions&#x27; require safeguards including information, the right to make representations, human intervention, and the right to contest.</p>
           <p class="meta" style="margin-top:.5rem">Enacted June 19, 2025 · In force February 5, 2026</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>For solely automated decisions with significant effects on UK individuals: inform them, let them make representations, provide human intervention, and honor the right to contest.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.legislation.gov.uk/ukpga/2025/18/section/80" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="digital services act — regulation (eu) 2022/2065 european union requires transparency for recommender systems — users must be told the main parameters and offered a non-profiling option — and obliges very large platforms to assess and mitigate systemic risks from algorithmic amplification, including ai-driven content ranking. recommender systems: disclose the main parameters and offer a non-profiling option. very large platforms: assess and mitigate systemic risks from algorithmic amplification, including ai-ranked content.">
+                 data-search="digital services act — regulation (eu) 2022/2065 european union requires transparency for recommender systems — users must be told the main parameters and offered a non-profiling option — and obliges very large platforms to assess and mitigate systemic risks from algorithmic amplification, including ai-driven content ranking.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://eur-lex.europa.eu/eli/reg/2022/2065/oj" target="_blank" rel="noopener">Digital Services Act — Regulation (EU) 2022/2065</a></h3>
           <p class="meta">European Union</p>
           <p class="txt">Requires transparency for recommender systems — users must be told the main parameters and offered a non-profiling option — and obliges very large platforms to assess and mitigate systemic risks from algorithmic amplification, including AI-driven content ranking.</p>
           <p class="meta" style="margin-top:.5rem">Enacted October 19, 2022 · In force November 16, 2022 (very-large-platform duties applied August 2023)</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Recommender systems: disclose the main parameters and offer a non-profiling option.</li><li>Very large platforms: assess and mitigate systemic risks from algorithmic amplification, including AI-ranked content.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://eur-lex.europa.eu/eli/reg/2022/2065/oj" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="law no. 132/2025 on artificial intelligence italy italy&#x27;s national ai law complementing the eu ai act — the first comprehensive national ai law by an eu member state. sets workplace transparency and human-oversight duties, sectoral rules for healthcare, education, justice, public administration and sport, parental consent for under-14s&#x27; ai use, and criminal penalties for malicious ai-generated content. deploying ai at work: meet transparency and human-oversight duties. healthcare, education, justice, public administration, or sport: follow the sectoral rules. get parental consent before under-14s use your ai product. don&#x27;t create or spread malicious ai-generated content — criminal penalties apply.">
+                 data-search="law no. 132/2025 on artificial intelligence italy italy&#x27;s national ai law complementing the eu ai act — the first comprehensive national ai law by an eu member state. sets workplace transparency and human-oversight duties, sectoral rules for healthcare, education, justice, public administration and sport, parental consent for under-14s&#x27; ai use, and criminal penalties for malicious ai-generated content.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.gazzettaufficiale.it/eli/id/2025/09/25/25G00143/sg" target="_blank" rel="noopener">Law No. 132/2025 on Artificial Intelligence</a></h3>
           <p class="meta">Italy</p>
           <p class="txt">Italy&#x27;s national AI law complementing the EU AI Act — the first comprehensive national AI law by an EU member state. Sets workplace transparency and human-oversight duties, sectoral rules for healthcare, education, justice, public administration and sport, parental consent for under-14s&#x27; AI use, and criminal penalties for malicious AI-generated content.</p>
           <p class="meta" style="margin-top:.5rem">Enacted September 23, 2025 (adopted) · In force October 10, 2025</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>Deploying AI at work: meet transparency and human-oversight duties.</li><li>Healthcare, education, justice, public administration, or sport: follow the sectoral rules.</li><li>Get parental consent before under-14s use your AI product.</li><li>Don&#x27;t create or spread malicious AI-generated content — criminal penalties apply.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.gazzettaufficiale.it/eli/id/2025/09/25/25G00143/sg" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Enacted" data-kind=""
-                 data-search="legislative decree no. 160 of 9 september 2026 (eu ai act implementation) italy implements the eu ai act in italian law, adding criminal penalties for omitting safety or human-oversight measures on high-risk ai systems, corporate liability, strict limits on police real-time biometric identification, and civil remedies for ai harms. high-risk ai: don&#x27;t skip required safety or human-oversight measures — omissions can be criminal. expect corporate liability for ai harms and civil claims from affected individuals. law-enforcement use: real-time biometric identification faces strict limits.">
+                 data-search="legislative decree no. 160 of 9 september 2026 (eu ai act implementation) italy implements the eu ai act in italian law, adding criminal penalties for omitting safety or human-oversight measures on high-risk ai systems, corporate liability, strict limits on police real-time biometric identification, and civil remedies for ai harms.">
           <span class="badge b-green">Enacted</span>
           <h3><a href="https://www.gazzettaufficiale.it/eli/id/2026/09/15/26G00179/SG" target="_blank" rel="noopener">Legislative Decree No. 160 of 9 September 2026 (EU AI Act implementation)</a></h3>
           <p class="meta">Italy</p>
           <p class="txt">Implements the EU AI Act in Italian law, adding criminal penalties for omitting safety or human-oversight measures on high-risk AI systems, corporate liability, strict limits on police real-time biometric identification, and civil remedies for AI harms.</p>
           <p class="meta" style="margin-top:.5rem">Enacted September 9, 2026 (signed) · In force September 30, 2026</p>
-          <div class="oblig"><h5>What you must do</h5><ul><li>High-risk AI: don&#x27;t skip required safety or human-oversight measures — omissions can be criminal.</li><li>Expect corporate liability for AI harms and civil claims from affected individuals.</li><li>Law-enforcement use: real-time biometric identification faces strict limits.</li></ul></div>
           <div class="foot"><a class="offlink" href="https://www.gazzettaufficiale.it/eli/id/2026/09/15/26G00179/SG" target="_blank" rel="noopener">View official text &#8599;</a></div>
         </article></div>
     <div class="empty" data-f="empty"><h3>No matches</h3>
@@ -661,7 +615,6 @@ footer{margin-top:5rem}
           <p class="meta">Taiwan</p>
           <p class="txt">Reportedly passed Dec 23, 2025 and in force Jan 14, 2026: a 20-article principle-based framework with the NSTC as competent authority and high-risk labeling duties.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Enacted text on an official ROC government site (law.moj.gov.tw or the Executive Yuan Gazette).</p>
-          
           <div class="foot"><a class="offlink" href="https://www.loc.gov/item/global-legal-monitor/2026-05-07/taiwan-new-law-establishes-basic-framework-on-artificial-intelligence/" target="_blank" rel="noopener">Best lead so far &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
@@ -672,7 +625,6 @@ footer{margin-top:5rem}
           <p class="txt">Reportedly signed Mar 21, 2024, effective Jul 1, 2024; protects against unauthorized AI-generated voice likenesses.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Official capitol.tn.gov bill-status page or Public Chapter 588 text.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="omb memoranda m-25-21 and m-25-22 united states reported april 2025 federal ai governance and procurement memos issued under eo 14179&#x27;s directive; the whitehouse.gov pdf urls returned 404 as of oct 1, 2026.">
@@ -681,7 +633,6 @@ footer{margin-top:5rem}
           <p class="meta">United States</p>
           <p class="txt">Reported April 2025 federal AI governance and procurement memos issued under EO 14179&#x27;s directive; the whitehouse.gov PDF URLs returned 404 as of Oct 1, 2026.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Current official status — whether rescinded, superseded, or relocated.</p>
-          
           
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
@@ -692,7 +643,6 @@ footer{margin-top:5rem}
           <p class="txt">Package of AI bills (training-data transparency, election deepfakes, digital likenesses, nonconsensual deepfake images, AI Transparency Act) reported signed in 2024/2026; SB 942&#x27;s operative date was reportedly delayed to Aug 2, 2026.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Chapter/statute status and effective dates on leginfo.legislature.ca.gov.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="ai video interview act (820 ilcs 42/) united states — illinois reportedly in force jan 1, 2020; employer notice and consent duties for ai-analyzed video interviews.">
@@ -701,7 +651,6 @@ footer{margin-top:5rem}
           <p class="meta">United States — Illinois</p>
           <p class="txt">Reportedly in force Jan 1, 2020; employer notice and consent duties for AI-analyzed video interviews.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Verification on ilga.gov.</p>
-          
           
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
@@ -712,7 +661,6 @@ footer{margin-top:5rem}
           <p class="txt">In force 2008; governs biometric identifiers and is frequently applied to facial-recognition AI.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Verification on ilga.gov.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="hb 4623 (digital replicas) united states — illinois reported illinois ai/digital-replica legislation.">
@@ -721,7 +669,6 @@ footer{margin-top:5rem}
           <p class="meta">United States — Illinois</p>
           <p class="txt">Reported Illinois AI/digital-replica legislation.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Verification on ilga.gov.</p>
-          
           
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
@@ -732,7 +679,6 @@ footer{margin-top:5rem}
           <p class="txt">Reportedly prohibits unfair discrimination via external consumer data and information sources, including AI models, in insurance.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Verification on leg.colorado.gov.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="2025 amendments to the ai policy act (sb 226, sb 332, hb 452, sb 271) united states — utah reportedly took effect may 7, 2025; amend the ai policy act.">
@@ -742,7 +688,6 @@ footer{margin-top:5rem}
           <p class="txt">Reportedly took effect May 7, 2025; amend the AI Policy Act.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Verification on le.utah.gov.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="law 25 (lq 2021, c. 25) canada — quebec assented sept 22, 2021; reportedly phased into force sept 2022/2023/2024; modernizes privacy law with duties relevant to automated identification and profiling.">
@@ -751,7 +696,6 @@ footer{margin-top:5rem}
           <p class="meta">Canada — Quebec</p>
           <p class="txt">Assented Sept 22, 2021; reportedly phased into force Sept 2022/2023/2024; modernizes privacy law with duties relevant to automated identification and profiling.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Confirmation on legisquebec.gouv.qc.ca.</p>
-          
           <div class="foot"><a class="offlink" href="https://vortexdev.vortexdev.com/client_resources/site_cpaquebec/PDF/juin2022/Loi64-TexteAdopte.pdf" target="_blank" rel="noopener">Best lead so far &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
@@ -762,7 +706,6 @@ footer{margin-top:5rem}
           <p class="txt">Reported right to review automated decisions under Brazil&#x27;s data-protection law.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Confirmation on planalto.gov.br.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="federal law 258-fz (2020) russia reportedly enables ai regulatory sandboxes (experimental legal regimes).">
@@ -771,7 +714,6 @@ footer{margin-top:5rem}
           <p class="meta">Russia</p>
           <p class="txt">Reportedly enables AI regulatory sandboxes (experimental legal regimes).</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Official confirmation.</p>
-          
           
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
@@ -782,7 +724,6 @@ footer{margin-top:5rem}
           <p class="txt">Reported 2025 digital-technology law and draft AI law.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Official gazette confirmation.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="law 31814 (2023, ai promotion) peru reported 2023 ai promotion law.">
@@ -791,7 +732,6 @@ footer{margin-top:5rem}
           <p class="meta">Peru</p>
           <p class="txt">Reported 2023 AI promotion law.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Official confirmation.</p>
-          
           
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
@@ -802,7 +742,6 @@ footer{margin-top:5rem}
           <p class="txt">Around 30 state laws on deepfakes and AI in elections identified via trackers (AL, AZ, AR, CO HB 1147, DE, FL, ID, IN, KY, MD, MI, MN, MS, MT, NJ, NM, OR, PA Act 35 (2025), SD, UT SB 131, WA SB 5152, WI, and others).</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Spot verification on each state&#x27;s official legislature site.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="executive order 14319 (&#x27;preventing woke ai&#x27;) united states reported july 23, 2025 executive order on ai.">
@@ -811,7 +750,6 @@ footer{margin-top:5rem}
           <p class="meta">United States</p>
           <p class="txt">Reported July 23, 2025 executive order on AI.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Official whitehouse.gov verification.</p>
-          
           
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
@@ -822,7 +760,6 @@ footer{margin-top:5rem}
           <p class="txt">Reported June 2026 executive order on AI.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Official whitehouse.gov verification.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="pipa article 37-2 (right to refuse automated decisions) south korea reported right to refuse automated decisions under the personal information protection act.">
@@ -831,7 +768,6 @@ footer{margin-top:5rem}
           <p class="meta">South Korea</p>
           <p class="txt">Reported right to refuse automated decisions under the Personal Information Protection Act.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Official confirmation.</p>
-          
           
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
@@ -842,7 +778,6 @@ footer{margin-top:5rem}
           <p class="txt">Reported DIFC regulation on autonomous systems.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Official confirmation.</p>
           
-          
         </article>
         <article class="bcard" data-card data-badge="Unverified" data-kind=""
                  data-search="saudi pdpl ai-relevant provisions saudi arabia reported ai-relevant provisions in the personal data protection law.">
@@ -851,7 +786,6 @@ footer{margin-top:5rem}
           <p class="meta">Saudi Arabia</p>
           <p class="txt">Reported AI-relevant provisions in the Personal Data Protection Law.</p>
           <p class="meta" style="margin-top:.5rem">Still needed: Official confirmation.</p>
-          
           
         </article></div>
     <div class="empty" data-f="empty"><h3>No matches</h3>
@@ -879,6 +813,7 @@ footer{margin-top:5rem}
         <li><a href="global.html">Global AI Regulation Index</a></li>
         <li><a href="frameworks.html">AI Governance Frameworks</a></li>
         <li><a href="updates.html">Recent Updates</a></li>
+        <li><a href="check.html">Compliance Check</a></li>
       </ul>
     </div>
     <div>
@@ -1014,38 +949,6 @@ footer{margin-top:5rem}
     document.getElementById('map').innerHTML=
       '<div class="notice" style="margin:2rem"><p>Map failed to load (network needed for map tiles). The full index is listed below.</p></div>';
   }
-})();
-</script>
-<script>
-(function(){
-
-  var DATA=[{"name": "Artificial Intelligence Act — Regulation (EU) 2024/1689", "country": "European Union", "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng", "obligations": ["Work out which risk tier your AI falls into — most everyday business tools face transparency duties, not bans.", "High-risk systems (e.g. hiring, lending, education): complete a conformity assessment, keep technical documentation, build in human oversight, and register in the EU database before you deploy.", "Chatbots and AI-generated content: tell users they're interacting with AI and label synthetic output.", "General-purpose model providers: meet transparency and copyright-policy duties; extra evaluation and incident-reporting duties apply above the high-impact compute threshold.", "Track the phase-in — duties apply in stages through 2027–2028."]}, {"name": "Interim Measures for the Management of Generative AI Services", "country": "China", "link": "https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm", "obligations": ["Complete a security assessment and file your algorithms with the CAC before serving the Chinese public.", "Make sure model outputs meet content requirements and respect IP and personal-information rules.", "Set up user complaint handling and label AI-generated content."]}, {"name": "AI Basic Act (Framework Act on AI Development and Establishment of Trust)", "country": "South Korea", "link": "https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000", "obligations": ["If your AI is 'high-impact' (safety- or rights-affecting): run an impact assessment and keep a human in the loop.", "Label generative AI outputs so users can tell they're AI-made.", "The law reaches foreign companies serving Korean users — fines up to KRW 30 million."]}, {"name": "AI Promotion Act (Act No. 53 of 2025)", "country": "Japan", "link": "https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf", "obligations": ["No fines — but regulators can issue guidance, demand information, or publicly name your company.", "Cooperate with information requests and follow official guidance; public naming is the real enforcement lever."]}, {"name": "Texas Responsible AI Governance Act (TRAIGA), HB 149", "country": "United States — Texas", "link": "https://capitol.texas.gov/tlodocs/89R/billtext/pdf/HB00149F.pdf", "obligations": ["Don't use AI to manipulate behavior, enable unlawful discrimination, or generate CSAM.", "Government deployers: no AI-driven social scoring.", "Testing something novel? The 36-month regulatory sandbox offers supervised room to experiment. Enforcement is by the Texas AG only."]}, {"name": "Connecticut AI Responsibility and Transparency (CART) Act, SB 5", "country": "United States — Connecticut", "link": "https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf", "obligations": ["Hiring tools: follow the anti-discrimination rules and give candidates the required notices (phasing in through 2028).", "Chatbots and AI subscription services: meet deployer disclosure duties.", "Frontier AI developers: maintain whistleblower protections."]}, {"name": "TAKE IT DOWN Act (Public Law 119-12)", "country": "United States", "link": "https://www.congress.gov/bill/119th-congress/senate-bill/146/all-info", "obligations": ["Covered platforms: build a notice-and-removal process and take down reported nonconsensual intimate imagery — including AI-generated — within 48 hours of a valid request.", "Knowingly publishing such imagery is a federal crime."]}, {"name": "AI Policy Act (SB 149)", "country": "United States — Utah", "link": "https://le.utah.gov/~2024/bills/sbillenr/SB0149.pdf", "obligations": ["Tell consumers when they're interacting with generative AI — on request generally, proactively in regulated occupations.", "You can be on the hook under consumer-protection law for what your AI tells customers."]}, {"name": "Transparency in Frontier AI Act (SB 53)", "country": "United States — California", "link": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53", "obligations": ["Large frontier-AI developers: publish your safety and security framework, report critical safety incidents to the state, and keep whistleblower protections in place."]}, {"name": "Provisions on the Administration of Algorithm Recommendation in Internet Information Services", "country": "China", "link": "http://www.cac.gov.cn/2022-01/04/c_1642894606364259.htm", "obligations": ["File your recommendation algorithms with the CAC.", "Disclose algorithmic recommendations to users and give them an opt-out.", "Don't let algorithms discriminate; add safeguards for minors, the elderly, and gig workers."]}, {"name": "General Data Protection Regulation (Regulation (EU) 2016/679), Article 22", "country": "European Union", "link": "https://eur-lex.europa.eu/eli/reg/2016/679/oj", "obligations": ["Don't make solely automated decisions (including profiling) with legal or similarly significant effects on people — unless an exception applies and you have safeguards.", "Where permitted: offer human intervention, let people express their view, and give them a way to contest the decision."]}, {"name": "Product Liability Directive (Directive (EU) 2024/2853)", "country": "European Union", "link": "https://eur-lex.europa.eu/eli/dir/2024/2853/oj", "obligations": ["AI systems count as 'products' — as a provider you can be treated as the manufacturer in no-fault liability claims.", "Keep technical documentation showing your system's safety; member-state rules land by December 2026."]}, {"name": "Artificial Intelligence in Government Act of 2020 (P.L. 116-260)", "country": "United States", "link": "https://www.congress.gov/crs-product/R48555", "obligations": ["No direct duties for private business — it governs federal agencies. It matters if you sell to the government: agencies buy AI through the GSA AI Center of Excellence framework."]}, {"name": "National Artificial Intelligence Initiative Act of 2020 (P.L. 116-283)", "country": "United States", "link": "https://www.congress.gov/crs-product/R48555", "obligations": ["No direct duties for private companies — it coordinates federal AI research."]}, {"name": "Advancing American AI Act (P.L. 117-263)", "country": "United States", "link": "https://www.congress.gov/crs-product/R48555", "obligations": ["Duties fall on federal agencies, not you directly. Federal contractors: expect AI safeguards and use-case inventories in your contracts."]}, {"name": "Executive Order 14179 — Removing Barriers to American Leadership in Artificial Intelligence", "country": "United States", "link": "https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/", "obligations": ["No direct business duties — it revoked the prior AI executive order and set a new federal direction. Watch resulting OMB guidance if you work with agencies."]}, {"name": "Executive Order 14365 — Ensuring a National Policy Framework for Artificial Intelligence", "country": "United States", "link": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/", "obligations": ["No direct business duties — it created a task force to challenge state AI laws, so multi-state compliance strategies may shift. Watch this space."]}, {"name": "Illinois HB 3773 / Public Act 103-0804", "country": "United States — Illinois", "link": "https://www.ilga.gov/documents/legislation/publicacts/103/103-0804.htm", "obligations": ["Don't use AI in employment decisions in ways that discriminate — it's a civil rights violation.", "Don't use zip codes as a proxy for protected classes.", "Notify employees when AI is used in employment decisions."]}, {"name": "New York City Local Law 144 of 2021 (Automated Employment Decision Tools)", "country": "United States — New York City", "link": "https://www.dfs.ny.gov/system/files/documents/2022/04/NYC_Council_Automated_Employment_Decision_Tools.pdf", "obligations": ["Using automated hiring tools in NYC: get an independent bias audit and publish the summary before use.", "Give candidates and employees advance notice that an automated tool will be used."]}, {"name": "Directive on Automated Decision-Making (Treasury Board of Canada Secretariat)", "country": "Canada", "link": "https://publications.gc.ca/collections/collection_2021/sct-tbs/BT48-31-2021-eng.pdf", "obligations": ["No direct duties for private business — it binds Canadian federal institutions. If you sell AI to them, expect to support their impact assessments, testing, and explainability requirements."]}, {"name": "Provisions on the Administration of Deep Synthesis of Internet Information Services (Order No. 12)", "country": "China", "link": "http://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm", "obligations": ["Verify users' real identities before offering deep-synthesis services.", "Label deep-synthesis content as AI-generated.", "File your algorithms and complete required security assessments."]}, {"name": "Measures for the Labeling of AI-Generated Synthetic Content", "country": "China", "link": "https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm", "obligations": ["Add both visible labels and metadata labels to AI-generated synthetic content.", "Never remove or falsify labels — yours or anyone else's."]}, {"name": "Data (Use and Access) Act 2025, section 80", "country": "United Kingdom", "link": "https://www.legislation.gov.uk/ukpga/2025/18/section/80", "obligations": ["For solely automated decisions with significant effects on UK individuals: inform them, let them make representations, provide human intervention, and honor the right to contest."]}, {"name": "Digital Services Act — Regulation (EU) 2022/2065", "country": "European Union", "link": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj", "obligations": ["Recommender systems: disclose the main parameters and offer a non-profiling option.", "Very large platforms: assess and mitigate systemic risks from algorithmic amplification, including AI-ranked content."]}, {"name": "Law No. 132/2025 on Artificial Intelligence", "country": "Italy", "link": "https://www.gazzettaufficiale.it/eli/id/2025/09/25/25G00143/sg", "obligations": ["Deploying AI at work: meet transparency and human-oversight duties.", "Healthcare, education, justice, public administration, or sport: follow the sectoral rules.", "Get parental consent before under-14s use your AI product.", "Don't create or spread malicious AI-generated content — criminal penalties apply."]}, {"name": "Legislative Decree No. 160 of 9 September 2026 (EU AI Act implementation)", "country": "Italy", "link": "https://www.gazzettaufficiale.it/eli/id/2026/09/15/26G00179/SG", "obligations": ["High-risk AI: don't skip required safety or human-oversight measures — omissions can be criminal.", "Expect corporate liability for AI harms and civil claims from affected individuals.", "Law-enforcement use: real-time biometric identification faces strict limits."]}];
-  var JM={"United States (federal)": ["United States"], "Texas": ["United States — Texas", "United States"], "California": ["United States — California", "United States"], "Connecticut": ["United States — Connecticut", "United States"], "Illinois": ["United States — Illinois", "United States"], "Utah": ["United States — Utah", "United States"], "New York City": ["United States — New York City", "United States"], "European Union": ["European Union"], "Italy": ["Italy", "European Union"], "United Kingdom": ["United Kingdom"], "Canada": ["Canada"], "China": ["China"], "Japan": ["Japan"], "South Korea": ["South Korea"]};
-  var chips=document.querySelectorAll('.jchip'),
-      out=document.getElementById('checklist');
-  function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-  function render(){
-    var sel=[];
-    chips.forEach(function(c){if(c.classList.contains('on'))sel.push(c.getAttribute('data-j'));});
-    if(!sel.length){out.innerHTML='<p class="cempty">Select at least one jurisdiction above to build your checklist.</p>';return;}
-    var want={};
-    sel.forEach(function(k){(JM[k]||[]).forEach(function(c){want[c]=1;});});
-    var laws=DATA.filter(function(l){return want[l.country];});
-    if(!laws.length){out.innerHTML='<p class="cempty">No verified laws cover those jurisdictions yet.</p>';return;}
-    var html='<p class="ccount">'+laws.length+' law'+(laws.length===1?'':'s')+' cover you \u2014 work through each list:</p>';
-    laws.forEach(function(l){
-      html+='<div class="claw"><h4>'
-        +(l.link?'<a href="'+h(l.link)+'" target="_blank" rel="noopener">'+h(l.name)+'</a>':h(l.name))
-        +'<span>'+h(l.country)+'</span></h4><ul>';
-      l.obligations.forEach(function(o){html+='<li>'+h(o)+'</li>';});
-      html+='</ul></div>';
-    });
-    out.innerHTML=html;
-  }
-  chips.forEach(function(c){c.addEventListener('click',function(){c.classList.toggle('on');render();});});
-  render();
-
 })();
 </script>
 </body>
