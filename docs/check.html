@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compliance Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blue:#34a3d7; --magenta:#c71585; --orange:#d74b17;
+  --ink:#ffffff; --muted:#a9b6c7; --line:rgba(255,255,255,.14);
+  --card:#ffffff; --ctext:#101418;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
+  background:#000 linear-gradient(180deg,#000 0%,#000 18%,#222844 90%) fixed;line-height:1.6}
+.sans{font-family:'Fraunces',Georgia,serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+.eyebrow{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.78rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+/* ---- nav ---- */
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--blue);width:0;z-index:99}
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;
+  justify-content:space-between;padding:1.05rem 1.6rem;transition:background .25s,box-shadow .25s}
+.nav.scrolled{background:#000;box-shadow:0 2px 18px rgba(0,0,0,.55)}
+.brand{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.92rem;
+  letter-spacing:.1em;color:#fff;text-decoration:none}
+.brand b{color:var(--blue);font-weight:700}
+.navlinks{display:flex;gap:1.5rem;align-items:center}
+.navlinks a{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.76rem;
+  letter-spacing:.12em;color:#fff;text-decoration:none;opacity:.72;text-transform:uppercase}
+.navlinks a:hover{opacity:1}
+.navlinks a.active{opacity:1;color:var(--blue)}
+@media(max-width:720px){.navlinks{gap:.9rem}.navlinks a{font-size:.66rem;letter-spacing:.1em}}
+/* ---- hero ---- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;
+  justify-content:center;text-align:center;overflow:hidden}
+.hero.short{min-height:52vh}
+.hero-img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;
+  animation:heroDrift 30s ease-in-out infinite alternate}
+@keyframes heroDrift{from{transform:scale(1) translate(0,0)}
+  to{transform:scale(1.1) translate(-1.5%,1%)}}
+/* ---- floating orbs ---- */
+.orb{position:absolute;z-index:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(140,190,255,.5) 0%,rgba(90,150,255,.16) 45%,transparent 70%);
+  filter:blur(3px);animation:orbFloat 8s ease-in-out infinite}
+@keyframes orbFloat{0%,100%{transform:translate(0,0);opacity:.75}
+  50%{transform:translate(70px,-60px);opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero-img,.orb{animation:none}}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,.88) 96%)}
+.hero-inner{position:relative;z-index:2;max-width:920px;padding:6rem 1.5rem}
+.hero h1{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(2.9rem,7.5vw,5.9rem);line-height:1.08;
+  margin:1.1rem 0;letter-spacing:-.01em}
+.hero .sub{font-family:'Inter',-apple-system,'Segoe UI',sans-serif;font-weight:400;font-size:1.08rem;
+  color:#dfe6f0;max-width:62ch;margin:0 auto;line-height:1.65}
+.scrollcue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:2;
+  font-family:'Fraunces',Georgia,serif;font-size:.68rem;letter-spacing:.1em;color:var(--muted);
+  text-transform:uppercase;opacity:.75}
+.pdot{position:relative;display:block;border-radius:50%;background:var(--orange);
+  box-shadow:0 0 14px 4px rgba(215,75,23,.75)}
+.pdot.hollow{background:transparent;box-shadow:none;border:2px dashed rgba(215,75,23,.9)}
+/* dark basemap: OSM light tiles inverted via CSS (markers live in the overlay pane, unaffected) */
+.leaflet-tile-pane{filter:invert(1) hue-rotate(185deg) grayscale(.18) brightness(.88) contrast(.94)}
+/* ---- stats ---- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;
+  background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{background:rgba(0,0,0,.42);padding:2rem 1.5rem;text-align:center}
+.stat .num{font-size:2.7rem;font-weight:400;color:#fff}
+.stat .num em{font-style:normal;color:var(--blue)}
+.stat .lbl{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.7rem;
+  letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-top:.45rem}
+.stat .vnote{display:block;letter-spacing:.1em;font-size:.62rem;color:var(--blue);margin-top:.3rem}
+/* ---- sections ---- */
+.sec{padding:5.5rem 0}
+.sec-head{max-width:720px;margin-bottom:2.5rem}
+.sec-head h2{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(1.9rem,3.6vw,2.7rem);margin:.75rem 0 1rem}
+.sec-head p{color:var(--muted);font-size:1.06rem;line-height:1.65;margin:0}
+.sec-head p a{color:var(--blue)}
+/* ---- white index cards (home) ---- */
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
+.wcard{background:#fff;color:var(--ctext);border-radius:6px;overflow:hidden;
+  display:flex;flex-direction:column;text-decoration:none;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s cubic-bezier(.22,.61,.36,1)}
+.wcard:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.wcard .banner{padding:.72rem 1.3rem;font-family:'Fraunces',Georgia,serif;font-weight:700;
+  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#000}
+.wcard .body{padding:1.5rem;flex:1}
+.wcard h3{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.32rem;
+  margin:0 0 .55rem;color:#000}
+.wcard .body p{font-size:1rem;color:#33373d;line-height:1.6;margin:0 0 1.1rem}
+.wcard .go{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.76rem;
+  letter-spacing:.1em;color:var(--blue);text-transform:uppercase}
+.wcard .go:hover{text-decoration:underline}
+/* ---- filter bar (CNAS explorer style) ---- */
+.fbar{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;margin:2rem 0}
+.fbar select{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);
+  border-radius:4px;padding:.62rem .8rem;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.fbar select:hover{border-color:var(--blue)}
+.fbar select option{color:#000;text-transform:none;letter-spacing:0}
+.fsearch{flex:1;min-width:200px;background:transparent;border:none;
+  border-bottom:1px solid rgba(255,255,255,.55);color:#fff;padding:.62rem .2rem;font-size:1.02rem}
+.fsearch::placeholder{color:#8b96a8}
+.fsearch:focus{outline:none;border-bottom-color:var(--blue)}
+.fcount{margin-left:auto;font-family:'Fraunces',Georgia,serif;font-weight:600;
+  font-size:.78rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+/* ---- pager ---- */
+.pager{display:flex;align-items:center;justify-content:center;gap:1rem;margin:2rem 0 0}
+.pager button{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);
+  border-radius:4px;padding:.6rem 1.1rem;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.pager button:hover:not(:disabled){border-color:var(--blue);color:var(--blue)}
+.pager button:disabled{opacity:.3;cursor:default}
+.pager span{font-family:'Fraunces',Georgia,serif;font-size:.75rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+/* ---- updates feed ---- */
+.uchips{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 2.5rem}
+.uchip{background:transparent;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:.55rem 1.1rem;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.uchip:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.uchip.on{color:#000;background:#fff;border-color:#fff}
+.ufeed{max-width:860px}
+.uitem{display:grid;grid-template-columns:86px 1fr;gap:1.5rem;padding:1.8rem 0;
+  border-top:1px solid var(--line)}
+.uitem:last-child{border-bottom:1px solid var(--line)}
+.udate span{display:block;font-family:'Fraunces',Georgia,serif;font-weight:400;
+  font-size:1.35rem;color:#fff;line-height:1.2}
+.udate em{display:block;font-style:normal;font-family:'Fraunces',Georgia,serif;
+  font-size:.72rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-top:.2rem}
+.utag{display:inline-block;font-family:'Fraunces',Georgia,serif;font-weight:600;
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#000;
+  background:var(--blue);border-radius:3px;padding:.28rem .6rem;margin-bottom:.7rem}
+.utag.tag-bill-activity{background:#98d2ea}
+.utag.tag-lawsuit{background:#d77a4b}
+.utag.tag-framework{background:#e8c87e}
+.utag.tag-tracker{background:#8a93a6}
+.ubody h3{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.25rem;
+  line-height:1.35;margin:0 0 .5rem}
+.ubody h3 a{color:#fff;text-decoration:none}
+.ubody h3 a:hover{color:var(--blue)}
+.ubody p{color:var(--muted);font-size:.95rem;line-height:1.6;margin:0}
+.unote{max-width:860px;margin:3rem 0 0;padding:1.5rem;border:1px solid var(--line);
+  border-radius:6px;background:rgba(255,255,255,.02)}
+.unote h4{font-family:'Fraunces',Georgia,serif;font-size:.75rem;letter-spacing:.12em;
+  text-transform:uppercase;color:#fff;margin:0 0 .6rem}
+.unote p{color:var(--muted);font-size:.9rem;line-height:1.65;margin:0}
+/* ---- home latest strip ---- */
+.ustrip{max-width:860px;margin:0 auto}
+.ustrip-item{display:flex;align-items:baseline;gap:1.2rem;padding:1.1rem 0;
+  border-top:1px solid var(--line);text-decoration:none}
+.ustrip-item:last-child{border-bottom:1px solid var(--line)}
+.ustrip-item:hover h4{color:var(--blue)}
+.ustrip-date{flex:0 0 86px;font-family:'Fraunces',Georgia,serif;font-size:.78rem;
+  letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.ustrip-item h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.05rem;
+  color:#fff;margin:0;line-height:1.4}
+.ustrip-more{display:inline-block;margin-top:1.4rem;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue);text-decoration:none}
+/* ---- jurisdiction checker + obligations ---- */
+.jchips{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 2rem}
+.ccount{font-family:'Fraunces',Georgia,serif;color:#fff;margin:0 0 1.5rem;font-size:1.05rem}
+.cempty{color:var(--muted);font-style:italic}
+.claw{border:1px solid var(--line);border-radius:6px;padding:1.4rem 1.5rem;
+  margin:0 0 1.2rem;background:rgba(255,255,255,.02);max-width:860px}
+.claw h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.1rem;
+  margin:0 0 .8rem;line-height:1.4}
+.claw h4 a{color:#fff;text-decoration:none}
+.claw h4 a:hover{color:var(--blue)}
+.claw h4 span{display:block;font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.claw ul{margin:0;padding-left:1.2rem;color:#dfe6f0;font-size:.92rem;line-height:1.65}
+.claw li{margin-bottom:.4rem}
+.claw li::marker{color:var(--blue)}
+.cdisclaimer{margin-top:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:70ch}
+.cdisclaimer b{color:#fff}
+/* ---- white data cards ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
+.bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
+  display:flex;flex-direction:column}
+.badge{align-self:flex-start;font-family:'Fraunces',Georgia,serif;font-weight:700;
+  font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  border-radius:999px;padding:.3rem .72rem;margin-bottom:.75rem}
+.b-green{background:#1a7f37}.b-amber{background:#b45309}.b-blue{background:#0969da}
+.b-gray{background:#57606a}.b-gold{background:#9a6700}.b-orange{background:#cf5016}
+.b-purple{background:#8250df}
+.bcard h3{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1rem;
+  line-height:1.42;margin:0 0 .45rem;color:#000}
+.bcard h3 a{color:#000;text-decoration:none}
+.bcard h3 a:hover{color:var(--blue);text-decoration:underline}
+.bcard .meta{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.76rem;
+  color:#5b6572;margin:0 0 .5rem;line-height:1.5}
+.bcard .txt{font-size:.94rem;color:#2a3138;line-height:1.58;margin:0}
+.bcard .foot{margin-top:auto;padding-top:1rem}
+.offlink{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.72rem;
+  letter-spacing:.12em;color:var(--blue);text-decoration:none;text-transform:uppercase}
+.offlink:hover{text-decoration:underline}
+.xwalk{margin-top:1rem;padding-top:.9rem;border-top:1px solid #e8edf3}
+.xwalk .xlbl{display:block;font-family:'Fraunces',Georgia,serif;font-weight:700;
+  font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8a94a6;
+  margin-bottom:.5rem}
+.xchip{display:inline-block;margin:0 .35rem .35rem 0;padding:.32rem .7rem;
+  border:1px solid #d9e2ec;border-radius:999px;font-size:.76rem;font-weight:600;
+  color:#33415c;background:#f6f9fc;text-decoration:none;
+  transition:border-color .18s ease,background .18s ease,transform .18s ease}
+.xchip:hover{border-color:var(--blue);background:#eef4fb;transform:translateY(-1px)}
+/* ---- map + side panel ---- */
+.mapsec{position:relative;margin:1rem 0 3rem;overflow-x:clip}
+#map{height:600px;background:#07141d;border:1px solid var(--line);border-radius:8px;z-index:1}
+.leaflet-container{font-family:'Fraunces',Georgia,serif}
+.leaflet-tile-pane{filter:invert(90%) hue-rotate(180deg) brightness(.88) contrast(.95)}
+.maplegend{position:absolute;left:14px;bottom:14px;z-index:500;background:rgba(0,0,0,.82);
+  border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem;color:#fff}
+.maplegend h4{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.68rem;
+  letter-spacing:.1em;text-transform:uppercase;margin:0 0 .55rem;color:#fff}
+.maplegend .row{display:flex;align-items:center;gap:.55rem;
+  font-family:'Fraunces',Georgia,serif;font-size:.72rem;color:var(--muted);margin:.3rem 0}
+.sw{width:22px;height:12px;border-radius:2px;background:var(--orange)}
+.panel{position:absolute;top:0;right:0;bottom:0;width:min(430px,94%);background:#fff;
+  color:#111;z-index:600;transform:translateX(106%);transition:transform .38s cubic-bezier(.32,.72,0,1);
+  overflow-y:auto;padding:1.7rem 1.6rem;box-shadow:-14px 0 44px rgba(0,0,0,.5);
+  border-radius:0 8px 8px 0}
+.panel.open{transform:none}
+.panel .xrow{display:flex;justify-content:space-between;align-items:center}
+.panel .reset{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.7rem;
+  letter-spacing:.12em;color:#2c5d75;text-decoration:none;text-transform:uppercase;cursor:pointer}
+.panel .reset:hover{text-decoration:underline}
+.panel h3{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.45rem;
+  margin:.5rem 0 .2rem;color:#000}
+.panel .rule{height:3px;background:#000;width:66px;margin:.65rem 0 1rem}
+.pill{display:inline-block;border:1px solid #000;border-radius:999px;padding:.28rem .75rem;
+  font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.66rem;letter-spacing:.12em;
+  text-transform:uppercase;color:#000;margin:0 .4rem .6rem 0}
+.plaw{border-top:1px solid #e3e6ea;padding:.95rem 0}
+.plaw h4{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.98rem;
+  margin:0 0 .3rem;color:#000;line-height:1.4}
+.plaw h4 a{color:#000;text-decoration:none}
+.plaw h4 a:hover{color:var(--blue);text-decoration:underline}
+.plaw .sub2{font-family:'Fraunces',Georgia,serif;font-size:.72rem;font-weight:600;
+  color:#5b6572;margin:0 0 .35rem}
+.plaw p{font-size:.9rem;color:#33373d;margin:0;line-height:1.55}
+/* ---- tile grid US map ---- */
+.tilegrid{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;max-width:780px;margin:0 auto}
+.tile{aspect-ratio:1/.92;border-radius:6px;border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.045);color:#fff;font-family:'Fraunces',Georgia,serif;
+  font-weight:700;font-size:.72rem;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;cursor:default;line-height:1.25}
+.tile .n{font-size:.62rem;font-weight:600;color:#cdd6e2}
+.tile.has{cursor:pointer;border-color:var(--blue)}
+.tile.has:hover{transform:scale(1.1);z-index:2}
+@media(max-width:640px){.tile{font-size:.58rem}.tile .n{display:none}}
+/* ---- status bars ---- */
+.bars{max-width:760px;margin:1.6rem 0 2.4rem}
+.barrow{margin:.65rem 0}
+.barrow .t{display:flex;justify-content:space-between;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.35rem}
+.barrow .t b{color:#fff}
+.barrow .track{height:14px;background:rgba(255,255,255,.1);border-radius:7px;overflow:hidden}
+.barrow .fill{height:100%;border-radius:7px;background:#5d8aa0;transition:width 1s ease}
+/* ---- misc ---- */
+.empty{display:none;text-align:center;color:var(--muted);padding:3.5rem 1rem}
+.empty h3{color:#fff;font-weight:400;font-size:1.6rem}
+.notice{background:rgba(255,255,255,.06);border:1px solid var(--line);
+  border-left:4px solid #d4a017;border-radius:8px;padding:.9rem 1.1rem;font-size:.95rem;color:#dfe6f0}
+.notice a{color:var(--blue)}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin:2rem 0}
+.kv .k{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:8px;
+  padding:1.2rem 1.3rem}
+.kv .k h4{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.74rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin:0 0 .5rem}
+.kv .k p{margin:0;color:#c9d2e0;font-size:.96rem;line-height:1.6}
+footer{margin-top:5rem}
+.fband{background:#222844;border-top:1px solid #fff;padding:3rem 0 2.2rem}
+.fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+@media(max-width:760px){.fcols{grid-template-columns:1fr}}
+.fcols h5{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;color:#fff;margin:0 0 .9rem}
+.fcols p,.fcols li{font-size:.95rem;color:#c9d2e0;line-height:1.65}
+.fcols ul{list-style:none;margin:0;padding:0}
+.fcols li{margin:.4rem 0}
+.fcols a{color:#fff;text-decoration:none;border-bottom:1px solid var(--blue)}
+.fcols a:hover{color:var(--blue)}
+.fbottom{background:#000;padding:1.1rem 0;display:flex;justify-content:space-between;
+  align-items:center;gap:1rem;flex-wrap:wrap}
+.fbottom small{font-family:'Fraunces',Georgia,serif;font-size:.72rem;color:#8b96a8;letter-spacing:.06em}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html">AI<b>·</b>REGULATION<b>·</b>TRACKER</a>
+  <div class="navlinks"><a href="index.html" class="">Home</a><a href="us-laws.html" class="">US Laws</a><a href="litigation.html" class="">Litigation</a><a href="global.html" class="">Global Index</a><a href="frameworks.html" class="">Frameworks</a><a href="updates.html" class="">Updates</a><a href="check.html" class="active">Check</a></div>
+</nav>
+
+<header class="hero short">
+  <div class="hero-inner">
+    <div class="eyebrow reveal">Self-check</div>
+    <h1 class="reveal">Compliance Check</h1>
+    <p class="sub reveal">One product, no legal team? Select every jurisdiction
+    where you operate or sell, and get a plain-English checklist of what each
+    verified AI law asks of you.</p>
+  </div>
+</header>
+
+<section class="sec"><div class="wrap">
+    <div class="eyebrow reveal">Step 1</div>
+    <h2 class="reveal">Where do you operate?</h2>
+  </div>
+  <div class="wrap">
+    <div class="jchips reveal"><button class="uchip jchip" data-j="United States (federal)">United States (federal)</button><button class="uchip jchip" data-j="Texas">Texas</button><button class="uchip jchip" data-j="California">California</button><button class="uchip jchip" data-j="Connecticut">Connecticut</button><button class="uchip jchip" data-j="Illinois">Illinois</button><button class="uchip jchip" data-j="Utah">Utah</button><button class="uchip jchip" data-j="New York City">New York City</button><button class="uchip jchip" data-j="European Union">European Union</button><button class="uchip jchip" data-j="Italy">Italy</button><button class="uchip jchip" data-j="United Kingdom">United Kingdom</button><button class="uchip jchip" data-j="Canada">Canada</button><button class="uchip jchip" data-j="China">China</button><button class="uchip jchip" data-j="Japan">Japan</button><button class="uchip jchip" data-j="South Korea">South Korea</button></div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="eyebrow reveal">Step 2</div>
+    <h2 class="reveal">Your checklist</h2>
+  </div>
+  <div class="wrap">
+    <div id="checklist" class="reveal"></div>
+    <p class="cdisclaimer reveal"><b>Not legal advice.</b> This is a starting-point
+    checklist drawn from the tracker's plain-English summaries of verified,
+    enacted laws. Always verify against the official legal text — linked on
+    each law and on the <a href="global.html" style="color:#fff">Global AI
+    Regulation Index</a> — before making compliance decisions.</p>
+  </div>
+</div></section>
+
+
+<footer>
+  <div class="fband"><div class="wrap"><div class="fcols">
+    <div>
+      <h5>About this tracker</h5>
+      <p>A public index of artificial-intelligence law and litigation: US federal
+      and state bills, AI lawsuits in federal court, and enacted AI laws worldwide.
+      Every enacted law is verified against an official government source; reported
+      laws that cannot be confirmed are marked <b>Unverified</b> and kept out of the
+      enacted count.</p>
+    </div>
+    <div>
+      <h5>Index</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="us-laws.html">US AI Law Tracker</a></li>
+        <li><a href="litigation.html">AI Litigation Monitor</a></li>
+        <li><a href="global.html">Global AI Regulation Index</a></li>
+        <li><a href="frameworks.html">AI Governance Frameworks</a></li>
+        <li><a href="updates.html">Recent Updates</a></li>
+        <li><a href="check.html">Compliance Check</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Sources</h5>
+      <ul>
+        <li><a href="https://www.congress.gov">Congress.gov</a> — federal bills</li>
+        <li><a href="https://openstates.org">OpenStates</a> — state bills</li>
+        <li><a href="https://www.courtlistener.com">CourtListener</a> — lawsuits</li>
+        <li>Official gazettes &amp; agency sites — enacted laws</li>
+      </ul>
+    </div>
+  </div></div></div>
+  <div class="fbottom"><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;width:100%">
+    <small>AI REGULATION TRACKER · UPDATED Oct 9, 2026</small>
+    <small>CODE &amp; CURATION NOTES ON <a href="https://github.com/trishabinwade/ai-regulation-tracker" style="color:#fff">GITHUB</a></small>
+  </div></div>
+</footer>
+
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('progress');
+  function onScroll(){
+    nav.classList.toggle('scrolled', window.scrollY>40);
+    var h=document.documentElement, p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+    prog.style.width=(p*100)+'%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target=parseInt(el.getAttribute('data-count'),10), t0=null;
+    function step(ts){ if(!t0)t0=ts; var k=Math.min(1,(ts-t0)/1100);
+      el.textContent=Math.round(target*(1-Math.pow(1-k,3))); if(k<1)requestAnimationFrame(step); }
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){requestAnimationFrame(step);io2.disconnect();}});});
+    io2.observe(el);
+  });
+  // generic explorer filter + pagination: [data-explorer] wraps cards with data-search/data-badge/data-kind
+  var PAGE_SIZE=12;
+  document.querySelectorAll('[data-explorer]').forEach(function(root){
+    var q=root.querySelector('[data-f=q]'),
+        badge=root.querySelector('[data-f=badge]'),
+        kind=root.querySelector('[data-f=kind]'),
+        count=root.querySelector('[data-f=count]'),
+        empty=root.querySelector('[data-f=empty]'),
+        cards=Array.prototype.slice.call(root.querySelectorAll('[data-card]')),
+        total=cards.length, page=1, matched=cards.slice();
+    var pager=document.createElement('div'); pager.className='pager';
+    pager.innerHTML='<button type="button" data-pg="prev">&larr; Prev</button>'+
+      '<span data-pg="info"></span>'+
+      '<button type="button" data-pg="next">Next &rarr;</button>';
+    root.appendChild(pager);
+    var prev=pager.querySelector('[data-pg=prev]'),
+        next=pager.querySelector('[data-pg=next]'),
+        info=pager.querySelector('[data-pg=info]');
+    function render(){
+      var n=matched.length, pages=Math.max(1,Math.ceil(n/PAGE_SIZE));
+      if(page>pages)page=pages;
+      cards.forEach(function(c){c.style.display='none';});
+      matched.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE).forEach(function(c){c.style.display='';});
+      if(count)count.textContent='Showing '+n+' of '+total;
+      if(empty)empty.style.display=n===0?'':'none';
+      pager.style.display=n>PAGE_SIZE?'':'none';
+      info.textContent='Page '+page+' of '+pages;
+      prev.disabled=page<=1; next.disabled=page>=pages;
+    }
+    function apply(){
+      var s=q?q.value.trim().toLowerCase():'', b=badge?badge.value:'',
+          k=kind?kind.value:'';
+      matched=cards.filter(function(c){
+        return (!s||c.getAttribute('data-search').indexOf(s)!==-1)
+          &&(!b||c.getAttribute('data-badge')===b)
+          &&(!k||c.getAttribute('data-kind')===k);
+      });
+      page=1; render();
+    }
+    prev.addEventListener('click',function(){if(page>1){page--;render();root.scrollIntoView();}});
+    next.addEventListener('click',function(){
+      if(page<Math.ceil(matched.length/PAGE_SIZE)){page++;render();root.scrollIntoView();}});
+    [q,badge,kind].forEach(function(el){if(el)el.addEventListener('input',apply);if(el)el.addEventListener('change',apply);});
+    apply();
+  });
+})();
+</script>
+
+<script>
+(function(){
+
+  var DATA=[{"name": "Artificial Intelligence Act — Regulation (EU) 2024/1689", "country": "European Union", "link": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng", "obligations": ["Work out which risk tier your AI falls into — most everyday business tools face transparency duties, not bans.", "High-risk systems (e.g. hiring, lending, education): complete a conformity assessment, keep technical documentation, build in human oversight, and register in the EU database before you deploy.", "Chatbots and AI-generated content: tell users they're interacting with AI and label synthetic output.", "General-purpose model providers: meet transparency and copyright-policy duties; extra evaluation and incident-reporting duties apply above the high-impact compute threshold.", "Track the phase-in — duties apply in stages through 2027–2028."]}, {"name": "Interim Measures for the Management of Generative AI Services", "country": "China", "link": "https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm", "obligations": ["Complete a security assessment and file your algorithms with the CAC before serving the Chinese public.", "Make sure model outputs meet content requirements and respect IP and personal-information rules.", "Set up user complaint handling and label AI-generated content."]}, {"name": "AI Basic Act (Framework Act on AI Development and Establishment of Trust)", "country": "South Korea", "link": "https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000", "obligations": ["If your AI is 'high-impact' (safety- or rights-affecting): run an impact assessment and keep a human in the loop.", "Label generative AI outputs so users can tell they're AI-made.", "The law reaches foreign companies serving Korean users — fines up to KRW 30 million."]}, {"name": "AI Promotion Act (Act No. 53 of 2025)", "country": "Japan", "link": "https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf", "obligations": ["No fines — but regulators can issue guidance, demand information, or publicly name your company.", "Cooperate with information requests and follow official guidance; public naming is the real enforcement lever."]}, {"name": "Texas Responsible AI Governance Act (TRAIGA), HB 149", "country": "United States — Texas", "link": "https://capitol.texas.gov/tlodocs/89R/billtext/pdf/HB00149F.pdf", "obligations": ["Don't use AI to manipulate behavior, enable unlawful discrimination, or generate CSAM.", "Government deployers: no AI-driven social scoring.", "Testing something novel? The 36-month regulatory sandbox offers supervised room to experiment. Enforcement is by the Texas AG only."]}, {"name": "Connecticut AI Responsibility and Transparency (CART) Act, SB 5", "country": "United States — Connecticut", "link": "https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf", "obligations": ["Hiring tools: follow the anti-discrimination rules and give candidates the required notices (phasing in through 2028).", "Chatbots and AI subscription services: meet deployer disclosure duties.", "Frontier AI developers: maintain whistleblower protections."]}, {"name": "TAKE IT DOWN Act (Public Law 119-12)", "country": "United States", "link": "https://www.congress.gov/bill/119th-congress/senate-bill/146/all-info", "obligations": ["Covered platforms: build a notice-and-removal process and take down reported nonconsensual intimate imagery — including AI-generated — within 48 hours of a valid request.", "Knowingly publishing such imagery is a federal crime."]}, {"name": "AI Policy Act (SB 149)", "country": "United States — Utah", "link": "https://le.utah.gov/~2024/bills/sbillenr/SB0149.pdf", "obligations": ["Tell consumers when they're interacting with generative AI — on request generally, proactively in regulated occupations.", "You can be on the hook under consumer-protection law for what your AI tells customers."]}, {"name": "Transparency in Frontier AI Act (SB 53)", "country": "United States — California", "link": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53", "obligations": ["Large frontier-AI developers: publish your safety and security framework, report critical safety incidents to the state, and keep whistleblower protections in place."]}, {"name": "Provisions on the Administration of Algorithm Recommendation in Internet Information Services", "country": "China", "link": "http://www.cac.gov.cn/2022-01/04/c_1642894606364259.htm", "obligations": ["File your recommendation algorithms with the CAC.", "Disclose algorithmic recommendations to users and give them an opt-out.", "Don't let algorithms discriminate; add safeguards for minors, the elderly, and gig workers."]}, {"name": "General Data Protection Regulation (Regulation (EU) 2016/679), Article 22", "country": "European Union", "link": "https://eur-lex.europa.eu/eli/reg/2016/679/oj", "obligations": ["Don't make solely automated decisions (including profiling) with legal or similarly significant effects on people — unless an exception applies and you have safeguards.", "Where permitted: offer human intervention, let people express their view, and give them a way to contest the decision."]}, {"name": "Product Liability Directive (Directive (EU) 2024/2853)", "country": "European Union", "link": "https://eur-lex.europa.eu/eli/dir/2024/2853/oj", "obligations": ["AI systems count as 'products' — as a provider you can be treated as the manufacturer in no-fault liability claims.", "Keep technical documentation showing your system's safety; member-state rules land by December 2026."]}, {"name": "Artificial Intelligence in Government Act of 2020 (P.L. 116-260)", "country": "United States", "link": "https://www.congress.gov/crs-product/R48555", "obligations": ["No direct duties for private business — it governs federal agencies. It matters if you sell to the government: agencies buy AI through the GSA AI Center of Excellence framework."]}, {"name": "National Artificial Intelligence Initiative Act of 2020 (P.L. 116-283)", "country": "United States", "link": "https://www.congress.gov/crs-product/R48555", "obligations": ["No direct duties for private companies — it coordinates federal AI research."]}, {"name": "Advancing American AI Act (P.L. 117-263)", "country": "United States", "link": "https://www.congress.gov/crs-product/R48555", "obligations": ["Duties fall on federal agencies, not you directly. Federal contractors: expect AI safeguards and use-case inventories in your contracts."]}, {"name": "Executive Order 14179 — Removing Barriers to American Leadership in Artificial Intelligence", "country": "United States", "link": "https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/", "obligations": ["No direct business duties — it revoked the prior AI executive order and set a new federal direction. Watch resulting OMB guidance if you work with agencies."]}, {"name": "Executive Order 14365 — Ensuring a National Policy Framework for Artificial Intelligence", "country": "United States", "link": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/", "obligations": ["No direct business duties — it created a task force to challenge state AI laws, so multi-state compliance strategies may shift. Watch this space."]}, {"name": "Illinois HB 3773 / Public Act 103-0804", "country": "United States — Illinois", "link": "https://www.ilga.gov/documents/legislation/publicacts/103/103-0804.htm", "obligations": ["Don't use AI in employment decisions in ways that discriminate — it's a civil rights violation.", "Don't use zip codes as a proxy for protected classes.", "Notify employees when AI is used in employment decisions."]}, {"name": "New York City Local Law 144 of 2021 (Automated Employment Decision Tools)", "country": "United States — New York City", "link": "https://www.dfs.ny.gov/system/files/documents/2022/04/NYC_Council_Automated_Employment_Decision_Tools.pdf", "obligations": ["Using automated hiring tools in NYC: get an independent bias audit and publish the summary before use.", "Give candidates and employees advance notice that an automated tool will be used."]}, {"name": "Directive on Automated Decision-Making (Treasury Board of Canada Secretariat)", "country": "Canada", "link": "https://publications.gc.ca/collections/collection_2021/sct-tbs/BT48-31-2021-eng.pdf", "obligations": ["No direct duties for private business — it binds Canadian federal institutions. If you sell AI to them, expect to support their impact assessments, testing, and explainability requirements."]}, {"name": "Provisions on the Administration of Deep Synthesis of Internet Information Services (Order No. 12)", "country": "China", "link": "http://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm", "obligations": ["Verify users' real identities before offering deep-synthesis services.", "Label deep-synthesis content as AI-generated.", "File your algorithms and complete required security assessments."]}, {"name": "Measures for the Labeling of AI-Generated Synthetic Content", "country": "China", "link": "https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm", "obligations": ["Add both visible labels and metadata labels to AI-generated synthetic content.", "Never remove or falsify labels — yours or anyone else's."]}, {"name": "Data (Use and Access) Act 2025, section 80", "country": "United Kingdom", "link": "https://www.legislation.gov.uk/ukpga/2025/18/section/80", "obligations": ["For solely automated decisions with significant effects on UK individuals: inform them, let them make representations, provide human intervention, and honor the right to contest."]}, {"name": "Digital Services Act — Regulation (EU) 2022/2065", "country": "European Union", "link": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj", "obligations": ["Recommender systems: disclose the main parameters and offer a non-profiling option.", "Very large platforms: assess and mitigate systemic risks from algorithmic amplification, including AI-ranked content."]}, {"name": "Law No. 132/2025 on Artificial Intelligence", "country": "Italy", "link": "https://www.gazzettaufficiale.it/eli/id/2025/09/25/25G00143/sg", "obligations": ["Deploying AI at work: meet transparency and human-oversight duties.", "Healthcare, education, justice, public administration, or sport: follow the sectoral rules.", "Get parental consent before under-14s use your AI product.", "Don't create or spread malicious AI-generated content — criminal penalties apply."]}, {"name": "Legislative Decree No. 160 of 9 September 2026 (EU AI Act implementation)", "country": "Italy", "link": "https://www.gazzettaufficiale.it/eli/id/2026/09/15/26G00179/SG", "obligations": ["High-risk AI: don't skip required safety or human-oversight measures — omissions can be criminal.", "Expect corporate liability for AI harms and civil claims from affected individuals.", "Law-enforcement use: real-time biometric identification faces strict limits."]}];
+  var JM={"United States (federal)": ["United States"], "Texas": ["United States — Texas", "United States"], "California": ["United States — California", "United States"], "Connecticut": ["United States — Connecticut", "United States"], "Illinois": ["United States — Illinois", "United States"], "Utah": ["United States — Utah", "United States"], "New York City": ["United States — New York City", "United States"], "European Union": ["European Union"], "Italy": ["Italy", "European Union"], "United Kingdom": ["United Kingdom"], "Canada": ["Canada"], "China": ["China"], "Japan": ["Japan"], "South Korea": ["South Korea"]};
+  var chips=document.querySelectorAll('.jchip'),
+      out=document.getElementById('checklist');
+  function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function render(){
+    var sel=[];
+    chips.forEach(function(c){if(c.classList.contains('on'))sel.push(c.getAttribute('data-j'));});
+    if(!sel.length){out.innerHTML='<p class="cempty">Select at least one jurisdiction above to build your checklist.</p>';return;}
+    var want={};
+    sel.forEach(function(k){(JM[k]||[]).forEach(function(c){want[c]=1;});});
+    var laws=DATA.filter(function(l){return want[l.country];});
+    if(!laws.length){out.innerHTML='<p class="cempty">No verified laws cover those jurisdictions yet.</p>';return;}
+    var html='<p class="ccount">'+laws.length+' law'+(laws.length===1?'':'s')+' cover you \u2014 work through each list:</p>';
+    laws.forEach(function(l){
+      html+='<div class="claw"><h4>'
+        +(l.link?'<a href="'+h(l.link)+'" target="_blank" rel="noopener">'+h(l.name)+'</a>':h(l.name))
+        +'<span>'+h(l.country)+'</span></h4><ul>';
+      l.obligations.forEach(function(o){html+='<li>'+h(o)+'</li>';});
+      html+='</ul></div>';
+    });
+    out.innerHTML=html;
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){c.classList.toggle('on');render();});});
+  render();
+
+})();
+</script>
+</body>
+</html>
