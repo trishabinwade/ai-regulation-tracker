@@ -162,6 +162,23 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .ustrip-more{display:inline-block;margin-top:1.4rem;font-family:'Fraunces',Georgia,serif;
   font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--blue);text-decoration:none}
+/* ---- jurisdiction checker + obligations ---- */
+.jchips{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 2rem}
+.ccount{font-family:'Fraunces',Georgia,serif;color:#fff;margin:0 0 1.5rem;font-size:1.05rem}
+.cempty{color:var(--muted);font-style:italic}
+.claw{border:1px solid var(--line);border-radius:6px;padding:1.4rem 1.5rem;
+  margin:0 0 1.2rem;background:rgba(255,255,255,.02);max-width:860px}
+.claw h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.1rem;
+  margin:0 0 .8rem;line-height:1.4}
+.claw h4 a{color:#fff;text-decoration:none}
+.claw h4 a:hover{color:var(--blue)}
+.claw h4 span{display:block;font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.claw ul{margin:0;padding-left:1.2rem;color:#dfe6f0;font-size:.92rem;line-height:1.65}
+.claw li{margin-bottom:.4rem}
+.claw li::marker{color:var(--blue)}
+.cdisclaimer{margin-top:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:70ch}
+.cdisclaimer b{color:#fff}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -321,100 +338,124 @@ footer{margin-top:5rem}
     </div>
           <div class="grid">
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="emmerich newspapers, inc. v. microsoft corporation district court, s.d. mississippi 3:26-cv-00791">
+             data-search="murphy v. meta platforms, inc. district court, e.d. missouri 1:26-cv-00235">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74915508/emmerich-newspapers-inc-v-microsoft-corporation/" target="_blank" rel="noopener">Emmerich Newspapers, Inc. v. Microsoft Corporation</a></h3>
-      <p class="meta">District Court, S.D. Mississippi · Docket 3:26-cv-00791 · Oct 02, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74961640/murphy-v-meta-platforms-inc/" target="_blank" rel="noopener">Murphy v. Meta Platforms, Inc.</a></h3>
+      <p class="meta">District Court, E.D. Missouri · Docket 1:26-cv-00235 · Oct 13, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74915508/emmerich-newspapers-inc-v-microsoft-corporation/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74961640/murphy-v-meta-platforms-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="stewart v. alphabet inc. district court, n.d. california 3:26-cv-11290">
+             data-search="umg recordings, inc. v. suno, inc. district court, n.d. california 3:26-mc-80303">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74910343/stewart-v-alphabet-inc/" target="_blank" rel="noopener">Stewart v. Alphabet Inc.</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 3:26-cv-11290 · Oct 02, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74958474/umg-recordings-inc-v-suno-inc/" target="_blank" rel="noopener">UMG Recordings, Inc. v. Suno, Inc.</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 3:26-mc-80303 · Oct 13, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74910343/stewart-v-alphabet-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74958474/umg-recordings-inc-v-suno-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="state of new york v. epa court of appeals for the d.c. circuit 26-1259">
+             data-search="marti v. ardelyx, inc. district court, d. massachusetts 1:26-cv-14635">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74902809/state-of-new-york-v-epa/" target="_blank" rel="noopener">State of New York v. EPA</a></h3>
-      <p class="meta">Court of Appeals for the D.C. Circuit · Docket 26-1259 · Oct 01, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74957625/marti-v-ardelyx-inc/" target="_blank" rel="noopener">Marti v. Ardelyx, Inc.</a></h3>
+      <p class="meta">District Court, D. Massachusetts · Docket 1:26-cv-14635 · Oct 13, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74902809/state-of-new-york-v-epa/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74957625/marti-v-ardelyx-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="x. corp v. immortal snail, llc district court, n.d. texas 4:26-cv-01254">
+             data-search="doe 2 v. x. ai corp. district court, w.d. arkansas 5:26-cv-05291">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74864557/x-corp-v-immortal-snail-llc/" target="_blank" rel="noopener">X. Corp v. Immortal Snail, LLC</a></h3>
-      <p class="meta">District Court, N.D. Texas · Docket 4:26-cv-01254 · Sep 28, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74955216/doe-2-v-x-ai-corp/" target="_blank" rel="noopener">Doe 2 v. X. AI Corp.</a></h3>
+      <p class="meta">District Court, W.D. Arkansas · Docket 5:26-cv-05291 · Oct 13, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74864557/x-corp-v-immortal-snail-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74955216/doe-2-v-x-ai-corp/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="bass v. openai, llc district court, n.d. california 3:26-cv-11015">
+             data-search="doe v. openai foundation f/k/a openai inc. district court, n.d. california 3:26-cv-11781">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74863260/bass-v-openai-llc/" target="_blank" rel="noopener">Bass v. OpenAI, LLC</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 3:26-cv-11015 · Sep 28, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74953817/doe-v-openai-foundation-fka-openai-inc/" target="_blank" rel="noopener">Doe v. OpenAi Foundation f/k/a OpenAi Inc.</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 3:26-cv-11781 · Oct 13, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74863260/bass-v-openai-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74953817/doe-v-openai-foundation-fka-openai-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="miller v. f.t. publications, inc. district court, n.d. california 4:26-cv-10898">
+             data-search="honeywell aerospace us llc v. scribd, inc. district court, d. delaware 1:26-cv-01308">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74848374/miller-v-ft-publications-inc/" target="_blank" rel="noopener">Miller v. F.T. Publications, Inc.</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 4:26-cv-10898 · Sep 24, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74952505/honeywell-aerospace-us-llc-v-scribd-inc/" target="_blank" rel="noopener">Honeywell Aerospace US LLC v. Scribd, Inc.</a></h3>
+      <p class="meta">District Court, D. Delaware · Docket 1:26-cv-01308 · Oct 12, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74848374/miller-v-ft-publications-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74952505/honeywell-aerospace-us-llc-v-scribd-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="in re application of chau kwan fei district court, n.d. california 5:26-mc-80291">
+             data-search="character technologies, inc. united states bankruptcy court, d. delaware 26-11603">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74841617/in-re-application-of-chau-kwan-fei/" target="_blank" rel="noopener">In Re Application of Chau Kwan Fei</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 5:26-mc-80291 · Sep 23, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74951888/character-technologies-inc/" target="_blank" rel="noopener">Character Technologies, Inc.</a></h3>
+      <p class="meta">United States Bankruptcy Court, D. Delaware · Docket 26-11603 · Oct 12, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74841617/in-re-application-of-chau-kwan-fei/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74951888/character-technologies-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="carter v. feinberg district court, district of columbia 1:26-cv-03318">
+             data-search="s.a. jamendo v. nvidia corporation district court, n.d. california 5:26-cv-11754">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74848160/carter-v-feinberg/" target="_blank" rel="noopener">CARTER v. FEINBERG</a></h3>
-      <p class="meta">District Court, District of Columbia · Docket 1:26-cv-03318 · Sep 22, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74950728/sa-jamendo-v-nvidia-corporation/" target="_blank" rel="noopener">S.A. Jamendo v. NVIDIA Corporation</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 5:26-cv-11754 · Oct 12, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74848160/carter-v-feinberg/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74950728/sa-jamendo-v-nvidia-corporation/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="his majesty the king in right of the province of british columbia v. altman district court, n.d. california 3:26-cv-10743">
+             data-search="geneva trading usa, llc v. arens district court, n.d. illinois 1:26-cv-12449">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74825372/his-majesty-the-king-in-right-of-the-province-of-british-columbia-v-altman/" target="_blank" rel="noopener">His Majesty the King in Right of the Province of British Columbia v. Altman</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 3:26-cv-10743 · Sep 21, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74947301/geneva-trading-usa-llc-v-arens/" target="_blank" rel="noopener">Geneva Trading USA, LLC v. Arens</a></h3>
+      <p class="meta">District Court, N.D. Illinois · Docket 1:26-cv-12449 · Oct 09, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74825372/his-majesty-the-king-in-right-of-the-province-of-british-columbia-v-altman/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74947301/geneva-trading-usa-llc-v-arens/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="escuela xotichl tonatiuh, inc v. meta platforms, inc. district court, n.d. california 4:26-cv-10701">
+             data-search="superhuman platform inc. v. 1mind ai, inc. district court, n.d. california 3:26-cv-11711">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74816509/escuela-xotichl-tonatiuh-inc-v-meta-platforms-inc/" target="_blank" rel="noopener">Escuela Xotichl Tonatiuh, Inc v. Meta Platforms, Inc.</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 4:26-cv-10701 · Sep 18, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74946954/superhuman-platform-inc-v-1mind-ai-inc/" target="_blank" rel="noopener">SUPERHUMAN PLATFORM INC. v. 1mind AI, Inc.</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 3:26-cv-11711 · Oct 09, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74816509/escuela-xotichl-tonatiuh-inc-v-meta-platforms-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74946954/superhuman-platform-inc-v-1mind-ai-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="umg recordings, inc. v. suno, inc. district court, d. massachusetts 1:26-cv-14275">
+             data-search="holston v. r5 brands llc district court, w.d. north carolina 3:26-cv-00856">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74812464/umg-recordings-inc-v-suno-inc/" target="_blank" rel="noopener">UMG Recordings, Inc. v. Suno, Inc.</a></h3>
-      <p class="meta">District Court, D. Massachusetts · Docket 1:26-cv-14275 · Sep 18, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74942307/holston-v-r5-brands-llc/" target="_blank" rel="noopener">Holston v. R5 Brands LLC</a></h3>
+      <p class="meta">District Court, W.D. North Carolina · Docket 3:26-cv-00856 · Oct 09, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74812464/umg-recordings-inc-v-suno-inc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74942307/holston-v-r5-brands-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Filed" data-kind="Docket"
-             data-search="smigelski v. openai opco, llc district court, n.d. california 3:26-cv-10641">
+             data-search="united states v. alfozan district court, n.d. california 3:26-mj-71329">
       <span class="badge b-orange">Filed</span>
-      <h3><a href="https://www.courtlistener.com/docket/74827423/smigelski-v-openai-opco-llc/" target="_blank" rel="noopener">Smigelski v. OpenAI OpCo, LLC</a></h3>
-      <p class="meta">District Court, N.D. California · Docket 3:26-cv-10641 · Sep 17, 2026</p>
+      <h3><a href="https://www.courtlistener.com/docket/74958184/united-states-v-alfozan/" target="_blank" rel="noopener">United States v. Alfozan</a></h3>
+      <p class="meta">District Court, N.D. California · Docket 3:26-mj-71329 · Oct 08, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74827423/smigelski-v-openai-opco-llc/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/docket/74958184/united-states-v-alfozan/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="tax analysts v. internal revenue service district court, district of columbia d.d.c.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11034118/tax-analysts-v-internal-revenue-service/" target="_blank" rel="noopener">Tax Analysts v. Internal Revenue Service</a></h3>
+      <p class="meta">District Court, District of Columbia · D.D.C. · Oct 14, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11034118/tax-analysts-v-internal-revenue-service/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="cheng v. stoler hawaii intermediate court of appeals haw. app.">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11032418/cheng-v-stoler/" target="_blank" rel="noopener">Cheng v. Stoler</a></h3>
+      <p class="meta">Hawaii Intermediate Court of Appeals · Haw. App. · Oct 13, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11032418/cheng-v-stoler/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
+             data-search="state of iowa v. max amyda supreme court of iowa iowa">
+      <span class="badge b-purple">Decided</span>
+      <h3><a href="https://www.courtlistener.com/opinion/11024168/state-of-iowa-v-max-amyda/" target="_blank" rel="noopener">State of Iowa v. Max Amyda</a></h3>
+      <p class="meta">Supreme Court of Iowa · Iowa · Oct 09, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11024168/state-of-iowa-v-max-amyda/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
              data-search="kid international, llc v. city national bank of florida and 2655 sw 25, llc district court of appeal of florida fla. dist. ct. app.">
@@ -455,30 +496,6 @@ footer{margin-top:5rem}
       <p class="meta">United States Court of Federal Claims · Fed. Cl. · Oct 03, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11012844/22nd-century-networks-inc-v-united-states/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="frankfort v. metropolis technologies court of appeals for the fifth circuit 5th cir.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11009781/frankfort-v-metropolis-technologies/" target="_blank" rel="noopener">Frankfort v. Metropolis Technologies</a></h3>
-      <p class="meta">Court of Appeals for the Fifth Circuit · 5th Cir. · Oct 02, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11009781/frankfort-v-metropolis-technologies/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="shannon v. shannon nebraska supreme court neb.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11009430/shannon-v-shannon/" target="_blank" rel="noopener">Shannon v. Shannon</a></h3>
-      <p class="meta">Nebraska Supreme Court · Neb. · Oct 02, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11009430/shannon-v-shannon/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Decided" data-kind="Opinion"
-             data-search="american catalog mailers association v. director, division of taxation new jersey tax court n.j. tax ct.">
-      <span class="badge b-purple">Decided</span>
-      <h3><a href="https://www.courtlistener.com/opinion/11008272/american-catalog-mailers-association-v-director-division-of-taxation/" target="_blank" rel="noopener">American Catalog Mailers Association v. Director, Division of Taxation</a></h3>
-      <p class="meta">New Jersey Tax Court · N.J. Tax Ct. · Oct 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.courtlistener.com/opinion/11008272/american-catalog-mailers-association-v-director-division-of-taxation/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article></div>
           <div class="empty" data-f="empty"><h3>No matches</h3>
             <p>Try a different search term or clear the filters.</p></div>
@@ -519,7 +536,7 @@ footer{margin-top:5rem}
     </div>
   </div></div></div>
   <div class="fbottom"><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;width:100%">
-    <small>AI REGULATION TRACKER · UPDATED October 7, 2026</small>
+    <small>AI REGULATION TRACKER · UPDATED October 14, 2026</small>
     <small>CODE &amp; CURATION NOTES ON <a href="https://github.com/trishabinwade/ai-regulation-tracker" style="color:#fff">GITHUB</a></small>
   </div></div>
 </footer>

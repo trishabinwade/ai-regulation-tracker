@@ -162,6 +162,23 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .ustrip-more{display:inline-block;margin-top:1.4rem;font-family:'Fraunces',Georgia,serif;
   font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--blue);text-decoration:none}
+/* ---- jurisdiction checker + obligations ---- */
+.jchips{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 2rem}
+.ccount{font-family:'Fraunces',Georgia,serif;color:#fff;margin:0 0 1.5rem;font-size:1.05rem}
+.cempty{color:var(--muted);font-style:italic}
+.claw{border:1px solid var(--line);border-radius:6px;padding:1.4rem 1.5rem;
+  margin:0 0 1.2rem;background:rgba(255,255,255,.02);max-width:860px}
+.claw h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.1rem;
+  margin:0 0 .8rem;line-height:1.4}
+.claw h4 a{color:#fff;text-decoration:none}
+.claw h4 a:hover{color:var(--blue)}
+.claw h4 span{display:block;font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.claw ul{margin:0;padding-left:1.2rem;color:#dfe6f0;font-size:.92rem;line-height:1.65}
+.claw li{margin-bottom:.4rem}
+.claw li::marker{color:var(--blue)}
+.cdisclaimer{margin-top:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:70ch}
+.cdisclaimer b{color:#fff}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -300,7 +317,7 @@ footer{margin-top:5rem}
     browse its bills.</p>
   </div>
   <div class="mapsec reveal">
-    <div class="tilegrid" id="tilegrid" role="list"><button class="tile has" data-state="AK" style="grid-row:1;grid-column:1;background:rgba(52,163,215,0.38)" aria-label="Alaska: 1 bills">AK<span class="n">1</span></button><div class="tile" style="grid-row:1;grid-column:12" aria-hidden="true">ME</div><button class="tile has" data-state="VT" style="grid-row:2;grid-column:10;background:rgba(52,163,215,0.50)" aria-label="Vermont: 2 bills">VT<span class="n">2</span></button><button class="tile has" data-state="NH" style="grid-row:2;grid-column:11;background:rgba(52,163,215,0.38)" aria-label="New Hampshire: 1 bills">NH<span class="n">1</span></button><div class="tile" style="grid-row:3;grid-column:1" aria-hidden="true">WA</div><button class="tile has" data-state="MT" style="grid-row:3;grid-column:2;background:rgba(52,163,215,0.75)" aria-label="Montana: 4 bills">MT<span class="n">4</span></button><div class="tile" style="grid-row:3;grid-column:3" aria-hidden="true">ND</div><div class="tile" style="grid-row:3;grid-column:4" aria-hidden="true">MN</div><div class="tile" style="grid-row:3;grid-column:5" aria-hidden="true">WI</div><button class="tile has" data-state="NY" style="grid-row:3;grid-column:9;background:rgba(52,163,215,0.50)" aria-label="New York: 2 bills">NY<span class="n">2</span></button><button class="tile has" data-state="MA" style="grid-row:3;grid-column:10;background:rgba(52,163,215,0.50)" aria-label="Massachusetts: 2 bills">MA<span class="n">2</span></button><div class="tile" style="grid-row:4;grid-column:1" aria-hidden="true">OR</div><button class="tile has" data-state="ID" style="grid-row:4;grid-column:2;background:rgba(52,163,215,0.38)" aria-label="Idaho: 1 bills">ID<span class="n">1</span></button><div class="tile" style="grid-row:4;grid-column:3" aria-hidden="true">SD</div><div class="tile" style="grid-row:4;grid-column:4" aria-hidden="true">IA</div><button class="tile has" data-state="IL" style="grid-row:4;grid-column:5;background:rgba(52,163,215,0.50)" aria-label="Illinois: 2 bills">IL<span class="n">2</span></button><div class="tile" style="grid-row:4;grid-column:6" aria-hidden="true">MI</div><button class="tile has" data-state="OH" style="grid-row:4;grid-column:8;background:rgba(52,163,215,0.50)" aria-label="Ohio: 2 bills">OH<span class="n">2</span></button><button class="tile has" data-state="PA" style="grid-row:4;grid-column:9;background:rgba(52,163,215,1.00)" aria-label="Pennsylvania: 6 bills">PA<span class="n">6</span></button><button class="tile has" data-state="NJ" style="grid-row:4;grid-column:10;background:rgba(52,163,215,0.75)" aria-label="New Jersey: 4 bills">NJ<span class="n">4</span></button><div class="tile" style="grid-row:4;grid-column:11" aria-hidden="true">CT</div><div class="tile" style="grid-row:4;grid-column:12" aria-hidden="true">RI</div><button class="tile has" data-state="CA" style="grid-row:5;grid-column:1;background:rgba(52,163,215,0.62)" aria-label="California: 3 bills">CA<span class="n">3</span></button><div class="tile" style="grid-row:5;grid-column:2" aria-hidden="true">NV</div><div class="tile" style="grid-row:5;grid-column:3" aria-hidden="true">WY</div><div class="tile" style="grid-row:5;grid-column:4" aria-hidden="true">NE</div><div class="tile" style="grid-row:5;grid-column:5" aria-hidden="true">MO</div><div class="tile" style="grid-row:5;grid-column:6" aria-hidden="true">IN</div><div class="tile" style="grid-row:5;grid-column:7" aria-hidden="true">KY</div><div class="tile" style="grid-row:5;grid-column:8" aria-hidden="true">WV</div><button class="tile has" data-state="VA" style="grid-row:5;grid-column:9;background:rgba(52,163,215,0.38)" aria-label="Virginia: 1 bills">VA<span class="n">1</span></button><div class="tile" style="grid-row:5;grid-column:10" aria-hidden="true">MD</div><div class="tile" style="grid-row:5;grid-column:11" aria-hidden="true">DE</div><div class="tile" style="grid-row:5;grid-column:12" aria-hidden="true">DC</div><div class="tile" style="grid-row:6;grid-column:2" aria-hidden="true">UT</div><div class="tile" style="grid-row:6;grid-column:3" aria-hidden="true">CO</div><div class="tile" style="grid-row:6;grid-column:4" aria-hidden="true">KS</div><div class="tile" style="grid-row:6;grid-column:6" aria-hidden="true">TN</div><button class="tile has" data-state="NC" style="grid-row:6;grid-column:8;background:rgba(52,163,215,0.38)" aria-label="North Carolina: 1 bills">NC<span class="n">1</span></button><div class="tile" style="grid-row:6;grid-column:9" aria-hidden="true">SC</div><div class="tile" style="grid-row:6;grid-column:10" aria-hidden="true">GA</div><div class="tile" style="grid-row:7;grid-column:2" aria-hidden="true">AZ</div><div class="tile" style="grid-row:7;grid-column:3" aria-hidden="true">NM</div><div class="tile" style="grid-row:7;grid-column:4" aria-hidden="true">OK</div><div class="tile" style="grid-row:7;grid-column:5" aria-hidden="true">AR</div><div class="tile" style="grid-row:7;grid-column:6" aria-hidden="true">MS</div><div class="tile" style="grid-row:7;grid-column:7" aria-hidden="true">AL</div><button class="tile has" data-state="FL" style="grid-row:7;grid-column:9;background:rgba(52,163,215,0.38)" aria-label="Florida: 1 bills">FL<span class="n">1</span></button><div class="tile" style="grid-row:8;grid-column:4" aria-hidden="true">TX</div><button class="tile has" data-state="LA" style="grid-row:8;grid-column:5;background:rgba(52,163,215,0.62)" aria-label="Louisiana: 3 bills">LA<span class="n">3</span></button><button class="tile has" data-state="HI" style="grid-row:9;grid-column:1;background:rgba(52,163,215,0.75)" aria-label="Hawaii: 4 bills">HI<span class="n">4</span></button></div>
+    <div class="tilegrid" id="tilegrid" role="list"><button class="tile has" data-state="AK" style="grid-row:1;grid-column:1;background:rgba(52,163,215,0.36)" aria-label="Alaska: 1 bills">AK<span class="n">1</span></button><div class="tile" style="grid-row:1;grid-column:12" aria-hidden="true">ME</div><button class="tile has" data-state="VT" style="grid-row:2;grid-column:10;background:rgba(52,163,215,0.46)" aria-label="Vermont: 2 bills">VT<span class="n">2</span></button><button class="tile has" data-state="NH" style="grid-row:2;grid-column:11;background:rgba(52,163,215,0.46)" aria-label="New Hampshire: 2 bills">NH<span class="n">2</span></button><div class="tile" style="grid-row:3;grid-column:1" aria-hidden="true">WA</div><button class="tile has" data-state="MT" style="grid-row:3;grid-column:2;background:rgba(52,163,215,0.68)" aria-label="Montana: 4 bills">MT<span class="n">4</span></button><div class="tile" style="grid-row:3;grid-column:3" aria-hidden="true">ND</div><div class="tile" style="grid-row:3;grid-column:4" aria-hidden="true">MN</div><div class="tile" style="grid-row:3;grid-column:5" aria-hidden="true">WI</div><button class="tile has" data-state="NY" style="grid-row:3;grid-column:9;background:rgba(52,163,215,0.46)" aria-label="New York: 2 bills">NY<span class="n">2</span></button><button class="tile has" data-state="MA" style="grid-row:3;grid-column:10;background:rgba(52,163,215,0.46)" aria-label="Massachusetts: 2 bills">MA<span class="n">2</span></button><div class="tile" style="grid-row:4;grid-column:1" aria-hidden="true">OR</div><button class="tile has" data-state="ID" style="grid-row:4;grid-column:2;background:rgba(52,163,215,0.36)" aria-label="Idaho: 1 bills">ID<span class="n">1</span></button><div class="tile" style="grid-row:4;grid-column:3" aria-hidden="true">SD</div><div class="tile" style="grid-row:4;grid-column:4" aria-hidden="true">IA</div><div class="tile" style="grid-row:4;grid-column:5" aria-hidden="true">IL</div><div class="tile" style="grid-row:4;grid-column:6" aria-hidden="true">MI</div><button class="tile has" data-state="OH" style="grid-row:4;grid-column:8;background:rgba(52,163,215,0.46)" aria-label="Ohio: 2 bills">OH<span class="n">2</span></button><button class="tile has" data-state="PA" style="grid-row:4;grid-column:9;background:rgba(52,163,215,1.00)" aria-label="Pennsylvania: 7 bills">PA<span class="n">7</span></button><button class="tile has" data-state="NJ" style="grid-row:4;grid-column:10;background:rgba(52,163,215,0.46)" aria-label="New Jersey: 2 bills">NJ<span class="n">2</span></button><div class="tile" style="grid-row:4;grid-column:11" aria-hidden="true">CT</div><div class="tile" style="grid-row:4;grid-column:12" aria-hidden="true">RI</div><button class="tile has" data-state="CA" style="grid-row:5;grid-column:1;background:rgba(52,163,215,0.79)" aria-label="California: 5 bills">CA<span class="n">5</span></button><div class="tile" style="grid-row:5;grid-column:2" aria-hidden="true">NV</div><div class="tile" style="grid-row:5;grid-column:3" aria-hidden="true">WY</div><div class="tile" style="grid-row:5;grid-column:4" aria-hidden="true">NE</div><div class="tile" style="grid-row:5;grid-column:5" aria-hidden="true">MO</div><div class="tile" style="grid-row:5;grid-column:6" aria-hidden="true">IN</div><div class="tile" style="grid-row:5;grid-column:7" aria-hidden="true">KY</div><div class="tile" style="grid-row:5;grid-column:8" aria-hidden="true">WV</div><button class="tile has" data-state="VA" style="grid-row:5;grid-column:9;background:rgba(52,163,215,0.36)" aria-label="Virginia: 1 bills">VA<span class="n">1</span></button><div class="tile" style="grid-row:5;grid-column:10" aria-hidden="true">MD</div><div class="tile" style="grid-row:5;grid-column:11" aria-hidden="true">DE</div><div class="tile" style="grid-row:5;grid-column:12" aria-hidden="true">DC</div><div class="tile" style="grid-row:6;grid-column:2" aria-hidden="true">UT</div><div class="tile" style="grid-row:6;grid-column:3" aria-hidden="true">CO</div><div class="tile" style="grid-row:6;grid-column:4" aria-hidden="true">KS</div><div class="tile" style="grid-row:6;grid-column:6" aria-hidden="true">TN</div><button class="tile has" data-state="NC" style="grid-row:6;grid-column:8;background:rgba(52,163,215,0.36)" aria-label="North Carolina: 1 bills">NC<span class="n">1</span></button><div class="tile" style="grid-row:6;grid-column:9" aria-hidden="true">SC</div><div class="tile" style="grid-row:6;grid-column:10" aria-hidden="true">GA</div><div class="tile" style="grid-row:7;grid-column:2" aria-hidden="true">AZ</div><div class="tile" style="grid-row:7;grid-column:3" aria-hidden="true">NM</div><div class="tile" style="grid-row:7;grid-column:4" aria-hidden="true">OK</div><div class="tile" style="grid-row:7;grid-column:5" aria-hidden="true">AR</div><div class="tile" style="grid-row:7;grid-column:6" aria-hidden="true">MS</div><div class="tile" style="grid-row:7;grid-column:7" aria-hidden="true">AL</div><button class="tile has" data-state="FL" style="grid-row:7;grid-column:9;background:rgba(52,163,215,0.36)" aria-label="Florida: 1 bills">FL<span class="n">1</span></button><div class="tile" style="grid-row:8;grid-column:4" aria-hidden="true">TX</div><button class="tile has" data-state="LA" style="grid-row:8;grid-column:5;background:rgba(52,163,215,0.57)" aria-label="Louisiana: 3 bills">LA<span class="n">3</span></button><button class="tile has" data-state="HI" style="grid-row:9;grid-column:1;background:rgba(52,163,215,0.57)" aria-label="Hawaii: 3 bills">HI<span class="n">3</span></button></div>
     <aside class="panel" id="statePanel" aria-label="State bills">
       <div class="xrow"><span class="reset" id="statePanelClose">&#8592; All states</span></div>
       <h3 id="statePanelTitle"></h3><div class="rule"></div>
@@ -313,7 +330,7 @@ footer{margin-top:5rem}
     <div class="eyebrow">119th Congress</div>
     <h2>Federal bills</h2>
     <p>Every bill of the 119th Congress, scanned for AI keywords via
-    Congress.gov. 19,602 bills scanned; 219 matched.</p>
+    Congress.gov. 19,649 bills scanned; 218 matched.</p>
   </div>
   
         <div data-explorer>
@@ -325,6 +342,86 @@ footer{margin-top:5rem}
       <span class="fcount" data-f="count"></span>
     </div>
           <div class="grid">
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="s 5518 make ai work for americans act  read twice and referred to the committee on finance. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5518" target="_blank" rel="noopener">S 5518 — Make AI Work for Americans Act</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Finance. · Sep 24, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5518" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind=""
+             data-search="hr 6275 china ai power report act  ordered to be reported (amended) by the yeas and nays: 47 - 0. ">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/6275" target="_blank" rel="noopener">HR 6275 — China AI Power Report Act</a></h3>
+      <p class="meta">Latest action: Ordered to be Reported (Amended) by the Yeas and Nays: 47 - 0. · Jan 21, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/6275" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="hr 10210 doctors not ai act of 2026  referred to the committee on energy and commerce, and in addition to the committees on ways and means, and education and workforce, for a period to be subsequently determined by the speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10210" target="_blank" rel="noopener">HR 10210 — Doctors Not AI Act of 2026</a></h3>
+      <p class="meta">Latest action: Referred to the Committee on Energy and Commerce, and in addition to the Committees on Ways and Means, and Education and Workforce, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. · Sep 01, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10210" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="hr 10768 to establish the office of artificial intelligence and emerging technology threats within the executive office of the president, and for other purposes.  referred to the house committee on energy and commerce. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10768" target="_blank" rel="noopener">HR 10768 — To establish the Office of Artificial Intelligence and Emerging Technology Threats within the Executive Office of the President, and for other purposes.</a></h3>
+      <p class="meta">Latest action: Referred to the House Committee on Energy and Commerce. · Oct 09, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10768" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind=""
+             data-search="hr 6875 ai overwatch act  ordered to be reported in the nature of a substitute by the yeas and nays: 42 - 2. ">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/6875" target="_blank" rel="noopener">HR 6875 — AI OVERWATCH Act</a></h3>
+      <p class="meta">Latest action: Ordered to be Reported in the Nature of a Substitute by the Yeas and Nays: 42 - 2. · Jan 21, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/6875" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="hr 10594 reliable artificial intelligence research act of 2026  referred to the house committee on homeland security. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10594" target="_blank" rel="noopener">HR 10594 — Reliable Artificial Intelligence Research Act of 2026</a></h3>
+      <p class="meta">Latest action: Referred to the House Committee on Homeland Security. · Sep 24, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10594" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="s 5576 artificial intelligence risk management and security act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5576" target="_blank" rel="noopener">S 5576 — Artificial Intelligence Risk Management and Security Act of 2026</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Sep 29, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5576" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="hr 10752 cisa securing ai task force act  referred to the house committee on homeland security. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10752" target="_blank" rel="noopener">HR 10752 — CISA Securing AI Task Force Act</a></h3>
+      <p class="meta">Latest action: Referred to the House Committee on Homeland Security. · Oct 06, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10752" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="s 5541 cybersecurity and ai board of investigations act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5541" target="_blank" rel="noopener">S 5541 — Cybersecurity and AI Board of Investigations Act of 2026</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Sep 24, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5541" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="sres 918 a resolution establishing the select committee on artificial intelligence.  referred to the committee on rules and administration. (text: cr s5172-5174) ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-resolution/918" target="_blank" rel="noopener">SRES 918 — A resolution establishing the Select Committee on Artificial Intelligence.</a></h3>
+      <p class="meta">Latest action: Referred to the Committee on Rules and Administration. (text: CR S5172-5174) · Sep 29, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-resolution/918" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
     <article class="bcard" data-card data-badge="Active" data-kind=""
              data-search="hr 9501 ai tax integrity act of 2026  placed on the union calendar, calendar no. 701. ">
       <span class="badge b-blue">Active</span>
@@ -340,14 +437,6 @@ footer{margin-top:5rem}
       <p class="meta">Latest action: Committee on Homeland Security and Governmental Affairs. Hearings held. · Sep 30, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/2938" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="hr 10752 to establish in the cybersecurity and infrastructure security agency of the department of homeland security a task force on artificial intelligence, and for other purposes.  referred to the house committee on homeland security. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10752" target="_blank" rel="noopener">HR 10752 — To establish in the Cybersecurity and Infrastructure Security Agency of the Department of Homeland Security a task force on artificial intelligence, and for other purposes.</a></h3>
-      <p class="meta">Latest action: Referred to the House Committee on Homeland Security. · Oct 06, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10752" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="hr 10719 protecting kids from human-like chatbots act  referred to the committee on energy and commerce, and in addition to the committee on science, space, and technology, for a period to be subsequently determined by the speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. ">
@@ -390,22 +479,6 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/9917" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="hr 10210 doctors not ai act of 2026  referred to the committee on energy and commerce, and in addition to the committees on ways and means, and education and workforce, for a period to be subsequently determined by the speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10210" target="_blank" rel="noopener">HR 10210 — Doctors Not AI Act of 2026</a></h3>
-      <p class="meta">Latest action: Referred to the Committee on Energy and Commerce, and in addition to the Committees on Ways and Means, and Education and Workforce, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. · Sep 01, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10210" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 5518 make ai work for americans act  read twice and referred to the committee on finance. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5518" target="_blank" rel="noopener">S 5518 — Make AI Work for Americans Act</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Finance. · Sep 24, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5518" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 5471 ai systems transparency act  read twice and referred to the committee on commerce, science, and transportation. ">
       <span class="badge b-gray">Introduced</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5471" target="_blank" rel="noopener">S 5471 — AI Systems Transparency Act</a></h3>
@@ -420,14 +493,6 @@ footer{margin-top:5rem}
       <p class="meta">Latest action: Read twice and referred to the Committee on Health, Education, Labor, and Pensions. · Aug 04, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5225" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="hr 10594 reliable artificial intelligence research act of 2026  referred to the house committee on homeland security. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10594" target="_blank" rel="noopener">HR 10594 — Reliable Artificial Intelligence Research Act of 2026</a></h3>
-      <p class="meta">Latest action: Referred to the House Committee on Homeland Security. · Sep 24, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10594" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 3336 reliable artificial intelligence research act of 2025  read twice and referred to the committee on homeland security and governmental affairs. ">
@@ -502,14 +567,6 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10417" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 1699 artificial intelligence public awareness and education campaign act  read twice and referred to the committee on commerce, science, and transportation. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/1699" target="_blank" rel="noopener">S 1699 — Artificial Intelligence Public Awareness and Education Campaign Act</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · May 08, 2025</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/1699" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 1792 ai whistleblower protection act  read twice and referred to the committee on health, education, labor, and pensions. ">
       <span class="badge b-gray">Introduced</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/1792" target="_blank" rel="noopener">S 1792 — AI Whistleblower Protection Act</a></h3>
@@ -518,12 +575,12 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/1792" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="sres 918 a resolution establishing the select committee on artificial intelligence.  referred to the committee on rules and administration. (text: cr s5172-5174) ">
+             data-search="s 1699 artificial intelligence public awareness and education campaign act  read twice and referred to the committee on commerce, science, and transportation. ">
       <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-resolution/918" target="_blank" rel="noopener">SRES 918 — A resolution establishing the Select Committee on Artificial Intelligence.</a></h3>
-      <p class="meta">Latest action: Referred to the Committee on Rules and Administration. (text: CR S5172-5174) · Sep 29, 2026</p>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/1699" target="_blank" rel="noopener">S 1699 — Artificial Intelligence Public Awareness and Education Campaign Act</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · May 08, 2025</p>
       
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-resolution/918" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/1699" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="hr 1941 preventing deepfakes of intimate images act  referred to the house committee on the judiciary. ">
@@ -533,14 +590,6 @@ footer{margin-top:5rem}
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/1941" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
-    <article class="bcard" data-card data-badge="Active" data-kind=""
-             data-search="hr 6875 ai overwatch act  ordered to be reported in the nature of a substitute by the yeas and nays: 42 - 2. ">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/6875" target="_blank" rel="noopener">HR 6875 — AI OVERWATCH Act</a></h3>
-      <p class="meta">Latest action: Ordered to be Reported in the Nature of a Substitute by the Yeas and Nays: 42 - 2. · Jan 21, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/6875" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="hr 3460 ai whistleblower protection act  referred to the house committee on education and workforce. ">
       <span class="badge b-gray">Introduced</span>
@@ -549,14 +598,6 @@ footer{margin-top:5rem}
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/3460" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 5664 a bill to provide for the retraining and support of workers displaced by automation technologies or artificial intelligence, to require federal action during periods of elevated unemployment, and for other purposes.  read twice and referred to the committee on finance. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5664" target="_blank" rel="noopener">S 5664 — A bill to provide for the retraining and support of workers displaced by automation technologies or artificial intelligence, to require Federal action during periods of elevated unemployment, and for other purposes.</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Finance. · Sep 30, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5664" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
     <article class="bcard" data-card data-badge="Active" data-kind=""
              data-search="sres 896 a resolution expressing the sense of the senate regarding the importance of religious freedom, authoritative texts, and transparency in artificial intelligence systems.  submitted in the senate, considered, and agreed to without amendment and with a preamble by unanimous consent. (consideration: cr s4958; text: cr s4951) ">
       <span class="badge b-blue">Active</span>
@@ -564,14 +605,6 @@ footer{margin-top:5rem}
       <p class="meta">Latest action: Submitted in the Senate, considered, and agreed to without amendment and with a preamble by Unanimous Consent. (consideration: CR S4958; text: CR S4951) · Sep 23, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-resolution/896" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 5576 a bill to establish the artificial intelligence safety board, and for other purposes.  read twice and referred to the committee on commerce, science, and transportation. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5576" target="_blank" rel="noopener">S 5576 — A bill to establish the Artificial Intelligence Safety Board, and for other purposes.</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Sep 29, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5576" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind=""
              data-search="hr 8893 protecting consumers from deceptive ai act  ordered to be reported in the nature of a substitute (amended) by the yeas and nays: 35 - 0. ">
@@ -614,14 +647,6 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/4640" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 5541 a bill to establish the cybersecurity and ai board of investigations, and for other purposes.  read twice and referred to the committee on commerce, science, and transportation. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5541" target="_blank" rel="noopener">S 5541 — A bill to establish the Cybersecurity and AI Board of Investigations, and for other purposes.</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Sep 24, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5541" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="hr 10146 ai advertising disclosure act  referred to the house committee on energy and commerce. ">
       <span class="badge b-gray">Introduced</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10146" target="_blank" rel="noopener">HR 10146 — AI Advertising Disclosure Act</a></h3>
@@ -636,6 +661,14 @@ footer{margin-top:5rem}
       <p class="meta">Latest action: Ordered to be Reported in the Nature of a Substitute (Amended) by the Yeas and Nays: 35 - 0. · Jun 25, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/6461" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind=""
+             data-search="hr 6529 protecting families from ai data center energy costs act  ordered to be reported by the yeas and nays: 44 - 0. ">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/6529" target="_blank" rel="noopener">HR 6529 — Protecting Families from AI Data Center Energy Costs Act</a></h3>
+      <p class="meta">Latest action: Ordered to be Reported by the Yeas and Nays: 44 - 0. · Jul 21, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/6529" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="hr 9323 department of advanced technology and artificial intelligence act  referred to the house committee on oversight and government reform. ">
@@ -694,20 +727,20 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/3919" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="hr 10044 ai tax and work protection act  referred to the committee on education and workforce, and in addition to the committee on ways and means, for a period to be subsequently determined by the speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10044" target="_blank" rel="noopener">HR 10044 — AI Tax and Work Protection Act</a></h3>
-      <p class="meta">Latest action: Referred to the Committee on Education and Workforce, and in addition to the Committee on Ways and Means, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. · Aug 06, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10044" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="hr 6361 ban ai denials in medicare act  referred to the committee on ways and means, and in addition to the committee on energy and commerce, for a period to be subsequently determined by the speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. ">
       <span class="badge b-gray">Introduced</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/6361" target="_blank" rel="noopener">HR 6361 — Ban AI Denials in Medicare Act</a></h3>
       <p class="meta">Latest action: Referred to the Committee on Ways and Means, and in addition to the Committee on Energy and Commerce, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. · Dec 02, 2025</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/6361" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="hr 10044 ai tax and work protection act  referred to the committee on education and workforce, and in addition to the committee on ways and means, for a period to be subsequently determined by the speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/10044" target="_blank" rel="noopener">HR 10044 — AI Tax and Work Protection Act</a></h3>
+      <p class="meta">Latest action: Referred to the Committee on Education and Workforce, and in addition to the Committee on Ways and Means, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. · Aug 06, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/10044" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind=""
              data-search="hr 8283 deterring american ai model theft act of 2026  ordered to be reported (amended) by the yeas and nays: 43 - 0. ">
@@ -918,20 +951,20 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/9477" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 4154 research and oversight of ai in courts act of 2026  read twice and referred to the committee on the judiciary. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/4154" target="_blank" rel="noopener">S 4154 — Research and Oversight of AI in Courts Act of 2026</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on the Judiciary. · Mar 19, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4154" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 3586 ai for mainstreet act  read twice and referred to the committee on small business and entrepreneurship. ">
       <span class="badge b-gray">Introduced</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/3586" target="_blank" rel="noopener">S 3586 — AI for Mainstreet Act</a></h3>
       <p class="meta">Latest action: Read twice and referred to the Committee on Small Business and Entrepreneurship. · Jan 07, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/3586" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="s 4154 research and oversight of ai in courts act of 2026  read twice and referred to the committee on the judiciary. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/4154" target="_blank" rel="noopener">S 4154 — Research and Oversight of AI in Courts Act of 2026</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on the Judiciary. · Mar 19, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4154" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="hres 1471 expressing the sense of the house of representatives that every american and community impacted by the construction or operation of an artificial intelligence data center should have the right to transparency and local autonomy.  referred to the committee on energy and commerce, and in addition to the committee on the judiciary, for a period to be subsequently determined by the speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned. ">
@@ -1013,14 +1046,6 @@ footer{margin-top:5rem}
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/2164" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
-    <article class="bcard" data-card data-badge="Active" data-kind=""
-             data-search="s 5171 children&#x27;s artificial intelligence toy safety act of 2026  committee on commerce, science, and transportation. ordered to be reported with an amendment in the nature of a substitute favorably. ">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5171" target="_blank" rel="noopener">S 5171 — Children&#x27;s Artificial Intelligence Toy Safety Act of 2026</a></h3>
-      <p class="meta">Latest action: Committee on Commerce, Science, and Transportation. Ordered to be reported with an amendment in the nature of a substitute favorably. · Aug 05, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5171" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 5117 senior chatbot protection act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
       <span class="badge b-gray">Introduced</span>
@@ -1038,28 +1063,20 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4199" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind=""
+             data-search="s 5171 children&#x27;s artificial intelligence toy safety act of 2026  committee on commerce, science, and transportation. ordered to be reported with an amendment in the nature of a substitute favorably. ">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5171" target="_blank" rel="noopener">S 5171 — Children&#x27;s Artificial Intelligence Toy Safety Act of 2026</a></h3>
+      <p class="meta">Latest action: Committee on Commerce, Science, and Transportation. Ordered to be reported with an amendment in the nature of a substitute favorably. · Aug 05, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5171" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind=""
              data-search="s 4407 chatbot act  committee on commerce, science, and transportation. ordered to be reported with an amendment in the nature of a substitute favorably. ">
       <span class="badge b-blue">Active</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/4407" target="_blank" rel="noopener">S 4407 — CHATBOT Act</a></h3>
       <p class="meta">Latest action: Committee on Commerce, Science, and Transportation. Ordered to be reported with an amendment in the nature of a substitute favorably. · Aug 05, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4407" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 5047 artificial intelligence physical systems coordination act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5047" target="_blank" rel="noopener">S 5047 — Artificial Intelligence Physical Systems Coordination Act of 2026</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Jul 21, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5047" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 5050 expanding ai voices act  read twice and referred to the committee on commerce, science, and transportation. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5050" target="_blank" rel="noopener">S 5050 — Expanding AI Voices Act</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Jul 21, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5050" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 4915 ai labeling act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
@@ -1078,36 +1095,28 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5051" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="s 5050 expanding ai voices act  read twice and referred to the committee on commerce, science, and transportation. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5050" target="_blank" rel="noopener">S 5050 — Expanding AI Voices Act</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Jul 21, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5050" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="s 5047 artificial intelligence physical systems coordination act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/5047" target="_blank" rel="noopener">S 5047 — Artificial Intelligence Physical Systems Coordination Act of 2026</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Jul 21, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/5047" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 4214 artificial intelligence data center moratorium act  read twice and referred to the committee on commerce, science, and transportation. ">
       <span class="badge b-gray">Introduced</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/4214" target="_blank" rel="noopener">S 4214 — Artificial Intelligence Data Center Moratorium Act</a></h3>
       <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Mar 25, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4214" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 3982 ai fraud accountability act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/3982" target="_blank" rel="noopener">S 3982 — AI Fraud Accountability Act of 2026</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Mar 04, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/3982" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 4098 artificial intelligence-ready data act  read twice and referred to the committee on commerce, science, and transportation. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/4098" target="_blank" rel="noopener">S 4098 — Artificial Intelligence-Ready Data Act</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Mar 16, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4098" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 2615 vet artificial intelligence act  read twice and referred to the committee on commerce, science, and transportation. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/2615" target="_blank" rel="noopener">S 2615 — VET Artificial Intelligence Act</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Jul 31, 2025</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/2615" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 3982 ai fraud accountability act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
@@ -1134,6 +1143,14 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/3952" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="s 4441 create ai act  read twice and referred to the committee on commerce, science, and transportation. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/4441" target="_blank" rel="noopener">S 4441 — CREATE AI Act</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Apr 29, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4441" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 3957 nsf ai education act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
       <span class="badge b-gray">Introduced</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/3957" target="_blank" rel="noopener">S 3957 — NSF AI Education Act of 2026</a></h3>
@@ -1142,12 +1159,12 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/3957" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 4441 create ai act  read twice and referred to the committee on commerce, science, and transportation. ">
+             data-search="s 2615 vet artificial intelligence act  read twice and referred to the committee on commerce, science, and transportation. ">
       <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/4441" target="_blank" rel="noopener">S 4441 — CREATE AI Act</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Apr 29, 2026</p>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/2615" target="_blank" rel="noopener">S 2615 — VET Artificial Intelligence Act</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Jul 31, 2025</p>
       
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4441" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/2615" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 4098 artificial intelligence-ready data act  read twice and referred to the committee on commerce, science, and transportation. ">
@@ -1158,14 +1175,6 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4098" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="hr 3679 small business artificial intelligence advancement act  received in the senate and read twice and referred to the committee on commerce, science, and transportation. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/3679" target="_blank" rel="noopener">HR 3679 — Small Business Artificial Intelligence Advancement Act</a></h3>
-      <p class="meta">Latest action: Received in the Senate and Read twice and referred to the Committee on Commerce, Science, and Transportation. · Feb 24, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/3679" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 3888 small business artificial intelligence training act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
       <span class="badge b-gray">Introduced</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/3888" target="_blank" rel="noopener">S 3888 — Small Business Artificial Intelligence Training Act of 2026</a></h3>
@@ -1174,12 +1183,12 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/3888" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 4414 lift ai act  read twice and referred to the committee on commerce, science, and transportation. ">
+             data-search="hr 3679 small business artificial intelligence advancement act  received in the senate and read twice and referred to the committee on commerce, science, and transportation. ">
       <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/4414" target="_blank" rel="noopener">S 4414 — LIFT AI Act</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Apr 28, 2026</p>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/3679" target="_blank" rel="noopener">HR 3679 — Small Business Artificial Intelligence Advancement Act</a></h3>
+      <p class="meta">Latest action: Received in the Senate and Read twice and referred to the Committee on Commerce, Science, and Transportation. · Feb 24, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4414" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/3679" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 3809 ai grand challenges act of 2026  read twice and referred to the committee on commerce, science, and transportation. ">
@@ -1190,12 +1199,12 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/3809" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="s 3557 states&#x27; right to regulate ai act  read twice and referred to the committee on commerce, science, and transportation. ">
+             data-search="s 4414 lift ai act  read twice and referred to the committee on commerce, science, and transportation. ">
       <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/3557" target="_blank" rel="noopener">S 3557 — States&#x27; Right to Regulate AI Act</a></h3>
-      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Dec 17, 2025</p>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/4414" target="_blank" rel="noopener">S 4414 — LIFT AI Act</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Apr 28, 2026</p>
       
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/3557" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/4414" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 3495 artificial intelligence scam prevention act  read twice and referred to the committee on commerce, science, and transportation. ">
@@ -1204,6 +1213,14 @@ footer{margin-top:5rem}
       <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Dec 16, 2025</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/3495" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="s 3557 states&#x27; right to regulate ai act  read twice and referred to the committee on commerce, science, and transportation. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/senate-bill/3557" target="_blank" rel="noopener">S 3557 — States&#x27; Right to Regulate AI Act</a></h3>
+      <p class="meta">Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation. · Dec 17, 2025</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/3557" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 3308 artificial intelligence civil rights act of 2025  read twice and referred to the committee on commerce, science, and transportation. ">
@@ -1238,20 +1255,20 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/senate-bill/1633" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
-             data-search="hr 5784 ai–wise act  received in the senate and read twice and referred to the committee on small business and entrepreneurship. ">
-      <span class="badge b-gray">Introduced</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/5784" target="_blank" rel="noopener">HR 5784 — AI–WISE Act</a></h3>
-      <p class="meta">Latest action: Received in the Senate and Read twice and referred to the Committee on Small Business and Entrepreneurship. · Jan 26, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/5784" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="hr 5764 ai for main street act  received in the senate and read twice and referred to the committee on small business and entrepreneurship. ">
       <span class="badge b-gray">Introduced</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/5764" target="_blank" rel="noopener">HR 5764 — AI for Main Street Act</a></h3>
       <p class="meta">Latest action: Received in the Senate and Read twice and referred to the Committee on Small Business and Entrepreneurship. · Jan 26, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/5764" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Introduced" data-kind=""
+             data-search="hr 5784 ai–wise act  received in the senate and read twice and referred to the committee on small business and entrepreneurship. ">
+      <span class="badge b-gray">Introduced</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/5784" target="_blank" rel="noopener">HR 5784 — AI–WISE Act</a></h3>
+      <p class="meta">Latest action: Received in the Senate and Read twice and referred to the Committee on Small Business and Entrepreneurship. · Jan 26, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/5784" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="hr 10180 self-improving ai monitoring act  referred to the house committee on science, space, and technology. ">
@@ -1294,14 +1311,6 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/9352" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind=""
-             data-search="hr 6275 china ai power report act  ordered to be reported (amended) by the yeas and nays: 47 - 0. ">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/6275" target="_blank" rel="noopener">HR 6275 — China AI Power Report Act</a></h3>
-      <p class="meta">Latest action: Ordered to be Reported (Amended) by the Yeas and Nays: 47 - 0. · Jan 21, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/6275" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Active" data-kind=""
              data-search="hr 5584 lift ai act  ordered to be reported (amended) by the yeas and nays: 34 - 1. ">
       <span class="badge b-blue">Active</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/5584" target="_blank" rel="noopener">HR 5584 — LIFT AI Act</a></h3>
@@ -1310,20 +1319,20 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/5584" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind=""
-             data-search="hr 9333 ai flaw reporting and security enhancement act  ordered to be reported in the nature of a substitute by the yeas and nays: 35 - 0. ">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/9333" target="_blank" rel="noopener">HR 9333 — AI Flaw Reporting and Security Enhancement Act</a></h3>
-      <p class="meta">Latest action: Ordered to be Reported in the Nature of a Substitute by the Yeas and Nays: 35 - 0. · Jun 25, 2026</p>
-      
-      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/9333" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Active" data-kind=""
              data-search="hr 9363 ai security and innovation act  ordered to be reported in the nature of a substitute (amended) by the yeas and nays: 29 - 0. ">
       <span class="badge b-blue">Active</span>
       <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/9363" target="_blank" rel="noopener">HR 9363 — AI Security and Innovation Act</a></h3>
       <p class="meta">Latest action: Ordered to be Reported in the Nature of a Substitute (Amended) by the Yeas and Nays: 29 - 0. · Jun 25, 2026</p>
       
       <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/9363" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind=""
+             data-search="hr 9333 ai flaw reporting and security enhancement act  ordered to be reported in the nature of a substitute by the yeas and nays: 35 - 0. ">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://www.congress.gov/bill/119th-congress/house-bill/9333" target="_blank" rel="noopener">HR 9333 — AI Flaw Reporting and Security Enhancement Act</a></h3>
+      <p class="meta">Latest action: Ordered to be Reported in the Nature of a Substitute by the Yeas and Nays: 35 - 0. · Jun 25, 2026</p>
+      
+      <div class="foot"><a class="offlink" href="https://www.congress.gov/bill/119th-congress/house-bill/9333" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Introduced" data-kind=""
              data-search="s 5382 china ai power report act  read twice and referred to the committee on foreign relations. ">
@@ -2094,7 +2103,7 @@ footer{margin-top:5rem}
             <input class="fsearch" data-f="q" type="search"
                    placeholder="Search state bills…" aria-label="Search">
             <select data-f="kind" aria-label="Filter by state">
-              <option value="">All states</option><option value="AK">Alaska</option><option value="CA">California</option><option value="FL">Florida</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="LA">Louisiana</option><option value="MA">Massachusetts</option><option value="MT">Montana</option><option value="NC">North Carolina</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NY">New York</option><option value="OH">Ohio</option><option value="PA">Pennsylvania</option><option value="VA">Virginia</option><option value="VT">Vermont</option></select>
+              <option value="">All states</option><option value="AK">Alaska</option><option value="CA">California</option><option value="FL">Florida</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="LA">Louisiana</option><option value="MA">Massachusetts</option><option value="MT">Montana</option><option value="NC">North Carolina</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NY">New York</option><option value="OH">Ohio</option><option value="PA">Pennsylvania</option><option value="VA">Virginia</option><option value="VT">Vermont</option></select>
             <select data-f="badge" aria-label="Filter by status">
               <option value="">All statuses</option>
               <option value="Active">Active</option><option value="Enacted">Enacted</option><option value="Passed chamber">Passed chamber</option></select>
@@ -2198,36 +2207,68 @@ footer{margin-top:5rem}
       <div class="foot"><a class="offlink" href="https://openstates.org/nc/bills/2025/HB375/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind="PA"
-             data-search="hb 2788 an act amending the act of march 10, 1949 (p.l.30, no.14), known as the public school code of 1949, in certification of teachers, providing for use of artificial intelligence in education. pennsylvania 2025-2026 laid on the table">
+             data-search="hb 2006 an act providing for safety regarding artificial intelligence in companionship applications; and imposing a penalty. pennsylvania 2025-2026 referred to communications &amp; technology">
       <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/pa/bills/2025-2026/HB2788/" target="_blank" rel="noopener">HB 2788 — An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in certification of teachers, providing for use of artificial intelligence in education.</a></h3>
-      <p class="meta">Pennsylvania · 2025-2026 · Oct 06, 2026</p>
-      <p class="txt">Latest action: Laid on the table</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HB2788/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <h3><a href="https://openstates.org/pa/bills/2025-2026/HB2006/" target="_blank" rel="noopener">HB 2006 — An Act providing for safety regarding artificial intelligence in companionship applications; and imposing a penalty.</a></h3>
+      <p class="meta">Pennsylvania · 2025-2026 · Oct 13, 2026</p>
+      <p class="txt">Latest action: Referred to Communications &amp; Technology</p>
+      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HB2006/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind="PA"
-             data-search="hb 2786 an act amending the act of march 10, 1949 (p.l.30, no.14), known as the public school code of 1949, in student supports, providing for artificial intelligence policy. pennsylvania 2025-2026 laid on the table">
+             data-search="hr 653 a resolution directing the joint state government commission to conduct a study and issue a report on the data that needs to be collected to evaluate the impact of artificial intelligence on the workforce. pennsylvania 2025-2026 referred to labor &amp; industry">
       <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/pa/bills/2025-2026/HB2786/" target="_blank" rel="noopener">HB 2786 — An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in student supports, providing for artificial intelligence policy.</a></h3>
-      <p class="meta">Pennsylvania · 2025-2026 · Oct 06, 2026</p>
-      <p class="txt">Latest action: Laid on the table</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HB2786/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <h3><a href="https://openstates.org/pa/bills/2025-2026/HR653/" target="_blank" rel="noopener">HR 653 — A Resolution directing the Joint State Government Commission to conduct a study and issue a report on the data that needs to be collected to evaluate the impact of artificial intelligence on the workforce.</a></h3>
+      <p class="meta">Pennsylvania · 2025-2026 · Oct 09, 2026</p>
+      <p class="txt">Latest action: Referred to Labor &amp; Industry</p>
+      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HR653/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind=""
+             data-search="pc 1487 para crear la “ley para la regulación de medios sintéticos y deepfakes de puerto rico”; tipificar conductas relacionadas con la creación, distribución y uso malicioso de contenido sintético generado mediante inteligencia artificial; establecer un régimen penal y civil de responsabilidad; imponer obligaciones de etiquetado, transparencia y trazabilidad a plataformas digitales y proveedores de tecnología de inteligencia artificial; proteger la dignidad, privacidad, integridad electoral y seguridad económica de las personas; establecer programas de educación pública y prevención; designar la agencia reguladora; disponer penalidades; y para otros fines relacionados. puerto rico 2025-2028 referido a comisión(es)">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://openstates.org/pr/bills/2025-2028/PC1487/" target="_blank" rel="noopener">PC 1487 — Para crear la “Ley para la Regulación de Medios Sintéticos y Deepfakes de Puerto Rico”; tipificar conductas relacionadas con la creación, distribución y uso malicioso de contenido sintético generado mediante inteligencia artificial; establecer un régimen penal y civil de responsabilidad; imponer obligaciones de etiquetado, transparencia y trazabilidad a plataformas digitales y proveedores de tecnología de inteligencia artificial; proteger la dignidad, privacidad, integridad electoral y seguridad económica de las personas; establecer programas de educación pública y prevención; designar la agencia reguladora; disponer penalidades; y para otros fines relacionados.</a></h3>
+      <p class="meta">Puerto Rico · 2025-2028 · Oct 08, 2026</p>
+      <p class="txt">Latest action: Referido a Comisión(es)</p>
+      <div class="foot"><a class="offlink" href="https://openstates.org/pr/bills/2025-2028/PC1487/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind="PA"
-             data-search="hb 2785 an act amending the act of march 10, 1949 (p.l.30, no.14), known as the public school code of 1949, in books, furniture and supplies, providing for procurement and technology requirements. pennsylvania 2025-2026 laid on the table">
+             data-search="hb 2637 an act providing for a temporary prohibition on artificial intelligence chatbots in children&#x27;s toys and for joint state government commission study; establishing an advisory committee; and imposing penalties. pennsylvania 2025-2026 laid on the table">
       <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/pa/bills/2025-2026/HB2785/" target="_blank" rel="noopener">HB 2785 — An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in books, furniture and supplies, providing for procurement and technology requirements.</a></h3>
-      <p class="meta">Pennsylvania · 2025-2026 · Oct 06, 2026</p>
+      <h3><a href="https://openstates.org/pa/bills/2025-2026/HB2637/" target="_blank" rel="noopener">HB 2637 — An Act providing for a temporary prohibition on artificial intelligence chatbots in children&#x27;s toys and for Joint State Government Commission study; establishing an advisory committee; and imposing penalties.</a></h3>
+      <p class="meta">Pennsylvania · 2025-2026 · Oct 07, 2026</p>
       <p class="txt">Latest action: Laid on the table</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HB2785/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HB2637/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind="PA"
-             data-search="hb 2787 an act amending the act of march 10, 1949 (p.l.30, no.14), known as the public school code of 1949, in school safety and security, providing for prohibition of artificial intelligence for school-based mental health and counseling. pennsylvania 2025-2026 laid on the table">
+             data-search="hb 2666 an act providing for limitations on the use of user data in the creation of artificial intelligence simulations and for private right of action; and imposing penalties. pennsylvania 2025-2026 laid on the table">
       <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/pa/bills/2025-2026/HB2787/" target="_blank" rel="noopener">HB 2787 — An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in school safety and security, providing for prohibition of artificial intelligence for school-based mental health and counseling.</a></h3>
-      <p class="meta">Pennsylvania · 2025-2026 · Oct 06, 2026</p>
+      <h3><a href="https://openstates.org/pa/bills/2025-2026/HB2666/" target="_blank" rel="noopener">HB 2666 — An Act providing for limitations on the use of user data in the creation of artificial intelligence simulations and for private right of action; and imposing penalties.</a></h3>
+      <p class="meta">Pennsylvania · 2025-2026 · Oct 07, 2026</p>
       <p class="txt">Latest action: Laid on the table</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HB2787/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HB2666/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind="PA"
+             data-search="hr 637 a resolution urging the congress of the united states to pass federal legislation that would regulate frontier artificial intelligence models. pennsylvania 2025-2026 reported as committed">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://openstates.org/pa/bills/2025-2026/HR637/" target="_blank" rel="noopener">HR 637 — A Resolution urging the Congress of the United States to pass Federal legislation that would regulate frontier artificial intelligence models.</a></h3>
+      <p class="meta">Pennsylvania · 2025-2026 · Oct 07, 2026</p>
+      <p class="txt">Latest action: Reported as committed</p>
+      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HR637/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind="NH"
+             data-search="hb 1506 creating an exception to the restricted uses of artificial intelligence by state agencies. new hampshire 2026 full committee work session: 10/15/2026 10:30 am gp 231">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://openstates.org/nh/bills/2026/HB1506/" target="_blank" rel="noopener">HB 1506 — creating an exception to the restricted uses of artificial intelligence by state agencies.</a></h3>
+      <p class="meta">New Hampshire · 2026 · Oct 07, 2026</p>
+      <p class="txt">Latest action: Full Committee Work Session: 10/15/2026 10:30 am GP 231</p>
+      <div class="foot"><a class="offlink" href="https://openstates.org/nh/bills/2026/HB1506/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind="NJ"
+             data-search="s 4758 requires artificial intelligence companion operators to provide notifications that users are not communicating with human. new jersey 222 introduced in the senate, referred to senate commerce committee">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://openstates.org/nj/bills/222/S4758/" target="_blank" rel="noopener">S 4758 — Requires artificial intelligence companion operators to provide notifications that users are not communicating with human.</a></h3>
+      <p class="meta">New Jersey · 222 · Oct 05, 2026</p>
+      <p class="txt">Latest action: Introduced in the Senate, Referred to Senate Commerce Committee</p>
+      <div class="foot"><a class="offlink" href="https://openstates.org/nj/bills/222/S4758/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind="NJ"
              data-search="a 5607 establishes content and data privacy requirements for chatbot providers. new jersey 222 introduced, referred to assembly public safety and preparedness committee">
@@ -2237,14 +2278,6 @@ footer{margin-top:5rem}
       <p class="txt">Latest action: Introduced, Referred to Assembly Public Safety and Preparedness Committee</p>
       <div class="foot"><a class="offlink" href="https://openstates.org/nj/bills/222/A5607/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
-    <article class="bcard" data-card data-badge="Active" data-kind="NJ"
-             data-search="s 4754 expand existing prohibition against unauthorized practice of various professions to include content produced by or with assistance of artificial intelligence. new jersey 222 introduced in the senate, referred to senate commerce committee">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/nj/bills/222/S4754/" target="_blank" rel="noopener">S 4754 — Expand existing prohibition against unauthorized practice of various professions to include content produced by or with assistance of artificial intelligence.</a></h3>
-      <p class="meta">New Jersey · 222 · Oct 05, 2026</p>
-      <p class="txt">Latest action: Introduced in the Senate, Referred to Senate Commerce Committee</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/nj/bills/222/S4754/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
     <article class="bcard" data-card data-badge="Active" data-kind="PA"
              data-search="hb 1925 an act amending titles 35 (health and safety), 40 (insurance) and 67 (public welfare) of the pennsylvania consolidated statutes, providing for artificial intelligence in facilities, for artificial intelligence use by insurers and for artificial intelligence use by ma or chip managed care plans; imposing duties on the department of health, the insurance department and the department of human services; and imposing penalties. pennsylvania 2025-2026 third consideration and final passage">
       <span class="badge b-blue">Active</span>
@@ -2252,6 +2285,22 @@ footer{margin-top:5rem}
       <p class="meta">Pennsylvania · 2025-2026 · Sep 30, 2026</p>
       <p class="txt">Latest action: Third consideration and final passage</p>
       <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HB1925/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind="CA"
+             data-search="ab 2656 public employees: notice: artificial intelligence performing service within scope of work. california 20252026 vetoed by governor.">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://openstates.org/ca/bills/20252026/AB2656/" target="_blank" rel="noopener">AB 2656 — Public employees: notice: artificial intelligence performing service within scope of work.</a></h3>
+      <p class="meta">California · 20252026 · Sep 30, 2026</p>
+      <p class="txt">Latest action: Vetoed by Governor.</p>
+      <div class="foot"><a class="offlink" href="https://openstates.org/ca/bills/20252026/AB2656/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
+    <article class="bcard" data-card data-badge="Active" data-kind="CA"
+             data-search="ab 2575 health care services: artificial intelligence. california 20252026 vetoed by governor.">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://openstates.org/ca/bills/20252026/AB2575/" target="_blank" rel="noopener">AB 2575 — Health care services: artificial intelligence.</a></h3>
+      <p class="meta">California · 20252026 · Sep 30, 2026</p>
+      <p class="txt">Latest action: Vetoed by Governor.</p>
+      <div class="foot"><a class="offlink" href="https://openstates.org/ca/bills/20252026/AB2575/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind="CA"
              data-search="sb 947 employment: automated decision systems. california 20252026 chaptered by secretary of state. chapter 859, statutes of 2026.">
@@ -2269,14 +2318,6 @@ footer{margin-top:5rem}
       <p class="txt">Latest action: (H) PERMANENTLY FILED IN THE (H)</p>
       <div class="foot"><a class="offlink" href="https://openstates.org/ak/bills/34/HCR12/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
-    <article class="bcard" data-card data-badge="Active" data-kind="PA"
-             data-search="hr 637 a resolution urging the congress of the united states to pass federal legislation that would regulate frontier artificial intelligence models. pennsylvania 2025-2026 referred to communications &amp; technology">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/pa/bills/2025-2026/HR637/" target="_blank" rel="noopener">HR 637 — A Resolution urging the Congress of the United States to pass Federal legislation that would regulate frontier artificial intelligence models.</a></h3>
-      <p class="meta">Pennsylvania · 2025-2026 · Sep 28, 2026</p>
-      <p class="txt">Latest action: Referred to Communications &amp; Technology</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HR637/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
     <article class="bcard" data-card data-badge="Active" data-kind="OH"
              data-search="hb 1000 regulate deceptive synthetic media with intent to affect election ohio 136 introduced">
       <span class="badge b-blue">Active</span>
@@ -2292,14 +2333,6 @@ footer{margin-top:5rem}
       <p class="meta">California · 20252026 · Aug 30, 2026</p>
       <p class="txt">Latest action: Read second time. Ordered to third reading.</p>
       <div class="foot"><a class="offlink" href="https://openstates.org/ca/bills/20252026/AB1018/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Active" data-kind="IL"
-             data-search="sb 3484 veh cd-plates-registration illinois 104th public act . . . . . . . . . 104-0854">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/il/bills/104th/SB3484/" target="_blank" rel="noopener">SB 3484 — VEH CD-PLATES-REGISTRATION</a></h3>
-      <p class="meta">Illinois · 104th · Aug 26, 2026</p>
-      <p class="txt">Latest action: Public Act . . . . . . . . . 104-0854</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/il/bills/104th/SB3484/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind="CA"
              data-search="sb 833 critical infrastructure: artificial intelligence systems: human oversight. california 20252026 august 13 hearing: held in committee and under submission.">
@@ -2365,6 +2398,14 @@ footer{margin-top:5rem}
       <p class="txt">Latest action: Reported - Amended</p>
       <div class="foot"><a class="offlink" href="https://openstates.org/oh/bills/136/HB392/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
+    <article class="bcard" data-card data-badge="Active" data-kind="PA"
+             data-search="hb 2314 an act providing for a public education campaign focused on educating the public about artificial intelligence and improving ai consumer literacy. pennsylvania 2025-2026 referred to communications &amp; technology">
+      <span class="badge b-blue">Active</span>
+      <h3><a href="https://openstates.org/pa/bills/2025-2026/HB2314/" target="_blank" rel="noopener">HB 2314 — An Act providing for a public education campaign focused on educating the public about artificial intelligence and improving AI consumer literacy.</a></h3>
+      <p class="meta">Pennsylvania · 2025-2026 · Jun 05, 2026</p>
+      <p class="txt">Latest action: Referred to Communications &amp; Technology</p>
+      <div class="foot"><a class="offlink" href="https://openstates.org/pa/bills/2025-2026/HB2314/" target="_blank" rel="noopener">View official text &#8599;</a></div>
+    </article>
     <article class="bcard" data-card data-badge="Active" data-kind="NY"
              data-search="a 8884 relates to the development and use of certain artificial intelligence systems new york 2025-2026 print number 8884a">
       <span class="badge b-blue">Active</span>
@@ -2372,30 +2413,6 @@ footer{margin-top:5rem}
       <p class="meta">New York · 2025-2026 · Jun 01, 2026</p>
       <p class="txt">Latest action: PRINT NUMBER 8884A</p>
       <div class="foot"><a class="offlink" href="https://openstates.org/ny/bills/2025-2026/A8884/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Active" data-kind="IL"
-             data-search="hb 5037 fixing higher ed funding act illinois 104th added chief co-sponsor rep. la shawn k. ford">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/il/bills/104th/HB5037/" target="_blank" rel="noopener">HB 5037 — FIXING HIGHER ED FUNDING ACT</a></h3>
-      <p class="meta">Illinois · 104th · May 20, 2026</p>
-      <p class="txt">Latest action: Added Chief Co-Sponsor Rep. La Shawn K. Ford</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/il/bills/104th/HB5037/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Active" data-kind="NJ"
-             data-search="a 5088 &quot;ai likeness protection act&quot;; concerns distributing realistic representation of individual&#x27;s image, likeness, or voice created using generative artificial intelligence. new jersey 222 introduced, referred to assembly science, innovation and technology committee">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/nj/bills/222/A5088/" target="_blank" rel="noopener">A 5088 — &quot;AI Likeness Protection Act&quot;; concerns distributing realistic representation of individual&#x27;s image, likeness, or voice created using generative artificial intelligence.</a></h3>
-      <p class="meta">New Jersey · 222 · May 14, 2026</p>
-      <p class="txt">Latest action: Introduced, Referred to Assembly Science, Innovation and Technology Committee</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/nj/bills/222/A5088/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Active" data-kind="NJ"
-             data-search="a 5090 &quot;gai accountability act;&quot; imposes civil penalties on generative artificial intelligence platforms engaging in harmful activity, including exploitation of children. new jersey 222 introduced, referred to assembly science, innovation and technology committee">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/nj/bills/222/A5090/" target="_blank" rel="noopener">A 5090 — &quot;GAI Accountability Act;&quot; imposes civil penalties on generative artificial intelligence platforms engaging in harmful activity, including exploitation of children.</a></h3>
-      <p class="meta">New Jersey · 222 · May 14, 2026</p>
-      <p class="txt">Latest action: Introduced, Referred to Assembly Science, Innovation and Technology Committee</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/nj/bills/222/A5090/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article>
     <article class="bcard" data-card data-badge="Active" data-kind="HI"
              data-search="sr 71 requesting the hawaii state commission on the status of women, in collaboration with the office of the legislative reference bureau and department of the attorney general, to establish a working group and provide a report to the legislature on ways to strengthen protections for survivors of image-based sexual abuse. hawaii 2026 certified copies of resolutions sent, 05-12-26.">
@@ -2412,14 +2429,6 @@ footer{margin-top:5rem}
       <p class="meta">Hawaii · 2026 · May 12, 2026</p>
       <p class="txt">Latest action: Certified copies of resolutions sent, 05-12-26.</p>
       <div class="foot"><a class="offlink" href="https://openstates.org/hi/bills/2026/SCR184/" target="_blank" rel="noopener">View official text &#8599;</a></div>
-    </article>
-    <article class="bcard" data-card data-badge="Active" data-kind="HI"
-             data-search="sr 165 requesting the hawaiʻi civil rights commission to examine the applicability of existing state anti-discrimination laws to algorithmic and automated decision systems. hawaii 2026 certified copies of resolutions sent, 05-12-26.">
-      <span class="badge b-blue">Active</span>
-      <h3><a href="https://openstates.org/hi/bills/2026/SR165/" target="_blank" rel="noopener">SR 165 — REQUESTING THE HAWAIʻI CIVIL RIGHTS COMMISSION TO EXAMINE THE APPLICABILITY OF EXISTING STATE ANTI-DISCRIMINATION LAWS TO ALGORITHMIC AND AUTOMATED DECISION SYSTEMS.</a></h3>
-      <p class="meta">Hawaii · 2026 · May 12, 2026</p>
-      <p class="txt">Latest action: Certified copies of resolutions sent, 05-12-26.</p>
-      <div class="foot"><a class="offlink" href="https://openstates.org/hi/bills/2026/SR165/" target="_blank" rel="noopener">View official text &#8599;</a></div>
     </article></div>
           <div class="empty" data-f="empty"><h3>No matches</h3>
             <p>Try a different search term or clear the filters.</p></div>
@@ -2460,7 +2469,7 @@ footer{margin-top:5rem}
     </div>
   </div></div></div>
   <div class="fbottom"><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;width:100%">
-    <small>AI REGULATION TRACKER · UPDATED October 7, 2026</small>
+    <small>AI REGULATION TRACKER · UPDATED October 14, 2026</small>
     <small>CODE &amp; CURATION NOTES ON <a href="https://github.com/trishabinwade/ai-regulation-tracker" style="color:#fff">GITHUB</a></small>
   </div></div>
 </footer>
@@ -2537,7 +2546,7 @@ footer{margin-top:5rem}
 
 <script>
 (function(){
-  var data={"LA": [{"title": "HB 119 \u2014 CRIME: Provides relative to unlawful conduct involving images of another person created by artificial intelligence (EN SEE FISC NOTE GF EX)", "badge": "Enacted", "meta": "Louisiana \u00b7 2026", "date": "Jun 09, 2026", "extra": "Latest action: Signed by the Governor. Becomes Act No. 782.", "link": "https://openstates.org/la/bills/2026/HB119/"}, {"title": "SB 346 \u2014 SCHOOLS: Prohibits the use of deepfake material against students enrolled in K-12. (8/1/26)", "badge": "Enacted", "meta": "Louisiana \u00b7 2026", "date": "May 29, 2026", "extra": "Latest action: Signed by the Governor. Becomes Act No. 496.", "link": "https://openstates.org/la/bills/2026/SB346/"}, {"title": "SB 347 \u2014 COLLEGES/UNIVERSITIES: Provides for the crime of \"unlawful deepfake\" to be added to the definition of power-based violence under the Campus Accountability and Safety Act. (gov sig)", "badge": "Enacted", "meta": "Louisiana \u00b7 2026", "date": "May 29, 2026", "extra": "Latest action: Signed by the Governor. Becomes Act No. 497.", "link": "https://openstates.org/la/bills/2026/SB347/"}], "VT": [{"title": "S 298 \u2014 An act relating to voter protections", "badge": "Enacted", "meta": "Vermont \u00b7 2025-2026", "date": "May 29, 2026", "extra": "Latest action: Senate Message: Signed by Governor June 8, 2026", "link": "https://openstates.org/vt/bills/2025-2026/S298/"}, {"title": "S 23 \u2014 An act relating to the use of synthetic media in elections", "badge": "Enacted", "meta": "Vermont \u00b7 2025-2026", "date": "Mar 11, 2026", "extra": "Latest action: Senate Message: Signed by Governor March 5, 2026", "link": "https://openstates.org/vt/bills/2025-2026/S23/"}], "ID": [{"title": "H 727 \u2014 SEX CRIMES \u2013 Amends existing law to revise a provision regarding video voyeurism and to revise a penalty for disclosing explicit synthetic media.", "badge": "Enacted", "meta": "Idaho \u00b7 2026", "date": "Mar 25, 2026", "extra": "Latest action: Reported Signed by Governor on March 25, 2026    Session Law Chapter 121    Effective: 07/01/2026", "link": "https://openstates.org/id/bills/2026/H727/"}], "MT": [{"title": "SB 413 \u2014 Criminalize disclosure of certain explicit AI-generated media", "badge": "Enacted", "meta": "Montana \u00b7 2025", "date": "May 16, 2025", "extra": "Latest action: Chapter Number Assigned", "link": "https://openstates.org/mt/bills/2025/SB413/"}, {"title": "SB 25 \u2014 Revise election laws regarding disclosure requirements for the use of AI in elections", "badge": "Enacted", "meta": "Montana \u00b7 2025", "date": "May 13, 2025", "extra": "Latest action: Chapter Number Assigned", "link": "https://openstates.org/mt/bills/2025/SB25/"}, {"title": "SB 297 \u2014 Generally revise privacy laws", "badge": "Enacted", "meta": "Montana \u00b7 2025", "date": "May 13, 2025", "extra": "Latest action: Chapter Number Assigned", "link": "https://openstates.org/mt/bills/2025/SB297/"}, {"title": "SB 212 \u2014 Creating the Right to Compute Act and requiring shutdowns of AI controlled critical infrastructure", "badge": "Enacted", "meta": "Montana \u00b7 2025", "date": "Apr 17, 2025", "extra": "Latest action: Chapter Number Assigned", "link": "https://openstates.org/mt/bills/2025/SB212/"}], "FL": [{"title": "SB 1178 \u2014 Foreign Influence", "badge": "Passed chamber", "meta": "Florida \u00b7 2026", "date": "Mar 13, 2026", "extra": "Latest action: Died on Calendar, companion bill(s) passed, see CS/CS/CS/HB 905 (Ch. 2026-66)", "link": "https://openstates.org/fl/bills/2026/SB1178/"}], "NC": [{"title": "HB 375 \u2014 Artificial Intelligence/Ban Deceptive Ads.", "badge": "Passed chamber", "meta": "North Carolina \u00b7 2025", "date": "Mar 13, 2025", "extra": "Latest action: Passed 1st Reading", "link": "https://openstates.org/nc/bills/2025/HB375/"}], "PA": [{"title": "HB 2788 \u2014 An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in certification of teachers, providing for use of artificial intelligence in education.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Oct 06, 2026", "extra": "Latest action: Laid on the table", "link": "https://openstates.org/pa/bills/2025-2026/HB2788/"}, {"title": "HB 2786 \u2014 An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in student supports, providing for artificial intelligence policy.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Oct 06, 2026", "extra": "Latest action: Laid on the table", "link": "https://openstates.org/pa/bills/2025-2026/HB2786/"}, {"title": "HB 2785 \u2014 An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in books, furniture and supplies, providing for procurement and technology requirements.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Oct 06, 2026", "extra": "Latest action: Laid on the table", "link": "https://openstates.org/pa/bills/2025-2026/HB2785/"}, {"title": "HB 2787 \u2014 An Act amending the act of March 10, 1949 (P.L.30, No.14), known as the Public School Code of 1949, in school safety and security, providing for prohibition of artificial intelligence for school-based mental health and counseling.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Oct 06, 2026", "extra": "Latest action: Laid on the table", "link": "https://openstates.org/pa/bills/2025-2026/HB2787/"}, {"title": "HB 1925 \u2014 An Act amending Titles 35 (Health and Safety), 40 (Insurance) and 67 (Public Welfare) of the Pennsylvania Consolidated Statutes, providing for artificial intelligence in facilities, for artificial intelligence use by insurers and for artificial intelligence use by MA or CHIP managed care plans; imposing duties on the Department of Health, the Insurance Department and the Department of Human Services; and imposing penalties.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Sep 30, 2026", "extra": "Latest action: Third consideration and final passage", "link": "https://openstates.org/pa/bills/2025-2026/HB1925/"}, {"title": "HR 637 \u2014 A Resolution urging the Congress of the United States to pass Federal legislation that would regulate frontier artificial intelligence models.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Sep 28, 2026", "extra": "Latest action: Referred to Communications & Technology", "link": "https://openstates.org/pa/bills/2025-2026/HR637/"}], "NJ": [{"title": "A 5607 \u2014 Establishes content and data privacy requirements for chatbot providers.", "badge": "Active", "meta": "New Jersey \u00b7 222", "date": "Oct 05, 2026", "extra": "Latest action: Introduced, Referred to Assembly Public Safety and Preparedness Committee", "link": "https://openstates.org/nj/bills/222/A5607/"}, {"title": "S 4754 \u2014 Expand existing prohibition against unauthorized practice of various professions to include content produced by or with assistance of artificial intelligence.", "badge": "Active", "meta": "New Jersey \u00b7 222", "date": "Oct 05, 2026", "extra": "Latest action: Introduced in the Senate, Referred to Senate Commerce Committee", "link": "https://openstates.org/nj/bills/222/S4754/"}, {"title": "A 5088 \u2014 \"AI Likeness Protection Act\"; concerns distributing realistic representation of individual's image, likeness, or voice created using generative artificial intelligence.", "badge": "Active", "meta": "New Jersey \u00b7 222", "date": "May 14, 2026", "extra": "Latest action: Introduced, Referred to Assembly Science, Innovation and Technology Committee", "link": "https://openstates.org/nj/bills/222/A5088/"}, {"title": "A 5090 \u2014 \"GAI Accountability Act;\" imposes civil penalties on generative artificial intelligence platforms engaging in harmful activity, including exploitation of children.", "badge": "Active", "meta": "New Jersey \u00b7 222", "date": "May 14, 2026", "extra": "Latest action: Introduced, Referred to Assembly Science, Innovation and Technology Committee", "link": "https://openstates.org/nj/bills/222/A5090/"}], "CA": [{"title": "SB 947 \u2014 Employment: automated decision systems.", "badge": "Active", "meta": "California \u00b7 20252026", "date": "Sep 30, 2026", "extra": "Latest action: Chaptered by Secretary of State. Chapter 859, Statutes of 2026.", "link": "https://openstates.org/ca/bills/20252026/SB947/"}, {"title": "AB 1018 \u2014 Automated decision systems.", "badge": "Active", "meta": "California \u00b7 20252026", "date": "Aug 30, 2026", "extra": "Latest action: Read second time. Ordered to third reading.", "link": "https://openstates.org/ca/bills/20252026/AB1018/"}, {"title": "SB 833 \u2014 Critical infrastructure: artificial intelligence systems: human oversight.", "badge": "Active", "meta": "California \u00b7 20252026", "date": "Aug 13, 2026", "extra": "Latest action: August 13 hearing: Held in committee and under submission.", "link": "https://openstates.org/ca/bills/20252026/SB833/"}], "AK": [{"title": "HCR 12 \u2014 Suspending Rules 24(c), 35, 41(b), and 42(e), Uniform Rules of the Alaska State Legislature, concerning Senate Bill No. 64, relating to elections; relating to voters; relating to voting; relating to voter registration; relating to election administration; relating to the Alaska Public Offices Commission; relating to campaign contributions; relating to the crimes of unlawful interference with voting in the first degree, unlawful interference with an election, and election official misconduct; relating to synthetic media in electioneering communications; relating to campaign signs; relating to voter registration on permanent fund dividend applications; relating to the Redistricting Board; and relating to the duties of the commissioner of revenue.", "badge": "Active", "meta": "Alaska \u00b7 34", "date": "Sep 30, 2026", "extra": "Latest action: (H) PERMANENTLY FILED IN THE (H)", "link": "https://openstates.org/ak/bills/34/HCR12/"}], "OH": [{"title": "HB 1000 \u2014 Regulate deceptive synthetic media with intent to affect election", "badge": "Active", "meta": "Ohio \u00b7 136", "date": "Sep 02, 2026", "extra": "Latest action: Introduced", "link": "https://openstates.org/oh/bills/136/HB1000/"}, {"title": "HB 392 \u2014 Enact the Ohio Right to Compute Act", "badge": "Active", "meta": "Ohio \u00b7 136", "date": "Jun 10, 2026", "extra": "Latest action: Reported - Amended", "link": "https://openstates.org/oh/bills/136/HB392/"}], "IL": [{"title": "SB 3484 \u2014 VEH CD-PLATES-REGISTRATION", "badge": "Active", "meta": "Illinois \u00b7 104th", "date": "Aug 26, 2026", "extra": "Latest action: Public Act . . . . . . . . . 104-0854", "link": "https://openstates.org/il/bills/104th/SB3484/"}, {"title": "HB 5037 \u2014 FIXING HIGHER ED FUNDING ACT", "badge": "Active", "meta": "Illinois \u00b7 104th", "date": "May 20, 2026", "extra": "Latest action: Added Chief Co-Sponsor Rep. La Shawn K. Ford", "link": "https://openstates.org/il/bills/104th/HB5037/"}], "NH": [{"title": "HB 1406 \u2014 relative to health carrier recordkeeping requirements in utilization review, including specifications regarding the use of artificial intelligence.", "badge": "Active", "meta": "New Hampshire \u00b7 2026", "date": "Aug 05, 2026", "extra": "Latest action: Public Hearing: 02/17/2026 01:45 pm GP 159", "link": "https://openstates.org/nh/bills/2026/HB1406/"}], "MA": [{"title": "S 3211 \u2014 Amendment S.3211", "badge": "Active", "meta": "Massachusetts \u00b7 194th", "date": "Jul 23, 2026", "extra": "Latest action: See S3178", "link": "https://openstates.org/ma/bills/194th/S3211/"}, {"title": "S 2619 \u2014 An Act establishing the Massachusetts data privacy act", "badge": "Active", "meta": "Massachusetts \u00b7 194th", "date": "Jun 17, 2026", "extra": "Latest action: Committee of conference appointed - (M. Moran-Farley-Bouvier-Vieira), in concurrence", "link": "https://openstates.org/ma/bills/194th/S2619/"}], "VA": [{"title": "HB 868 \u2014 Political campaign advertisements; synthetic media, penalty.", "badge": "Active", "meta": "Virginia \u00b7 2027", "date": "Jul 21, 2026", "extra": "Latest action: Continued from last session", "link": "https://openstates.org/va/bills/2027/HB868/"}], "HI": [{"title": "HB 2137 \u2014 RELATING TO ARTIFICIAL INTELLIGENCE.", "badge": "Active", "meta": "Hawaii \u00b7 2026", "date": "Jul 14, 2026", "extra": "Latest action: Act 247, 07/14/2026 (Gov. Msg. No. 1349).", "link": "https://openstates.org/hi/bills/2026/HB2137/"}, {"title": "SR 71 \u2014 REQUESTING THE HAWAII STATE COMMISSION ON THE STATUS OF WOMEN, IN COLLABORATION WITH THE OFFICE OF THE LEGISLATIVE REFERENCE BUREAU AND DEPARTMENT OF THE ATTORNEY GENERAL, TO ESTABLISH A WORKING GROUP AND PROVIDE A REPORT TO THE LEGISLATURE ON WAYS TO STRENGTHEN PROTECTIONS FOR SURVIVORS OF IMAGE-BASED SEXUAL ABUSE.", "badge": "Active", "meta": "Hawaii \u00b7 2026", "date": "May 12, 2026", "extra": "Latest action: Certified copies of resolutions sent, 05-12-26.", "link": "https://openstates.org/hi/bills/2026/SR71/"}, {"title": "SCR 184 \u2014 REQUESTING THE HAWAI\u02bbI CIVIL RIGHTS COMMISSION TO EXAMINE THE APPLICABILITY OF EXISTING STATE ANTI-DISCRIMINATION LAWS TO ALGORITHMIC AND AUTOMATED DECISION SYSTEMS.", "badge": "Active", "meta": "Hawaii \u00b7 2026", "date": "May 12, 2026", "extra": "Latest action: Certified copies of resolutions sent, 05-12-26.", "link": "https://openstates.org/hi/bills/2026/SCR184/"}, {"title": "SR 165 \u2014 REQUESTING THE HAWAI\u02bbI CIVIL RIGHTS COMMISSION TO EXAMINE THE APPLICABILITY OF EXISTING STATE ANTI-DISCRIMINATION LAWS TO ALGORITHMIC AND AUTOMATED DECISION SYSTEMS.", "badge": "Active", "meta": "Hawaii \u00b7 2026", "date": "May 12, 2026", "extra": "Latest action: Certified copies of resolutions sent, 05-12-26.", "link": "https://openstates.org/hi/bills/2026/SR165/"}], "NY": [{"title": "S 3990 \u2014 Relates to establishing the offense of false pretense", "badge": "Active", "meta": "New York \u00b7 2025-2026", "date": "Jun 15, 2026", "extra": "Latest action: PRINT NUMBER 3990A", "link": "https://openstates.org/ny/bills/2025-2026/S3990/"}, {"title": "A 8884 \u2014 Relates to the development and use of certain artificial intelligence systems", "badge": "Active", "meta": "New York \u00b7 2025-2026", "date": "Jun 01, 2026", "extra": "Latest action: PRINT NUMBER 8884A", "link": "https://openstates.org/ny/bills/2025-2026/A8884/"}]};
+  var data={"LA": [{"title": "HB 119 \u2014 CRIME: Provides relative to unlawful conduct involving images of another person created by artificial intelligence (EN SEE FISC NOTE GF EX)", "badge": "Enacted", "meta": "Louisiana \u00b7 2026", "date": "Jun 09, 2026", "extra": "Latest action: Signed by the Governor. Becomes Act No. 782.", "link": "https://openstates.org/la/bills/2026/HB119/"}, {"title": "SB 346 \u2014 SCHOOLS: Prohibits the use of deepfake material against students enrolled in K-12. (8/1/26)", "badge": "Enacted", "meta": "Louisiana \u00b7 2026", "date": "May 29, 2026", "extra": "Latest action: Signed by the Governor. Becomes Act No. 496.", "link": "https://openstates.org/la/bills/2026/SB346/"}, {"title": "SB 347 \u2014 COLLEGES/UNIVERSITIES: Provides for the crime of \"unlawful deepfake\" to be added to the definition of power-based violence under the Campus Accountability and Safety Act. (gov sig)", "badge": "Enacted", "meta": "Louisiana \u00b7 2026", "date": "May 29, 2026", "extra": "Latest action: Signed by the Governor. Becomes Act No. 497.", "link": "https://openstates.org/la/bills/2026/SB347/"}], "VT": [{"title": "S 298 \u2014 An act relating to voter protections", "badge": "Enacted", "meta": "Vermont \u00b7 2025-2026", "date": "May 29, 2026", "extra": "Latest action: Senate Message: Signed by Governor June 8, 2026", "link": "https://openstates.org/vt/bills/2025-2026/S298/"}, {"title": "S 23 \u2014 An act relating to the use of synthetic media in elections", "badge": "Enacted", "meta": "Vermont \u00b7 2025-2026", "date": "Mar 11, 2026", "extra": "Latest action: Senate Message: Signed by Governor March 5, 2026", "link": "https://openstates.org/vt/bills/2025-2026/S23/"}], "ID": [{"title": "H 727 \u2014 SEX CRIMES \u2013 Amends existing law to revise a provision regarding video voyeurism and to revise a penalty for disclosing explicit synthetic media.", "badge": "Enacted", "meta": "Idaho \u00b7 2026", "date": "Mar 25, 2026", "extra": "Latest action: Reported Signed by Governor on March 25, 2026    Session Law Chapter 121    Effective: 07/01/2026", "link": "https://openstates.org/id/bills/2026/H727/"}], "MT": [{"title": "SB 413 \u2014 Criminalize disclosure of certain explicit AI-generated media", "badge": "Enacted", "meta": "Montana \u00b7 2025", "date": "May 16, 2025", "extra": "Latest action: Chapter Number Assigned", "link": "https://openstates.org/mt/bills/2025/SB413/"}, {"title": "SB 25 \u2014 Revise election laws regarding disclosure requirements for the use of AI in elections", "badge": "Enacted", "meta": "Montana \u00b7 2025", "date": "May 13, 2025", "extra": "Latest action: Chapter Number Assigned", "link": "https://openstates.org/mt/bills/2025/SB25/"}, {"title": "SB 297 \u2014 Generally revise privacy laws", "badge": "Enacted", "meta": "Montana \u00b7 2025", "date": "May 13, 2025", "extra": "Latest action: Chapter Number Assigned", "link": "https://openstates.org/mt/bills/2025/SB297/"}, {"title": "SB 212 \u2014 Creating the Right to Compute Act and requiring shutdowns of AI controlled critical infrastructure", "badge": "Enacted", "meta": "Montana \u00b7 2025", "date": "Apr 17, 2025", "extra": "Latest action: Chapter Number Assigned", "link": "https://openstates.org/mt/bills/2025/SB212/"}], "FL": [{"title": "SB 1178 \u2014 Foreign Influence", "badge": "Passed chamber", "meta": "Florida \u00b7 2026", "date": "Mar 13, 2026", "extra": "Latest action: Died on Calendar, companion bill(s) passed, see CS/CS/CS/HB 905 (Ch. 2026-66)", "link": "https://openstates.org/fl/bills/2026/SB1178/"}], "NC": [{"title": "HB 375 \u2014 Artificial Intelligence/Ban Deceptive Ads.", "badge": "Passed chamber", "meta": "North Carolina \u00b7 2025", "date": "Mar 13, 2025", "extra": "Latest action: Passed 1st Reading", "link": "https://openstates.org/nc/bills/2025/HB375/"}], "PA": [{"title": "HB 2006 \u2014 An Act providing for safety regarding artificial intelligence in companionship applications; and imposing a penalty.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Oct 13, 2026", "extra": "Latest action: Referred to Communications & Technology", "link": "https://openstates.org/pa/bills/2025-2026/HB2006/"}, {"title": "HR 653 \u2014 A Resolution directing the Joint State Government Commission to conduct a study and issue a report on the data that needs to be collected to evaluate the impact of artificial intelligence on the workforce.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Oct 09, 2026", "extra": "Latest action: Referred to Labor & Industry", "link": "https://openstates.org/pa/bills/2025-2026/HR653/"}, {"title": "HB 2637 \u2014 An Act providing for a temporary prohibition on artificial intelligence chatbots in children's toys and for Joint State Government Commission study; establishing an advisory committee; and imposing penalties.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Oct 07, 2026", "extra": "Latest action: Laid on the table", "link": "https://openstates.org/pa/bills/2025-2026/HB2637/"}, {"title": "HB 2666 \u2014 An Act providing for limitations on the use of user data in the creation of artificial intelligence simulations and for private right of action; and imposing penalties.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Oct 07, 2026", "extra": "Latest action: Laid on the table", "link": "https://openstates.org/pa/bills/2025-2026/HB2666/"}, {"title": "HR 637 \u2014 A Resolution urging the Congress of the United States to pass Federal legislation that would regulate frontier artificial intelligence models.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Oct 07, 2026", "extra": "Latest action: Reported as committed", "link": "https://openstates.org/pa/bills/2025-2026/HR637/"}, {"title": "HB 1925 \u2014 An Act amending Titles 35 (Health and Safety), 40 (Insurance) and 67 (Public Welfare) of the Pennsylvania Consolidated Statutes, providing for artificial intelligence in facilities, for artificial intelligence use by insurers and for artificial intelligence use by MA or CHIP managed care plans; imposing duties on the Department of Health, the Insurance Department and the Department of Human Services; and imposing penalties.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Sep 30, 2026", "extra": "Latest action: Third consideration and final passage", "link": "https://openstates.org/pa/bills/2025-2026/HB1925/"}, {"title": "HB 2314 \u2014 An Act providing for a public education campaign focused on educating the public about artificial intelligence and improving AI consumer literacy.", "badge": "Active", "meta": "Pennsylvania \u00b7 2025-2026", "date": "Jun 05, 2026", "extra": "Latest action: Referred to Communications & Technology", "link": "https://openstates.org/pa/bills/2025-2026/HB2314/"}], "NH": [{"title": "HB 1506 \u2014 creating an exception to the restricted uses of artificial intelligence by state agencies.", "badge": "Active", "meta": "New Hampshire \u00b7 2026", "date": "Oct 07, 2026", "extra": "Latest action: Full Committee Work Session: 10/15/2026 10:30 am GP 231", "link": "https://openstates.org/nh/bills/2026/HB1506/"}, {"title": "HB 1406 \u2014 relative to health carrier recordkeeping requirements in utilization review, including specifications regarding the use of artificial intelligence.", "badge": "Active", "meta": "New Hampshire \u00b7 2026", "date": "Aug 05, 2026", "extra": "Latest action: Public Hearing: 02/17/2026 01:45 pm GP 159", "link": "https://openstates.org/nh/bills/2026/HB1406/"}], "NJ": [{"title": "S 4758 \u2014 Requires artificial intelligence companion operators to provide notifications that users are not communicating with human.", "badge": "Active", "meta": "New Jersey \u00b7 222", "date": "Oct 05, 2026", "extra": "Latest action: Introduced in the Senate, Referred to Senate Commerce Committee", "link": "https://openstates.org/nj/bills/222/S4758/"}, {"title": "A 5607 \u2014 Establishes content and data privacy requirements for chatbot providers.", "badge": "Active", "meta": "New Jersey \u00b7 222", "date": "Oct 05, 2026", "extra": "Latest action: Introduced, Referred to Assembly Public Safety and Preparedness Committee", "link": "https://openstates.org/nj/bills/222/A5607/"}], "CA": [{"title": "AB 2656 \u2014 Public employees: notice: artificial intelligence performing service within scope of work.", "badge": "Active", "meta": "California \u00b7 20252026", "date": "Sep 30, 2026", "extra": "Latest action: Vetoed by Governor.", "link": "https://openstates.org/ca/bills/20252026/AB2656/"}, {"title": "AB 2575 \u2014 Health care services: artificial intelligence.", "badge": "Active", "meta": "California \u00b7 20252026", "date": "Sep 30, 2026", "extra": "Latest action: Vetoed by Governor.", "link": "https://openstates.org/ca/bills/20252026/AB2575/"}, {"title": "SB 947 \u2014 Employment: automated decision systems.", "badge": "Active", "meta": "California \u00b7 20252026", "date": "Sep 30, 2026", "extra": "Latest action: Chaptered by Secretary of State. Chapter 859, Statutes of 2026.", "link": "https://openstates.org/ca/bills/20252026/SB947/"}, {"title": "AB 1018 \u2014 Automated decision systems.", "badge": "Active", "meta": "California \u00b7 20252026", "date": "Aug 30, 2026", "extra": "Latest action: Read second time. Ordered to third reading.", "link": "https://openstates.org/ca/bills/20252026/AB1018/"}, {"title": "SB 833 \u2014 Critical infrastructure: artificial intelligence systems: human oversight.", "badge": "Active", "meta": "California \u00b7 20252026", "date": "Aug 13, 2026", "extra": "Latest action: August 13 hearing: Held in committee and under submission.", "link": "https://openstates.org/ca/bills/20252026/SB833/"}], "AK": [{"title": "HCR 12 \u2014 Suspending Rules 24(c), 35, 41(b), and 42(e), Uniform Rules of the Alaska State Legislature, concerning Senate Bill No. 64, relating to elections; relating to voters; relating to voting; relating to voter registration; relating to election administration; relating to the Alaska Public Offices Commission; relating to campaign contributions; relating to the crimes of unlawful interference with voting in the first degree, unlawful interference with an election, and election official misconduct; relating to synthetic media in electioneering communications; relating to campaign signs; relating to voter registration on permanent fund dividend applications; relating to the Redistricting Board; and relating to the duties of the commissioner of revenue.", "badge": "Active", "meta": "Alaska \u00b7 34", "date": "Sep 30, 2026", "extra": "Latest action: (H) PERMANENTLY FILED IN THE (H)", "link": "https://openstates.org/ak/bills/34/HCR12/"}], "OH": [{"title": "HB 1000 \u2014 Regulate deceptive synthetic media with intent to affect election", "badge": "Active", "meta": "Ohio \u00b7 136", "date": "Sep 02, 2026", "extra": "Latest action: Introduced", "link": "https://openstates.org/oh/bills/136/HB1000/"}, {"title": "HB 392 \u2014 Enact the Ohio Right to Compute Act", "badge": "Active", "meta": "Ohio \u00b7 136", "date": "Jun 10, 2026", "extra": "Latest action: Reported - Amended", "link": "https://openstates.org/oh/bills/136/HB392/"}], "MA": [{"title": "S 3211 \u2014 Amendment S.3211", "badge": "Active", "meta": "Massachusetts \u00b7 194th", "date": "Jul 23, 2026", "extra": "Latest action: See S3178", "link": "https://openstates.org/ma/bills/194th/S3211/"}, {"title": "S 2619 \u2014 An Act establishing the Massachusetts data privacy act", "badge": "Active", "meta": "Massachusetts \u00b7 194th", "date": "Jun 17, 2026", "extra": "Latest action: Committee of conference appointed - (M. Moran-Farley-Bouvier-Vieira), in concurrence", "link": "https://openstates.org/ma/bills/194th/S2619/"}], "VA": [{"title": "HB 868 \u2014 Political campaign advertisements; synthetic media, penalty.", "badge": "Active", "meta": "Virginia \u00b7 2027", "date": "Jul 21, 2026", "extra": "Latest action: Continued from last session", "link": "https://openstates.org/va/bills/2027/HB868/"}], "HI": [{"title": "HB 2137 \u2014 RELATING TO ARTIFICIAL INTELLIGENCE.", "badge": "Active", "meta": "Hawaii \u00b7 2026", "date": "Jul 14, 2026", "extra": "Latest action: Act 247, 07/14/2026 (Gov. Msg. No. 1349).", "link": "https://openstates.org/hi/bills/2026/HB2137/"}, {"title": "SR 71 \u2014 REQUESTING THE HAWAII STATE COMMISSION ON THE STATUS OF WOMEN, IN COLLABORATION WITH THE OFFICE OF THE LEGISLATIVE REFERENCE BUREAU AND DEPARTMENT OF THE ATTORNEY GENERAL, TO ESTABLISH A WORKING GROUP AND PROVIDE A REPORT TO THE LEGISLATURE ON WAYS TO STRENGTHEN PROTECTIONS FOR SURVIVORS OF IMAGE-BASED SEXUAL ABUSE.", "badge": "Active", "meta": "Hawaii \u00b7 2026", "date": "May 12, 2026", "extra": "Latest action: Certified copies of resolutions sent, 05-12-26.", "link": "https://openstates.org/hi/bills/2026/SR71/"}, {"title": "SCR 184 \u2014 REQUESTING THE HAWAI\u02bbI CIVIL RIGHTS COMMISSION TO EXAMINE THE APPLICABILITY OF EXISTING STATE ANTI-DISCRIMINATION LAWS TO ALGORITHMIC AND AUTOMATED DECISION SYSTEMS.", "badge": "Active", "meta": "Hawaii \u00b7 2026", "date": "May 12, 2026", "extra": "Latest action: Certified copies of resolutions sent, 05-12-26.", "link": "https://openstates.org/hi/bills/2026/SCR184/"}], "NY": [{"title": "S 3990 \u2014 Relates to establishing the offense of false pretense", "badge": "Active", "meta": "New York \u00b7 2025-2026", "date": "Jun 15, 2026", "extra": "Latest action: PRINT NUMBER 3990A", "link": "https://openstates.org/ny/bills/2025-2026/S3990/"}, {"title": "A 8884 \u2014 Relates to the development and use of certain artificial intelligence systems", "badge": "Active", "meta": "New York \u00b7 2025-2026", "date": "Jun 01, 2026", "extra": "Latest action: PRINT NUMBER 8884A", "link": "https://openstates.org/ny/bills/2025-2026/A8884/"}]};
   var names={"AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "District of Columbia", "FL": "Florida", "GA": "Georgia", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine", "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi", "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming"};
   var panel=document.getElementById('statePanel'),
       title=document.getElementById('statePanelTitle'),

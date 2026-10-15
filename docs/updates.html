@@ -162,6 +162,23 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .ustrip-more{display:inline-block;margin-top:1.4rem;font-family:'Fraunces',Georgia,serif;
   font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--blue);text-decoration:none}
+/* ---- jurisdiction checker + obligations ---- */
+.jchips{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 2rem}
+.ccount{font-family:'Fraunces',Georgia,serif;color:#fff;margin:0 0 1.5rem;font-size:1.05rem}
+.cempty{color:var(--muted);font-style:italic}
+.claw{border:1px solid var(--line);border-radius:6px;padding:1.4rem 1.5rem;
+  margin:0 0 1.2rem;background:rgba(255,255,255,.02);max-width:860px}
+.claw h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:1.1rem;
+  margin:0 0 .8rem;line-height:1.4}
+.claw h4 a{color:#fff;text-decoration:none}
+.claw h4 a:hover{color:var(--blue)}
+.claw h4 span{display:block;font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.claw ul{margin:0;padding-left:1.2rem;color:#dfe6f0;font-size:.92rem;line-height:1.65}
+.claw li{margin-bottom:.4rem}
+.claw li::marker{color:var(--blue)}
+.cdisclaimer{margin-top:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:70ch}
+.cdisclaimer b{color:#fff}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -296,6 +313,46 @@ footer{margin-top:5rem}
 <section class="sec"><div class="wrap">
   <div class="uchips reveal"><button class="uchip on" data-ucat="All">All</button><button class="uchip" data-ucat="New law">New law</button><button class="uchip" data-ucat="Bill activity">Bill activity</button><button class="uchip" data-ucat="Lawsuit">Lawsuit</button><button class="uchip" data-ucat="Framework">Framework</button><button class="uchip" data-ucat="Tracker">Tracker</button></div>
   <div class="ufeed">
+<article class="uitem reveal" data-cat="Lawsuit">
+  <div class="udate"><span>Oct 14</span><em>2026</em></div>
+  <div class="ubody">
+    <span class="utag tag-lawsuit">Lawsuit</span>
+    <h3><a href="litigation.html">Tax Analysts v. Internal Revenue Service</a></h3>
+    <p>District Court, District of Columbia · D.D.C.</p>
+  </div>
+</article>
+<article class="uitem reveal" data-cat="Bill activity">
+  <div class="udate"><span>Oct 13</span><em>2026</em></div>
+  <div class="ubody">
+    <span class="utag tag-bill-activity">Bill activity</span>
+    <h3><a href="us-laws.html">HB 2006 — An Act providing for safety regarding artificial intelligence in companionship applications; and imposing a penalty.</a></h3>
+    <p>Latest action: Referred to Communications &amp; Technology</p>
+  </div>
+</article>
+<article class="uitem reveal" data-cat="Lawsuit">
+  <div class="udate"><span>Oct 13</span><em>2026</em></div>
+  <div class="ubody">
+    <span class="utag tag-lawsuit">Lawsuit</span>
+    <h3><a href="litigation.html">Murphy v. Meta Platforms, Inc.</a></h3>
+    <p>District Court, E.D. Missouri · Docket 1:26-cv-00235</p>
+  </div>
+</article>
+<article class="uitem reveal" data-cat="Lawsuit">
+  <div class="udate"><span>Oct 13</span><em>2026</em></div>
+  <div class="ubody">
+    <span class="utag tag-lawsuit">Lawsuit</span>
+    <h3><a href="litigation.html">UMG Recordings, Inc. v. Suno, Inc.</a></h3>
+    <p>District Court, N.D. California · Docket 3:26-mc-80303</p>
+  </div>
+</article>
+<article class="uitem reveal" data-cat="Lawsuit">
+  <div class="udate"><span>Oct 13</span><em>2026</em></div>
+  <div class="ubody">
+    <span class="utag tag-lawsuit">Lawsuit</span>
+    <h3><a href="litigation.html">Marti v. Ardelyx, Inc.</a></h3>
+    <p>District Court, D. Massachusetts · Docket 1:26-cv-14635</p>
+  </div>
+</article>
 <article class="uitem reveal" data-cat="Tracker">
   <div class="udate"><span>Oct 09</span><em>2026</em></div>
   <div class="ubody">
@@ -304,12 +361,20 @@ footer{margin-top:5rem}
     <p>A news-style feed of everything new: verified laws, bill movements, lawsuits, and tracker changes — newest first, filterable by category.</p>
   </div>
 </article>
-<article class="uitem reveal" data-cat="Lawsuit">
+<article class="uitem reveal" data-cat="Bill activity">
   <div class="udate"><span>Oct 09</span><em>2026</em></div>
   <div class="ubody">
-    <span class="utag tag-lawsuit">Lawsuit</span>
-    <h3><a href="litigation.html">State of Iowa v. Max Amyda</a></h3>
-    <p>Supreme Court of Iowa · Iowa</p>
+    <span class="utag tag-bill-activity">Bill activity</span>
+    <h3><a href="us-laws.html">HR 10768 — To establish the Office of Artificial Intelligence and Emerging Technology Threats within the Executive Office of the President, and for other purposes.</a></h3>
+    <p>Latest action: Referred to the House Committee on Energy and Commerce.</p>
+  </div>
+</article>
+<article class="uitem reveal" data-cat="Bill activity">
+  <div class="udate"><span>Oct 09</span><em>2026</em></div>
+  <div class="ubody">
+    <span class="utag tag-bill-activity">Bill activity</span>
+    <h3><a href="us-laws.html">HR 653 — A Resolution directing the Joint State Government Commission to conduct a study and issue a report on the data that needs to be collected to evaluate the impact of artificial intelligence on the workforce.</a></h3>
+    <p>Latest action: Referred to Labor &amp; Industry</p>
   </div>
 </article>
 <article class="uitem reveal" data-cat="Bill activity">
@@ -318,14 +383,6 @@ footer{margin-top:5rem}
     <span class="utag tag-bill-activity">Bill activity</span>
     <h3><a href="us-laws.html">PC 1487 — Para crear la “Ley para la Regulación de Medios Sintéticos y Deepfakes de Puerto Rico”; tipificar conductas relacionadas con la creación, distribución y uso malicioso de contenido sintético generado mediante inteligencia artificial; establecer un régimen penal y civil de responsabilidad; imponer obligaciones de etiquetado, transparencia y trazabilidad a plataformas digitales y proveedores de tecnología de inteligencia artificial; proteger la dignidad, privacidad, integridad electoral y seguridad económica de las personas; establecer programas de educación pública y prevención; designar la agencia reguladora; disponer penalidades; y para otros fines relacionados.</a></h3>
     <p>Latest action: Referido a Comisión(es)</p>
-  </div>
-</article>
-<article class="uitem reveal" data-cat="Lawsuit">
-  <div class="udate"><span>Oct 08</span><em>2026</em></div>
-  <div class="ubody">
-    <span class="utag tag-lawsuit">Lawsuit</span>
-    <h3><a href="litigation.html">USA Today Co., Inc. v. OpenAI Foundation</a></h3>
-    <p>District Court, S.D. New York · Docket 1:26-cv-08892</p>
   </div>
 </article>
 <article class="uitem reveal" data-cat="New law">
@@ -345,35 +402,11 @@ footer{margin-top:5rem}
   </div>
 </article>
 <article class="uitem reveal" data-cat="Bill activity">
-  <div class="udate"><span>Oct 07</span><em>2026</em></div>
+  <div class="udate"><span>Oct 06</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HB 2666 — An Act providing for limitations on the use of user data in the creation of artificial intelligence simulations and for private right of action; and imposing penalties.</a></h3>
-    <p>Latest action: Laid on the table</p>
-  </div>
-</article>
-<article class="uitem reveal" data-cat="Bill activity">
-  <div class="udate"><span>Oct 07</span><em>2026</em></div>
-  <div class="ubody">
-    <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HR 637 — A Resolution urging the Congress of the United States to pass Federal legislation that would regulate frontier artificial intelligence models.</a></h3>
-    <p>Latest action: Reported as committed</p>
-  </div>
-</article>
-<article class="uitem reveal" data-cat="Lawsuit">
-  <div class="udate"><span>Oct 07</span><em>2026</em></div>
-  <div class="ubody">
-    <span class="utag tag-lawsuit">Lawsuit</span>
-    <h3><a href="litigation.html">Herc Holdings Inc. v. Ford</a></h3>
-    <p>District Court, M.D. Florida · Docket 2:26-cv-02757</p>
-  </div>
-</article>
-<article class="uitem reveal" data-cat="Lawsuit">
-  <div class="udate"><span>Oct 07</span><em>2026</em></div>
-  <div class="ubody">
-    <span class="utag tag-lawsuit">Lawsuit</span>
-    <h3><a href="litigation.html">Kid International, LLC v. City National Bank of Florida and 2655 SW 25, LLC</a></h3>
-    <p>District Court of Appeal of Florida · Fla. Dist. Ct. App.</p>
+    <h3><a href="us-laws.html">HR 10752 — CISA Securing AI Task Force Act</a></h3>
+    <p>Latest action: Referred to the House Committee on Homeland Security.</p>
   </div>
 </article>
 <article class="uitem reveal" data-cat="Tracker">
@@ -428,32 +461,16 @@ footer{margin-top:5rem}
   <div class="udate"><span>Sep 29</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">SRES 918 — A resolution establishing the Select Committee on Artificial Intelligence.</a></h3>
-    <p>Latest action: Referred to the Committee on Rules and Administration. (text: CR S5172-5174)</p>
+    <h3><a href="us-laws.html">S 5576 — Artificial Intelligence Risk Management and Security Act of 2026</a></h3>
+    <p>Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation.</p>
   </div>
 </article>
 <article class="uitem reveal" data-cat="Bill activity">
   <div class="udate"><span>Sep 29</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">S 5576 — A bill to establish the Artificial Intelligence Safety Board, and for other purposes.</a></h3>
-    <p>Latest action: Read twice and referred to the Committee on Commerce, Science, and Transportation.</p>
-  </div>
-</article>
-<article class="uitem reveal" data-cat="Bill activity">
-  <div class="udate"><span>Sep 24</span><em>2026</em></div>
-  <div class="ubody">
-    <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">S 5518 — Make AI Work for Americans Act</a></h3>
-    <p>Latest action: Read twice and referred to the Committee on Finance.</p>
-  </div>
-</article>
-<article class="uitem reveal" data-cat="Bill activity">
-  <div class="udate"><span>Sep 24</span><em>2026</em></div>
-  <div class="ubody">
-    <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HR 10594 — Reliable Artificial Intelligence Research Act of 2026</a></h3>
-    <p>Latest action: Referred to the House Committee on Homeland Security.</p>
+    <h3><a href="us-laws.html">SRES 918 — A resolution establishing the Select Committee on Artificial Intelligence.</a></h3>
+    <p>Latest action: Referred to the Committee on Rules and Administration. (text: CR S5172-5174)</p>
   </div>
 </article></div>
   <div class="unote reveal"><h4>How this feed is built</h4>
@@ -497,7 +514,7 @@ footer{margin-top:5rem}
     </div>
   </div></div></div>
   <div class="fbottom"><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;width:100%">
-    <small>AI REGULATION TRACKER · UPDATED Oct 9, 2026</small>
+    <small>AI REGULATION TRACKER · UPDATED October 14, 2026</small>
     <small>CODE &amp; CURATION NOTES ON <a href="https://github.com/trishabinwade/ai-regulation-tracker" style="color:#fff">GITHUB</a></small>
   </div></div>
 </footer>
