@@ -179,6 +179,23 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .claw li::marker{color:var(--blue)}
 .cdisclaimer{margin-top:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:70ch}
 .cdisclaimer b{color:#fff}
+.fwact{margin-top:1rem;border:1px solid rgba(110,168,255,.55);border-radius:12px;
+  background:linear-gradient(135deg,rgba(110,168,255,.16),rgba(110,168,255,.05));padding:.75rem .95rem}
+.fwact summary{cursor:pointer;list-style:none;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.fwact summary::-webkit-details-marker{display:none}
+.fwact summary::before{content:"✦  ";color:var(--blue)}
+.fwact summary::after{content:" +";color:var(--blue)}
+.fwact[open] summary::after{content:" −"}
+.fwact ul{margin:.75rem 0 .25rem;padding-left:1.15rem;font-size:.88rem;line-height:1.6;color:#dfe6f0}
+.fwact li{margin-bottom:.35rem}
+.fwact li::marker{color:var(--blue)}
+.kchecks{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.4rem}
+.kcheck{display:inline-flex;align-items:center;gap:.45rem;cursor:pointer;
+  border:1px solid var(--line);border-radius:999px;padding:.42rem .85rem;
+  font-size:.82rem;color:var(--muted);background:rgba(255,255,255,.03);transition:all .15s}
+.kcheck input{accent-color:var(--blue);width:14px;height:14px;margin:0;cursor:pointer}
+.kcheck:has(input:checked){border-color:var(--blue);color:#fff;background:rgba(110,168,255,.14)}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -306,7 +323,7 @@ footer{margin-top:5rem}
     <div class="eyebrow reveal">Stay current</div>
     <h1 class="reveal">Recent Updates</h1>
     <p class="sub reveal">New verified laws, the latest bill movements and lawsuits,
-    and changes to the tracker itself — newest first.</p>
+    and changes to the tracker itself, newest first.</p>
   </div>
 </header>
 
@@ -325,7 +342,7 @@ footer{margin-top:5rem}
   <div class="udate"><span>Oct 22</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HR 10873 — AI Cyber Defense Act</a></h3>
+    <h3><a href="us-laws.html">HR 10873: AI Cyber Defense Act</a></h3>
     <p>Latest action: Referred to the House Committee on Science, Space, and Technology.</p>
   </div>
 </article>
@@ -333,7 +350,7 @@ footer{margin-top:5rem}
   <div class="udate"><span>Oct 22</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">A 5711 — Prohibits defendant from asserting autonomous behavior of artificial intelligence as defense in certain civil actions and criminal prosecutions.</a></h3>
+    <h3><a href="us-laws.html">A 5711: Prohibits defendant from asserting autonomous behavior of artificial intelligence as defense in certain civil actions and criminal prosecutions.</a></h3>
     <p>Latest action: Introduced, Referred to Assembly Judiciary Committee</p>
   </div>
 </article>
@@ -341,7 +358,7 @@ footer{margin-top:5rem}
   <div class="udate"><span>Oct 22</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">A 4728 — Regulates deceptive use of artificial intelligence in photo advertising of certain dwellings.</a></h3>
+    <h3><a href="us-laws.html">A 4728: Regulates deceptive use of artificial intelligence in photo advertising of certain dwellings.</a></h3>
     <p>Latest action: Reported out of Assembly Comm. with Amendments, 2nd Reading</p>
   </div>
 </article>
@@ -349,7 +366,7 @@ footer{margin-top:5rem}
   <div class="udate"><span>Oct 22</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HB 1032 — Regards AI use by state agencies and in labor and employment</a></h3>
+    <h3><a href="us-laws.html">HB 1032: Regards AI use by state agencies and in labor and employment</a></h3>
     <p>Latest action: Introduced</p>
   </div>
 </article>
@@ -373,7 +390,7 @@ footer{margin-top:5rem}
   <div class="udate"><span>Oct 21</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">H 5700 — An Act making appropriations for the fiscal year 2026 to provide for supplementing certain existing appropriations and for certain other activities and projects</a></h3>
+    <h3><a href="us-laws.html">H 5700: An Act making appropriations for the fiscal year 2026 to provide for supplementing certain existing appropriations and for certain other activities and projects</a></h3>
     <p>Latest action: Passed to be engrossed - 152 YEAS to 0 NAYS (See YEA and NAY No. 275 )</p>
   </div>
 </article>
@@ -389,7 +406,7 @@ footer{margin-top:5rem}
   <div class="udate"><span>Oct 19</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HR 10841 — Securing Elections From AI Deception Act</a></h3>
+    <h3><a href="us-laws.html">HR 10841: Securing Elections From AI Deception Act</a></h3>
     <p>Latest action: Referred to the House Committee on Energy and Commerce.</p>
   </div>
 </article>
@@ -397,7 +414,7 @@ footer{margin-top:5rem}
   <div class="udate"><span>Oct 15</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HR 10814 — To amend the Federal Election Campaign Act of 1971 to provide further transparency and accountability for the use of content that is generated by artificial intelligence (generative AI) in political advertisements by requiring such advertisements to include a statement within the contents of the advertisements if generative AI was used to generate any image or video footage in the advertisements, and for other purposes.</a></h3>
+    <h3><a href="us-laws.html">HR 10814: To amend the Federal Election Campaign Act of 1971 to provide further transparency and accountability for the use of content that is generated by artificial intelligence (generative AI) in political advertisements by requiring such advertisements to include a statement within the contents of the advertisements if generative AI was used to generate any image or video footage in the advertisements, and for other purposes.</a></h3>
     <p>Latest action: Referred to the House Committee on House Administration.</p>
   </div>
 </article>
@@ -406,14 +423,14 @@ footer{margin-top:5rem}
   <div class="ubody">
     <span class="utag tag-tracker">Tracker</span>
     <h3><a href="updates.html">Recent Updates page launches</a></h3>
-    <p>A news-style feed of everything new: verified laws, bill movements, lawsuits, and tracker changes — newest first, filterable by category.</p>
+    <p>A news-style feed of everything new: verified laws, bill movements, lawsuits, and tracker changes, newest first, filterable by category.</p>
   </div>
 </article>
 <article class="uitem reveal" data-cat="Bill activity">
   <div class="udate"><span>Oct 09</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HR 10768 — To establish the Office of Artificial Intelligence and Emerging Technology Threats within the Executive Office of the President, and for other purposes.</a></h3>
+    <h3><a href="us-laws.html">HR 10768: To establish the Office of Artificial Intelligence and Emerging Technology Threats within the Executive Office of the President, and for other purposes.</a></h3>
     <p>Latest action: Referred to the House Committee on Energy and Commerce.</p>
   </div>
 </article>
@@ -429,7 +446,7 @@ footer{margin-top:5rem}
   <div class="udate"><span>Oct 06</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HR 10752 — CISA Securing AI Task Force Act</a></h3>
+    <h3><a href="us-laws.html">HR 10752: CISA Securing AI Task Force Act</a></h3>
     <p>Latest action: Referred to the House Committee on Homeland Security.</p>
   </div>
 </article>
@@ -438,7 +455,7 @@ footer{margin-top:5rem}
   <div class="ubody">
     <span class="utag tag-tracker">Tracker</span>
     <h3><a href="frameworks.html">Framework-to-law cross-walk launches</a></h3>
-    <p>19 voluntary AI governance frameworks — NIST, ISO, OECD and more — each mapped to the binding laws it overlaps with.</p>
+    <p>19 voluntary AI governance frameworks, NIST, ISO, OECD and more, each mapped to the binding laws it overlaps with.</p>
   </div>
 </article>
 <article class="uitem reveal" data-cat="New law">
@@ -462,21 +479,21 @@ footer{margin-top:5rem}
   <div class="ubody">
     <span class="utag tag-tracker">Tracker</span>
     <h3><a href="index.html">Tracker rebuilt as a five-page editorial site</a></h3>
-    <p>Home, US AI Law Tracker, AI Litigation Monitor, Global AI Regulation Index, and AI Governance Frameworks — with search, filters, and maps.</p>
+    <p>Home, US AI Law Tracker, AI Litigation Monitor, Global AI Regulation Index, and AI Governance Frameworks, with search, filters, and maps.</p>
   </div>
 </article>
 <article class="uitem reveal" data-cat="Bill activity">
   <div class="udate"><span>Oct 01</span><em>2026</em></div>
   <div class="ubody">
     <span class="utag tag-bill-activity">Bill activity</span>
-    <h3><a href="us-laws.html">HR 10719 — Protecting Kids from Human-Like Chatbots Act</a></h3>
+    <h3><a href="us-laws.html">HR 10719: Protecting Kids from Human-Like Chatbots Act</a></h3>
     <p>Latest action: Referred to the Committee on Energy and Commerce, and in addition to the Committee on Science, Space, and Technology, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.</p>
   </div>
 </article></div>
   <div class="unote reveal"><h4>How this feed is built</h4>
     <p>Bill activity and lawsuits update automatically from Congress.gov,
     OpenStates, and CourtListener on every build. New laws are added by hand
-    and only after verification against an official government source —
+    and only after verification against an official government source,
     nothing here is auto-scraped into the enacted count.</p></div>
 </div></section>
 
@@ -506,10 +523,10 @@ footer{margin-top:5rem}
     <div>
       <h5>Sources</h5>
       <ul>
-        <li><a href="https://www.congress.gov">Congress.gov</a> — federal bills</li>
-        <li><a href="https://openstates.org">OpenStates</a> — state bills</li>
-        <li><a href="https://www.courtlistener.com">CourtListener</a> — lawsuits</li>
-        <li>Official gazettes &amp; agency sites — enacted laws</li>
+        <li><a href="https://www.congress.gov">Congress.gov</a>: federal bills</li>
+        <li><a href="https://openstates.org">OpenStates</a>: state bills</li>
+        <li><a href="https://www.courtlistener.com">CourtListener</a>: lawsuits</li>
+        <li>Official gazettes &amp; agency sites: enacted laws</li>
       </ul>
     </div>
   </div></div></div>
@@ -546,6 +563,7 @@ footer{margin-top:5rem}
     var q=root.querySelector('[data-f=q]'),
         badge=root.querySelector('[data-f=badge]'),
         kind=root.querySelector('[data-f=kind]'),
+        kindchecks=root.querySelector('[data-f=kindchecks]'),
         count=root.querySelector('[data-f=count]'),
         empty=root.querySelector('[data-f=empty]'),
         cards=Array.prototype.slice.call(root.querySelectorAll('[data-card]')),
@@ -572,10 +590,17 @@ footer{margin-top:5rem}
     function apply(){
       var s=q?q.value.trim().toLowerCase():'', b=badge?badge.value:'',
           k=kind?kind.value:'';
+      var kset=null;
+      if(kindchecks){
+        kset={};
+        kindchecks.querySelectorAll('input[type=checkbox]:checked').forEach(function(cb){kset[cb.value]=1;});
+        if(!Object.keys(kset).length)kset=null;
+      }
       matched=cards.filter(function(c){
         return (!s||c.getAttribute('data-search').indexOf(s)!==-1)
           &&(!b||c.getAttribute('data-badge')===b)
-          &&(!k||c.getAttribute('data-kind')===k);
+          &&(!k||c.getAttribute('data-kind')===k)
+          &&(!kset||kset[c.getAttribute('data-kind')]);
       });
       page=1; render();
     }
@@ -583,6 +608,7 @@ footer{margin-top:5rem}
     next.addEventListener('click',function(){
       if(page<Math.ceil(matched.length/PAGE_SIZE)){page++;render();root.scrollIntoView();}});
     [q,badge,kind].forEach(function(el){if(el)el.addEventListener('input',apply);if(el)el.addEventListener('change',apply);});
+    if(kindchecks)kindchecks.querySelectorAll('input[type=checkbox]').forEach(function(cb){cb.addEventListener('change',apply);});
     apply();
   });
 })();

@@ -179,6 +179,23 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .claw li::marker{color:var(--blue)}
 .cdisclaimer{margin-top:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:70ch}
 .cdisclaimer b{color:#fff}
+.fwact{margin-top:1rem;border:1px solid rgba(110,168,255,.55);border-radius:12px;
+  background:linear-gradient(135deg,rgba(110,168,255,.16),rgba(110,168,255,.05));padding:.75rem .95rem}
+.fwact summary{cursor:pointer;list-style:none;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.fwact summary::-webkit-details-marker{display:none}
+.fwact summary::before{content:"✦  ";color:var(--blue)}
+.fwact summary::after{content:" +";color:var(--blue)}
+.fwact[open] summary::after{content:" −"}
+.fwact ul{margin:.75rem 0 .25rem;padding-left:1.15rem;font-size:.88rem;line-height:1.6;color:#dfe6f0}
+.fwact li{margin-bottom:.35rem}
+.fwact li::marker{color:var(--blue)}
+.kchecks{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.4rem}
+.kcheck{display:inline-flex;align-items:center;gap:.45rem;cursor:pointer;
+  border:1px solid var(--line);border-radius:999px;padding:.42rem .85rem;
+  font-size:.82rem;color:var(--muted);background:rgba(255,255,255,.03);transition:all .15s}
+.kcheck input{accent-color:var(--blue);width:14px;height:14px;margin:0;cursor:pointer}
+.kcheck:has(input:checked){border-color:var(--blue);color:#fff;background:rgba(110,168,255,.14)}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -306,7 +323,7 @@ footer{margin-top:5rem}
     <div class="eyebrow reveal">Voluntary compliance</div>
     <h1 class="reveal">AI Governance Frameworks</h1>
     <p class="sub reveal">The soft-law layer: voluntary frameworks, codes, and
-    principles that companies use to demonstrate responsible AI &mdash; and to get
+    principles that companies use to demonstrate responsible AI, and to get
     ahead of binding law.</p>
   </div>
 </header>
@@ -314,23 +331,23 @@ footer{margin-top:5rem}
 <section class="sec" style="padding-top:2.5rem"><div class="wrap">
     <div class="eyebrow">The index &middot; 19</div>
     <h2>Frameworks worth knowing</h2>
-    <p>With one treaty exception noted below, these are not binding law on their own
-    &mdash; that is the point. They are the instruments companies voluntarily
+    <p>With one treaty exception noted below, these are not binding law on their own,
+    that is the point. They are the instruments companies voluntarily
     adopt to manage AI risk, and several create a presumption of compliance
     with binding regimes.</p>
   </div>
   <div class="notice reveal" style="margin-bottom:1.6rem"><p><strong>Cross-walk:</strong>
-  each framework shows the binding laws it substantively overlaps with &mdash;
+  each framework shows the binding laws it substantively overlaps with,
   adopting the framework gets you partway toward complying with the linked law,
   but it does not itself establish legal compliance.</p></div>
   <div data-explorer>
     
     <div class="fbar">
       <input class="fsearch" data-f="q" type="search" placeholder="Search frameworks…" aria-label="Search">
-      <select data-f="kind" aria-label="Filter by type"><option value="">All types</option><option value="Code of conduct">Code of conduct</option><option value="Code of practice">Code of practice</option><option value="Declaration">Declaration</option><option value="Governance framework">Governance framework</option><option value="Guidelines">Guidelines</option><option value="Industry commitments">Industry commitments</option><option value="Management system standard">Management system standard</option><option value="Principles">Principles</option><option value="Risk management framework">Risk management framework</option><option value="Safety commitments">Safety commitments</option><option value="Safety standard">Safety standard</option><option value="Treaty">Treaty</option></select>
-      <select data-f="badge" aria-label="Filter by status"><option value="">All statuses</option></select>
+      
+      
       <span class="fcount" data-f="count"></span>
-    </div>
+    </div><div class="kchecks" data-f="kindchecks" role="group" aria-label="Filter by type"><label class="kcheck"><input type="checkbox" value="Code of conduct"><span>Code of conduct</span></label><label class="kcheck"><input type="checkbox" value="Code of practice"><span>Code of practice</span></label><label class="kcheck"><input type="checkbox" value="Declaration"><span>Declaration</span></label><label class="kcheck"><input type="checkbox" value="Governance framework"><span>Governance framework</span></label><label class="kcheck"><input type="checkbox" value="Guidelines"><span>Guidelines</span></label><label class="kcheck"><input type="checkbox" value="Industry commitments"><span>Industry commitments</span></label><label class="kcheck"><input type="checkbox" value="Management system standard"><span>Management system standard</span></label><label class="kcheck"><input type="checkbox" value="Principles"><span>Principles</span></label><label class="kcheck"><input type="checkbox" value="Risk management framework"><span>Risk management framework</span></label><label class="kcheck"><input type="checkbox" value="Safety commitments"><span>Safety commitments</span></label><label class="kcheck"><input type="checkbox" value="Safety standard"><span>Safety standard</span></label><label class="kcheck"><input type="checkbox" value="Treaty"><span>Treaty</span></label></div>
     <div class="grid">
         <article class="bcard" data-card data-badge="Risk management framework" data-kind="Risk management framework"
                  data-search="nist ai risk management framework (ai rmf 1.0) us national institute of standards and technology united states voluntary framework for managing ai risks across the system lifecycle, organized around four functions: govern, map, measure, manage. the most widely referenced starting point for corporate ai governance programs.">
@@ -338,7 +355,8 @@ footer{margin-top:5rem}
           <h3><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework (AI RMF 1.0)</a></h3>
           <p class="meta">US National Institute of Standards and Technology &middot; United States &middot; 2023</p>
           <p class="txt">Voluntary framework for managing AI risks across the system lifecycle, organized around four functions: Govern, Map, Measure, Manage. The most widely referenced starting point for corporate AI governance programs.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf" target="_blank" rel="noopener" title="Connecticut AI Responsibility and Transparency (CART) Act, SB 5">Connecticut CART Act</a><a class="xchip" href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener" title="Advancing American AI Act (P.L. 117-263)">Advancing American AI Act</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf" target="_blank" rel="noopener" title="Connecticut AI Responsibility and Transparency (CART) Act, SB 5">Connecticut CART Act</a><a class="xchip" href="https://www.congress.gov/crs-product/R48555" target="_blank" rel="noopener" title="Advancing American AI Act (P.L. 117-263)">Advancing American AI Act</a></div>
+          <details class="fwact"><summary>Action item summary</summary><ul><li>Govern: put a named owner in charge of AI risk, write down your risk tolerance, and make sure leadership reviews AI risk on a schedule.</li><li>Map: inventory every AI system you build or buy, and for each one record its purpose, data sources, users, and the harms it could cause.</li><li>Measure: test each system before launch and at regular intervals for accuracy, bias, robustness, security, and privacy.</li><li>Manage: rank your risks, fix the worst first, and keep an incident plan that includes monitoring, response, and a way to shut a system down.</li><li>Keep the paperwork: system inventories, evaluation results, data provenance, and the reasons behind key decisions.</li><li>Hold vendors to the same standard: third-party models, APIs, and datasets get the same mapping and testing as your own systems.</li></ul></details>
           <div class="foot"><a class="offlink" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Risk management framework" data-kind="Risk management framework"
@@ -347,16 +365,18 @@ footer{margin-top:5rem}
           <h3><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF Generative AI Profile (NIST AI 600-1)</a></h3>
           <p class="meta">US National Institute of Standards and Technology &middot; United States &middot; 2024</p>
           <p class="txt">Companion profile applying the AI RMF to generative AI: catalogs gen-AI-specific risks (confabulation, dangerous content, IP, environmental) and maps suggested mitigations to the core framework functions.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener" title="Interim Measures for the Management of Generative AI Services">China GenAI Measures</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener" title="Interim Measures for the Management of Generative AI Services">China GenAI Measures</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a></div>
+          <details class="fwact"><summary>Action item summary</summary><ul><li>List every place you use generative AI, then check each use against the profile&#x27;s risk areas, including made-up content (confabulation), data leakage, and harmful outputs.</li><li>Red-team your GenAI systems before release: probe for jailbreaks, prompt injection, and leaks of training or user data.</li><li>Label AI-generated content where you can, using disclosures, watermarks, or provenance metadata.</li><li>Put a human in the loop for high-impact outputs, and log prompts and outputs so decisions can be audited later.</li><li>Tell users plainly when they are interacting with generative AI rather than a person.</li><li>Keep watching after launch: re-run evaluations when the model changes, and track misuse and incidents.</li></ul></details>
           <div class="foot"><a class="offlink" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Management system standard" data-kind="Management system standard"
-                 data-search="iso/iec 42001:2023 — ai management systems iso / iec international certifiable management-system standard for ai: requires policies, risk assessment, and lifecycle controls for developing or using ai. the standard companies get independently audited against.">
+                 data-search="iso/iec 42001:2023, ai management systems iso / iec international certifiable management-system standard for ai: requires policies, risk assessment, and lifecycle controls for developing or using ai. the standard companies get independently audited against.">
           <span class="badge b-blue">Management system standard</span>
-          <h3><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023 — AI Management Systems</a></h3>
+          <h3><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023, AI Management Systems</a></h3>
           <p class="meta">ISO / IEC &middot; International &middot; 2023</p>
           <p class="txt">Certifiable management-system standard for AI: requires policies, risk assessment, and lifecycle controls for developing or using AI. The standard companies get independently audited against.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a></div>
+          <details class="fwact"><summary>Action item summary</summary><ul><li>Adopt a written AI policy, approved by top management, that sets the rules every team follows.</li><li>Assign clear roles and responsibilities for AI across the organization, with named owners for each system.</li><li>Run an AI risk assessment and an AI system impact assessment for every system, and repeat them when a system changes.</li><li>Set measurable AI objectives, and keep controlled, up-to-date documentation for policies, assessments, and decisions.</li><li>Manage the whole life cycle: data quality checks, design review, testing before deployment, monitoring in production, and a retirement plan.</li><li>Vet AI suppliers and third-party systems, and flow your requirements into contracts.</li><li>Train staff on their AI responsibilities, run internal audits and management reviews, and fix what they find (continual improvement).</li><li>If you want the certificate, prepare for an external audit by an accredited certification body.</li></ul></details>
           <div class="foot"><a class="offlink" href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Principles" data-kind="Principles"
@@ -365,16 +385,18 @@ footer{margin-top:5rem}
           <h3><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">OECD AI Principles</a></h3>
           <p class="meta">Organisation for Economic Co-operation and Development &middot; International &middot; 2019 (revised 2024)</p>
           <p class="txt">The first intergovernmental principles on AI: inclusive growth, human rights, transparency, robustness, and accountability. Adopted by OECD members and adherents; revised in 2024.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf" target="_blank" rel="noopener" title="AI Promotion Act (Act No. 53 of 2025)">Japan AI Promotion Act</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf" target="_blank" rel="noopener" title="AI Promotion Act (Act No. 53 of 2025)">Japan AI Promotion Act</a></div>
+          
           <div class="foot"><a class="offlink" href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Code of conduct" data-kind="Code of conduct"
-                 data-search="g7 hiroshima process — international code of conduct for organizations developing advanced ai systems g7 international voluntary code for developers of advanced ai systems: risk assessment across the lifecycle, incident reporting, transparency, and security practices. the g7&#x27;s soft-law complement to binding regulation.">
+                 data-search="g7 hiroshima process, international code of conduct for organizations developing advanced ai systems g7 international voluntary code for developers of advanced ai systems: risk assessment across the lifecycle, incident reporting, transparency, and security practices. the g7&#x27;s soft-law complement to binding regulation.">
           <span class="badge b-blue">Code of conduct</span>
-          <h3><a href="https://digital-strategy.ec.europa.eu/en/policies/hiroshima-ai-process" target="_blank" rel="noopener">G7 Hiroshima Process — International Code of Conduct for Organizations Developing Advanced AI Systems</a></h3>
+          <h3><a href="https://digital-strategy.ec.europa.eu/en/policies/hiroshima-ai-process" target="_blank" rel="noopener">G7 Hiroshima Process, International Code of Conduct for Organizations Developing Advanced AI Systems</a></h3>
           <p class="meta">G7 &middot; International &middot; 2023</p>
           <p class="txt">Voluntary code for developers of advanced AI systems: risk assessment across the lifecycle, incident reporting, transparency, and security practices. The G7&#x27;s soft-law complement to binding regulation.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf" target="_blank" rel="noopener" title="AI Promotion Act (Act No. 53 of 2025)">Japan AI Promotion Act</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf" target="_blank" rel="noopener" title="AI Promotion Act (Act No. 53 of 2025)">Japan AI Promotion Act</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a></div>
+          
           <div class="foot"><a class="offlink" href="https://digital-strategy.ec.europa.eu/en/policies/hiroshima-ai-process" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Declaration" data-kind="Declaration"
@@ -384,6 +406,7 @@ footer{margin-top:5rem}
           <p class="meta">UK AI Safety Summit &middot; United Kingdom / International &middot; 2023</p>
           <p class="txt">Declaration signed by 28 countries at the 2023 UK AI Safety Summit affirming international cooperation on frontier AI risks. A political commitment, not a binding instrument.</p>
           
+          
           <div class="foot"><a class="offlink" href="https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Safety commitments" data-kind="Safety commitments"
@@ -392,7 +415,8 @@ footer{margin-top:5rem}
           <h3><a href="https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024" target="_blank" rel="noopener">Frontier AI Safety Commitments (AI Seoul Summit)</a></h3>
           <p class="meta">16 AI companies via the AI Seoul Summit &middot; International &middot; 2024</p>
           <p class="txt">Sixteen frontier AI companies committed to publish safety frameworks, assess severe risks, and pause development where mitigations are inadequate. The industry&#x27;s most concrete voluntary safety pledge to date.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a><a class="xchip" href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53" target="_blank" rel="noopener" title="Transparency in Frontier AI Act (SB 53)">California SB 53</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a><a class="xchip" href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53" target="_blank" rel="noopener" title="Transparency in Frontier AI Act (SB 53)">California SB 53</a></div>
+          
           <div class="foot"><a class="offlink" href="https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Code of practice" data-kind="Code of practice"
@@ -401,7 +425,8 @@ footer{margin-top:5rem}
           <h3><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-code-of-practice" target="_blank" rel="noopener">EU General-Purpose AI Code of Practice</a></h3>
           <p class="meta">European Commission / EU AI Office &middot; European Union &middot; 2025</p>
           <p class="txt">Voluntary code helping general-purpose AI model providers demonstrate compliance with the EU AI Act&#x27;s duties on transparency, copyright, and systemic-risk evaluation. Signing creates a presumption of conformity.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a></div>
+          
           <div class="foot"><a class="offlink" href="https://digital-strategy.ec.europa.eu/en/policies/ai-code-of-practice" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Principles" data-kind="Principles"
@@ -411,6 +436,7 @@ footer{margin-top:5rem}
           <p class="meta">UNESCO &middot; International &middot; 2021</p>
           <p class="txt">First global standard-setting instrument on AI ethics, adopted by 193 member states: human rights, fairness, transparency, and accountability as the values AI should serve.</p>
           
+          
           <div class="foot"><a class="offlink" href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Governance framework" data-kind="Governance framework"
@@ -419,7 +445,8 @@ footer{margin-top:5rem}
           <h3><a href="https://www.imda.gov.sg/regulations-and-licensing-list/ai-verify" target="_blank" rel="noopener">Model AI Governance Framework for Generative AI</a></h3>
           <p class="meta">Singapore IMDA / AI Verify Foundation &middot; Singapore &middot; 2024</p>
           <p class="txt">Practical guidance for deploying generative AI responsibly: incident reporting, pre-deployment testing, and content provenance. Pairs with AI Verify, Singapore&#x27;s open-source model-testing toolkit.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm" target="_blank" rel="noopener" title="Measures for the Labeling of AI-Generated Synthetic Content">China AI Labeling Rules</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm" target="_blank" rel="noopener" title="Measures for the Labeling of AI-Generated Synthetic Content">China AI Labeling Rules</a></div>
+          
           <div class="foot"><a class="offlink" href="https://www.imda.gov.sg/regulations-and-licensing-list/ai-verify" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Industry commitments" data-kind="Industry commitments"
@@ -428,7 +455,8 @@ footer{margin-top:5rem}
           <h3><a href="https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/07/21/fact-sheet-biden-harris-administration-secures-voluntary-commitments-from-leading-artificial-intelligence-companies/" target="_blank" rel="noopener">White House Voluntary AI Commitments</a></h3>
           <p class="meta">The White House &middot; United States &middot; 2023</p>
           <p class="txt">Fifteen leading AI companies committed to pre-release safety testing, information sharing, watermarking AI-generated content, and public reporting of capabilities and limitations. The US flagship voluntary approach of 2023.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a></div>
+          
           <div class="foot"><a class="offlink" href="https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/07/21/fact-sheet-biden-harris-administration-secures-voluntary-commitments-from-leading-artificial-intelligence-companies/" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Guidelines" data-kind="Guidelines"
@@ -437,16 +465,18 @@ footer{margin-top:5rem}
           <h3><a href="https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/pdf/20240419_14.pdf" target="_blank" rel="noopener">AI Guidelines for Business (Ver. 1.0)</a></h3>
           <p class="meta">Japan METI + Ministry of Internal Affairs and Communications &middot; Japan &middot; 2024</p>
           <p class="txt">Non-binding guidance for AI developers, providers, and business users: risk-based governance, safety, transparency, and fairness duties. Unified three prior guidelines and aligns with the Hiroshima Process.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf" target="_blank" rel="noopener" title="AI Promotion Act (Act No. 53 of 2025)">Japan AI Promotion Act</a><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://www.japaneselawtranslation.go.jp/ja/laws/download/5066/14/r07Aa000530105je18.0.pdf" target="_blank" rel="noopener" title="AI Promotion Act (Act No. 53 of 2025)">Japan AI Promotion Act</a><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a></div>
+          
           <div class="foot"><a class="offlink" href="https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/pdf/20240419_14.pdf" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Code of conduct" data-kind="Code of conduct"
-                 data-search="voluntary code of conduct on the responsible development and management of advanced generative ai systems innovation, science and economic development canada (ised) canada canadian code for generative ai developers: safety assessment, adversarial testing, and public transparency — a stopgap while binding federal ai legislation remains stalled.">
+                 data-search="voluntary code of conduct on the responsible development and management of advanced generative ai systems innovation, science and economic development canada (ised) canada canadian code for generative ai developers: safety assessment, adversarial testing, and public transparency, a stopgap while binding federal ai legislation remains stalled.">
           <span class="badge b-blue">Code of conduct</span>
           <h3><a href="https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-management-advanced-generative-ai-systems" target="_blank" rel="noopener">Voluntary Code of Conduct on the Responsible Development and Management of Advanced Generative AI Systems</a></h3>
           <p class="meta">Innovation, Science and Economic Development Canada (ISED) &middot; Canada &middot; 2023</p>
-          <p class="txt">Canadian code for generative AI developers: safety assessment, adversarial testing, and public transparency — a stopgap while binding federal AI legislation remains stalled.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a></div>
+          <p class="txt">Canadian code for generative AI developers: safety assessment, adversarial testing, and public transparency, a stopgap while binding federal AI legislation remains stalled.</p>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a></div>
+          
           <div class="foot"><a class="offlink" href="https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-management-advanced-generative-ai-systems" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Treaty" data-kind="Treaty"
@@ -455,7 +485,8 @@ footer{margin-top:5rem}
           <h3><a href="https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence" target="_blank" rel="noopener">Council of Europe Framework Convention on Artificial Intelligence</a></h3>
           <p class="meta">Council of Europe &middot; International &middot; 2024</p>
           <p class="txt">First legally binding international treaty on AI: requires parties to ensure AI systems respect human rights, democracy, and the rule of law. Binding on states once ratified; open to non-member states.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.legislation.gov.uk/ukpga/2025/18/section/80" target="_blank" rel="noopener" title="Data (Use and Access) Act 2025, section 80">UK Data Act §80</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.legislation.gov.uk/ukpga/2025/18/section/80" target="_blank" rel="noopener" title="Data (Use and Access) Act 2025, section 80">UK Data Act §80</a></div>
+          
           <div class="foot"><a class="offlink" href="https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Principles" data-kind="Principles"
@@ -465,33 +496,37 @@ footer{margin-top:5rem}
           <p class="meta">White House Office of Science and Technology Policy &middot; United States &middot; 2022</p>
           <p class="txt">Five non-binding principles for automated systems affecting rights and opportunities: safe and effective systems, algorithmic discrimination protections, data privacy, notice and explanation, and human alternatives and fallback. Set the policy vocabulary for later US federal AI governance.</p>
           <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://www.ilga.gov/documents/legislation/publicacts/103/103-0804.htm" target="_blank" rel="noopener" title="Illinois HB 3773 / Public Act 103-0804">Illinois HB 3773</a><a class="xchip" href="https://www.dfs.ny.gov/system/files/documents/2022/04/NYC_Council_Automated_Employment_Decision_Tools.pdf" target="_blank" rel="noopener" title="New York City Local Law 144 of 2021 (Automated Employment Decision Tools)">NYC Local Law 144</a><a class="xchip" href="https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf" target="_blank" rel="noopener" title="Connecticut AI Responsibility and Transparency (CART) Act, SB 5">Connecticut CART Act</a><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener" title="General Data Protection Regulation (Regulation (EU) 2016/679), Article 22">GDPR Art. 22</a></div>
+          
           <div class="foot"><a class="offlink" href="https://bidenwhitehouse.archives.gov/ostp/ai-bill-of-rights/" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Principles" data-kind="Principles"
-                 data-search="ethics guidelines for trustworthy ai european commission high-level expert group on ai european union the eu&#x27;s original 2019 ethics blueprint: trustworthy ai must be lawful, ethical and robust, meeting seven requirements — human oversight, technical robustness, privacy, transparency, fairness, societal well-being and accountability. the direct intellectual ancestor of the eu ai act.">
+                 data-search="ethics guidelines for trustworthy ai european commission high-level expert group on ai european union the eu&#x27;s original 2019 ethics blueprint: trustworthy ai must be lawful, ethical and robust, meeting seven requirements, human oversight, technical robustness, privacy, transparency, fairness, societal well-being and accountability. the direct intellectual ancestor of the eu ai act.">
           <span class="badge b-blue">Principles</span>
           <h3><a href="https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai" target="_blank" rel="noopener">Ethics Guidelines for Trustworthy AI</a></h3>
           <p class="meta">European Commission High-Level Expert Group on AI &middot; European Union &middot; 2019</p>
-          <p class="txt">The EU&#x27;s original 2019 ethics blueprint: trustworthy AI must be lawful, ethical and robust, meeting seven requirements — human oversight, technical robustness, privacy, transparency, fairness, societal well-being and accountability. The direct intellectual ancestor of the EU AI Act.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2022/2065/oj" target="_blank" rel="noopener" title="Digital Services Act — Regulation (EU) 2022/2065">EU Digital Services Act</a></div>
+          <p class="txt">The EU&#x27;s original 2019 ethics blueprint: trustworthy AI must be lawful, ethical and robust, meeting seven requirements, human oversight, technical robustness, privacy, transparency, fairness, societal well-being and accountability. The direct intellectual ancestor of the EU AI Act.</p>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2022/2065/oj" target="_blank" rel="noopener" title="Digital Services Act, Regulation (EU) 2022/2065">EU Digital Services Act</a></div>
+          
           <div class="foot"><a class="offlink" href="https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Principles" data-kind="Principles"
-                 data-search="australia&#x27;s ai ethics principles australian department of industry, science and resources australia eight voluntary principles for ethical ai in australia — human and environmental wellbeing, human-centred values, fairness, privacy, reliability, transparency, contestability and accountability. one of the earliest government ai ethics instruments.">
+                 data-search="australia&#x27;s ai ethics principles australian department of industry, science and resources australia eight voluntary principles for ethical ai in australia, human and environmental wellbeing, human-centred values, fairness, privacy, reliability, transparency, contestability and accountability. one of the earliest government ai ethics instruments.">
           <span class="badge b-blue">Principles</span>
           <h3><a href="https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles" target="_blank" rel="noopener">Australia&#x27;s AI Ethics Principles</a></h3>
           <p class="meta">Australian Department of Industry, Science and Resources &middot; Australia &middot; 2019</p>
-          <p class="txt">Eight voluntary principles for ethical AI in Australia — human and environmental wellbeing, human-centred values, fairness, privacy, reliability, transparency, contestability and accountability. One of the earliest government AI ethics instruments.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a></div>
+          <p class="txt">Eight voluntary principles for ethical AI in Australia, human and environmental wellbeing, human-centred values, fairness, privacy, reliability, transparency, contestability and accountability. One of the earliest government AI ethics instruments.</p>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a></div>
+          
           <div class="foot"><a class="offlink" href="https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Safety standard" data-kind="Safety standard"
-                 data-search="voluntary ai safety standard australian department of industry, science and resources australia ten voluntary guardrails for high-capability ai — covering testing, transparency, human oversight and record-keeping — designed to align with iso/iec 42001 and the nist ai rmf.">
+                 data-search="voluntary ai safety standard australian department of industry, science and resources australia ten voluntary guardrails for high-capability ai, covering testing, transparency, human oversight and record-keeping, designed to align with iso/iec 42001 and the nist ai rmf.">
           <span class="badge b-blue">Safety standard</span>
           <h3><a href="https://www.industry.gov.au/publications/voluntary-ai-safety-standard" target="_blank" rel="noopener">Voluntary AI Safety Standard</a></h3>
           <p class="meta">Australian Department of Industry, Science and Resources &middot; Australia &middot; 2024</p>
-          <p class="txt">Ten voluntary guardrails for high-capability AI — covering testing, transparency, human oversight and record-keeping — designed to align with ISO/IEC 42001 and the NIST AI RMF.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a></div>
+          <p class="txt">Ten voluntary guardrails for high-capability AI, covering testing, transparency, human oversight and record-keeping, designed to align with ISO/IEC 42001 and the NIST AI RMF.</p>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://www.law.go.kr/lsInfoP.do?lsiSeq=268543#0000" target="_blank" rel="noopener" title="AI Basic Act (Framework Act on AI Development and Establishment of Trust)">Korea AI Basic Act</a></div>
+          
           <div class="foot"><a class="offlink" href="https://www.industry.gov.au/publications/voluntary-ai-safety-standard" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article>
         <article class="bcard" data-card data-badge="Governance framework" data-kind="Governance framework"
@@ -500,7 +535,8 @@ footer{margin-top:5rem}
           <h3><a href="https://www.pdpc.gov.sg/help-and-resources/2020/01/model-ai-governance-framework" target="_blank" rel="noopener">Model AI Governance Framework</a></h3>
           <p class="meta">Singapore PDPC / IMDA &middot; Singapore &middot; 2020</p>
           <p class="txt">The original 2020 framework (second edition) for traditional AI: human-centric guidance on internal governance, risk assessment, operations management and stakeholder communication. The GenAI edition extends it to generative systems.</p>
-          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act — Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener" title="General Data Protection Regulation (Regulation (EU) 2016/679), Article 22">GDPR Art. 22</a></div>
+          <div class="xwalk"><span class="xlbl">Overlaps with binding law</span><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank" rel="noopener" title="Artificial Intelligence Act, Regulation (EU) 2024/1689">EU AI Act</a><a class="xchip" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener" title="General Data Protection Regulation (Regulation (EU) 2016/679), Article 22">GDPR Art. 22</a></div>
+          
           <div class="foot"><a class="offlink" href="https://www.pdpc.gov.sg/help-and-resources/2020/01/model-ai-governance-framework" target="_blank" rel="noopener">Read the official text &#8599;</a></div>
         </article></div>
     <div class="empty" data-f="empty"><h3>No matches</h3>
@@ -534,10 +570,10 @@ footer{margin-top:5rem}
     <div>
       <h5>Sources</h5>
       <ul>
-        <li><a href="https://www.congress.gov">Congress.gov</a> — federal bills</li>
-        <li><a href="https://openstates.org">OpenStates</a> — state bills</li>
-        <li><a href="https://www.courtlistener.com">CourtListener</a> — lawsuits</li>
-        <li>Official gazettes &amp; agency sites — enacted laws</li>
+        <li><a href="https://www.congress.gov">Congress.gov</a>: federal bills</li>
+        <li><a href="https://openstates.org">OpenStates</a>: state bills</li>
+        <li><a href="https://www.courtlistener.com">CourtListener</a>: lawsuits</li>
+        <li>Official gazettes &amp; agency sites: enacted laws</li>
       </ul>
     </div>
   </div></div></div>
@@ -574,6 +610,7 @@ footer{margin-top:5rem}
     var q=root.querySelector('[data-f=q]'),
         badge=root.querySelector('[data-f=badge]'),
         kind=root.querySelector('[data-f=kind]'),
+        kindchecks=root.querySelector('[data-f=kindchecks]'),
         count=root.querySelector('[data-f=count]'),
         empty=root.querySelector('[data-f=empty]'),
         cards=Array.prototype.slice.call(root.querySelectorAll('[data-card]')),
@@ -600,10 +637,17 @@ footer{margin-top:5rem}
     function apply(){
       var s=q?q.value.trim().toLowerCase():'', b=badge?badge.value:'',
           k=kind?kind.value:'';
+      var kset=null;
+      if(kindchecks){
+        kset={};
+        kindchecks.querySelectorAll('input[type=checkbox]:checked').forEach(function(cb){kset[cb.value]=1;});
+        if(!Object.keys(kset).length)kset=null;
+      }
       matched=cards.filter(function(c){
         return (!s||c.getAttribute('data-search').indexOf(s)!==-1)
           &&(!b||c.getAttribute('data-badge')===b)
-          &&(!k||c.getAttribute('data-kind')===k);
+          &&(!k||c.getAttribute('data-kind')===k)
+          &&(!kset||kset[c.getAttribute('data-kind')]);
       });
       page=1; render();
     }
@@ -611,6 +655,7 @@ footer{margin-top:5rem}
     next.addEventListener('click',function(){
       if(page<Math.ceil(matched.length/PAGE_SIZE)){page++;render();root.scrollIntoView();}});
     [q,badge,kind].forEach(function(el){if(el)el.addEventListener('input',apply);if(el)el.addEventListener('change',apply);});
+    if(kindchecks)kindchecks.querySelectorAll('input[type=checkbox]').forEach(function(cb){cb.addEventListener('change',apply);});
     apply();
   });
 })();

@@ -179,6 +179,23 @@ body{margin:0;color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans
 .claw li::marker{color:var(--blue)}
 .cdisclaimer{margin-top:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;max-width:70ch}
 .cdisclaimer b{color:#fff}
+.fwact{margin-top:1rem;border:1px solid rgba(110,168,255,.55);border-radius:12px;
+  background:linear-gradient(135deg,rgba(110,168,255,.16),rgba(110,168,255,.05));padding:.75rem .95rem}
+.fwact summary{cursor:pointer;list-style:none;font-family:'Fraunces',Georgia,serif;
+  font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.fwact summary::-webkit-details-marker{display:none}
+.fwact summary::before{content:"✦  ";color:var(--blue)}
+.fwact summary::after{content:" +";color:var(--blue)}
+.fwact[open] summary::after{content:" −"}
+.fwact ul{margin:.75rem 0 .25rem;padding-left:1.15rem;font-size:.88rem;line-height:1.6;color:#dfe6f0}
+.fwact li{margin-bottom:.35rem}
+.fwact li::marker{color:var(--blue)}
+.kchecks{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.4rem}
+.kcheck{display:inline-flex;align-items:center;gap:.45rem;cursor:pointer;
+  border:1px solid var(--line);border-radius:999px;padding:.42rem .85rem;
+  font-size:.82rem;color:var(--muted);background:rgba(255,255,255,.03);transition:all .15s}
+.kcheck input{accent-color:var(--blue);width:14px;height:14px;margin:0;cursor:pointer}
+.kcheck:has(input:checked){border-color:var(--blue);color:#fff;background:rgba(110,168,255,.14)}
 /* ---- white data cards ---- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
 .bcard{background:#fff;color:#111;border-radius:6px;padding:1.5rem;
@@ -313,7 +330,7 @@ footer{margin-top:5rem}
     <div class="eyebrow reveal">Tracking AI law &amp; policy</div>
     <h1 class="reveal">AI Regulation Tracker</h1>
     <p class="sub reveal">US federal and state AI bills &middot; AI lawsuits in federal
-    court &middot; enacted AI laws worldwide — each one verified against an official
+    court &middot; enacted AI laws worldwide, each one verified against an official
     government source &middot; voluntary AI governance frameworks, cross-walked to
     binding law.</p>
   </div>
@@ -337,27 +354,27 @@ footer{margin-top:5rem}
     <div class="eyebrow">The index</div>
     <h2>Four sections, one index</h2>
     <p>Bills still moving, cases testing the boundaries, laws already
-    in force — and the voluntary frameworks mapped against them.</p>
+    in force, and the voluntary frameworks mapped against them.</p>
   </div>
   <div class="cards3">
       <a class="wcard reveal" href="us-laws.html">
         <div class="banner" style="background:#98d2ea">US AI Law Tracker</div>
-        <div class="body"><h3>US AI Law Tracker</h3><p>Every AI bill moving through Congress and the state legislatures — searchable, filterable, and mapped state by state.</p>
+        <div class="body"><h3>US AI Law Tracker</h3><p>Every AI bill moving through Congress and the state legislatures, searchable, filterable, and mapped state by state.</p>
         <span class="go">Explore US laws &#8594;</span></div>
       </a>
       <a class="wcard reveal" href="litigation.html">
         <div class="banner" style="background:#d2a3ce">AI Litigation Monitor</div>
-        <div class="body"><h3>AI Litigation Monitor</h3><p>Federal dockets and published opinions where artificial intelligence is at issue — copyright, deepfakes, chatbots and beyond.</p>
+        <div class="body"><h3>AI Litigation Monitor</h3><p>Federal dockets and published opinions where artificial intelligence is at issue, copyright, deepfakes, chatbots and beyond.</p>
         <span class="go">Follow the cases &#8594;</span></div>
       </a>
       <a class="wcard reveal" href="global.html">
         <div class="banner" style="background:#bacbd3">Global AI Regulation Index</div>
-        <div class="body"><h3>Global AI Regulation Index</h3><p>The world&#x27;s enacted AI laws, each verified against an official government source — on a clickable world map.</p>
+        <div class="body"><h3>Global AI Regulation Index</h3><p>The world&#x27;s enacted AI laws, each verified against an official government source, on a clickable world map.</p>
         <span class="go">See the world &#8594;</span></div>
       </a>
       <a class="wcard reveal" href="frameworks.html">
         <div class="banner" style="background:#e8c87e">AI Governance Frameworks</div>
-        <div class="body"><h3>AI Governance Frameworks</h3><p>Voluntary frameworks, codes, and principles — NIST, ISO, OECD and more — that companies use to demonstrate responsible AI.</p>
+        <div class="body"><h3>AI Governance Frameworks</h3><p>Voluntary frameworks, codes, and principles, NIST, ISO, OECD and more, that companies use to demonstrate responsible AI.</p>
         <span class="go">Browse frameworks &#8594;</span></div>
       </a></div>
 </div></section>
@@ -370,9 +387,9 @@ footer{margin-top:5rem}
       <span class="ustrip-date">Oct 23, 2026</span>
       <h4>Hewlett Packard Enterprise Company v. Wheeler</h4></a><a class="ustrip-item reveal" href="us-laws.html">
       <span class="ustrip-date">Oct 22, 2026</span>
-      <h4>HR 10873 — AI Cyber Defense Act</h4></a><a class="ustrip-item reveal" href="us-laws.html">
+      <h4>HR 10873: AI Cyber Defense Act</h4></a><a class="ustrip-item reveal" href="us-laws.html">
       <span class="ustrip-date">Oct 22, 2026</span>
-      <h4>A 5711 — Prohibits defendant from asserting autonomous behavior of artificial intelligence as defense in certain civil actions and criminal prosecutions.</h4></a></div>
+      <h4>A 5711: Prohibits defendant from asserting autonomous behavior of artificial intelligence as defense in certain civil actions and criminal prosecutions.</h4></a></div>
   <div style="text-align:center">
     <a class="ustrip-more reveal" href="updates.html">View all updates &#8594;</a>
   </div>
@@ -384,14 +401,14 @@ footer{margin-top:5rem}
   </div>
   <div class="kv">
     <div class="k reveal"><h4>Live legislation</h4><p>Federal bills via the Congress.gov
-    API; state bills via OpenStates — refreshed every build, newest action first.</p></div>
+    API; state bills via OpenStates, refreshed every build, newest action first.</p></div>
     <div class="k reveal"><h4>Real litigation</h4><p>Federal dockets and published
     opinions from CourtListener's free database. No headlines, no punditry.</p></div>
     <div class="k reveal"><h4>Verified enactments</h4><p>A law is listed as enacted only
     when confirmed against an official government source. Convincing but unconfirmed
     candidates are flagged <b>Unverified</b> and excluded from the count.</p></div>
     <div class="k reveal"><h4>Mapped frameworks</h4><p>19 voluntary frameworks,
-    codes and principles — NIST, ISO, OECD and more — each cross-walked to the
+    codes and principles, NIST, ISO, OECD and more, each cross-walked to the
     binding laws it overlaps with, so soft law can be read against hard law.</p></div>
   </div>
 </div></section>
@@ -422,10 +439,10 @@ footer{margin-top:5rem}
     <div>
       <h5>Sources</h5>
       <ul>
-        <li><a href="https://www.congress.gov">Congress.gov</a> — federal bills</li>
-        <li><a href="https://openstates.org">OpenStates</a> — state bills</li>
-        <li><a href="https://www.courtlistener.com">CourtListener</a> — lawsuits</li>
-        <li>Official gazettes &amp; agency sites — enacted laws</li>
+        <li><a href="https://www.congress.gov">Congress.gov</a>: federal bills</li>
+        <li><a href="https://openstates.org">OpenStates</a>: state bills</li>
+        <li><a href="https://www.courtlistener.com">CourtListener</a>: lawsuits</li>
+        <li>Official gazettes &amp; agency sites: enacted laws</li>
       </ul>
     </div>
   </div></div></div>
@@ -462,6 +479,7 @@ footer{margin-top:5rem}
     var q=root.querySelector('[data-f=q]'),
         badge=root.querySelector('[data-f=badge]'),
         kind=root.querySelector('[data-f=kind]'),
+        kindchecks=root.querySelector('[data-f=kindchecks]'),
         count=root.querySelector('[data-f=count]'),
         empty=root.querySelector('[data-f=empty]'),
         cards=Array.prototype.slice.call(root.querySelectorAll('[data-card]')),
@@ -488,10 +506,17 @@ footer{margin-top:5rem}
     function apply(){
       var s=q?q.value.trim().toLowerCase():'', b=badge?badge.value:'',
           k=kind?kind.value:'';
+      var kset=null;
+      if(kindchecks){
+        kset={};
+        kindchecks.querySelectorAll('input[type=checkbox]:checked').forEach(function(cb){kset[cb.value]=1;});
+        if(!Object.keys(kset).length)kset=null;
+      }
       matched=cards.filter(function(c){
         return (!s||c.getAttribute('data-search').indexOf(s)!==-1)
           &&(!b||c.getAttribute('data-badge')===b)
-          &&(!k||c.getAttribute('data-kind')===k);
+          &&(!k||c.getAttribute('data-kind')===k)
+          &&(!kset||kset[c.getAttribute('data-kind')]);
       });
       page=1; render();
     }
@@ -499,6 +524,7 @@ footer{margin-top:5rem}
     next.addEventListener('click',function(){
       if(page<Math.ceil(matched.length/PAGE_SIZE)){page++;render();root.scrollIntoView();}});
     [q,badge,kind].forEach(function(el){if(el)el.addEventListener('input',apply);if(el)el.addEventListener('change',apply);});
+    if(kindchecks)kindchecks.querySelectorAll('input[type=checkbox]').forEach(function(cb){cb.addEventListener('change',apply);});
     apply();
   });
 })();
